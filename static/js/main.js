@@ -1,4 +1,7 @@
-// Maktab — main JavaScript
+// Education for Her — main JavaScript
+
+let currentSlideIndex = 0;
+let autoSlideTimer = null;
 
 document.addEventListener('DOMContentLoaded', function () {
     // Mobile menu toggle
@@ -36,7 +39,76 @@ document.addEventListener('DOMContentLoaded', function () {
         const langText = document.getElementById('current-lang-text');
         if (langText) langText.textContent = savedLang;
     }
+
+    // Initialize Hero Carousel Auto-play (Starts immediately)
+    startAutoSlide();
 });
+
+// Carousel Functions
+function goToSlide(index) {
+    const slides = document.querySelectorAll('.hero-slide');
+    if (!slides.length) return;
+
+    // Normalize index
+    currentSlideIndex = (index + slides.length) % slides.length;
+
+    const tabBtns = document.querySelectorAll('.news-tab-btn');
+    const dots = document.querySelectorAll('.slide-dot');
+
+    slides.forEach((slide, idx) => {
+        if (idx === currentSlideIndex) {
+            slide.classList.remove('hidden', 'opacity-0', 'translate-x-8');
+            slide.classList.add('active-slide', 'opacity-100', 'translate-x-0');
+        } else {
+            slide.classList.add('hidden', 'opacity-0', 'translate-x-8');
+            slide.classList.remove('active-slide', 'opacity-100', 'translate-x-0');
+        }
+    });
+
+    // Update Top News Tab Pill Styles
+    tabBtns.forEach((btn, idx) => {
+        if (idx === currentSlideIndex) {
+            btn.className = "news-tab-btn px-4 py-2 text-xs font-extrabold uppercase tracking-wider rounded-full transition-all bg-white/20 text-white backdrop-blur-md border border-white/30";
+        } else {
+            btn.className = "news-tab-btn px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-all bg-white/5 hover:bg-white/15 text-white/80 hover:text-white border border-transparent";
+        }
+    });
+
+    // Update Progress Dots
+    dots.forEach((dot, idx) => {
+        if (idx === currentSlideIndex) {
+            dot.className = "slide-dot w-8 h-2 rounded-full bg-white transition-all duration-300";
+        } else {
+            dot.className = "slide-dot w-2.5 h-2 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300";
+        }
+    });
+}
+
+function nextSlide() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const total = slides.length || 1;
+    goToSlide((currentSlideIndex + 1) % total);
+}
+
+function prevSlide() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const total = slides.length || 1;
+    goToSlide((currentSlideIndex - 1 + total) % total);
+}
+
+function startAutoSlide() {
+    stopAutoSlide();
+    autoSlideTimer = setInterval(function () {
+        nextSlide();
+    }, 3000);
+}
+
+function stopAutoSlide() {
+    if (autoSlideTimer) {
+        clearInterval(autoSlideTimer);
+        autoSlideTimer = null;
+    }
+}
 
 // Function to select language
 function selectLanguage(langCode, label) {
@@ -52,7 +124,4 @@ function selectLanguage(langCode, label) {
     if (langMenu) {
         langMenu.classList.add('hidden');
     }
-
-    // Smooth feedback or page language adaptation can be wired here
-    console.log('Language changed to:', langCode);
 }
