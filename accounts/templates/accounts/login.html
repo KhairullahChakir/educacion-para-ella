@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}Log in — Maktab{% endblock %}
+{% block title %}Log in — Education for Her{% endblock %}
 
 {% block content %}
 <div class="flex min-h-[calc(100vh-12rem)] items-center justify-center px-4 py-12">
     <div class="w-full max-w-sm">
         <div class="text-center mb-8">
             <h1 class="text-2xl font-bold text-gray-900">Welcome back</h1>
-            <p class="mt-2 text-sm text-gray-600">Log in to your Maktab account</p>
+            <p class="mt-2 text-sm text-gray-600">Log in to your Education for Her account</p>
         </div>
 
         <form method="post" action="{% url 'accounts:login' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}" class="space-y-5">
