@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Maktab — Learn Without Limits{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+        <div class="max-w-2xl">
+            <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight leading-tight">
+                Education for every
+                <span class="text-teal-700">Afghan student</span>
+            </h1>
+            <p class="mt-6 text-lg text-gray-600 leading-relaxed">
+                Maktab is an online learning platform connecting students with quality
+                courses in Dari, Pashto, and English. Learn at your own pace, from anywhere.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row gap-4">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'core:dashboard' %}" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 transition-colors">
+                        Go to Dashboard
+                    </a>
+                {% else %}
+                    <a href="{% url 'accounts:register' %}" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 transition-colors">
+                        Get started — it's free
+                    </a>
+                    <a href="{% url 'accounts:login' %}" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-teal-700 bg-teal-50 rounded-lg hover:bg-teal-100 transition-colors">
+                        Log in
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="bg-gray-50 border-t border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <h2 class="text-2xl font-semibold text-gray-900 text-center">
+            Why Maktab?
+        </h2>
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <div class="text-center">
+                <div class="w-12 h-12 mx-auto bg-teal-100 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                </div>
+                <h3 class="mt-4 text-base font-semibold text-gray-900">Quality Courses</h3>
+                <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+                    Courses designed by experienced Afghan educators for local students.
+                </p>
+            </div>
+            <div class="text-center">
+                <div class="w-12 h-12 mx-auto bg-teal-100 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="mt-4 text-base font-semibold text-gray-900">Multilingual</h3>
+                <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+                    Learn in Dari, Pashto, or English — whichever works best for you.
+                </p>
+            </div>
+            <div class="text-center">
+                <div class="w-12 h-12 mx-auto bg-teal-100 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="mt-4 text-base font-semibold text-gray-900">Learn Anytime</h3>
+                <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+                    Access courses on your own schedule, from any device, anywhere.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

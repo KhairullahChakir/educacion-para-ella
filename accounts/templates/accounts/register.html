@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign up — Maktab{% endblock %}
+
+{% block content %}
+<div class="flex min-h-[calc(100vh-12rem)] items-center justify-center px-4 py-12">
+    <div class="w-full max-w-sm">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold text-gray-900">Create your account</h1>
+            <p class="mt-2 text-sm text-gray-600">Join Maktab and start learning today</p>
+        </div>
+
+        <form method="post" action="{% url 'accounts:register' %}" class="space-y-5">
+            {% csrf_token %}
+
+            <!-- Username -->
+            <div>
+                <label for="id_username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                <input type="text" name="username" id="id_username" required autofocus
+                    value="{{ form.username.value|default:'' }}"
+                    placeholder="Choose a username"
+                    autocomplete="username"
+                    class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-shadow">
+                {% if form.username.errors %}
+                    <p class="mt-1 text-xs text-red-600">{{ form.username.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label for="id_email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <input type="email" name="email" id="id_email" required
+                    value="{{ form.email.value|default:'' }}"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-shadow">
+                {% if form.email.errors %}
+                    <p class="mt-1 text-xs text-red-600">{{ form.email.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Password -->
+            <div>
+                <label for="id_password1" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                <input type="password" name="password1" id="id_password1" required
+                    placeholder="Create a password"
+                    autocomplete="new-password"
+                    class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-shadow">
+                {% if form.password1.errors %}
+                    <p class="mt-1 text-xs text-red-600">{{ form.password1.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Confirm Password -->
+            <div>
+                <label for="id_password2" class="block text-sm font-medium text-gray-700 mb-1">Confirm password</label>
+                <input type="password" name="password2" id="id_password2" required
+                    placeholder="Confirm your password"
+                    autocomplete="new-password"
+                    class="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-shadow">
+                {% if form.password2.errors %}
+                    <p class="mt-1 text-xs text-red-600">{{ form.password2.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Non-field errors -->
+            {% if form.non_field_errors %}
+            <div class="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <button type="submit" class="w-full py-2.5 px-4 text-sm font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2 transition-colors">
+                Create account
+            </button>
+        </form>
+
+        <p class="mt-6 text-center text-sm text-gray-600">
+            Already have an account?
+            <a href="{% url 'accounts:login' %}" class="font-medium text-teal-700 hover:text-teal-800">Log in</a>
+        </p>
+    </div>
+</div>
+{% endblock %}
