@@ -203,33 +203,65 @@
                 <!-- Classes Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="classes-grid">
                     {% for program in class_programs %}
-                    <div class="class-card bg-white rounded-3xl p-6 sm:p-7 border border-gray-200/80 shadow-2xs hover:shadow-xl hover:border-[#00c49f] hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between"
+                    <div class="class-card bg-white rounded-3xl p-5 sm:p-6 border border-gray-200/80 shadow-2xs hover:shadow-xl hover:border-[#167888] hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between group"
                          data-subject="{{ program.subject_category|default:'general' }}"
                          data-level="{{ program.level_category|default:'all' }}"
                          data-format="{{ program.format_category|default:'online' }}"
                          data-status="{{ program.status|default:'open' }}">
                         
                         <div>
-                            <!-- Full Course Title without truncation -->
-                            <h3 class="text-base font-bold text-gray-900 leading-snug">
+                            <!-- Top-Half Cover Image with Floating Badges -->
+                            <div class="relative w-full h-40 rounded-2xl overflow-hidden mb-4 border border-gray-100 bg-gray-100 shadow-2xs">
+                                {% if program.image %}
+                                    <img src="{{ program.image.url }}" alt="{{ program.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                {% else %}
+                                    <img src="{% static 'images/hero_student.png' %}" alt="{{ program.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                {% endif %}
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                                
+                                <!-- Floating Subject Badge -->
+                                <div class="absolute top-3 left-3">
+                                    <span class="px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider bg-white/95 backdrop-blur-md text-gray-900 border border-white/60 shadow-xs">
+                                        {{ program.category_icon_info.label }}
+                                    </span>
+                                </div>
+                                
+                                <!-- Floating Status Badge -->
+                                <div class="absolute top-3 right-3">
+                                    <span class="px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider rounded-full border shadow-xs bg-white/95 backdrop-blur-md {{ program.status_badge_classes }}">
+                                        ● {{ program.display_status }}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Full Course Title -->
+                            <h3 class="text-base font-bold text-gray-900 leading-snug group-hover:text-[#167888] transition-colors">
                                 {{ program.title }}
                             </h3>
                             
-                            <!-- Level & Registration Status line in vibrant teal directly below -->
-                            <p class="text-xs sm:text-sm font-bold text-[#00c49f] mt-1 flex items-center gap-1.5">
-                                {{ program.badge_text|default:'A1 • Open for Registration' }}
-                            </p>
+                            <!-- Level & Format Badges -->
+                            <div class="flex items-center gap-2 mt-2 mb-3">
+                                <span class="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold bg-teal-50 text-[#167888] border border-teal-200/60 uppercase tracking-wider">
+                                    {{ program.get_level_category_display }}
+                                </span>
+                                <span class="text-[11px] text-gray-400 font-medium">
+                                    {{ program.get_format_category_display }}
+                                </span>
+                            </div>
 
                             <!-- Course Metadata List -->
-                            <div class="mt-4 space-y-1 text-xs text-gray-600">
-                                <p class="leading-relaxed">
-                                    <span class="font-bold text-gray-900">Start date:</span> {{ program.start_date_text|default:'September 2026' }}
+                            <div class="space-y-1.5 text-xs text-gray-600 p-3 rounded-2xl bg-gray-50/80 border border-gray-100">
+                                <p class="leading-relaxed flex items-center justify-between">
+                                    <span class="font-bold text-gray-700">Start date:</span>
+                                    <span class="text-gray-900 font-semibold">{{ program.start_date_text|default:'September 2026' }}</span>
                                 </p>
-                                <p class="leading-relaxed">
-                                    <span class="font-bold text-gray-900">Timetable:</span> {{ program.timetable_text|default:program.schedule_time }}
+                                <p class="leading-relaxed flex items-center justify-between">
+                                    <span class="font-bold text-gray-700">Timetable:</span>
+                                    <span class="text-gray-900 font-semibold truncate max-w-[170px]">{{ program.timetable_text|default:program.schedule_time }}</span>
                                 </p>
-                                <p class="leading-relaxed text-gray-500">
-                                    <span class="font-semibold text-gray-700">Location:</span> {{ program.location_text|default:'Online Virtual Classroom' }}
+                                <p class="leading-relaxed flex items-center justify-between text-gray-500">
+                                    <span class="font-bold text-gray-700">Location:</span>
+                                    <span class="text-gray-800 truncate max-w-[170px]">{{ program.location_text|default:'Online Classroom' }}</span>
                                 </p>
                             </div>
 
@@ -241,15 +273,15 @@
                         </div>
 
                         <!-- Action Button -->
-                        <div class="pt-6">
+                        <div class="pt-5 mt-2 border-t border-gray-100">
                             {% if program.status == 'closed' %}
-                            <button disabled class="inline-flex items-center justify-center w-fit px-5 py-2.5 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-400 border border-gray-300 bg-gray-50 cursor-not-allowed">
+                            <button disabled class="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-400 border border-gray-300 bg-gray-50 cursor-not-allowed">
                                 Closed
                             </button>
                             {% else %}
-                            <a href="{{ program.button_url|default:'/register/' }}" class="group/btn inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] transition-all cursor-pointer shadow-xs hover:shadow-md">
+                            <a href="{{ program.button_url|default:'/register/' }}" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] transition-all cursor-pointer shadow-xs hover:shadow-md">
                                 <span>{{ program.button_text|default:'Get started' }}</span>
-                                <svg class="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                                <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                             </a>
                             {% endif %}
                         </div>
