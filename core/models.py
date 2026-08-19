@@ -355,6 +355,7 @@ class VisionPillar(models.Model):
     title = models.CharField(max_length=150, help_text="Pillar title (e.g. Education Creates Possibilities)")
     description = models.TextField(help_text="Core manifesto message")
     icon = models.CharField(max_length=20, default="🌟", help_text="Emoji icon (e.g. 🌟, 💻, 🤝, 🕊️)")
+    image = models.ImageField(upload_to='vision_images/', blank=True, null=True, help_text="Header artwork/illustration for the vision card")
     accent_color = models.CharField(max_length=30, choices=COLOR_CHOICES, default='teal')
     order = models.PositiveIntegerField(default=0, help_text="Sort order")
     is_active = models.BooleanField(default=True, help_text="Active toggle")
