@@ -8,6 +8,7 @@ from .models import (
     AboutStory,
     FounderCollaborator,
     MethodologyPillar,
+    MindfulnessIntro,
 )
 
 
@@ -53,7 +54,10 @@ def classes(request):
 
 def mindfulness(request):
     """Mindfulness & Well-being page."""
-    return render(request, 'core/mindfulness.html')
+    mindfulness_intro = MindfulnessIntro.objects.filter(is_active=True).first()
+    return render(request, 'core/mindfulness.html', {
+        'mindfulness_intro': mindfulness_intro,
+    })
 
 
 def volunteers(request):

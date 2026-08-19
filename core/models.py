@@ -190,29 +190,26 @@ class MethodologyPillar(models.Model):
     def __str__(self):
         return self.title
 
-    @property
-    def color_classes(self):
-        if self.badge_color == 'blue':
-            return {
-                'badge': 'bg-blue-100 text-blue-900 border-blue-200',
-                'border_hover': 'hover:border-blue-500',
-                'accent': 'text-blue-700',
-            }
-        elif self.badge_color == 'purple':
-            return {
-                'badge': 'bg-purple-100 text-purple-900 border-purple-200',
-                'border_hover': 'hover:border-purple-500',
-                'accent': 'text-purple-700',
-            }
-        elif self.badge_color == 'amber':
-            return {
-                'badge': 'bg-amber-100 text-amber-900 border-amber-200',
-                'border_hover': 'hover:border-amber-500',
-                'accent': 'text-amber-700',
-            }
-        else:
-            return {
-                'badge': 'bg-teal-100 text-teal-900 border-teal-200',
-                'border_hover': 'hover:border-[#167888]',
-                'accent': 'text-[#167888]',
-            }
+
+class MindfulnessIntro(models.Model):
+    """Dynamic Trauma-Informed Learning Intro on the Mindfulness & Well-being page."""
+    badge_text = models.CharField(max_length=60, default="Trauma-Informed Learning", help_text="Category pill text")
+    headline = models.CharField(max_length=250, default="Healing and learning must go hand in hand")
+    paragraph_1 = models.TextField(help_text="First paragraph explaining emotional challenges & context")
+    paragraph_2 = models.TextField(help_text="Second paragraph explaining mindfulness circles & facilitator support")
+    safety_point_1_title = models.CharField(max_length=100, default="100% Confidential & Safe")
+    safety_point_1_desc = models.CharField(max_length=200, default="Camera-optional, anonymous handles respected")
+    safety_point_2_title = models.CharField(max_length=100, default="Practical Daily Tools")
+    safety_point_2_desc = models.CharField(max_length=200, default="Breathing and somatic exercises usable anytime from home")
+    button_text = models.CharField(max_length=60, default="Join Next Safe Circle →", help_text="Action button label")
+    button_url = models.CharField(max_length=255, default="/contact/", help_text="Action button destination")
+    image = models.ImageField(upload_to='mindfulness_images/', blank=True, null=True, help_text="Mindfulness illustration/artwork")
+    is_active = models.BooleanField(default=True, help_text="Active toggle")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Mindfulness Page Intro"
+        verbose_name_plural = "Mindfulness Page Intros"
+
+    def __str__(self):
+        return self.headline

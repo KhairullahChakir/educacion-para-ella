@@ -1,5 +1,14 @@
 from django.contrib import admin
-from .models import HeroNews, ClassProgram, HowItWorksStep, Partner, AboutStory, FounderCollaborator, MethodologyPillar
+from .models import (
+    HeroNews,
+    ClassProgram,
+    HowItWorksStep,
+    Partner,
+    AboutStory,
+    FounderCollaborator,
+    MethodologyPillar,
+    MindfulnessIntro,
+)
 
 
 @admin.register(HeroNews)
@@ -67,3 +76,11 @@ class MethodologyPillarAdmin(admin.ModelAdmin):
     list_filter = ('badge_color', 'is_active', 'created_at')
     list_editable = ('order', 'is_active')
     search_fields = ('title', 'tag', 'description', 'skills_list')
+
+
+@admin.register(MindfulnessIntro)
+class MindfulnessIntroAdmin(admin.ModelAdmin):
+    list_display = ('headline', 'badge_text', 'safety_point_1_title', 'is_active', 'created_at')
+    list_filter = ('is_active', 'created_at')
+    list_editable = ('is_active',)
+    search_fields = ('headline', 'paragraph_1', 'paragraph_2', 'safety_point_1_title', 'safety_point_2_title')
