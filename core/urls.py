@@ -13,5 +13,5 @@ urlpatterns = [
     path('mission/', views.mission, name='mission'),
     path('get-involved/', views.get_involved, name='get_involved'),
     path('contact/', views.contact, name='contact'),
+    path('subscribe/', views.subscribe_newsletter, name='subscribe_newsletter'),
 ]
-

@@ -555,3 +555,72 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.topic} ({self.created_at.strftime('%Y-%m-%d %H:%M')})"
+
+
+class FooterSetting(models.Model):
+    """Global dynamic Footer content settings across all pages."""
+    brand_name = models.CharField(max_length=100, default="Educación para Ella")
+    brand_subtitle = models.CharField(max_length=100, default="Education for Her")
+    mission_text_1 = models.TextField(default="Educación para Ella connects Afghan girls and students with qualified educators and interactive digital courses in Dari, Pashto, and English.")
+    mission_text_2 = models.TextField(default="Together with local mentors and global partners, we work to ensure every student can continue learning safely from home.")
+    mission_link_text = models.CharField(max_length=60, default="Read our full mission →")
+    mission_link_url = models.CharField(max_length=255, default="/mission/")
+    
+    region_1_title = models.CharField(max_length=100, default="Afghanistan")
+    region_1_desc = models.CharField(max_length=150, default="Kabul, Herat, Mazar & All Provinces")
+    region_1_badge = models.CharField(max_length=100, default="Offline Study Bundles Available")
+    region_2_title = models.CharField(max_length=100, default="Global Network")
+    region_2_desc = models.CharField(max_length=150, default="Connecting Afghan Diaspora in Iran, Pakistan, Iraq & Worldwide")
+    
+    commitment_title = models.CharField(max_length=100, default="Open Access")
+    commitment_badge = models.CharField(max_length=100, default="100% Free Education")
+    commitment_desc = models.TextField(default="Education for Her is certified to provide safe, free, high-quality, and accessible digital learning resources for all Afghan students.")
+    commitment_icon = models.CharField(max_length=20, default="🎓")
+
+    facebook_url = models.CharField(max_length=255, default="#", blank=True, null=True)
+    telegram_url = models.CharField(max_length=255, default="#", blank=True, null=True)
+    youtube_url = models.CharField(max_length=255, default="#", blank=True, null=True)
+
+    copyright_text = models.CharField(max_length=255, default="© 2025-2026 Educación para Ella (Education for Her). Built with ❤️ for Afghan students worldwide.")
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Footer Settings"
+        verbose_name_plural = "Footer Settings"
+
+    def __str__(self):
+        return f"Footer Configuration ({self.brand_name})"
+
+
+class FooterQuickLink(models.Model):
+    """Dynamic Useful Links in the global footer."""
+    title = models.CharField(max_length=100, help_text="Link Title (e.g. Our Classes, Get Involved, Mindfulness)")
+    subtitle = models.CharField(max_length=120, help_text="Subtitle or description (e.g. English, Spanish, German, Tech)")
+    url = models.CharField(max_length=255, default="/classes/", help_text="Target URL")
+    order = models.PositiveIntegerField(default=0, help_text="Display order")
+    is_active = models.BooleanField(default=True, help_text="Active toggle")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Footer Quick Link"
+        verbose_name_plural = "Footer Quick Links"
+
+    def __str__(self):
+        return f"{self.title} ({self.url})"
+
+
+class NewsletterSubscriber(models.Model):
+    """Subscribers to the global newsletter updates."""
+    name = models.CharField(max_length=150, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Newsletter Subscriber"
+        verbose_name_plural = "Newsletter Subscribers"
+
+    def __str__(self):
+        return self.name or self.email or "Anonymous Subscriber"

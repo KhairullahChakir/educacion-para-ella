@@ -18,6 +18,9 @@ from .models import (
     FAQItem,
     ContactSetting,
     ContactMessage,
+    FooterSetting,
+    FooterQuickLink,
+    NewsletterSubscriber,
 )
 
 
@@ -181,3 +184,28 @@ class ContactMessageAdmin(admin.ModelAdmin):
     list_editable = ('is_resolved',)
     search_fields = ('name', 'email', 'message')
     readonly_fields = ('name', 'email', 'topic', 'message', 'created_at')
+
+
+@admin.register(FooterSetting)
+class FooterSettingAdmin(admin.ModelAdmin):
+    list_display = ('brand_name', 'brand_subtitle', 'region_1_title', 'region_2_title', 'commitment_title', 'is_active', 'created_at')
+    list_filter = ('is_active', 'created_at')
+    list_editable = ('is_active',)
+    search_fields = ('brand_name', 'mission_text_1', 'mission_text_2', 'copyright_text')
+
+
+@admin.register(FooterQuickLink)
+class FooterQuickLinkAdmin(admin.ModelAdmin):
+    list_display = ('title', 'subtitle', 'url', 'order', 'is_active', 'created_at')
+    list_display_links = ('title',)
+    list_filter = ('is_active', 'created_at')
+    list_editable = ('subtitle', 'url', 'order', 'is_active')
+    search_fields = ('title', 'subtitle', 'url')
+
+
+@admin.register(NewsletterSubscriber)
+class NewsletterSubscriberAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'created_at')
+    list_filter = ('created_at',)
+    search_fields = ('name', 'email')
+    readonly_fields = ('name', 'email', 'created_at')

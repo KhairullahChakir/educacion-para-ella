@@ -20,6 +20,9 @@ from .models import (
     FAQItem,
     ContactSetting,
     ContactMessage,
+    FooterSetting,
+    FooterQuickLink,
+    NewsletterSubscriber,
 )
 
 
@@ -130,3 +133,17 @@ def contact(request):
     return render(request, 'core/contact.html', {
         'contact_info': contact_info,
     })
+
+
+def subscribe_newsletter(request):
+    """Handle footer newsletter subscriptions."""
+    if request.method == 'POST':
+        name = request.POST.get('name', '').strip()
+        if name:
+            NewsletterSubscriber.objects.create(name=name)
+            messages.success(request, f"Thank you {name}! You have been subscribed to our updates.")
+        else:
+            messages.error(request, "Please enter your name to subscribe.")
+            
+    next_url = request.POST.get('next', request.META.get('HTTP_REFERER', '/'))
+    return redirect(next_url)
