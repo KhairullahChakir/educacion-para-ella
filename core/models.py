@@ -624,3 +624,37 @@ class NewsletterSubscriber(models.Model):
 
     def __str__(self):
         return self.name or self.email or "Anonymous Subscriber"
+
+
+class SocialMediaLink(models.Model):
+    """Dynamic social media channels across footer, contact, and header."""
+    PLATFORM_CHOICES = [
+        ('whatsapp', 'WhatsApp'),
+        ('telegram', 'Telegram'),
+        ('facebook', 'Facebook'),
+        ('youtube', 'YouTube'),
+        ('instagram', 'Instagram'),
+        ('linkedin', 'LinkedIn'),
+        ('twitter', 'Twitter / X'),
+        ('tiktok', 'TikTok'),
+        ('github', 'GitHub'),
+        ('custom', 'Custom Channel'),
+    ]
+
+    name = models.CharField(max_length=100, help_text="Platform / Channel name (e.g. WhatsApp, Telegram, Instagram)")
+    platform = models.CharField(max_length=30, choices=PLATFORM_CHOICES, default='whatsapp')
+    url = models.CharField(max_length=255, help_text="Direct link URL (e.g. https://wa.me/34632655088 or https://t.me/educacionparaella)")
+    emoji_icon = models.CharField(max_length=20, default="💬", blank=True, null=True, help_text="Emoji fallback icon")
+    order = models.PositiveIntegerField(default=0, help_text="Sort order (0 appears first)")
+    is_active = models.BooleanField(default=True, help_text="Toggle visibility")
+    show_in_footer = models.BooleanField(default=True, help_text="Display in site footer")
+    show_in_contact = models.BooleanField(default=True, help_text="Display on contact page")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Social Media Link"
+        verbose_name_plural = "Social Media Links"
+
+    def __str__(self):
+        return f"{self.name} ({self.get_platform_display()})"

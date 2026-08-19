@@ -21,6 +21,7 @@ from .models import (
     FooterSetting,
     FooterQuickLink,
     NewsletterSubscriber,
+    SocialMediaLink,
 )
 
 
@@ -209,3 +210,12 @@ class NewsletterSubscriberAdmin(admin.ModelAdmin):
     list_filter = ('created_at',)
     search_fields = ('name', 'email')
     readonly_fields = ('name', 'email', 'created_at')
+
+
+@admin.register(SocialMediaLink)
+class SocialMediaLinkAdmin(admin.ModelAdmin):
+    list_display = ('name', 'platform', 'url', 'order', 'show_in_footer', 'show_in_contact', 'is_active', 'created_at')
+    list_display_links = ('name',)
+    list_filter = ('platform', 'show_in_footer', 'show_in_contact', 'is_active', 'created_at')
+    list_editable = ('platform', 'url', 'order', 'show_in_footer', 'show_in_contact', 'is_active')
+    search_fields = ('name', 'url', 'platform')
