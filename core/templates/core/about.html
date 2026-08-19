@@ -15,17 +15,31 @@
     </div>
 </section>
 
-<!-- Why We Exist & Context -->
+<!-- Why We Exist & Context (Dynamic AboutStory Backend Data) -->
 <section class="bg-white py-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-7 space-y-6">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200 text-xs font-extrabold uppercase tracking-widest text-[#167888]">
-                    Origin & Purpose
+                    {{ about_story.badge_text|default:"Origin & Purpose" }}
                 </div>
                 <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight leading-tight">
-                    When classroom doors are closed, we keep learning alive
+                    {{ about_story.headline|default:"When classroom doors are closed, we keep learning alive" }}
                 </h2>
+                
+                {% if about_story %}
+                <p class="text-gray-600 leading-relaxed text-base">
+                    {{ about_story.paragraph_1 }}
+                </p>
+                <p class="text-gray-600 leading-relaxed text-base">
+                    {{ about_story.paragraph_2 }}
+                </p>
+                <div class="p-6 bg-teal-50/60 rounded-2xl border-l-4 border-[#167888] space-y-2">
+                    <p class="text-sm font-semibold text-teal-950 italic">
+                        "{{ about_story.quote_text }}"
+                    </p>
+                </div>
+                {% else %}
                 <p class="text-gray-600 leading-relaxed text-base">
                     Since the restrictions placed on girls' education in Afghanistan, millions of bright, ambitious students have been prevented from attending secondary schools and universities. Traditional paths to literacy, independence, and career development disappeared overnight.
                 </p>
@@ -37,12 +51,17 @@
                         "An online classroom is more than a place for lessons. It is a connection to the world, a supportive sisterhood, a source of dignity, and proof that their future still matters."
                     </p>
                 </div>
+                {% endif %}
             </div>
 
             <div class="lg:col-span-5 flex justify-center">
                 <div class="relative w-full max-w-md">
                     <div class="rounded-3xl overflow-hidden shadow-2xl border border-gray-100 bg-teal-900">
+                        {% if about_story.image %}
+                        <img src="{{ about_story.image.url }}" alt="{{ about_story.headline }}" class="w-full h-auto object-cover">
+                        {% else %}
                         <img src="{% static 'images/hero_community.png' %}" alt="Students learning together" class="w-full h-auto object-cover">
+                        {% endif %}
                     </div>
                 </div>
             </div>

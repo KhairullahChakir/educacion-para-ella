@@ -117,3 +117,22 @@ class Partner(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class AboutStory(models.Model):
+    """Dynamic Origin & Purpose section on the About Us page."""
+    badge_text = models.CharField(max_length=60, default="Origin & Purpose", help_text="Small category badge")
+    headline = models.CharField(max_length=250, default="When classroom doors are closed, we keep learning alive")
+    paragraph_1 = models.TextField(help_text="First narrative paragraph explaining the background")
+    paragraph_2 = models.TextField(help_text="Second narrative paragraph detailing the initiative response")
+    quote_text = models.TextField(help_text="Highlighted inspirational quote banner")
+    image = models.ImageField(upload_to='about_images/', blank=True, null=True, help_text="Story illustration or photo")
+    is_active = models.BooleanField(default=True, help_text="Active toggle")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "About Page Story"
+        verbose_name_plural = "About Page Stories"
+
+    def __str__(self):
+        return self.headline
