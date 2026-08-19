@@ -22,7 +22,7 @@
                 {{ classes_setting.hero_subtitle|default:'Discover the different levels and current registration status for our free, safe, and inclusive virtual and offline learning sanctuary.' }}
             </p>
             <div class="mt-8 flex flex-wrap items-center gap-4">
-                <a href="#class-schedule" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#00c49f] hover:bg-[#00a887] text-white text-xs font-extrabold uppercase tracking-wider shadow-md hover:shadow-lg transition-all">
+                <a href="#class-schedule" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#fbbf24] hover:bg-[#f59e0b] text-gray-900 text-xs font-extrabold uppercase tracking-wider shadow-md hover:shadow-lg transition-all">
                     <span>Explore Class Schedules</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </a>
@@ -43,9 +43,9 @@
                 {% if classes_setting.announcement_status_color == 'red' %}
                     <span class="text-red-600 font-extrabold uppercase tracking-wide">{{ classes_setting.announcement_status_highlight|default:'closed' }}</span>
                 {% elif classes_setting.announcement_status_color == 'amber' %}
-                    <span class="text-amber-600 font-extrabold uppercase tracking-wide">{{ classes_setting.announcement_status_highlight|default:'opening soon' }}</span>
+                    <span class="text-[#fbbf24] font-extrabold uppercase tracking-wide">{{ classes_setting.announcement_status_highlight|default:'opening soon' }}</span>
                 {% else %}
-                    <span class="text-[#00c49f] font-extrabold uppercase tracking-wide">{{ classes_setting.announcement_status_highlight|default:'open for registration' }}</span>
+                    <span class="text-[#167888] font-extrabold uppercase tracking-wide">{{ classes_setting.announcement_status_highlight|default:'open for registration' }}</span>
                 {% endif %}.
                 {{ classes_setting.announcement_suffix|default:'Registration for the autumn term is open. All courses are 100% free & camera-optional.' }}
             </p>
@@ -65,7 +65,7 @@
                     
                     <div class="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">
                         <h2 class="text-sm font-extrabold uppercase tracking-wider text-gray-900">Filters</h2>
-                        <button type="button" id="clear-all-filters" class="text-xs font-bold text-[#00c49f] hover:underline cursor-pointer">
+                        <button type="button" id="clear-all-filters" class="text-xs font-bold text-[#167888] hover:underline cursor-pointer">
                             Clear Filters ✕
                         </button>
                     </div>
@@ -247,7 +247,7 @@
                                 Closed
                             </button>
                             {% else %}
-                            <a href="{{ program.button_url|default:'/register/' }}" class="group/btn inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-extrabold uppercase tracking-wider text-[#00c49f] border-2 border-[#00c49f] hover:bg-[#00c49f] hover:text-white transition-all cursor-pointer shadow-2xs">
+                            <a href="{{ program.button_url|default:'/register/' }}" class="group/btn inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] transition-all cursor-pointer shadow-xs hover:shadow-md">
                                 <span>{{ program.button_text|default:'Get started' }}</span>
                                 <svg class="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                             </a>
@@ -267,7 +267,7 @@
                     <span class="text-3xl">🔍</span>
                     <h4 class="text-base font-bold text-gray-900 mt-3">No classes match your selected filters</h4>
                     <p class="text-xs text-gray-500 mt-1">Try resetting some of your filter criteria or view all courses.</p>
-                    <button type="button" onclick="resetAllFilters()" class="mt-4 inline-flex items-center px-5 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider text-white bg-[#00c49f] hover:bg-[#00a887] transition-all cursor-pointer">
+                    <button type="button" onclick="resetAllFilters()" class="mt-4 inline-flex items-center px-5 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] transition-all cursor-pointer shadow-xs">
                         Reset All Filters
                     </button>
                 </div>
