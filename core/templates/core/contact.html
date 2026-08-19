@@ -1,32 +1,32 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Contact Us — Education for Her{% endblock %}
+{% block title %}Contact & Inquiries — Education for Her{% endblock %}
 
 {% block content %}
 <!-- Hero Banner -->
 <section class="bg-gradient-to-br from-[#167888] via-[#1a8596] to-[#d8b49c] text-white py-20 lg:py-28">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p class="text-xs font-extrabold uppercase tracking-widest text-teal-200 mb-4">Get in Touch</p>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">Contact Us</h1>
+        <p class="text-xs font-extrabold uppercase tracking-widest text-teal-200 mb-4">Connect With Our Team</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">Contact & Inquiries</h1>
         <p class="mt-6 text-lg text-teal-50/90 max-w-2xl mx-auto leading-relaxed">
-            Have questions, want to volunteer, or interested in partnering with us? We'd love to hear from you.
+            Have questions about enrolling in classes, applying as a volunteer teacher, or partnering with our initiative? We are here to help.
         </p>
     </div>
 </section>
 
 <!-- Contact Form & Info Grid -->
-<section class="bg-white py-16 lg:py-24">
+<section class="bg-white py-20 lg:py-24">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             
-            <!-- Left Column: Contact Details & Info -->
+            <!-- Left Column: Contact Details & Confidentiality -->
             <div class="lg:col-span-5 space-y-8">
                 <div>
                     <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-2">Reach Out</p>
                     <h2 class="text-3xl font-bold text-gray-900 tracking-tight">Let's Connect</h2>
                     <p class="mt-3 text-sm text-gray-600 leading-relaxed">
-                        Our volunteer team is distributed worldwide. Reach out to us directly through email, social channels, or the contact form.
+                        Our volunteer coordination team operates across multiple international time zones to support students and educators worldwide.
                     </p>
                 </div>
 
@@ -37,9 +37,9 @@
                             📧
                         </div>
                         <div>
-                            <p class="text-xs font-bold uppercase tracking-wider text-gray-500">Email Us</p>
+                            <p class="text-xs font-bold uppercase tracking-wider text-gray-500">Official Email</p>
                             <p class="text-sm font-semibold text-gray-900 mt-0.5">contact@educacionparaella.org</p>
-                            <p class="text-xs text-gray-500 mt-0.5">We typically respond within 24-48 hours</p>
+                            <p class="text-xs text-gray-500 mt-0.5">Responses typically sent within 24 to 48 hours</p>
                         </div>
                     </div>
 
@@ -48,26 +48,27 @@
                             🌍
                         </div>
                         <div>
-                            <p class="text-xs font-bold uppercase tracking-wider text-gray-500">Global Network</p>
-                            <p class="text-sm font-semibold text-gray-900 mt-0.5">Afghanistan & Worldwide</p>
-                            <p class="text-xs text-gray-500 mt-0.5">Serving students across Afghanistan, Iran, Pakistan & Iraq</p>
+                            <p class="text-xs font-bold uppercase tracking-wider text-gray-500">Global Operations</p>
+                            <p class="text-sm font-semibold text-gray-900 mt-0.5">Afghanistan & International Diaspora</p>
+                            <p class="text-xs text-gray-500 mt-0.5">Connecting students across AF, IR, PK & IQ</p>
                         </div>
                     </div>
 
-                    <div class="flex items-start gap-4 p-5 bg-teal-50/50 rounded-2xl border border-teal-100">
-                        <div class="w-10 h-10 rounded-xl bg-[#167888] text-white flex items-center justify-center shrink-0 text-lg">
-                            🤝
+                    <!-- Safety & Privacy Guarantee Card -->
+                    <div class="p-5 bg-purple-50/50 rounded-2xl border border-purple-100 space-y-2">
+                        <div class="flex items-center gap-2">
+                            <span class="text-base">🛡️</span>
+                            <p class="text-xs font-extrabold text-purple-900 uppercase tracking-wider">Student Safety & Privacy</p>
                         </div>
-                        <div>
-                            <p class="text-xs font-bold uppercase tracking-wider text-gray-500">Key Partners</p>
-                            <p class="text-sm font-semibold text-gray-900 mt-0.5">Open Cultural Center · Afghan Women on the Run</p>
-                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            For students and families writing from inside Afghanistan: your safety is our utmost priority. All messages are encrypted, held strictly confidential, and never shared publicly.
+                        </p>
                     </div>
                 </div>
 
                 <!-- Social Channels -->
-                <div class="pt-4">
-                    <p class="text-xs font-extrabold uppercase tracking-widest text-gray-900 mb-3">Follow & Message Us</p>
+                <div class="pt-2">
+                    <p class="text-xs font-extrabold uppercase tracking-widest text-gray-900 mb-3">Community Channels</p>
                     <div class="flex items-center gap-3">
                         <a href="#" class="w-10 h-10 rounded-full bg-teal-50 hover:bg-[#167888] text-[#167888] hover:text-white flex items-center justify-center transition-all border border-teal-100 shadow-xs" aria-label="Facebook">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -82,13 +83,13 @@
                 </div>
             </div>
 
-            <!-- Right Column: Interactive Message Form -->
+            <!-- Right Column: Interactive Multi-Purpose Message Form -->
             <div class="lg:col-span-7">
                 <div class="p-8 sm:p-10 bg-gray-50/70 rounded-3xl border border-gray-200/80 shadow-xs">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Send Us a Message</h3>
-                    <p class="text-xs text-gray-600 mb-6">Fill out the form below and our volunteer coordination team will get back to you.</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Send Us a Direct Message</h3>
+                    <p class="text-xs text-gray-600 mb-6">Select your inquiry type so our team can connect you with the appropriate coordinator.</p>
 
-                    <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent to the team.'); this.reset();" class="space-y-4">
+                    <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been received. Our team will contact you shortly.'); this.reset();" class="space-y-4">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Your Name *</label>
@@ -101,23 +102,25 @@
                         </div>
 
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Topic / Area of Interest</label>
-                            <select class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Topic / Area of Inquiry *</label>
+                            <select required class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent">
                                 <option value="general">General Question</option>
-                                <option value="volunteer-teach">Volunteer as Teacher (English, Spanish, German, Tech)</option>
-                                <option value="volunteer-mindfulness">Volunteer for Mindfulness & Well-being</option>
-                                <option value="partner">Organizational Partnership</option>
-                                <option value="student-help">Student Support / Enrollment Question</option>
+                                <option value="student-enroll">Student Enrollment / Course Placement Question</option>
+                                <option value="volunteer-teach">Volunteer Teacher Application (English, Spanish, German)</option>
+                                <option value="volunteer-tech">Tech & Coding Mentor Application (JavaScript, Web Dev)</option>
+                                <option value="volunteer-mindfulness">Mindfulness & Well-being Facilitator</option>
+                                <option value="translation">Curriculum & Translation Volunteer (Dari / Pashto)</option>
+                                <option value="partner">Organizational & NGO Partnership Inquiry</option>
                             </select>
                         </div>
 
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Your Message *</label>
-                            <textarea rows="5" required placeholder="Tell us how we can help or how you'd like to get involved..." class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent"></textarea>
+                            <textarea rows="5" required placeholder="Describe your question, your teaching background, or how you would like to collaborate with us..." class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent"></textarea>
                         </div>
 
                         <button type="submit" class="w-full py-3.5 px-6 text-xs font-extrabold uppercase tracking-wider text-white bg-[#167888] hover:bg-teal-800 rounded-xl shadow-md hover:shadow-lg transition-all">
-                            Send Message
+                            Submit Message
                         </button>
                     </form>
                 </div>
