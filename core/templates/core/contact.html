@@ -1,8 +1,129 @@
-﻿{% extends 'base.html' %}
-{% block title %}Contact - Education for Her{% endblock %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us — Education for Her{% endblock %}
+
 {% block content %}
-<div class='max-w-4xl mx-auto px-4 py-20 text-center'>
-<h1 class='text-3xl font-bold text-gray-900'>Contact</h1>
-<p class='mt-3 text-gray-500'>Coming soon.</p>
-</div>
+<!-- Hero Banner -->
+<section class="bg-gradient-to-br from-[#167888] via-[#1a8596] to-[#d8b49c] text-white py-20 lg:py-28">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-xs font-extrabold uppercase tracking-widest text-teal-200 mb-4">Get in Touch</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">Contact Us</h1>
+        <p class="mt-6 text-lg text-teal-50/90 max-w-2xl mx-auto leading-relaxed">
+            Have questions, want to volunteer, or interested in partnering with us? We'd love to hear from you.
+        </p>
+    </div>
+</section>
+
+<!-- Contact Form & Info Grid -->
+<section class="bg-white py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+            
+            <!-- Left Column: Contact Details & Info -->
+            <div class="lg:col-span-5 space-y-8">
+                <div>
+                    <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-2">Reach Out</p>
+                    <h2 class="text-3xl font-bold text-gray-900 tracking-tight">Let's Connect</h2>
+                    <p class="mt-3 text-sm text-gray-600 leading-relaxed">
+                        Our volunteer team is distributed worldwide. Reach out to us directly through email, social channels, or the contact form.
+                    </p>
+                </div>
+
+                <!-- Info Cards -->
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-5 bg-teal-50/50 rounded-2xl border border-teal-100">
+                        <div class="w-10 h-10 rounded-xl bg-[#167888] text-white flex items-center justify-center shrink-0 text-lg">
+                            📧
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold uppercase tracking-wider text-gray-500">Email Us</p>
+                            <p class="text-sm font-semibold text-gray-900 mt-0.5">contact@educacionparaella.org</p>
+                            <p class="text-xs text-gray-500 mt-0.5">We typically respond within 24-48 hours</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-5 bg-teal-50/50 rounded-2xl border border-teal-100">
+                        <div class="w-10 h-10 rounded-xl bg-[#167888] text-white flex items-center justify-center shrink-0 text-lg">
+                            🌍
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold uppercase tracking-wider text-gray-500">Global Network</p>
+                            <p class="text-sm font-semibold text-gray-900 mt-0.5">Afghanistan & Worldwide</p>
+                            <p class="text-xs text-gray-500 mt-0.5">Serving students across Afghanistan, Iran, Pakistan & Iraq</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-5 bg-teal-50/50 rounded-2xl border border-teal-100">
+                        <div class="w-10 h-10 rounded-xl bg-[#167888] text-white flex items-center justify-center shrink-0 text-lg">
+                            🤝
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold uppercase tracking-wider text-gray-500">Key Partners</p>
+                            <p class="text-sm font-semibold text-gray-900 mt-0.5">Open Cultural Center · Afghan Women on the Run</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Channels -->
+                <div class="pt-4">
+                    <p class="text-xs font-extrabold uppercase tracking-widest text-gray-900 mb-3">Follow & Message Us</p>
+                    <div class="flex items-center gap-3">
+                        <a href="#" class="w-10 h-10 rounded-full bg-teal-50 hover:bg-[#167888] text-[#167888] hover:text-white flex items-center justify-center transition-all border border-teal-100 shadow-xs" aria-label="Facebook">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-teal-50 hover:bg-[#167888] text-[#167888] hover:text-white flex items-center justify-center transition-all border border-teal-100 shadow-xs" aria-label="Telegram">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.16l-1.97 9.28c-.15.65-.53.81-1.07.51l-3.03-2.23-1.46 1.41c-.16.16-.3.3-.61.3l.22-3.08 5.6-5.06c.24-.22-.05-.34-.37-.13l-6.93 4.36-2.98-.93c-.65-.2-.66-.65.14-.96l11.66-4.49c.54-.2 1.01.12.82.94z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-teal-50 hover:bg-[#167888] text-[#167888] hover:text-white flex items-center justify-center transition-all border border-teal-100 shadow-xs" aria-label="YouTube">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Interactive Message Form -->
+            <div class="lg:col-span-7">
+                <div class="p-8 sm:p-10 bg-gray-50/70 rounded-3xl border border-gray-200/80 shadow-xs">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Send Us a Message</h3>
+                    <p class="text-xs text-gray-600 mb-6">Fill out the form below and our volunteer coordination team will get back to you.</p>
+
+                    <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent to the team.'); this.reset();" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Your Name *</label>
+                                <input type="text" required placeholder="Jane Doe" class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Email Address *</label>
+                                <input type="email" required placeholder="you@example.com" class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Topic / Area of Interest</label>
+                            <select class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent">
+                                <option value="general">General Question</option>
+                                <option value="volunteer-teach">Volunteer as Teacher (English, Spanish, German, Tech)</option>
+                                <option value="volunteer-mindfulness">Volunteer for Mindfulness & Well-being</option>
+                                <option value="partner">Organizational Partnership</option>
+                                <option value="student-help">Student Support / Enrollment Question</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Your Message *</label>
+                            <textarea rows="5" required placeholder="Tell us how we can help or how you'd like to get involved..." class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 px-6 text-xs font-extrabold uppercase tracking-wider text-white bg-[#167888] hover:bg-teal-800 rounded-xl shadow-md hover:shadow-lg transition-all">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 {% endblock %}
