@@ -43,8 +43,12 @@ def home(request):
 
 @login_required
 def dashboard(request):
-    """Student dashboard — requires authentication."""
-    return render(request, 'core/dashboard.html')
+    """Student & Teacher dashboard — requires authentication."""
+    class_programs = ClassProgram.objects.filter(is_active=True).order_by('order', '-created_at')
+    return render(request, 'core/dashboard.html', {
+        'class_programs': class_programs,
+        'user_classes': class_programs[:3],  # Sample enrolled courses for demonstration
+    })
 
 
 def about(request):
