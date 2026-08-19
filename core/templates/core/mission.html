@@ -1,137 +1,180 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Our Mission — Education for Her{% endblock %}
+{% block title %}Our Mission & Values — Education for Her{% endblock %}
 
 {% block content %}
 <!-- Hero Banner -->
 <section class="bg-gradient-to-br from-[#167888] via-[#1a8596] to-[#d8b49c] text-white py-20 lg:py-28">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p class="text-xs font-extrabold uppercase tracking-widest text-teal-200 mb-4">What We Stand For</p>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">Our Mission</h1>
+        <p class="text-xs font-extrabold uppercase tracking-widest text-teal-200 mb-4">Core Philosophy & Guiding Principles</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">Our Mission & Values</h1>
         <p class="mt-6 text-lg text-teal-50/90 max-w-2xl mx-auto leading-relaxed">
-            To help Afghan girls and women continue learning, developing their skills, and building hope for their futures despite the barriers they face.
+            To ensure Afghan girls and women continue learning, developing critical skills, and building self-reliance despite every systemic barrier.
         </p>
     </div>
 </section>
 
-<!-- Mission Statement -->
-<section class="bg-white py-16 lg:py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-14">
-            <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-3">Our Aims</p>
-            <h2 class="text-3xl font-bold text-gray-900 tracking-tight">What We Aim To Do</h2>
-            <p class="mt-3 text-base text-gray-600 max-w-xl mx-auto">
-                We believe that education is a right, not a privilege. When formal educational opportunities are restricted, access to learning should not disappear.
+<!-- Vision Manifesto Block -->
+<section class="bg-white py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="text-4xl text-amber-400 block mb-4">✨</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">Our Vision for the Future</h2>
+        <p class="mt-4 text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            We envision a world where every Afghan girl and woman can access education safely and freely, choose her own learning path, cultivate her unique talents, and build her own independent future.
+        </p>
+
+        <!-- Manifesto Pillars -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12 text-left">
+            <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100/80">
+                <p class="text-xs font-extrabold uppercase tracking-wider text-[#167888] mb-1">Pillar 01</p>
+                <h3 class="text-base font-bold text-gray-900">Education Creates Possibilities</h3>
+                <p class="text-xs text-gray-600 mt-2 leading-relaxed">Knowledge expands horizons, unlocks creativity, and connects individuals to global opportunities.</p>
+            </div>
+
+            <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100/80">
+                <p class="text-xs font-extrabold uppercase tracking-wider text-[#167888] mb-1">Pillar 02</p>
+                <h3 class="text-base font-bold text-gray-900">Skills Create Independence</h3>
+                <p class="text-xs text-gray-600 mt-2 leading-relaxed">Mastering languages and tech empowers women with autonomy and remote work capability.</p>
+            </div>
+
+            <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100/80">
+                <p class="text-xs font-extrabold uppercase tracking-wider text-[#167888] mb-1">Pillar 03</p>
+                <h3 class="text-base font-bold text-gray-900">Community Creates Strength</h3>
+                <p class="text-xs text-gray-600 mt-2 leading-relaxed">Solidarity with international educators and peers breaks isolation and rebuilds confidence.</p>
+            </div>
+
+            <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100/80">
+                <p class="text-xs font-extrabold uppercase tracking-wider text-[#167888] mb-1">Pillar 04</p>
+                <h3 class="text-base font-bold text-gray-900">Dreams Cannot Be Erased</h3>
+                <p class="text-xs text-gray-600 mt-2 leading-relaxed">No restriction can extinguish a student's innate right to learn, aspire, and achieve.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Deep-Dive Six Core Values -->
+<section class="bg-gray-50/70 py-20 border-y border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-2">Our Values</p>
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">The 6 Values That Guide Us</h2>
+            <p class="mt-3 text-sm text-gray-600">
+                How our fundamental commitments translate into every course, classroom, and community interaction.
             </p>
         </div>
 
-        <div class="space-y-5">
-            <div class="flex items-start gap-4 p-5 bg-teal-50/40 rounded-2xl border border-teal-100">
-                <div class="w-8 h-8 rounded-full bg-[#167888] text-white flex items-center justify-center shrink-0 mt-0.5">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Value 1 -->
+            <div class="p-8 bg-white rounded-3xl border border-gray-200/80 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-teal-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                        📖
+                    </div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#167888] bg-teal-50 px-2.5 py-1 rounded-full">Universal Principle</span>
+                    <h3 class="text-xl font-bold text-gray-900 mt-2">1. Education as a Right</h3>
+                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+                        Education is a fundamental human right, not a privilege. When physical classrooms are shuttered, educational access must not disappear.
+                    </p>
+                    <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] text-gray-500 font-medium">
+                        <strong>Our action:</strong> 100% free courses with zero financial barriers.
+                    </div>
                 </div>
-                <p class="text-sm text-gray-700 leading-relaxed">Provide accessible and safe educational opportunities for Afghan girls and women.</p>
             </div>
-            <div class="flex items-start gap-4 p-5 bg-teal-50/40 rounded-2xl border border-teal-100">
-                <div class="w-8 h-8 rounded-full bg-[#167888] text-white flex items-center justify-center shrink-0 mt-0.5">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+
+            <!-- Value 2 -->
+            <div class="p-8 bg-white rounded-3xl border border-gray-200/80 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                        🌍
+                    </div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full">Accessibility</span>
+                    <h3 class="text-xl font-bold text-gray-900 mt-2">2. Universal Accessibility</h3>
+                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+                        Using online classrooms, low-bandwidth video compression, and offline PDFs to reach students in remote provinces and refugee settlements.
+                    </p>
+                    <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] text-gray-500 font-medium">
+                        <strong>Our action:</strong> Low-bandwidth bundles & mobile-ready study guides.
+                    </div>
                 </div>
-                <p class="text-sm text-gray-700 leading-relaxed">Help students develop language, digital, creative, and professional skills.</p>
             </div>
-            <div class="flex items-start gap-4 p-5 bg-teal-50/40 rounded-2xl border border-teal-100">
-                <div class="w-8 h-8 rounded-full bg-[#167888] text-white flex items-center justify-center shrink-0 mt-0.5">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+
+            <!-- Value 3 -->
+            <div class="p-8 bg-white rounded-3xl border border-gray-200/80 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-amber-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                        💪
+                    </div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full">Agency</span>
+                    <h3 class="text-xl font-bold text-gray-900 mt-2">3. Self-Empowerment</h3>
+                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+                        Teaching actionable skills in web coding, foreign languages, and visual arts that build economic agency and long-term autonomy.
+                    </p>
+                    <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] text-gray-500 font-medium">
+                        <strong>Our action:</strong> Real-world tech and language portfolio building.
+                    </div>
                 </div>
-                <p class="text-sm text-gray-700 leading-relaxed">Create opportunities for continued learning despite restrictions on girls' education.</p>
             </div>
-            <div class="flex items-start gap-4 p-5 bg-teal-50/40 rounded-2xl border border-teal-100">
-                <div class="w-8 h-8 rounded-full bg-[#167888] text-white flex items-center justify-center shrink-0 mt-0.5">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+
+            <!-- Value 4 -->
+            <div class="p-8 bg-white rounded-3xl border border-gray-200/80 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-purple-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                        🤝
+                    </div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full">Solidarity</span>
+                    <h3 class="text-xl font-bold text-gray-900 mt-2">4. Global Community</h3>
+                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+                        Connecting Afghan students with dedicated volunteer mentors worldwide, creating an empathetic, mutually supportive network.
+                    </p>
+                    <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] text-gray-500 font-medium">
+                        <strong>Our action:</strong> International volunteer teaching pairings.
+                    </div>
                 </div>
-                <p class="text-sm text-gray-700 leading-relaxed">Support students' confidence, independence, and personal development.</p>
             </div>
-            <div class="flex items-start gap-4 p-5 bg-teal-50/40 rounded-2xl border border-teal-100">
-                <div class="w-8 h-8 rounded-full bg-[#167888] text-white flex items-center justify-center shrink-0 mt-0.5">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+
+            <!-- Value 5 -->
+            <div class="p-8 bg-white rounded-3xl border border-gray-200/80 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-teal-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                        🛡️
+                    </div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#167888] bg-teal-50 px-2.5 py-1 rounded-full">Protection</span>
+                    <h3 class="text-xl font-bold text-gray-900 mt-2">5. Dignity & Safety</h3>
+                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+                        Ensuring confidential, safe, and respectful virtual learning spaces with privacy safeguards for every student and facilitator.
+                    </p>
+                    <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] text-gray-500 font-medium">
+                        <strong>Our action:</strong> Camera-optional & anonymous handle support.
+                    </div>
                 </div>
-                <p class="text-sm text-gray-700 leading-relaxed">Provide spaces for mindfulness and psychological well-being.</p>
             </div>
-            <div class="flex items-start gap-4 p-5 bg-teal-50/40 rounded-2xl border border-teal-100">
-                <div class="w-8 h-8 rounded-full bg-[#167888] text-white flex items-center justify-center shrink-0 mt-0.5">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+
+            <!-- Value 6 -->
+            <div class="p-8 bg-white rounded-3xl border border-gray-200/80 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-green-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                        🌱
+                    </div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-green-700 bg-green-50 px-2.5 py-1 rounded-full">Resilience</span>
+                    <h3 class="text-xl font-bold text-gray-900 mt-2">6. Hope & Resilience</h3>
+                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+                        Believing that continuing to learn is an active stance of courage, resilience, and hope for a brighter future.
+                    </p>
+                    <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] text-gray-500 font-medium">
+                        <strong>Our action:</strong> Integrated mindfulness & well-being circles.
+                    </div>
                 </div>
-                <p class="text-sm text-gray-700 leading-relaxed">Connect Afghan students with a global community of volunteers and educators.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Our Values -->
-<section class="bg-gray-50 py-16 lg:py-20">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-14">
-            <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-3">Our Values</p>
-            <h2 class="text-3xl font-bold text-gray-900 tracking-tight">What Guides Us</h2>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="p-8 bg-white rounded-2xl border border-gray-200 hover:shadow-md transition-shadow">
-                <div class="text-3xl mb-4">📖</div>
-                <h3 class="text-lg font-bold text-gray-900">Education as a Right</h3>
-                <p class="mt-2 text-sm text-gray-600 leading-relaxed">Every girl and woman deserves access to education regardless of where she lives or the circumstances she faces.</p>
-            </div>
-            <div class="p-8 bg-white rounded-2xl border border-gray-200 hover:shadow-md transition-shadow">
-                <div class="text-3xl mb-4">🌍</div>
-                <h3 class="text-lg font-bold text-gray-900">Accessibility</h3>
-                <p class="mt-2 text-sm text-gray-600 leading-relaxed">We use online education to reach students who may not have access to traditional educational institutions.</p>
-            </div>
-            <div class="p-8 bg-white rounded-2xl border border-gray-200 hover:shadow-md transition-shadow">
-                <div class="text-3xl mb-4">💪</div>
-                <h3 class="text-lg font-bold text-gray-900">Empowerment</h3>
-                <p class="mt-2 text-sm text-gray-600 leading-relaxed">We aim to give students knowledge and practical skills that can increase their confidence, independence, and future opportunities.</p>
-            </div>
-            <div class="p-8 bg-white rounded-2xl border border-gray-200 hover:shadow-md transition-shadow">
-                <div class="text-3xl mb-4">🤝</div>
-                <h3 class="text-lg font-bold text-gray-900">Community</h3>
-                <p class="mt-2 text-sm text-gray-600 leading-relaxed">We connect students with teachers and volunteers from around the world, creating a community based on learning and mutual support.</p>
-            </div>
-            <div class="p-8 bg-white rounded-2xl border border-gray-200 hover:shadow-md transition-shadow">
-                <div class="text-3xl mb-4">🛡️</div>
-                <h3 class="text-lg font-bold text-gray-900">Dignity & Safety</h3>
-                <p class="mt-2 text-sm text-gray-600 leading-relaxed">We seek to provide a respectful, supportive, and safe learning environment for our students.</p>
-            </div>
-            <div class="p-8 bg-white rounded-2xl border border-gray-200 hover:shadow-md transition-shadow">
-                <div class="text-3xl mb-4">🌱</div>
-                <h3 class="text-lg font-bold text-gray-900">Hope</h3>
-                <p class="mt-2 text-sm text-gray-600 leading-relaxed">We believe that continuing to learn is an act of hope and resilience.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Our Vision -->
-<section class="bg-white py-16 lg:py-20">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-3">Our Vision</p>
-        <h2 class="text-3xl font-bold text-gray-900 tracking-tight">A Future We Believe In</h2>
-        <p class="mt-6 text-gray-600 leading-relaxed text-base">
-            We envision a future where every Afghan girl and woman can access education freely and safely, choose what she wants to learn, develop her talents, and build the future she wants.
-        </p>
-        <div class="mt-8 p-6 bg-teal-50/50 rounded-2xl border border-teal-100 text-left space-y-3">
-            <p class="text-sm text-gray-700 font-medium leading-relaxed">We believe that <strong class="text-[#167888]">education creates possibilities.</strong></p>
-            <p class="text-sm text-gray-700 font-medium leading-relaxed">We believe that <strong class="text-[#167888]">skills create independence.</strong></p>
-            <p class="text-sm text-gray-700 font-medium leading-relaxed">We believe that <strong class="text-[#167888]">community creates strength.</strong></p>
-            <p class="text-sm text-gray-700 font-medium leading-relaxed">And we believe that <strong class="text-[#167888]">no restriction should be allowed to erase a girl's right to dream, learn, and build her future.</strong></p>
-        </div>
-    </div>
-</section>
-
-<!-- CTA -->
-<section class="bg-[#167888] py-14">
+<!-- Call to Action Banner -->
+<section class="bg-[#167888] py-16 text-white">
     <div class="max-w-3xl mx-auto px-4 text-center">
-        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Education for her means opportunity for her</h2>
-        <p class="mt-3 text-teal-100 text-base">When a classroom door is closed, we believe another door can be opened.</p>
+        <h2 class="text-3xl font-bold tracking-tight">Stand with Afghan students</h2>
+        <p class="mt-3 text-teal-100 text-base">Support our mission by learning, volunteering, or partnering with us.</p>
         <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="{% url 'core:get_involved' %}" class="px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider text-teal-900 bg-white rounded-full hover:bg-teal-50 shadow-lg transition-all">
                 Get Involved
