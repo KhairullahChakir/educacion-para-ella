@@ -179,41 +179,70 @@
 </section>
 
 
-<!-- Our Holistic Learning Approach -->
-<section class="bg-gray-50/70 py-20 border-t border-gray-100">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Our Holistic Learning Approach (Option A: Illustrated 4-Pillar Ecosystem Cards) -->
+<section class="bg-gray-50/70 py-20 border-t border-gray-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-16">
             <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-2">Our Methodology</p>
-            <h2 class="text-3xl font-bold text-gray-900 tracking-tight">A Holistic Educational Ecosystem</h2>
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">A Holistic Educational Ecosystem</h2>
             <p class="mt-3 text-sm text-gray-600">
-                We combine academic, creative, digital, and emotional support to nurture resilient learners.
+                We combine academic, creative, digital, and emotional support to nurture resilient, globally connected learners.
             </p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="p-6 bg-white rounded-3xl border border-gray-200/80 text-center hover:shadow-md transition-shadow">
-                <div class="w-12 h-12 mx-auto rounded-2xl bg-teal-50 flex items-center justify-center text-xl mb-4">🗣️</div>
-                <h3 class="text-base font-bold text-gray-900">Languages</h3>
-                <p class="mt-2 text-xs text-gray-600 leading-relaxed">English, Spanish, and German to connect with international universities and global markets.</p>
-            </div>
+            {% for pillar in methodology_pillars %}
+            <div class="bg-white rounded-3xl p-6 sm:p-7 border border-gray-200/80 hover:border-[#167888] hover:shadow-xl transition-all flex flex-col justify-between group transform hover:-translate-y-1">
+                <div>
+                    <!-- Top Illustration Banner -->
+                    {% if pillar.image %}
+                    <div class="relative w-full h-36 rounded-2xl overflow-hidden mb-5 border border-gray-100 bg-gray-50 shadow-xs">
+                        <img src="{{ pillar.image.url }}" alt="{{ pillar.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-2.5 left-2.5 w-8 h-8 rounded-xl bg-white/90 backdrop-blur-xs text-base flex items-center justify-center shadow-xs">
+                            {{ pillar.icon }}
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="w-12 h-12 rounded-2xl bg-teal-50 flex items-center justify-center text-2xl mb-4">
+                        {{ pillar.icon }}
+                    </div>
+                    {% endif %}
 
-            <div class="p-6 bg-white rounded-3xl border border-gray-200/80 text-center hover:shadow-md transition-shadow">
-                <div class="w-12 h-12 mx-auto rounded-2xl bg-blue-50 flex items-center justify-center text-xl mb-4">💻</div>
-                <h3 class="text-base font-bold text-gray-900">Digital Literacy</h3>
-                <p class="mt-2 text-xs text-gray-600 leading-relaxed">JavaScript coding, web design, and digital freelancing tools for economic self-reliance.</p>
-            </div>
+                    <!-- Focus Tag -->
+                    <div class="mb-2">
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-gray-100 text-gray-700">
+                            {{ pillar.tag }}
+                        </span>
+                    </div>
 
-            <div class="p-6 bg-white rounded-3xl border border-gray-200/80 text-center hover:shadow-md transition-shadow">
-                <div class="w-12 h-12 mx-auto rounded-2xl bg-purple-50 flex items-center justify-center text-xl mb-4">📸</div>
-                <h3 class="text-base font-bold text-gray-900">Creative Arts</h3>
-                <p class="mt-2 text-xs text-gray-600 leading-relaxed">Visual storytelling and photography to express voice, culture, and personal experiences.</p>
-            </div>
+                    <h3 class="text-xl font-bold text-gray-900 leading-snug">
+                        {{ pillar.title }}
+                    </h3>
+                    <p class="mt-2.5 text-xs text-gray-600 leading-relaxed">
+                        {{ pillar.description }}
+                    </p>
 
-            <div class="p-6 bg-white rounded-3xl border border-gray-200/80 text-center hover:shadow-md transition-shadow">
-                <div class="w-12 h-12 mx-auto rounded-2xl bg-amber-50 flex items-center justify-center text-xl mb-4">🧘</div>
-                <h3 class="text-base font-bold text-gray-900">Well-being</h3>
-                <p class="mt-2 text-xs text-gray-600 leading-relaxed">Trauma-informed mindfulness sessions fostering emotional resilience and peer bonding.</p>
+                    {% if pillar.skills_list %}
+                    <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap gap-1.5">
+                        <span class="text-[10px] font-semibold text-gray-500 bg-gray-50 border border-gray-200/60 px-2 py-0.5 rounded-md">
+                            {{ pillar.skills_list }}
+                        </span>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#167888]">
+                    <a href="{{ pillar.link_url }}" class="group-hover:underline inline-flex items-center gap-1">
+                        {{ pillar.button_text }}
+                    </a>
+                    <span class="text-gray-300 group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </div>
             </div>
+            {% empty %}
+            <div class="p-8 text-center text-sm text-gray-500 w-full col-span-4">
+                No methodology pillars found. Add them in the Django admin.
+            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

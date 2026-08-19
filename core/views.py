@@ -1,6 +1,14 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import HeroNews, ClassProgram, HowItWorksStep, Partner, AboutStory, FounderCollaborator
+from .models import (
+    HeroNews,
+    ClassProgram,
+    HowItWorksStep,
+    Partner,
+    AboutStory,
+    FounderCollaborator,
+    MethodologyPillar,
+)
 
 
 def home(request):
@@ -27,9 +35,11 @@ def about(request):
     """About Us page — project history, founders, volunteer community."""
     about_story = AboutStory.objects.filter(is_active=True).first()
     founders = FounderCollaborator.objects.filter(is_active=True).order_by('order', '-created_at')
+    methodology_pillars = MethodologyPillar.objects.filter(is_active=True).order_by('order', '-created_at')
     return render(request, 'core/about.html', {
         'about_story': about_story,
         'founders': founders,
+        'methodology_pillars': methodology_pillars,
     })
 
 

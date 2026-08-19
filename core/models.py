@@ -140,8 +140,8 @@ class AboutStory(models.Model):
 
 class FounderCollaborator(models.Model):
     """Founders and key leadership collaborators featured on the About Us page."""
-    name = models.CharField(max_length=150, help_text="Leader / Founder Name (e.g. Najiah Mohammadi, Chloe, Carol)")
-    role_title = models.CharField(max_length=150, help_text="Title / Role (e.g. Founder & Project Lead, Key Collaborator, Advocacy Partner)")
+    name = models.CharField(max_length=150, help_text="Leader / Founder Name (e.g. Najiah Mohammadi, Chloe, Carol, Ansoh)")
+    role_title = models.CharField(max_length=150, help_text="Title / Role (e.g. Founder & Project Lead, Lead Software & AI Engineer, Key Collaborator)")
     organization = models.CharField(max_length=150, default="Educación para Ella", help_text="Affiliated Organization")
     bio = models.TextField(help_text="Detailed profile bio and contribution story")
     location = models.CharField(max_length=150, default="📍 Kabul & Global", help_text="Location / Region")
@@ -158,3 +158,61 @@ class FounderCollaborator(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.role_title})"
+
+
+class MethodologyPillar(models.Model):
+    """Holistic Educational Ecosystem pillars on About Us and Mission pages."""
+    COLOR_CHOICES = [
+        ('teal', 'Teal / Emerald'),
+        ('blue', 'Blue / Indigo'),
+        ('purple', 'Purple / Violet'),
+        ('amber', 'Amber / Warm'),
+    ]
+
+    title = models.CharField(max_length=120, help_text="Pillar title (e.g. Languages, Digital & AI Literacy)")
+    tag = models.CharField(max_length=100, default="Global Pathways", help_text="Subtitle or focus tag (e.g. Global Communication, Tech Independence)")
+    icon = models.CharField(max_length=20, default="🗣️", help_text="Emoji icon (e.g. 🗣️, 💻, 📸, 🧘‍♀️)")
+    description = models.TextField(help_text="Core methodology and student impact description")
+    skills_list = models.CharField(max_length=255, blank=True, null=True, help_text="Comma-separated skills (e.g. English CEFR A0–C1, Spanish, German)")
+    image = models.ImageField(upload_to='methodology_images/', blank=True, null=True, help_text="Header illustration for Option A card")
+    link_url = models.CharField(max_length=255, default="/classes/", help_text="Action button link")
+    button_text = models.CharField(max_length=60, default="Explore Track →", help_text="Button text")
+    badge_color = models.CharField(max_length=20, choices=COLOR_CHOICES, default='teal')
+    order = models.PositiveIntegerField(default=0, help_text="Sort order")
+    is_active = models.BooleanField(default=True, help_text="Uncheck to hide this pillar")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Methodology Pillar"
+        verbose_name_plural = "Methodology Pillars"
+
+    def __str__(self):
+        return self.title
+
+    @property
+    def color_classes(self):
+        if self.badge_color == 'blue':
+            return {
+                'badge': 'bg-blue-100 text-blue-900 border-blue-200',
+                'border_hover': 'hover:border-blue-500',
+                'accent': 'text-blue-700',
+            }
+        elif self.badge_color == 'purple':
+            return {
+                'badge': 'bg-purple-100 text-purple-900 border-purple-200',
+                'border_hover': 'hover:border-purple-500',
+                'accent': 'text-purple-700',
+            }
+        elif self.badge_color == 'amber':
+            return {
+                'badge': 'bg-amber-100 text-amber-900 border-amber-200',
+                'border_hover': 'hover:border-amber-500',
+                'accent': 'text-amber-700',
+            }
+        else:
+            return {
+                'badge': 'bg-teal-100 text-teal-900 border-teal-200',
+                'border_hover': 'hover:border-[#167888]',
+                'accent': 'text-[#167888]',
+            }
