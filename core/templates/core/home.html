@@ -138,84 +138,187 @@
     </div>
 </section>
 
-<!-- Featured Class Tracks Section -->
-<section class="bg-gray-50/70 py-20">
+<!-- Featured Class Tracks Slider Section -->
+<section class="bg-gray-50/70 py-20 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
             <div>
                 <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-2">Curriculum</p>
-                <h2 class="text-3xl font-bold text-gray-900 tracking-tight">Explore Our Class Programs</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">Explore Our Class Programs</h2>
                 <p class="mt-2 text-sm text-gray-600 max-w-xl">
-                    Tailored online classes taught by dedicated international volunteers to unlock future opportunities.
+                    Free live classes and low-bandwidth study packs across 7 active learning tracks taught by international volunteers.
                 </p>
             </div>
-            <div>
-                <a href="{% url 'core:classes' %}" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#167888] hover:text-teal-900">
+            <div class="flex items-center gap-4">
+                <a href="{% url 'core:classes' %}" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#167888] hover:text-teal-900 mr-2">
                     View Full Syllabus &rarr;
                 </a>
+                <!-- Slider Arrows -->
+                <div class="flex items-center gap-2">
+                    <button type="button" id="class-slider-prev" onclick="scrollClassSlider(-1)" class="w-10 h-10 rounded-full bg-white hover:bg-teal-50 text-gray-700 hover:text-[#167888] border border-gray-200 shadow-sm flex items-center justify-center transition-all focus:outline-none" aria-label="Previous Classes">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <button type="button" id="class-slider-next" onclick="scrollClassSlider(1)" class="w-10 h-10 rounded-full bg-white hover:bg-teal-50 text-gray-700 hover:text-[#167888] border border-gray-200 shadow-sm flex items-center justify-center transition-all focus:outline-none" aria-label="Next Classes">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- English Track -->
-            <div class="bg-white rounded-3xl p-8 border border-gray-200/80 hover:shadow-lg transition-all flex flex-col justify-between group">
+        <!-- Class Cards Horizontal Scroll Container -->
+        <div id="class-slider-container" class="flex gap-6 overflow-x-auto pb-6 scroll-smooth snap-x snap-mandatory scrollbar-none cursor-grab">
+            
+            <!-- 1. English Track -->
+            <div class="min-w-[300px] sm:min-w-[340px] max-w-[340px] bg-white rounded-3xl p-8 border border-gray-200/80 hover:border-[#167888] hover:shadow-xl transition-all flex flex-col justify-between group snap-start shrink-0 transform hover:-translate-y-1">
                 <div>
-                    <div class="w-12 h-12 rounded-2xl bg-teal-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         🇬🇧
                     </div>
                     <div class="flex items-center gap-2 mb-2">
                         <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-teal-100 text-teal-800 uppercase">CEFR A0–C1</span>
-                        <span class="text-xs text-gray-400">All Levels</span>
+                        <span class="text-[11px] text-gray-400">All Levels</span>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900">English Language</h3>
                     <p class="mt-2 text-xs text-gray-600 leading-relaxed">
-                        From basic literacy to advanced fluency, building critical communication skills for global education and jobs.
+                        From basic phonetics to advanced academic fluency, building skills for international education and employment.
                     </p>
                 </div>
-                <div class="mt-6 pt-4 border-t border-gray-100">
-                    <a href="{% url 'core:classes' %}" class="text-xs font-bold text-[#167888] group-hover:underline">Explore levels &rarr;</a>
+                <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <a href="{% url 'core:classes' %}" class="text-xs font-bold text-[#167888] group-hover:underline">Explore 6 levels &rarr;</a>
+                    <span class="text-[10px] font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded-md">Live</span>
                 </div>
             </div>
 
-            <!-- Programming Track -->
-            <div class="bg-white rounded-3xl p-8 border border-gray-200/80 hover:shadow-lg transition-all flex flex-col justify-between group">
+            <!-- 2. Spanish Track -->
+            <div class="min-w-[300px] sm:min-w-[340px] max-w-[340px] bg-white rounded-3xl p-8 border border-gray-200/80 hover:border-amber-500 hover:shadow-xl transition-all flex flex-col justify-between group snap-start shrink-0 transform hover:-translate-y-1">
                 <div>
-                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        🇪🇸
+                    </div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-100 text-amber-800 uppercase">CEFR A0–A2</span>
+                        <span class="text-[11px] text-gray-400">Beginner Track</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Spanish Language</h3>
+                    <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                        Learn a vibrant global language, basic conversation, vocabulary, and connect with Spanish-speaking cultures.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <a href="{% url 'core:classes' %}" class="text-xs font-bold text-amber-700 group-hover:underline">Explore levels &rarr;</a>
+                    <span class="text-[10px] font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded-md">Active</span>
+                </div>
+            </div>
+
+            <!-- 3. German Track -->
+            <div class="min-w-[300px] sm:min-w-[340px] max-w-[340px] bg-white rounded-3xl p-8 border border-gray-200/80 hover:border-gray-700 hover:shadow-xl transition-all flex flex-col justify-between group snap-start shrink-0 transform hover:-translate-y-1">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-gray-100 text-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        🇩🇪
+                    </div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-gray-100 text-gray-800 uppercase">CEFR A1–A2</span>
+                        <span class="text-[11px] text-gray-400">Foundational</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">German Language</h3>
+                    <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                        Foundational German grammar, phonetics, and dialogue practice opening pathways to European higher education.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <a href="{% url 'core:classes' %}" class="text-xs font-bold text-gray-800 group-hover:underline">Explore levels &rarr;</a>
+                    <span class="text-[10px] font-bold text-gray-800 bg-gray-100 px-2 py-0.5 rounded-md">Active</span>
+                </div>
+            </div>
+
+            <!-- 4. JavaScript & Web Development -->
+            <div class="min-w-[300px] sm:min-w-[340px] max-w-[340px] bg-white rounded-3xl p-8 border border-gray-200/80 hover:border-blue-500 hover:shadow-xl transition-all flex flex-col justify-between group snap-start shrink-0 transform hover:-translate-y-1">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         💻
                     </div>
                     <div class="flex items-center gap-2 mb-2">
                         <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-blue-100 text-blue-800 uppercase">JavaScript & Web</span>
-                        <span class="text-xs text-gray-400">Digital Track</span>
+                        <span class="text-[11px] text-gray-400">Tech Track</span>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900">Coding & Tech</h3>
+                    <h3 class="text-xl font-bold text-gray-900">Programming & Web Dev</h3>
                     <p class="mt-2 text-xs text-gray-600 leading-relaxed">
-                        Practical web development, coding fundamentals, and digital literacy to enable freelancing and remote work.
+                        Learn to build responsive websites with HTML, modern CSS, and JavaScript. Gain practical skills for remote freelancing.
                     </p>
                 </div>
-                <div class="mt-6 pt-4 border-t border-gray-100">
-                    <a href="{% url 'core:classes' %}" class="text-xs font-bold text-[#167888] group-hover:underline">View tech curriculum &rarr;</a>
+                <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <a href="{% url 'core:classes' %}" class="text-xs font-bold text-blue-700 group-hover:underline">View tech curriculum &rarr;</a>
+                    <span class="text-[10px] font-bold text-blue-800 bg-blue-50 px-2 py-0.5 rounded-md">Popular</span>
                 </div>
             </div>
 
-            <!-- Mindfulness Track -->
-            <div class="bg-white rounded-3xl p-8 border border-gray-200/80 hover:shadow-lg transition-all flex flex-col justify-between group">
+            <!-- 5. Photography & Visual Storytelling -->
+            <div class="min-w-[300px] sm:min-w-[340px] max-w-[340px] bg-white rounded-3xl p-8 border border-gray-200/80 hover:border-purple-500 hover:shadow-xl transition-all flex flex-col justify-between group snap-start shrink-0 transform hover:-translate-y-1">
                 <div>
-                    <div class="w-12 h-12 rounded-2xl bg-purple-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        📸
+                    </div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-purple-100 text-purple-800 uppercase">Visual Arts</span>
+                        <span class="text-[11px] text-gray-400">Creative Track</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Photography</h3>
+                    <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                        Framing composition, mobile photography, light manipulation, and personal storytelling to express creative voice.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <a href="{% url 'core:classes' %}" class="text-xs font-bold text-purple-700 group-hover:underline">Explore arts &rarr;</a>
+                    <span class="text-[10px] font-bold text-purple-800 bg-purple-50 px-2 py-0.5 rounded-md">Creative</span>
+                </div>
+            </div>
+
+            <!-- 6. Mindfulness & Well-being -->
+            <div class="min-w-[300px] sm:min-w-[340px] max-w-[340px] bg-white rounded-3xl p-8 border border-gray-200/80 hover:border-teal-600 hover:shadow-xl transition-all flex flex-col justify-between group snap-start shrink-0 transform hover:-translate-y-1">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-teal-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         🧘‍♀️
                     </div>
                     <div class="flex items-center gap-2 mb-2">
-                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-purple-100 text-purple-800 uppercase">Safe Circles</span>
-                        <span class="text-xs text-gray-400">Well-being</span>
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-teal-100 text-teal-800 uppercase">Safe Circles</span>
+                        <span class="text-[11px] text-gray-400">Well-being</span>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900">Mindfulness</h3>
+                    <h3 class="text-xl font-bold text-gray-900">Mindfulness & Care</h3>
                     <p class="mt-2 text-xs text-gray-600 leading-relaxed">
-                        Guided meditation, stress resilience, and supportive peer community spaces across 4 regional countries.
+                        Guided meditation, somatic stress management, and supportive peer circles connecting students across 4 countries.
                     </p>
                 </div>
-                <div class="mt-6 pt-4 border-t border-gray-100">
-                    <a href="{% url 'core:mindfulness' %}" class="text-xs font-bold text-[#167888] group-hover:underline">Discover sessions &rarr;</a>
+                <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <a href="{% url 'core:mindfulness' %}" class="text-xs font-bold text-[#167888] group-hover:underline">Discover circles &rarr;</a>
+                    <span class="text-[10px] font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded-md">Weekly</span>
                 </div>
             </div>
+
+            <!-- 7. Practical Digital Literacy -->
+            <div class="min-w-[300px] sm:min-w-[340px] max-w-[340px] bg-white rounded-3xl p-8 border border-gray-200/80 hover:border-emerald-500 hover:shadow-xl transition-all flex flex-col justify-between group snap-start shrink-0 transform hover:-translate-y-1">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        🖥️
+                    </div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 uppercase">Essential Skills</span>
+                        <span class="text-[11px] text-gray-400">Digital Track</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Digital Literacy</h3>
+                    <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                        Essential computer operations, cloud tools, typing fluency, and digital safety for students navigating online studies.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <a href="{% url 'core:classes' %}" class="text-xs font-bold text-emerald-700 group-hover:underline">View skills &rarr;</a>
+                    <span class="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md">Core</span>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>

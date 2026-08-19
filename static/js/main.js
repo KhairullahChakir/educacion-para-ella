@@ -2,6 +2,7 @@
 
 let currentSlideIndex = 0;
 let autoSlideTimer = null;
+let classSliderTimer = null;
 
 document.addEventListener('DOMContentLoaded', function () {
     // Mobile menu toggle
@@ -42,9 +43,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize Hero Carousel Auto-play (Starts immediately)
     startAutoSlide();
+
+    // Initialize Classes Horizontal Slider
+    initClassSlider();
 });
 
-// Carousel Functions
+// ==========================================
+// Hero News Carousel Functions
+// ==========================================
 function goToSlide(index) {
     const slides = document.querySelectorAll('.hero-slide');
     if (!slides.length) return;
@@ -52,7 +58,6 @@ function goToSlide(index) {
     // Normalize index
     currentSlideIndex = (index + slides.length) % slides.length;
 
-    const tabBtns = document.querySelectorAll('.news-tab-btn');
     const dots = document.querySelectorAll('.slide-dot');
 
     slides.forEach((slide, idx) => {
@@ -62,15 +67,6 @@ function goToSlide(index) {
         } else {
             slide.classList.add('hidden', 'opacity-0', 'translate-x-8');
             slide.classList.remove('active-slide', 'opacity-100', 'translate-x-0');
-        }
-    });
-
-    // Update Top News Tab Pill Styles
-    tabBtns.forEach((btn, idx) => {
-        if (idx === currentSlideIndex) {
-            btn.className = "news-tab-btn px-4 py-2 text-xs font-extrabold uppercase tracking-wider rounded-full transition-all bg-white/20 text-white backdrop-blur-md border border-white/30";
-        } else {
-            btn.className = "news-tab-btn px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-all bg-white/5 hover:bg-white/15 text-white/80 hover:text-white border border-transparent";
         }
     });
 
@@ -110,7 +106,100 @@ function stopAutoSlide() {
     }
 }
 
-// Function to select language
+// ==========================================
+// Class Programs Horizontal Slider Functions
+// ==========================================
+function scrollClassSlider(direction) {
+    const container = document.getElementById('class-slider-container');
+    if (!container) return;
+
+    const scrollAmount = 360; // Card width + gap
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    
+    if (direction > 0) {
+        // Scrolling right
+        if (container.scrollLeft >= maxScroll - 20) {
+            container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    } else {
+        // Scrolling left
+        if (container.scrollLeft <= 20) {
+            container.scrollTo({ left: maxScroll, behavior: 'smooth' });
+        } else {
+            container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        }
+    }
+}
+
+function initClassSlider() {
+    const container = document.getElementById('class-slider-container');
+    if (!container) return;
+
+    // Auto glide slider every 3.5s
+    function startGlider() {
+        stopGlider();
+        classSliderTimer = setInterval(function () {
+            scrollClassSlider(1);
+        }, 3500);
+    }
+
+    function stopGlider() {
+        if (classSliderTimer) {
+            clearInterval(classSliderTimer);
+            classSliderTimer = null;
+        }
+    }
+
+    // Start auto glide
+    startGlider();
+
+    // Pause on hover / touch
+    container.addEventListener('mouseenter', stopGlider);
+    container.addEventListener('mouseleave', startGlider);
+    container.addEventListener('touchstart', stopGlider, { passive: true });
+    container.addEventListener('touchend', startGlider, { passive: true });
+
+    // Enable smooth mouse dragging
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    container.addEventListener('mousedown', (e) => {
+        isDown = true;
+        container.classList.add('cursor-grabbing');
+        container.classList.remove('cursor-grab');
+        startX = e.pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+        stopGlider();
+    });
+
+    container.addEventListener('mouseleave', () => {
+        isDown = false;
+        container.classList.remove('cursor-grabbing');
+        container.classList.add('cursor-grab');
+    });
+
+    container.addEventListener('mouseup', () => {
+        isDown = false;
+        container.classList.remove('cursor-grabbing');
+        container.classList.add('cursor-grab');
+        startGlider();
+    });
+
+    container.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 1.5; // Scroll speed multiplier
+        container.scrollLeft = scrollLeft - walk;
+    });
+}
+
+// ==========================================
+// Language Selector Function
+// ==========================================
 function selectLanguage(langCode, label) {
     localStorage.setItem('maktab_language', langCode);
     localStorage.setItem('maktab_language_label', label);
