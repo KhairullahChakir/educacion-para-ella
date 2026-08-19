@@ -8,6 +8,7 @@ from .models import (
     FounderCollaborator,
     MethodologyPillar,
     MindfulnessIntro,
+    CountryReach,
 )
 
 
@@ -84,3 +85,11 @@ class MindfulnessIntroAdmin(admin.ModelAdmin):
     list_filter = ('is_active', 'created_at')
     list_editable = ('is_active',)
     search_fields = ('headline', 'paragraph_1', 'paragraph_2', 'safety_point_1_title', 'safety_point_2_title')
+
+
+@admin.register(CountryReach)
+class CountryReachAdmin(admin.ModelAdmin):
+    list_display = ('country_name', 'country_code', 'badge_tag', 'order', 'is_active', 'created_at')
+    list_filter = ('badge_tag', 'is_active', 'created_at')
+    list_editable = ('order', 'is_active')
+    search_fields = ('country_name', 'country_code', 'description')

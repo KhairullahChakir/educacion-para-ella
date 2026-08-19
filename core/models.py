@@ -213,3 +213,25 @@ class MindfulnessIntro(models.Model):
 
     def __str__(self):
         return self.headline
+
+
+class CountryReach(models.Model):
+    """Four countries reached by the program (Afghanistan, Iran, Pakistan, Iraq)."""
+    country_code = models.CharField(max_length=10, default="AF", help_text="ISO Country Code (e.g. AF, IR, PK, IQ)")
+    country_name = models.CharField(max_length=100, help_text="Country Name")
+    flag_emoji = models.CharField(max_length=20, default="🇦🇫", help_text="Flag Emoji fallback")
+    flag_image = models.ImageField(upload_to='flag_images/', blank=True, null=True, help_text="High-res country flag image")
+    badge_tag = models.CharField(max_length=80, default="Diaspora Community", help_text="Category tag (e.g. Inside Country, Diaspora Community, Regional Outreach)")
+    description = models.TextField(help_text="Description of student support in this country")
+    student_impact_label = models.CharField(max_length=100, blank=True, null=True, help_text="e.g. Active Daily Classes, Safe Peer Circles")
+    order = models.PositiveIntegerField(default=0, help_text="Sort order")
+    is_active = models.BooleanField(default=True, help_text="Uncheck to hide this country")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Country Reach"
+        verbose_name_plural = "Country Reaches"
+
+    def __str__(self):
+        return f"{self.country_name} ({self.country_code})"

@@ -176,53 +176,51 @@
     </div>
 </section>
 
-<!-- Regional Four-Country Community Reach -->
-<section class="bg-white py-20">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Regional Four-Country Community Reach (Dynamic CountryReach Backend Data) -->
+<section class="bg-white py-20 border-t border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-16">
             <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-2">Regional Solidarity</p>
-            <h2 class="text-3xl font-bold text-gray-900 tracking-tight">Reaching Students Across 4 Countries</h2>
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">Reaching Students Across 4 Countries</h2>
             <p class="mt-3 text-sm text-gray-600">
                 Bridging borders to connect Afghan girls studying from home and across the regional diaspora.
             </p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="p-6 bg-teal-50/60 rounded-3xl border border-teal-100 text-center flex flex-col justify-between">
+            {% for country in countries %}
+            <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100/80 hover:border-[#167888] hover:shadow-xl transition-all text-center flex flex-col justify-between group transform hover:-translate-y-1">
                 <div>
-                    <div class="text-4xl mb-3">🇦🇫</div>
-                    <h3 class="text-base font-bold text-gray-900">Afghanistan</h3>
-                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">Connecting students across Kabul, Herat, Mazar, and provincial towns studying under heavy restrictions.</p>
-                </div>
-                <span class="mt-4 text-[10px] font-extrabold uppercase tracking-wider text-[#167888] bg-white py-1 px-2.5 rounded-full inline-block border border-teal-200">Inside Country</span>
-            </div>
+                    <!-- Flag Image / Icon -->
+                    {% if country.flag_image %}
+                    <div class="w-16 h-11 mx-auto rounded-xl overflow-hidden shadow-xs border border-gray-200/80 mb-4 group-hover:scale-105 transition-transform bg-white">
+                        <img src="{{ country.flag_image.url }}" alt="{{ country.country_name }} flag" class="w-full h-full object-cover">
+                    </div>
+                    {% else %}
+                    <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">
+                        {{ country.flag_emoji }}
+                    </div>
+                    {% endif %}
 
-            <div class="p-6 bg-teal-50/60 rounded-3xl border border-teal-100 text-center flex flex-col justify-between">
-                <div>
-                    <div class="text-4xl mb-3">🇮🇷</div>
-                    <h3 class="text-base font-bold text-gray-900">Iran</h3>
-                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">Supporting Afghan refugee girls and young women residing in Tehran, Mashhad, and Shiraz.</p>
+                    <h3 class="text-lg font-bold text-gray-900 leading-snug">
+                        {{ country.country_name }}
+                    </h3>
+                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+                        {{ country.description }}
+                    </p>
                 </div>
-                <span class="mt-4 text-[10px] font-extrabold uppercase tracking-wider text-[#167888] bg-white py-1 px-2.5 rounded-full inline-block border border-teal-200">Diaspora Community</span>
-            </div>
 
-            <div class="p-6 bg-teal-50/60 rounded-3xl border border-teal-100 text-center flex flex-col justify-between">
-                <div>
-                    <div class="text-4xl mb-3">🇵🇰</div>
-                    <h3 class="text-base font-bold text-gray-900">Pakistan</h3>
-                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">Providing virtual educational continuity to displaced students awaiting third-country visas.</p>
+                <div class="mt-5 pt-3 border-t border-teal-100">
+                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-[#167888] bg-white py-1 px-3 rounded-full inline-block border border-teal-200 shadow-xs">
+                        {{ country.badge_tag }}
+                    </span>
                 </div>
-                <span class="mt-4 text-[10px] font-extrabold uppercase tracking-wider text-[#167888] bg-white py-1 px-2.5 rounded-full inline-block border border-teal-200">Diaspora Community</span>
             </div>
-
-            <div class="p-6 bg-teal-50/60 rounded-3xl border border-teal-100 text-center flex flex-col justify-between">
-                <div>
-                    <div class="text-4xl mb-3">🇮🇶</div>
-                    <h3 class="text-base font-bold text-gray-900">Iraq</h3>
-                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">Extending mindfulness spaces and peer circles to Afghan families residing across the Middle East.</p>
-                </div>
-                <span class="mt-4 text-[10px] font-extrabold uppercase tracking-wider text-[#167888] bg-white py-1 px-2.5 rounded-full inline-block border border-teal-200">Regional Outreach</span>
+            {% empty %}
+            <div class="p-8 text-center text-sm text-gray-500 w-full col-span-4">
+                No countries found. Add them in the Django admin.
             </div>
+            {% endfor %}
         </div>
     </div>
 </section>
