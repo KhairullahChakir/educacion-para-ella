@@ -4,167 +4,115 @@
 {% block title %}Create Account — Education for Her{% endblock %}
 
 {% block content %}
-<div class="min-h-[calc(100vh-14rem)] bg-gradient-to-b from-teal-50/40 via-white to-gray-50/70 py-12 lg:py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="min-h-[calc(100vh-14rem)] bg-gradient-to-b from-teal-50/40 via-white to-gray-50/70 py-12 lg:py-16 flex items-center justify-center">
+    <div class="max-w-lg w-full mx-auto px-4 sm:px-6">
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <!-- Centered Modern Registration Card -->
+        <div class="p-8 sm:p-10 bg-white rounded-3xl border border-gray-200/90 shadow-xl relative">
             
-            <!-- Left Column: Inspiring Mission Showcase & 4 Student Perks (Dynamic) -->
-            <div class="lg:col-span-6 space-y-8">
-                <div>
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-100/70 border border-teal-200/80 text-[#167888] text-[11px] font-extrabold tracking-widest uppercase mb-4 shadow-2xs">
-                        <span class="w-2 h-2 rounded-full bg-[#167888] animate-pulse"></span>
-                        {{ auth_setting.badge_label|default:"EDUCACIÓN PARA ELLA" }}
-                    </div>
-                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
-                        {{ auth_setting.headline|default:"Empowering Afghan Girls & Students Everywhere" }}
-                    </h1>
-                    <p class="mt-4 text-base text-gray-600 leading-relaxed">
-                        {{ auth_setting.subheadline|default:"Join a global, trauma-informed learning community connecting learners with qualified international educators and peer study circles." }}
-                    </p>
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center p-2.5 mb-3.5 shadow-xs">
+                    <img src="{% static 'images/logo.jpeg' %}" alt="Logo" class="w-full h-full object-cover rounded-xl">
                 </div>
-
-                <!-- 4 Student Perks Cards (Dynamic) -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                    {% for perk in auth_highlights %}
-                    <div class="p-4 sm:p-5 bg-white/90 backdrop-blur-xs rounded-2xl border border-teal-100/90 shadow-2xs hover:shadow-md hover:border-[#167888] transition-all group">
-                        <div class="w-9 h-9 rounded-xl bg-teal-50 text-teal-800 border border-teal-100 flex items-center justify-center text-lg mb-2.5 group-hover:scale-110 transition-transform">
-                            {{ perk.icon|default:"🎓" }}
-                        </div>
-                        <h3 class="text-sm font-bold text-gray-900">{{ perk.title }}</h3>
-                        <p class="text-xs text-gray-500 mt-1 leading-relaxed">{{ perk.description }}</p>
-                    </div>
-                    {% empty %}
-                    <div class="p-4 bg-white rounded-2xl border border-gray-200 text-xs text-gray-500">
-                        🎓 100% Free Open Access Courses
-                    </div>
-                    {% endfor %}
-                </div>
-
-                <!-- Inspiring Quote Box -->
-                <div class="p-5 bg-gradient-to-r from-teal-900 via-[#167888] to-teal-800 rounded-3xl text-white shadow-lg space-y-2 relative overflow-hidden">
-                    <div class="absolute -right-6 -bottom-6 text-7xl text-white/10 select-none font-serif">“</div>
-                    <p class="text-xs sm:text-sm font-medium italic leading-relaxed text-teal-50 relative z-10">
-                        {{ auth_setting.student_quote|default:"“When learning continues at home, our dreams, voice, and future possibilities remain alive and unstoppable.”" }}
-                    </p>
-                    <p class="text-[11px] font-bold text-amber-200 uppercase tracking-wider relative z-10">
-                        — {{ auth_setting.quote_author|default:"Educación para Ella Community" }}
-                    </p>
-                </div>
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">Create your account</h1>
+                <p class="mt-1.5 text-xs sm:text-sm text-gray-500">Join Education for Her and start your learning journey</p>
             </div>
 
-            <!-- Right Column: Modern Registration Card -->
-            <div class="lg:col-span-6">
-                <div class="p-8 sm:p-10 bg-white rounded-3xl border border-gray-200/90 shadow-xl relative">
-                    
-                    <div class="text-center mb-8">
-                        <div class="w-14 h-14 mx-auto rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center p-2 mb-3 shadow-xs">
-                            <img src="{% static 'images/logo.jpeg' %}" alt="Logo" class="w-full h-full object-cover rounded-xl">
-                        </div>
-                        <h2 class="text-2xl font-bold text-gray-900 tracking-tight">Create your account</h2>
-                        <p class="mt-1 text-xs text-gray-500">Join Education for Her and start your journey today</p>
+            <form method="POST" action="{% url 'accounts:register' %}" class="space-y-4">
+                {% csrf_token %}
+
+                <!-- Role Selection (Interactive Tabs) -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">I am registering as *</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="flex items-center justify-center gap-2 p-3 bg-teal-50/50 hover:bg-teal-50 border-2 border-teal-600 rounded-2xl cursor-pointer transition-all has-[:checked]:bg-teal-50 has-[:checked]:border-[#167888] has-[:checked]:shadow-xs">
+                            <input type="radio" name="role" value="student" {% if form.role.value == 'student' or not form.role.value %}checked{% endif %} class="accent-[#167888]">
+                            <span class="text-xs font-bold text-gray-900">🎓 Student</span>
+                        </label>
+                        <label class="flex items-center justify-center gap-2 p-3 bg-gray-50 hover:bg-gray-100/80 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all has-[:checked]:bg-teal-50 has-[:checked]:border-[#167888] has-[:checked]:shadow-xs">
+                            <input type="radio" name="role" value="teacher" {% if form.role.value == 'teacher' %}checked{% endif %} class="accent-[#167888]">
+                            <span class="text-xs font-bold text-gray-900">👩‍🏫 Educator</span>
+                        </label>
                     </div>
-
-                    <form method="POST" action="{% url 'accounts:register' %}" class="space-y-4">
-                        {% csrf_token %}
-
-                        <!-- Role Selection (Interactive Tabs) -->
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">I am registering as *</label>
-                            <div class="grid grid-cols-2 gap-3">
-                                <label class="flex items-center justify-center gap-2 p-3 bg-teal-50/50 hover:bg-teal-50 border-2 border-teal-600 rounded-2xl cursor-pointer transition-all has-[:checked]:bg-teal-50 has-[:checked]:border-[#167888] has-[:checked]:shadow-xs">
-                                    <input type="radio" name="role" value="student" {% if form.role.value == 'student' or not form.role.value %}checked{% endif %} class="accent-[#167888]">
-                                    <span class="text-xs font-bold text-gray-900">🎓 Student</span>
-                                </label>
-                                <label class="flex items-center justify-center gap-2 p-3 bg-gray-50 hover:bg-gray-100/80 border-2 border-gray-200 rounded-2xl cursor-pointer transition-all has-[:checked]:bg-teal-50 has-[:checked]:border-[#167888] has-[:checked]:shadow-xs">
-                                    <input type="radio" name="role" value="teacher" {% if form.role.value == 'teacher' %}checked{% endif %} class="accent-[#167888]">
-                                    <span class="text-xs font-bold text-gray-900">👩‍🏫 Educator</span>
-                                </label>
-                            </div>
-                            {% if form.role.errors %}
-                                <p class="mt-1 text-xs text-red-600 font-medium">{{ form.role.errors.0 }}</p>
-                            {% endif %}
-                        </div>
-
-                        <!-- Username -->
-                        <div>
-                            <label for="id_username" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Username *</label>
-                            <div class="relative">
-                                <input type="text" name="username" id="id_username" required autofocus
-                                    value="{{ form.username.value|default:'' }}"
-                                    placeholder="Choose an anonymous or display handle"
-                                    autocomplete="username"
-                                    class="w-full px-4 py-3 bg-gray-50/50 border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#167888] focus:border-transparent transition-all">
-                            </div>
-                            {% if form.username.errors %}
-                                <p class="mt-1 text-xs text-red-600 font-medium">{{ form.username.errors.0 }}</p>
-                            {% endif %}
-                        </div>
-
-                        <!-- Email -->
-                        <div>
-                            <label for="id_email" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Email Address *</label>
-                            <input type="email" name="email" id="id_email" required
-                                value="{{ form.email.value|default:'' }}"
-                                placeholder="you@example.com"
-                                autocomplete="email"
-                                class="w-full px-4 py-3 bg-gray-50/50 border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#167888] focus:border-transparent transition-all">
-                            {% if form.email.errors %}
-                                <p class="mt-1 text-xs text-red-600 font-medium">{{ form.email.errors.0 }}</p>
-                            {% endif %}
-                        </div>
-
-                        <!-- Password -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label for="id_password1" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Password *</label>
-                                <input type="password" name="password1" id="id_password1" required
-                                    placeholder="Create password"
-                                    autocomplete="new-password"
-                                    class="w-full px-4 py-3 bg-gray-50/50 border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#167888] focus:border-transparent transition-all">
-                                {% if form.password1.errors %}
-                                    <p class="mt-1 text-xs text-red-600 font-medium">{{ form.password1.errors.0 }}</p>
-                                {% endif %}
-                            </div>
-
-                            <div>
-                                <label for="id_password2" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Confirm Password *</label>
-                                <input type="password" name="password2" id="id_password2" required
-                                    placeholder="Confirm password"
-                                    autocomplete="new-password"
-                                    class="w-full px-4 py-3 bg-gray-50/50 border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#167888] focus:border-transparent transition-all">
-                                {% if form.password2.errors %}
-                                    <p class="mt-1 text-xs text-red-600 font-medium">{{ form.password2.errors.0 }}</p>
-                                {% endif %}
-                            </div>
-                        </div>
-
-                        <!-- Non-field errors -->
-                        {% if form.non_field_errors %}
-                        <div class="text-xs text-red-600 bg-red-50 border border-red-200 rounded-xl p-3.5 space-y-1">
-                            {% for error in form.non_field_errors %}
-                                <p>{{ error }}</p>
-                            {% endfor %}
-                        </div>
-                        {% endif %}
-
-                        <button type="submit" class="w-full py-4 px-6 text-xs font-extrabold uppercase tracking-wider text-white bg-[#167888] hover:bg-teal-800 rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer mt-2">
-                            Create Account & Start Learning →
-                        </button>
-                    </form>
-
-                    <!-- Footnote / Login Link -->
-                    <div class="mt-6 pt-6 border-t border-gray-100 text-center space-y-2">
-                        <p class="text-xs text-gray-600">
-                            Already have an account?
-                            <a href="{% url 'accounts:login' %}" class="font-bold text-[#167888] hover:underline">Log in here →</a>
-                        </p>
-                        <p class="text-[11px] text-gray-400 flex items-center justify-center gap-1.5 pt-1">
-                            <span>🛡️</span> 100% Confidential & Secure. Cameras optional.
-                        </p>
-                    </div>
-
+                    {% if form.role.errors %}
+                        <p class="mt-1 text-xs text-red-600 font-medium">{{ form.role.errors.0 }}</p>
+                    {% endif %}
                 </div>
+
+                <!-- Username -->
+                <div>
+                    <label for="id_username" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Username *</label>
+                    <input type="text" name="username" id="id_username" required autofocus
+                        value="{{ form.username.value|default:'' }}"
+                        placeholder="Choose an anonymous or display handle"
+                        autocomplete="username"
+                        class="w-full px-4 py-3 bg-gray-50/50 border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#167888] focus:border-transparent transition-all">
+                    {% if form.username.errors %}
+                        <p class="mt-1 text-xs text-red-600 font-medium">{{ form.username.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="id_email" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Email Address *</label>
+                    <input type="email" name="email" id="id_email" required
+                        value="{{ form.email.value|default:'' }}"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        class="w-full px-4 py-3 bg-gray-50/50 border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#167888] focus:border-transparent transition-all">
+                    {% if form.email.errors %}
+                        <p class="mt-1 text-xs text-red-600 font-medium">{{ form.email.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                <!-- Password -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="id_password1" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Password *</label>
+                        <input type="password" name="password1" id="id_password1" required
+                            placeholder="Create password"
+                            autocomplete="new-password"
+                            class="w-full px-4 py-3 bg-gray-50/50 border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#167888] focus:border-transparent transition-all">
+                        {% if form.password1.errors %}
+                            <p class="mt-1 text-xs text-red-600 font-medium">{{ form.password1.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="id_password2" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Confirm Password *</label>
+                        <input type="password" name="password2" id="id_password2" required
+                            placeholder="Confirm password"
+                            autocomplete="new-password"
+                            class="w-full px-4 py-3 bg-gray-50/50 border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#167888] focus:border-transparent transition-all">
+                        {% if form.password2.errors %}
+                            <p class="mt-1 text-xs text-red-600 font-medium">{{ form.password2.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Non-field errors -->
+                {% if form.non_field_errors %}
+                <div class="text-xs text-red-600 bg-red-50 border border-red-200 rounded-xl p-3.5 space-y-1">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <button type="submit" class="w-full py-4 px-6 text-xs font-extrabold uppercase tracking-wider text-white bg-[#167888] hover:bg-teal-800 rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer mt-2">
+                    Create Account & Start Learning →
+                </button>
+            </form>
+
+            <!-- Footnote / Login Link -->
+            <div class="mt-6 pt-6 border-t border-gray-100 text-center space-y-2">
+                <p class="text-xs text-gray-600">
+                    Already have an account?
+                    <a href="{% url 'accounts:login' %}" class="font-bold text-[#167888] hover:underline">Log in here →</a>
+                </p>
+                <p class="text-[11px] text-gray-400 flex items-center justify-center gap-1.5 pt-1">
+                    <span>🛡️</span> 100% Confidential & Secure. Cameras optional.
+                </p>
             </div>
 
         </div>
