@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class HeroNews(models.Model):
@@ -744,3 +745,50 @@ class SocialMediaLink(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.get_platform_display()})"
+
+
+class CourseEnrollment(models.Model):
+    """Real student enrollment in a ClassProgram."""
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='enrollments')
+    program = models.ForeignKey(ClassProgram, on_delete=models.CASCADE, related_name='enrollments')
+    enrolled_at = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['-enrolled_at']
+        unique_together = ('user', 'program')
+        verbose_name = "Course Enrollment"
+        verbose_name_plural = "Course Enrollments"
+
+    def __str__(self):
+        return f"{self.user.username} enrolled in {self.program.title}"
+
+
+class StudyMaterial(models.Model):
+    """Real downloadable low-bandwidth PDFs and resources for students."""
+    title = models.CharField(max_length=150, help_text="e.g. English A1 Complete Study Guide")
+    subject = models.CharField(max_length=40, choices=ClassProgram.SUBJECT_CHOICES, default='english')
+    file_type = models.CharField(max_length=20, default="PDF", help_text="e.g. PDF, ZIP, DOCX, MP3")
+    file_size_text = models.CharField(max_length=50, default="2.4 MB", help_text="e.g. 2.4 MB")
+    file = models.FileField(upload_to='study_materials/', blank=True, null=True, help_text="Upload actual file")
+    file_url = models.CharField(max_length=255, blank=True, null=True, help_text="Fallback download link")
+    description = models.CharField(max_length=250, default="Vocabulary & Grammar Study Pack", help_text="Short description")
+    order = models.PositiveIntegerField(default=0, help_text="Sort order")
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Study Material"
+        verbose_name_plural = "Study Materials"
+
+    def __str__(self):
+        return f"{self.title} ({self.file_type})"
+
+    @property
+    def download_link(self):
+        if self.file:
+            return self.file.url
+        elif self.file_url:
+            return self.file_url
+        return "#"

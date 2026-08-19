@@ -23,6 +23,8 @@ from .models import (
     FooterQuickLink,
     NewsletterSubscriber,
     SocialMediaLink,
+    CourseEnrollment,
+    StudyMaterial,
 )
 
 
@@ -230,3 +232,19 @@ class SocialMediaLinkAdmin(admin.ModelAdmin):
     list_filter = ('platform', 'show_in_footer', 'show_in_contact', 'is_active', 'created_at')
     list_editable = ('platform', 'url', 'order', 'show_in_footer', 'show_in_contact', 'is_active')
     search_fields = ('name', 'url', 'platform')
+
+
+@admin.register(CourseEnrollment)
+class CourseEnrollmentAdmin(admin.ModelAdmin):
+    list_display = ('user', 'program', 'is_active', 'enrolled_at')
+    list_filter = ('is_active', 'enrolled_at', 'program')
+    list_editable = ('is_active',)
+    search_fields = ('user__username', 'user__email', 'program__title')
+
+
+@admin.register(StudyMaterial)
+class StudyMaterialAdmin(admin.ModelAdmin):
+    list_display = ('title', 'subject', 'file_type', 'file_size_text', 'order', 'is_active', 'created_at')
+    list_filter = ('subject', 'file_type', 'is_active', 'created_at')
+    list_editable = ('subject', 'file_type', 'file_size_text', 'order', 'is_active')
+    search_fields = ('title', 'description')

@@ -7,6 +7,17 @@
 <div class="bg-gray-50/70 min-h-screen py-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
 
+        <!-- Django Feedback Messages -->
+        {% if messages %}
+        <div class="space-y-2">
+            {% for message in messages %}
+            <div class="p-4 rounded-2xl text-xs font-bold {% if message.tags == 'success' %}bg-emerald-100 text-emerald-900 border border-emerald-300{% else %}bg-blue-100 text-blue-900 border border-blue-300{% endif %} flex items-center justify-between shadow-2xs">
+                <span>{{ message }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
         <!-- 1. Sanctuary Welcome Banner -->
         <div class="bg-gradient-to-r from-[#167888] via-[#1a8596] to-[#125c68] rounded-3xl text-white p-8 sm:p-10 shadow-xl relative overflow-hidden">
             <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
@@ -15,7 +26,7 @@
                 <div class="space-y-3 max-w-2xl">
                     <div class="flex items-center gap-2.5 flex-wrap">
                         <span class="px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-white/20 border border-white/30 backdrop-blur-md text-amber-300 shadow-2xs">
-                            {% if user.profile.is_teacher %}👨‍🏫 Volunteer Educator{% else %}🎓 Afghan Student Sanctuary{% endif %}
+                            {% if user.profile.is_teacher %}👨‍🏫 Volunteer Educator{% else %}🎓 Student Account{% endif %}
                         </span>
                         <span class="text-xs text-teal-100/90 font-medium">
                             🛡️ 100% Confidential & Camera-Optional
@@ -28,9 +39,9 @@
                     
                     <p class="text-sm sm:text-base text-teal-50/90 leading-relaxed">
                         {% if user.profile.is_teacher %}
-                            Thank you for dedicating your time and knowledge. Your mentorship gives hope, education, and independence to Afghan girls worldwide.
+                            Manage your classrooms and write lessons to empower Afghan students.
                         {% else %}
-                            Every lesson is a door to your future. Continue your studies freely and safely in your protected learning space.
+                            Every lesson is a door to your future. Continue your studies freely and safely in your learning sanctuary.
                         {% endif %}
                     </p>
                 </div>
@@ -38,54 +49,56 @@
                 <!-- Quick Action Buttons -->
                 <div class="flex items-center gap-3 flex-wrap">
                     <a href="{% url 'core:classes' %}" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] rounded-2xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap">
-                        <span>Explore All Courses</span>
+                        <span>Browse All Classes</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
                     <a href="{% url 'core:mindfulness' %}" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-white/15 hover:bg-white/25 border border-white/30 rounded-2xl transition-all whitespace-nowrap">
-                        <span>🧘‍♀️ Safe Well-Being Circle</span>
+                        <span>🧘‍♀️ Safe Mindfulness Circle</span>
                     </a>
                 </div>
             </div>
 
-            <!-- 4 Impact & Progress Metrics Strip -->
+            <!-- 4 Live Database Metrics Strip -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8 pt-6 border-t border-white/20 text-white">
                 <div class="bg-white/10 backdrop-blur-xs rounded-2xl p-4 border border-white/15">
-                    <p class="text-2xl sm:text-3xl font-black text-[#fbbf24]">3</p>
-                    <p class="text-xs font-bold uppercase tracking-wider text-teal-100 mt-1">Active Classes</p>
-                    <p class="text-[11px] text-teal-200/80 mt-0.5">English, Catalan & Coding</p>
+                    <p class="text-2xl sm:text-3xl font-black text-[#fbbf24]">{{ total_active_classes }}</p>
+                    <p class="text-xs font-bold uppercase tracking-wider text-teal-100 mt-1">Enrolled Courses</p>
+                    <p class="text-[11px] text-teal-200/80 mt-0.5">Active in your schedule</p>
                 </div>
                 <div class="bg-white/10 backdrop-blur-xs rounded-2xl p-4 border border-white/15">
                     <p class="text-2xl sm:text-3xl font-black text-[#fbbf24]">100%</p>
                     <p class="text-xs font-bold uppercase tracking-wider text-teal-100 mt-1">Free Access</p>
-                    <p class="text-[11px] text-teal-200/80 mt-0.5">No subscription fees ever</p>
+                    <p class="text-[11px] text-teal-200/80 mt-0.5">No tuition or fees</p>
                 </div>
                 <div class="bg-white/10 backdrop-blur-xs rounded-2xl p-4 border border-white/15">
-                    <p class="text-2xl sm:text-3xl font-black text-[#fbbf24]">12</p>
+                    <p class="text-2xl sm:text-3xl font-black text-[#fbbf24]">{{ study_materials|length }}</p>
                     <p class="text-xs font-bold uppercase tracking-wider text-teal-100 mt-1">Study Packs Ready</p>
                     <p class="text-[11px] text-teal-200/80 mt-0.5">Offline low-bandwidth PDFs</p>
                 </div>
                 <div class="bg-white/10 backdrop-blur-xs rounded-2xl p-4 border border-white/15">
                     <p class="text-2xl sm:text-3xl font-black text-[#fbbf24]">24/7</p>
-                    <p class="text-xs font-bold uppercase tracking-wider text-teal-100 mt-1">WhatsApp Support</p>
+                    <p class="text-xs font-bold uppercase tracking-wider text-teal-100 mt-1">Emergency Support</p>
                     <p class="text-[11px] text-teal-200/80 mt-0.5">+34 632 655 088</p>
                 </div>
             </div>
         </div>
 
-        <!-- 2. Active Enrolled Classes Grid -->
+        <!-- 2. Active Enrolled Classes Grid (Real Database Enrollments) -->
         <div class="space-y-6">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                    <h2 class="text-2xl font-bold text-gray-900 tracking-tight">My Active Learning Courses</h2>
-                    <p class="text-xs sm:text-sm text-gray-500 mt-0.5">Join your live virtual classrooms or access downloaded materials anytime.</p>
+                    <h2 class="text-2xl font-bold text-gray-900 tracking-tight">My Active Enrolled Courses ({{ user_enrollments|length }})</h2>
+                    <p class="text-xs sm:text-sm text-gray-500 mt-0.5">Join your live virtual classrooms or access downloaded materials.</p>
                 </div>
                 <a href="{% url 'core:classes' %}" class="text-xs font-bold text-[#167888] hover:underline flex items-center gap-1">
-                    View Course Catalog &rarr;
+                    + Enroll in More Classes &rarr;
                 </a>
             </div>
 
+            {% if user_enrollments %}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {% for program in user_classes %}
+                {% for enrollment in user_enrollments %}
+                {% with program=enrollment.program %}
                 <div class="bg-white rounded-3xl p-5 sm:p-6 border border-gray-200/90 hover:border-[#167888] hover:shadow-xl transition-all flex flex-col justify-between group shadow-xs">
                     <div>
                         <!-- Cover Artwork with Floating Subject Badge -->
@@ -104,7 +117,7 @@
                             </div>
                             <div class="absolute top-3 right-3">
                                 <span class="px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider rounded-full border shadow-xs bg-emerald-50 text-emerald-800 border-emerald-200">
-                                    ● Enrolled & Active
+                                    ● Enrolled
                                 </span>
                             </div>
                         </div>
@@ -130,8 +143,8 @@
                                 <span class="font-semibold text-gray-900">{{ program.schedule_time }}</span>
                             </div>
                             <div class="flex items-center justify-between">
-                                <span class="font-bold text-gray-700">Platform:</span>
-                                <span class="font-semibold text-[#167888]">Google Meet · Camera Optional</span>
+                                <span class="font-bold text-gray-700">Format:</span>
+                                <span class="font-semibold text-[#167888]">Live · Camera Optional</span>
                             </div>
                         </div>
                     </div>
@@ -142,20 +155,36 @@
                             <span>Join Live Classroom</span>
                             <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </a>
-                        <a href="{% url 'core:classes' %}" class="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 transition-all">
-                            <span>📥 Download Lesson Pack (PDF)</span>
-                        </a>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'core:classes' %}" class="flex-1 inline-flex items-center justify-center py-2 px-3 rounded-xl text-xs font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 transition-all">
+                                <span>📥 Materials</span>
+                            </a>
+                            <a href="{% url 'core:unenroll_course' program.id %}" onclick="return confirm('Are you sure you want to drop this course?')" class="px-3 py-2 rounded-xl text-xs font-bold text-rose-600 hover:bg-rose-50 border border-rose-200 transition-all" title="Drop Course">
+                                Drop
+                            </a>
+                        </div>
                     </div>
                 </div>
-                {% empty %}
-                <div class="col-span-3 p-12 text-center bg-white rounded-3xl border border-gray-200 shadow-xs">
-                    <p class="text-sm text-gray-500">You have not enrolled in any courses yet. Browse our free catalog below to get started!</p>
-                </div>
+                {% endwith %}
                 {% endfor %}
             </div>
+            {% else %}
+            <div class="p-12 text-center bg-white rounded-3xl border border-gray-200 shadow-xs space-y-4">
+                <div class="w-14 h-14 mx-auto rounded-full bg-teal-50 text-[#167888] flex items-center justify-center text-2xl font-bold">
+                    📚
+                </div>
+                <h3 class="text-lg font-bold text-gray-900">You haven't enrolled in any courses yet</h3>
+                <p class="text-xs text-gray-500 max-w-md mx-auto">
+                    Browse our free curriculum below and click "Enroll in Course" to add classes to your personal schedule.
+                </p>
+                <a href="{% url 'core:classes' %}" class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] rounded-xl shadow-xs transition-all">
+                    Explore Free Classes →
+                </a>
+            </div>
+            {% endif %}
         </div>
 
-        <!-- 3. Low-Bandwidth Study Vault & Offline Resources -->
+        <!-- 3. Real Low-Bandwidth Study Materials (Uploaded via Django Admin) -->
         <div class="bg-white rounded-3xl p-8 border border-gray-200/90 shadow-xs space-y-6">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-gray-100">
                 <div>
@@ -163,7 +192,7 @@
                         <span class="text-lg">📁</span>
                         <h2 class="text-xl font-bold text-gray-900">Low-Bandwidth Study Materials & Offline Vault</h2>
                     </div>
-                    <p class="text-xs text-gray-500 mt-1">Download and read offline when internet connectivity is limited or unstable.</p>
+                    <p class="text-xs text-gray-500 mt-1">Direct PDF and study pack downloads for offline learning.</p>
                 </div>
                 <span class="px-3 py-1 text-[11px] font-extrabold uppercase bg-teal-50 text-[#167888] rounded-full border border-teal-200">
                     Bilingual Dari / Pashto / English
@@ -171,50 +200,26 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {% for material in study_materials %}
                 <div class="p-4 rounded-2xl bg-gray-50/80 border border-gray-200/70 hover:border-[#167888] hover:bg-white transition-all flex items-center justify-between group">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center font-bold text-sm">
-                            PDF
+                        <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-900 flex items-center justify-center font-black text-xs">
+                            {{ material.file_type }}
                         </div>
                         <div>
-                            <h4 class="text-xs font-bold text-gray-900 group-hover:text-[#167888] transition-colors">English A1 Complete Study Guide</h4>
-                            <p class="text-[11px] text-gray-400">Vocabulary & Grammar · 2.4 MB</p>
+                            <h4 class="text-xs font-bold text-gray-900 group-hover:text-[#167888] transition-colors">{{ material.title }}</h4>
+                            <p class="text-[11px] text-gray-400">{{ material.description }} · {{ material.file_size_text }}</p>
                         </div>
                     </div>
-                    <a href="{% static 'images/logo.jpeg' %}" download class="p-2 text-gray-400 hover:text-[#167888] transition-colors" title="Download">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    <a href="{{ material.download_link }}" download class="p-2.5 rounded-xl bg-white border border-gray-200 text-gray-700 hover:text-gray-900 hover:bg-[#fbbf24] hover:border-[#fbbf24] transition-all shadow-2xs" title="Download">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                     </a>
                 </div>
-
-                <div class="p-4 rounded-2xl bg-gray-50/80 border border-gray-200/70 hover:border-[#167888] hover:bg-white transition-all flex items-center justify-between group">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-sm">
-                            PDF
-                        </div>
-                        <div>
-                            <h4 class="text-xs font-bold text-gray-900 group-hover:text-[#167888] transition-colors">Catalan & Spanish Phrasebook</h4>
-                            <p class="text-[11px] text-gray-400">Essential Expressions · 1.8 MB</p>
-                        </div>
-                    </div>
-                    <a href="{% static 'images/logo.jpeg' %}" download class="p-2 text-gray-400 hover:text-[#167888] transition-colors" title="Download">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                    </a>
+                {% empty %}
+                <div class="col-span-3 p-8 text-center text-xs text-gray-500">
+                    No study materials uploaded yet. Add materials in the Django Admin.
                 </div>
-
-                <div class="p-4 rounded-2xl bg-gray-50/80 border border-gray-200/70 hover:border-[#167888] hover:bg-white transition-all flex items-center justify-between group">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
-                            ZIP
-                        </div>
-                        <div>
-                            <h4 class="text-xs font-bold text-gray-900 group-hover:text-[#167888] transition-colors">Python Coding Starter Pack</h4>
-                            <p class="text-[11px] text-gray-400">Exercises & Cheatsheets · 4.1 MB</p>
-                        </div>
-                    </div>
-                    <a href="{% static 'images/logo.jpeg' %}" download class="p-2 text-gray-400 hover:text-[#167888] transition-colors" title="Download">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                    </a>
-                </div>
+                {% endfor %}
             </div>
         </div>
 

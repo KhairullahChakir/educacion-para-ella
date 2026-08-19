@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import (
@@ -24,6 +24,9 @@ from .models import (
     FooterSetting,
     FooterQuickLink,
     NewsletterSubscriber,
+    SocialMediaLink,
+    CourseEnrollment,
+    StudyMaterial,
 )
 
 
@@ -43,12 +46,42 @@ def home(request):
 
 @login_required
 def dashboard(request):
-    """Student & Teacher dashboard — requires authentication."""
-    class_programs = ClassProgram.objects.filter(is_active=True).order_by('order', '-created_at')
+    """Real Student & Teacher sanctuary dashboard."""
+    user_enrollments = CourseEnrollment.objects.filter(user=request.user, is_active=True).select_related('program')
+    enrolled_program_ids = set(user_enrollments.values_list('program_id', flat=True))
+    available_classes = ClassProgram.objects.filter(is_active=True).exclude(id__in=enrolled_program_ids).order_by('order')
+    study_materials = StudyMaterial.objects.filter(is_active=True).order_by('order', '-created_at')
+    
     return render(request, 'core/dashboard.html', {
-        'class_programs': class_programs,
-        'user_classes': class_programs[:3],  # Sample enrolled courses for demonstration
+        'user_enrollments': user_enrollments,
+        'available_classes': available_classes,
+        'study_materials': study_materials,
+        'total_active_classes': user_enrollments.count(),
+        'enrolled_program_ids': enrolled_program_ids,
     })
+
+
+@login_required
+def enroll_course(request, program_id):
+    """1-click enrollment for logged-in students."""
+    program = get_object_or_404(ClassProgram, id=program_id, is_active=True)
+    enrollment, created = CourseEnrollment.objects.get_or_create(user=request.user, program=program)
+    if not enrollment.is_active:
+        enrollment.is_active = True
+        enrollment.save()
+    messages.success(request, f"You are successfully enrolled in {program.title}!")
+    # Redirect back to where the student clicked or dashboard
+    next_url = request.GET.get('next') or request.META.get('HTTP_REFERER') or '/dashboard/'
+    return redirect(next_url)
+
+
+@login_required
+def unenroll_course(request, program_id):
+    """Drop/leave an enrolled class."""
+    program = get_object_or_404(ClassProgram, id=program_id)
+    CourseEnrollment.objects.filter(user=request.user, program=program).delete()
+    messages.info(request, f"You have left {program.title}.")
+    return redirect('core:dashboard')
 
 
 def about(request):
@@ -67,9 +100,14 @@ def classes(request):
     """Our Classes page — Language Lab, Skills, and Interactive Class Schedules."""
     classes_setting = ClassesPageSetting.objects.filter(is_active=True).first()
     class_programs = ClassProgram.objects.filter(is_active=True).order_by('order', '-created_at')
+    enrolled_program_ids = set()
+    if request.user.is_authenticated:
+        enrolled_program_ids = set(CourseEnrollment.objects.filter(user=request.user, is_active=True).values_list('program_id', flat=True))
+
     return render(request, 'core/classes.html', {
         'classes_setting': classes_setting,
         'class_programs': class_programs,
+        'enrolled_program_ids': enrolled_program_ids,
     })
 
 

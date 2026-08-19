@@ -276,11 +276,21 @@
                         <div class="pt-5 mt-2 border-t border-gray-100">
                             {% if program.status == 'closed' %}
                             <button disabled class="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-400 border border-gray-300 bg-gray-50 cursor-not-allowed">
-                                Closed
+                                Registration Closed
                             </button>
+                            {% elif user.is_authenticated and program.id in enrolled_program_ids %}
+                            <a href="{% url 'core:dashboard' %}" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider text-emerald-900 bg-emerald-100 hover:bg-emerald-200 border border-emerald-300 transition-all shadow-xs">
+                                <span>✓ Enrolled · View in Dashboard</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </a>
+                            {% elif user.is_authenticated %}
+                            <a href="{% url 'core:enroll_course' program.id %}?next={% url 'core:classes' %}" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] transition-all cursor-pointer shadow-xs hover:shadow-md">
+                                <span>+ Enroll for Free</span>
+                                <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </a>
                             {% else %}
-                            <a href="{{ program.button_url|default:'/register/' }}" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] transition-all cursor-pointer shadow-xs hover:shadow-md">
-                                <span>{{ program.button_text|default:'Get started' }}</span>
+                            <a href="{% url 'accounts:register' %}?next={% url 'core:classes' %}" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] transition-all cursor-pointer shadow-xs hover:shadow-md">
+                                <span>Enroll for Free</span>
                                 <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                             </a>
                             {% endif %}
