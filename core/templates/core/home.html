@@ -1,15 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Education for Her — Learn Without Limits{% endblock %}
+{% block title %}Education for Her — Online Learning for Afghan Girls & Women{% endblock %}
 
 {% block content %}
 <!-- Dynamic Backend News Hero Carousel Banner -->
 <section id="hero-carousel-section" class="bg-gradient-to-br from-[#167888] via-[#1a8596] to-[#d8b49c] text-white pt-8 pb-16 lg:pt-12 lg:pb-24 overflow-hidden relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-{% if hero_news_list %}
-
+        {% if hero_news_list %}
         <!-- Dynamic Slides Container -->
         <div class="relative min-h-[440px] sm:min-h-[400px] flex items-center">
             {% for news in hero_news_list %}
@@ -26,9 +25,12 @@
                     <p class="text-teal-50/90 text-base sm:text-lg font-normal leading-relaxed max-w-lg">
                         {{ news.subtitle }}
                     </p>
-                    <div class="pt-2">
+                    <div class="pt-2 flex flex-wrap items-center gap-4">
                         <a href="{{ news.button_url }}" class="inline-flex items-center justify-center px-9 py-4 text-xs sm:text-sm font-extrabold uppercase tracking-widest text-gray-900 bg-[#e8b49b] hover:bg-[#e2a88e] rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
                             {{ news.button_text }}
+                        </a>
+                        <a href="{% url 'core:about' %}" class="inline-flex items-center justify-center px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white border border-white/40 hover:bg-white/10 rounded-full transition-all">
+                            Learn Our Story
                         </a>
                     </div>
                 </div>
@@ -108,53 +110,197 @@
     </div>
 </section>
 
-<!-- Features Section -->
-<section class="bg-white py-20 border-t border-gray-100">
+<!-- Impact Numbers & Stats Strip -->
+<section class="bg-white border-b border-gray-100 py-10 shadow-xs relative -mt-6 z-10 mx-4 sm:mx-6 lg:mx-auto max-w-6xl rounded-3xl">
+    <div class="px-6 sm:px-10">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-y lg:divide-y-0 lg:divide-x divide-gray-100">
+            <div class="text-center pt-4 lg:pt-0">
+                <p class="text-3xl sm:text-4xl font-black text-[#167888]">25+</p>
+                <p class="mt-1 text-xs font-bold text-gray-600 uppercase tracking-wider">Global Volunteers</p>
+                <p class="text-[11px] text-gray-400 mt-0.5">Educators & professionals</p>
+            </div>
+            <div class="text-center pt-4 lg:pt-0">
+                <p class="text-3xl sm:text-4xl font-black text-[#167888]">4</p>
+                <p class="mt-1 text-xs font-bold text-gray-600 uppercase tracking-wider">Countries Reached</p>
+                <p class="text-[11px] text-gray-400 mt-0.5">AF, IR, PK & IQ</p>
+            </div>
+            <div class="text-center pt-4 lg:pt-0">
+                <p class="text-3xl sm:text-4xl font-black text-[#167888]">6+</p>
+                <p class="mt-1 text-xs font-bold text-gray-600 uppercase tracking-wider">Subject Tracks</p>
+                <p class="text-[11px] text-gray-400 mt-0.5">Languages, Tech & Well-being</p>
+            </div>
+            <div class="text-center pt-4 lg:pt-0">
+                <p class="text-3xl sm:text-4xl font-black text-amber-600">100%</p>
+                <p class="mt-1 text-xs font-bold text-gray-600 uppercase tracking-wider">Free Access</p>
+                <p class="text-[11px] text-gray-400 mt-0.5">No fees, open to every girl</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Class Tracks Section -->
+<section class="bg-gray-50/70 py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto">
-            <h2 class="text-3xl font-bold text-gray-900 tracking-tight">
-                Designed for Empowered Learning
-            </h2>
-            <p class="mt-3 text-base text-gray-600">
-                Everything you need to learn effectively at your own pace.
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+                <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-2">Curriculum</p>
+                <h2 class="text-3xl font-bold text-gray-900 tracking-tight">Explore Our Class Programs</h2>
+                <p class="mt-2 text-sm text-gray-600 max-w-xl">
+                    Tailored online classes taught by dedicated international volunteers to unlock future opportunities.
+                </p>
+            </div>
+            <div>
+                <a href="{% url 'core:classes' %}" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#167888] hover:text-teal-900">
+                    View Full Syllabus &rarr;
+                </a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- English Track -->
+            <div class="bg-white rounded-3xl p-8 border border-gray-200/80 hover:shadow-lg transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-teal-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                        🇬🇧
+                    </div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-teal-100 text-teal-800 uppercase">CEFR A0–C1</span>
+                        <span class="text-xs text-gray-400">All Levels</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">English Language</h3>
+                    <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                        From basic literacy to advanced fluency, building critical communication skills for global education and jobs.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-100">
+                    <a href="{% url 'core:classes' %}" class="text-xs font-bold text-[#167888] group-hover:underline">Explore levels &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Programming Track -->
+            <div class="bg-white rounded-3xl p-8 border border-gray-200/80 hover:shadow-lg transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                        💻
+                    </div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-blue-100 text-blue-800 uppercase">JavaScript & Web</span>
+                        <span class="text-xs text-gray-400">Digital Track</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Coding & Tech</h3>
+                    <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                        Practical web development, coding fundamentals, and digital literacy to enable freelancing and remote work.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-100">
+                    <a href="{% url 'core:classes' %}" class="text-xs font-bold text-[#167888] group-hover:underline">View tech curriculum &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Mindfulness Track -->
+            <div class="bg-white rounded-3xl p-8 border border-gray-200/80 hover:shadow-lg transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-purple-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                        🧘‍♀️
+                    </div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-purple-100 text-purple-800 uppercase">Safe Circles</span>
+                        <span class="text-xs text-gray-400">Well-being</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Mindfulness</h3>
+                    <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                        Guided meditation, stress resilience, and supportive peer community spaces across 4 regional countries.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-100">
+                    <a href="{% url 'core:mindfulness' %}" class="text-xs font-bold text-[#167888] group-hover:underline">Discover sessions &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works (3 Easy Steps for Afghan Students) -->
+<section class="bg-white py-20 border-t border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-2">Simple Process</p>
+            <h2 class="text-3xl font-bold text-gray-900 tracking-tight">How to Start Learning</h2>
+            <p class="mt-3 text-sm text-gray-600">
+                Getting started is free, safe, and open to every Afghan girl regardless of location.
             </p>
         </div>
 
-        <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8">
-            <div class="p-8 bg-gray-50/80 rounded-2xl border border-gray-100/80 text-center hover:shadow-md transition-shadow">
-                <div class="w-12 h-12 mx-auto bg-teal-100/80 rounded-2xl flex items-center justify-center mb-5">
-                    <svg class="w-6 h-6 text-teal-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                    </svg>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+            <div class="p-8 bg-gray-50/80 rounded-3xl border border-gray-200/80 text-center relative">
+                <div class="w-12 h-12 mx-auto rounded-full bg-[#167888] text-white flex items-center justify-center font-black text-base mb-6 shadow-md">
+                    1
                 </div>
-                <h3 class="text-lg font-bold text-gray-900">Quality Courses</h3>
-                <p class="mt-2 text-sm text-gray-600 leading-relaxed">
-                    Designed by experienced educators specifically for local Afghan students.
+                <h3 class="text-lg font-bold text-gray-900">Sign Up for Free</h3>
+                <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                    Create a free student account with your preferred username and email in less than one minute.
                 </p>
             </div>
 
-            <div class="p-8 bg-gray-50/80 rounded-2xl border border-gray-100/80 text-center hover:shadow-md transition-shadow">
-                <div class="w-12 h-12 mx-auto bg-amber-100/80 rounded-2xl flex items-center justify-center mb-5">
-                    <svg class="w-6 h-6 text-amber-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
+            <div class="p-8 bg-gray-50/80 rounded-3xl border border-gray-200/80 text-center relative">
+                <div class="w-12 h-12 mx-auto rounded-full bg-[#167888] text-white flex items-center justify-center font-black text-base mb-6 shadow-md">
+                    2
                 </div>
-                <h3 class="text-lg font-bold text-gray-900">Multilingual</h3>
-                <p class="mt-2 text-sm text-gray-600 leading-relaxed">
-                    Learn in Dari, Pashto, or English — whichever language you prefer.
+                <h3 class="text-lg font-bold text-gray-900">Choose Your Subject</h3>
+                <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                    Pick your level in English, Spanish, German, Web Coding, Photography, or Mindfulness circles.
                 </p>
             </div>
 
-            <div class="p-8 bg-gray-50/80 rounded-2xl border border-gray-100/80 text-center hover:shadow-md transition-shadow">
-                <div class="w-12 h-12 mx-auto bg-teal-100/80 rounded-2xl flex items-center justify-center mb-5">
-                    <svg class="w-6 h-6 text-teal-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
+            <div class="p-8 bg-gray-50/80 rounded-3xl border border-gray-200/80 text-center relative">
+                <div class="w-12 h-12 mx-auto rounded-full bg-[#167888] text-white flex items-center justify-center font-black text-base mb-6 shadow-md">
+                    3
                 </div>
-                <h3 class="text-lg font-bold text-gray-900">Learn Anytime</h3>
-                <p class="mt-2 text-sm text-gray-600 leading-relaxed">
-                    Access lessons on your own schedule, from any device, anywhere.
+                <h3 class="text-lg font-bold text-gray-900">Attend & Grow</h3>
+                <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                    Join interactive sessions with global volunteer teachers and download study materials.
                 </p>
+            </div>
+        </div>
+
+        <div class="mt-12 text-center">
+            <a href="{% url 'accounts:register' %}" class="inline-flex items-center justify-center px-10 py-4 text-xs font-extrabold uppercase tracking-widest text-white bg-[#167888] hover:bg-teal-800 rounded-full shadow-lg hover:shadow-xl transition-all">
+                Join as Student Today
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Quote & Founder Statement Banner -->
+<section class="bg-gradient-to-r from-[#111315] to-[#1a2327] text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="text-4xl text-amber-400 block mb-4">“</span>
+        <blockquote class="text-xl sm:text-2xl lg:text-3xl font-light italic leading-relaxed text-gray-100">
+            When a classroom door is closed, we believe another door can be opened. Every girl deserves the opportunity to learn, dream, and build her future.
+        </blockquote>
+        <p class="mt-6 text-sm font-bold text-amber-300 uppercase tracking-widest">
+            Najiah Mohammadi
+        </p>
+        <p class="text-xs text-gray-400">Founder, Educación para Ella</p>
+    </div>
+</section>
+
+<!-- Partner & Community Recognition Bar -->
+<section class="bg-white py-14 border-t border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-xs font-extrabold uppercase tracking-widest text-gray-400 mb-6">In Solidarity & Partnership With</p>
+        <div class="flex flex-wrap items-center justify-center gap-10 sm:gap-16">
+            <div class="flex items-center gap-3 text-gray-700 font-bold text-sm">
+                <span class="w-8 h-8 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center text-xs">🌐</span>
+                Open Cultural Center (OCC)
+            </div>
+            <div class="flex items-center gap-3 text-gray-700 font-bold text-sm">
+                <span class="w-8 h-8 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-xs">🕊️</span>
+                Afghan Women on the Run (AWOTR)
+            </div>
+            <div class="flex items-center gap-3 text-gray-700 font-bold text-sm">
+                <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-800 flex items-center justify-center text-xs">🤝</span>
+                25+ Global Volunteer Educators
             </div>
         </div>
     </div>
