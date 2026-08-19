@@ -96,3 +96,24 @@ class HowItWorksStep(models.Model):
 
     def __str__(self):
         return f"Step {self.step_number}: {self.title}"
+
+
+class Partner(models.Model):
+    """Solidarity partners and collaborator organizations."""
+    name = models.CharField(max_length=150, help_text="Organization / Partner Name")
+    role_description = models.CharField(max_length=150, help_text="Role or support type (e.g. Curriculum & Volunteer Solidarity, Advocacy & Outreach)")
+    icon_or_logo = models.CharField(max_length=20, default="🤝", help_text="Icon or flag emoji if no image logo uploaded")
+    logo = models.ImageField(upload_to='partner_logos/', blank=True, null=True, help_text="Partner logo (optional)")
+    website_url = models.CharField(max_length=255, default="#", help_text="Partner official website or detail URL")
+    badge_label = models.CharField(max_length=50, default="Partner", help_text="Small pill badge (e.g. Founding Partner, Strategic Partner, Global Network)")
+    order = models.PositiveIntegerField(default=0, help_text="Sort order")
+    is_active = models.BooleanField(default=True, help_text="Uncheck to hide this partner")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Partner / Collaborator"
+        verbose_name_plural = "Partners & Collaborators"
+
+    def __str__(self):
+        return self.name

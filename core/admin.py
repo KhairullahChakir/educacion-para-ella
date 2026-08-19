@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import HeroNews, ClassProgram, HowItWorksStep
+from .models import HeroNews, ClassProgram, HowItWorksStep, Partner
 
 
 @admin.register(HeroNews)
@@ -35,3 +35,11 @@ class HowItWorksStepAdmin(admin.ModelAdmin):
     list_filter = ('is_active', 'created_at')
     list_editable = ('order', 'is_active')
     search_fields = ('title', 'description')
+
+
+@admin.register(Partner)
+class PartnerAdmin(admin.ModelAdmin):
+    list_display = ('name', 'badge_label', 'role_description', 'website_url', 'order', 'is_active', 'created_at')
+    list_filter = ('is_active', 'created_at')
+    list_editable = ('order', 'is_active')
+    search_fields = ('name', 'role_description', 'badge_label')

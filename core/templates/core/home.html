@@ -314,23 +314,49 @@
     </div>
 </section>
 
-<!-- Partner & Community Recognition Bar -->
-<section class="bg-white py-14 border-t border-gray-100">
+<!-- Partner & Community Solidarity Section (Dynamic Option 1) -->
+<section class="bg-gray-50/60 py-16 border-t border-gray-200/80">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p class="text-xs font-extrabold uppercase tracking-widest text-gray-400 mb-6">In Solidarity & Partnership With</p>
-        <div class="flex flex-wrap items-center justify-center gap-10 sm:gap-16">
-            <div class="flex items-center gap-3 text-gray-700 font-bold text-sm">
-                <span class="w-8 h-8 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center text-xs">🌐</span>
-                Open Cultural Center (OCC)
+        <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-2">Global Alliance</p>
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight mb-8">In Solidarity & Partnership With</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            {% for partner in partners %}
+            <a href="{{ partner.website_url }}" target="_blank" rel="noopener noreferrer" class="bg-white rounded-2xl p-6 border border-gray-200/80 hover:border-[#167888] hover:shadow-lg transition-all group flex flex-col justify-between transform hover:-translate-y-0.5">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        {% if partner.logo %}
+                        <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" class="h-10 object-contain">
+                        {% else %}
+                        <div class="w-10 h-10 rounded-xl bg-teal-50 text-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                            {{ partner.icon_or_logo }}
+                        </div>
+                        {% endif %}
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-gray-100 text-gray-700 uppercase tracking-wider group-hover:bg-teal-100 group-hover:text-teal-900 transition-colors">
+                            {{ partner.badge_label }}
+                        </span>
+                    </div>
+
+                    <h3 class="text-base font-bold text-gray-900 group-hover:text-[#167888] transition-colors leading-snug">
+                        {{ partner.name }}
+                    </h3>
+                    <p class="mt-1.5 text-xs text-gray-600 leading-relaxed">
+                        {{ partner.role_description }}
+                    </p>
+                </div>
+
+                <div class="mt-5 pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#167888]">
+                    <span>Visit Partner</span>
+                    <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </div>
+            </a>
+            {% empty %}
+            <div class="p-6 text-center text-sm text-gray-500 w-full col-span-3">
+                No partners found. Add them in the Django admin.
             </div>
-            <div class="flex items-center gap-3 text-gray-700 font-bold text-sm">
-                <span class="w-8 h-8 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-xs">🕊️</span>
-                Afghan Women on the Run (AWOTR)
-            </div>
-            <div class="flex items-center gap-3 text-gray-700 font-bold text-sm">
-                <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-800 flex items-center justify-center text-xs">🤝</span>
-                25+ Global Volunteer Educators
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
