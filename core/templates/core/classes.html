@@ -210,14 +210,19 @@
                          data-status="{{ program.status|default:'open' }}">
                         
                         <div>
-                            <h3 class="text-base sm:text-lg font-bold text-gray-900 leading-snug">
-                                {{ program.title }}
-                            </h3>
+                            <!-- Standardized Title Height for Pixel-Perfect Row Alignment -->
+                            <div class="min-h-[3.25rem] flex items-start">
+                                <h3 class="text-base sm:text-lg font-bold text-gray-900 leading-snug">
+                                    {{ program.title }}
+                                </h3>
+                            </div>
                             
-                            <!-- Level & Registration Status line in vibrant teal -->
-                            <p class="text-xs sm:text-sm font-bold text-[#00c49f] mt-1.5 flex items-center gap-1.5">
-                                {{ program.badge_text|default:'A1 • Open for Registration' }}
-                            </p>
+                            <!-- Standardized Level & Registration Status Height -->
+                            <div class="h-6 flex items-center mt-1">
+                                <p class="text-xs sm:text-sm font-bold text-[#00c49f] flex items-center gap-1.5">
+                                    {{ program.badge_text|default:'A1 • Open for Registration' }}
+                                </p>
+                            </div>
 
                             <!-- Course Metadata List -->
                             <div class="mt-4 space-y-1.5 text-xs text-gray-600">
