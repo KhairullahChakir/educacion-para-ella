@@ -17,45 +17,46 @@
 <body class="min-h-full flex flex-col bg-white text-gray-800 font-sans antialiased">
 
     <!-- Integrated Editorial Top Navigation Bar -->
-    <nav class="bg-[#167888] text-white border-b border-white/10 relative z-30">
+    <!-- Sticky Header Navigation -->
+    <nav class="bg-[#167888] text-white border-b border-white/10 relative z-30 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20 sm:h-24">
+            <div class="flex items-center justify-between h-20 sm:h-22">
 
-                <!-- Left Side: Logo & Brand Name -->
-                <div class="flex items-center gap-3">
+                <!-- Left Side: Logo & Brand Name (Never Wraps) -->
+                <div class="flex items-center gap-3 shrink-0">
                     <a href="{% url 'core:home' %}" class="flex items-center gap-3 group" aria-label="Education for Her Home">
-                        <img src="{% static 'images/logo.jpeg' %}" alt="Education for Her Logo" class="h-12 w-12 sm:h-14 sm:w-14 rounded-full object-cover shadow-md border-2 border-amber-200/70 group-hover:scale-105 transition-transform">
-                        <span class="text-xl sm:text-2xl font-bold text-white tracking-tight">Education for Her</span>
+                        <img src="{% static 'images/logo.jpeg' %}" alt="Education for Her Logo" class="h-11 w-11 sm:h-13 sm:w-13 rounded-full object-cover shadow-md border-2 border-amber-200/80 group-hover:scale-105 transition-transform shrink-0">
+                        <span class="text-lg sm:text-xl font-extrabold text-white tracking-tight whitespace-nowrap">Education for Her</span>
                     </a>
                 </div>
 
-                <!-- Right Side: Navigation Tabs, Language, Search & White Sign In Pill -->
-                <div class="hidden xl:flex items-center gap-6">
-                    <a href="{% url 'core:about' %}" class="text-xs font-bold uppercase tracking-wider text-white/90 hover:text-white transition-colors">
+                <!-- Right Side: Navigation Tabs, Language, & Action Buttons -->
+                <div class="hidden xl:flex items-center gap-5 2xl:gap-6">
+                    <a href="{% url 'core:about' %}" class="text-xs font-extrabold uppercase tracking-wider text-white/90 hover:text-white transition-colors whitespace-nowrap">
                         About
                     </a>
-                    <a href="{% url 'core:classes' %}" class="text-xs font-bold uppercase tracking-wider text-white/90 hover:text-white transition-colors">
+                    <a href="{% url 'core:classes' %}" class="text-xs font-extrabold uppercase tracking-wider text-white/90 hover:text-white transition-colors whitespace-nowrap">
                         Classes
                     </a>
-                    <a href="{% url 'core:mindfulness' %}" class="text-xs font-bold uppercase tracking-wider text-white/90 hover:text-white transition-colors">
+                    <a href="{% url 'core:mindfulness' %}" class="text-xs font-extrabold uppercase tracking-wider text-white/90 hover:text-white transition-colors whitespace-nowrap">
                         Mindfulness
                     </a>
-                    <a href="{% url 'core:volunteers' %}" class="text-xs font-bold uppercase tracking-wider text-white/90 hover:text-white transition-colors">
+                    <a href="{% url 'core:volunteers' %}" class="text-xs font-extrabold uppercase tracking-wider text-white/90 hover:text-white transition-colors whitespace-nowrap">
                         Volunteers
                     </a>
-                    <a href="{% url 'core:mission' %}" class="text-xs font-bold uppercase tracking-wider text-white/90 hover:text-white transition-colors">
+                    <a href="{% url 'core:mission' %}" class="text-xs font-extrabold uppercase tracking-wider text-white/90 hover:text-white transition-colors whitespace-nowrap">
                         Mission
                     </a>
-                    <a href="{% url 'core:get_involved' %}" class="text-xs font-bold uppercase tracking-wider text-white/90 hover:text-white transition-colors">
+                    <a href="{% url 'core:get_involved' %}" class="text-xs font-extrabold uppercase tracking-wider text-white/90 hover:text-white transition-colors whitespace-nowrap">
                         Get Involved
                     </a>
-                    <a href="{% url 'core:contact' %}" class="text-xs font-bold uppercase tracking-wider text-white/90 hover:text-white transition-colors">
+                    <a href="{% url 'core:contact' %}" class="text-xs font-extrabold uppercase tracking-wider text-white/90 hover:text-white transition-colors whitespace-nowrap">
                         Contact
                     </a>
 
                     <!-- Language Selector Dropdown -->
                     <div class="relative" id="language-dropdown-container">
-                        <button id="language-dropdown-btn" type="button" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-white/90 hover:text-white focus:outline-none transition-colors">
+                        <button id="language-dropdown-btn" type="button" class="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-white/90 hover:text-white focus:outline-none transition-colors whitespace-nowrap">
                             <span id="current-lang-text">English</span>
                             <svg class="w-3.5 h-3.5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -78,14 +79,14 @@
                         </div>
                     </div>
 
-                    <!-- Auth Capsule Buttons (Dashboard / Log Out / Sign In) -->
+                    <!-- Auth Action Buttons (Dashboard / Log Out / Sign In) -->
                     {% if user.is_authenticated %}
-                        <div class="flex items-center gap-2">
-                            <a href="{% url 'core:dashboard' %}" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-teal-900 bg-white rounded-full hover:bg-teal-50 shadow-xs hover:shadow transition-all whitespace-nowrap">
-                                <span>📊</span> Dashboard
+                        <div class="flex items-center gap-2 pl-1">
+                            <a href="{% url 'core:dashboard' %}" class="inline-flex items-center px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-teal-900 bg-white rounded-full hover:bg-teal-50 shadow-xs hover:shadow transition-all whitespace-nowrap">
+                                Dashboard
                             </a>
-                            <a href="{% url 'accounts:logout' %}" class="inline-flex items-center gap-1 px-3.5 py-2 text-xs font-extrabold uppercase tracking-wider text-white bg-teal-800/90 hover:bg-teal-900 border border-white/30 rounded-full transition-all whitespace-nowrap shadow-xs">
-                                <span>🚪</span> Log Out
+                            <a href="{% url 'accounts:logout' %}" class="inline-flex items-center px-3.5 py-2 text-xs font-extrabold uppercase tracking-wider text-white/90 hover:text-white bg-white/10 hover:bg-white/20 border border-white/25 rounded-full transition-all whitespace-nowrap">
+                                Log Out
                             </a>
                         </div>
                     {% else %}
