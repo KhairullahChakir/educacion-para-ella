@@ -144,7 +144,7 @@
                     <!-- 6. Distinct Highlighted CTA Button (BECOME A MEMBER / DASHBOARD) -->
                     {% if user.is_authenticated %}
                         <div class="flex items-center gap-3 pl-2 border-l border-gray-200">
-                            <a href="{% url 'core:dashboard' %}" class="inline-flex items-center px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider text-white bg-[#00c49f] hover:bg-[#00a887] rounded-xl shadow-xs hover:shadow-md transition-all whitespace-nowrap">
+                            <a href="{% url 'core:dashboard' %}" class="inline-flex items-center px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] rounded-xl shadow-xs hover:shadow-md transition-all whitespace-nowrap">
                                 Dashboard
                             </a>
                             <a href="{% url 'accounts:logout' %}" class="text-xs font-bold text-gray-500 hover:text-red-600 transition-colors whitespace-nowrap">
@@ -156,7 +156,7 @@
                             <a href="{% url 'accounts:login' %}" class="text-xs font-bold uppercase tracking-wider text-gray-600 hover:text-[#167888] transition-colors whitespace-nowrap">
                                 Sign In
                             </a>
-                            <a href="{% url 'accounts:register' %}" class="inline-flex items-center px-6 py-2.5 text-xs font-extrabold uppercase tracking-wider text-white bg-[#00c49f] hover:bg-[#00a887] rounded-xl shadow-xs hover:shadow-md transition-all whitespace-nowrap">
+                            <a href="{% url 'accounts:register' %}" class="inline-flex items-center px-6 py-2.5 text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] rounded-xl shadow-xs hover:shadow-md transition-all whitespace-nowrap">
                                 Become a Member
                             </a>
                         </div>
@@ -193,11 +193,11 @@
 
                 <div class="border-t border-gray-150 pt-4 mt-3 space-y-2">
                     {% if user.is_authenticated %}
-                        <a href="{% url 'core:dashboard' %}" class="block py-3 px-4 text-center text-xs font-extrabold uppercase tracking-wider text-white bg-[#00c49f] rounded-xl shadow-xs">Dashboard</a>
+                        <a href="{% url 'core:dashboard' %}" class="block py-3 px-4 text-center text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] rounded-xl shadow-xs">Dashboard</a>
                         <a href="{% url 'accounts:logout' %}" class="block py-2.5 px-4 text-center text-xs font-bold text-gray-700 border border-gray-200 rounded-xl hover:bg-gray-50">Log Out</a>
                     {% else %}
                         <a href="{% url 'accounts:login' %}" class="block py-2.5 px-4 text-center text-xs font-bold text-gray-800 border border-gray-200 rounded-xl">Sign In</a>
-                        <a href="{% url 'accounts:register' %}" class="block py-3 px-4 text-center text-xs font-extrabold uppercase tracking-wider text-white bg-[#00c49f] rounded-xl shadow-xs">Become a Member</a>
+                        <a href="{% url 'accounts:register' %}" class="block py-3 px-4 text-center text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] rounded-xl shadow-xs">Become a Member</a>
                     {% endif %}
                 </div>
             </div>
