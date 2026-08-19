@@ -124,8 +124,14 @@
         <div class="flex gap-4 w-max animate-marquee-ltr hover:[animation-play-state:paused] cursor-grab active:cursor-grabbing">
             <!-- First Set -->
             {% for country in volunteer_countries %}
-            <div class="flex items-center gap-3 px-5 py-2.5 rounded-full bg-teal-50/60 border border-teal-100/90 shadow-xs hover:border-[#167888] hover:shadow-md transition-all shrink-0">
-                <span class="text-2xl leading-none">{{ country.flag_emoji }}</span>
+            <div class="flex items-center gap-3 px-5 py-2.5 rounded-full bg-teal-50/70 border border-teal-100/90 shadow-xs hover:border-[#167888] hover:shadow-md transition-all shrink-0">
+                {% if country.flag_image %}
+                <div class="w-7 h-4.5 rounded-[4px] overflow-hidden border border-gray-200 shadow-2xs shrink-0 bg-white">
+                    <img src="{{ country.flag_image.url }}" alt="{{ country.name }} flag" class="w-full h-full object-cover">
+                </div>
+                {% else %}
+                <span class="text-xl leading-none">{{ country.flag_emoji }}</span>
+                {% endif %}
                 <span class="text-xs font-bold text-gray-800">{{ country.name }}</span>
                 {% if country.tag_label %}
                 <span class="text-[10px] text-teal-800 bg-white px-2.5 py-0.5 rounded-full font-semibold border border-teal-200 shadow-xs">
@@ -137,8 +143,14 @@
 
             <!-- Duplicate Set for Seamless Infinite Loop -->
             {% for country in volunteer_countries %}
-            <div class="flex items-center gap-3 px-5 py-2.5 rounded-full bg-teal-50/60 border border-teal-100/90 shadow-xs hover:border-[#167888] hover:shadow-md transition-all shrink-0">
-                <span class="text-2xl leading-none">{{ country.flag_emoji }}</span>
+            <div class="flex items-center gap-3 px-5 py-2.5 rounded-full bg-teal-50/70 border border-teal-100/90 shadow-xs hover:border-[#167888] hover:shadow-md transition-all shrink-0">
+                {% if country.flag_image %}
+                <div class="w-7 h-4.5 rounded-[4px] overflow-hidden border border-gray-200 shadow-2xs shrink-0 bg-white">
+                    <img src="{{ country.flag_image.url }}" alt="{{ country.name }} flag" class="w-full h-full object-cover">
+                </div>
+                {% else %}
+                <span class="text-xl leading-none">{{ country.flag_emoji }}</span>
+                {% endif %}
                 <span class="text-xs font-bold text-gray-800">{{ country.name }}</span>
                 {% if country.tag_label %}
                 <span class="text-[10px] text-teal-800 bg-white px-2.5 py-0.5 rounded-full font-semibold border border-teal-200 shadow-xs">
