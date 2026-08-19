@@ -326,7 +326,7 @@
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         {% if partner.logo %}
-                        <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" class="h-10 object-contain">
+                        <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" class="h-10 max-w-[130px] object-contain">
                         {% else %}
                         <div class="w-10 h-10 rounded-xl bg-teal-50 text-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                             {{ partner.icon_or_logo }}
