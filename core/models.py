@@ -20,3 +20,58 @@ class HeroNews(models.Model):
 
     def __str__(self):
         return f"{self.badge_text}: {self.title}"
+
+
+class ClassProgram(models.Model):
+    """Dynamic class and course programs displayed in the Home page slider and Classes page."""
+    STATUS_OPEN = 'open'
+    STATUS_CLOSED = 'closed'
+    STATUS_NOT_REQUIRED = 'not_required'
+    STATUS_CUSTOM = 'custom'
+
+    REGISTRATION_STATUS_CHOICES = [
+        (STATUS_OPEN, 'Registration Open'),
+        (STATUS_CLOSED, 'Registration Closed / Full'),
+        (STATUS_NOT_REQUIRED, 'No Reg Required (Open Access)'),
+        (STATUS_CUSTOM, 'Custom Status Text'),
+    ]
+
+    title = models.CharField(max_length=150, help_text="Class/Subject name (e.g. Spanish Language, Web Development)")
+    icon_or_flag = models.CharField(max_length=20, default="🇬🇧", help_text="Emoji icon or flag (e.g. 🇬🇧, 🇪🇸, 🇩🇪, 💻, 📸, 🧘‍♀️, 🖥️)")
+    badge_text = models.CharField(max_length=60, default="CEFR A0–A2", help_text="Level/Tag badge (e.g. CEFR A0–C1, JavaScript & Web, Visual Arts)")
+    track_type = models.CharField(max_length=60, default="All Levels", help_text="Track category (e.g. All Levels, Beginner Track, Digital Track, Well-being)")
+    description = models.TextField(help_text="Short overview of what students will learn")
+    schedule_time = models.CharField(max_length=120, default="Mon & Wed · 4:00 PM", help_text="Days & time / schedule info (e.g. Mon & Wed · 4:00 PM, Weekly Saturdays, Flexible Hours)")
+    status = models.CharField(max_length=30, choices=REGISTRATION_STATUS_CHOICES, default=STATUS_OPEN, help_text="Registration availability status")
+    custom_status_text = models.CharField(max_length=50, blank=True, null=True, help_text="Custom status label if 'Custom Status Text' selected above")
+    image = models.ImageField(upload_to='class_images/', blank=True, null=True, help_text="Course cover photo (optional, nice default used if blank)")
+    button_text = models.CharField(max_length=60, default="Explore levels →", help_text="Action link text")
+    button_url = models.CharField(max_length=255, default="/classes/", help_text="Target URL")
+    order = models.PositiveIntegerField(default=0, help_text="Sort order in the slider (0 appears first)")
+    is_active = models.BooleanField(default=True, help_text="Uncheck to hide this class from the slider")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Class Program"
+        verbose_name_plural = "Class Programs"
+
+    def __str__(self):
+        return f"{self.title} ({self.get_status_display()})"
+
+    @property
+    def display_status(self):
+        if self.status == self.STATUS_CUSTOM and self.custom_status_text:
+            return self.custom_status_text
+        return self.get_status_display()
+
+    @property
+    def status_badge_classes(self):
+        if self.status == self.STATUS_OPEN:
+            return "bg-emerald-100 text-emerald-800 border-emerald-200"
+        elif self.status == self.STATUS_CLOSED:
+            return "bg-red-100 text-red-800 border-red-200"
+        elif self.status == self.STATUS_NOT_REQUIRED:
+            return "bg-teal-100 text-teal-800 border-teal-200"
+        else:
+            return "bg-amber-100 text-amber-800 border-amber-200"

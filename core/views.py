@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import HeroNews
+from .models import HeroNews, ClassProgram
 
 
 def home(request):
     """Landing page — public."""
     hero_news_list = HeroNews.objects.filter(is_active=True).order_by('order', '-created_at')
+    class_programs = ClassProgram.objects.filter(is_active=True).order_by('order', '-created_at')
     return render(request, 'core/home.html', {
         'hero_news_list': hero_news_list,
+        'class_programs': class_programs,
     })
 
 
@@ -24,7 +26,10 @@ def about(request):
 
 def classes(request):
     """Our Classes page — English, Spanish, German, Photography, Programming."""
-    return render(request, 'core/classes.html')
+    class_programs = ClassProgram.objects.filter(is_active=True).order_by('order', '-created_at')
+    return render(request, 'core/classes.html', {
+        'class_programs': class_programs,
+    })
 
 
 def mindfulness(request):
