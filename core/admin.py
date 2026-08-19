@@ -16,6 +16,8 @@ from .models import (
     InvolvementTrack,
     VolunteerJourneyStep,
     FAQItem,
+    ContactSetting,
+    ContactMessage,
 )
 
 
@@ -162,3 +164,20 @@ class FAQItemAdmin(admin.ModelAdmin):
     list_filter = ('category', 'is_active', 'created_at')
     list_editable = ('category', 'icon', 'order', 'is_active')
     search_fields = ('question', 'answer')
+
+
+@admin.register(ContactSetting)
+class ContactSettingAdmin(admin.ModelAdmin):
+    list_display = ('email', 'phone', 'whatsapp_number', 'location_label', 'is_active', 'created_at')
+    list_filter = ('is_active', 'created_at')
+    list_editable = ('phone', 'whatsapp_number', 'is_active')
+    search_fields = ('email', 'phone', 'whatsapp_number', 'location_label')
+
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'topic', 'is_resolved', 'created_at')
+    list_filter = ('topic', 'is_resolved', 'created_at')
+    list_editable = ('is_resolved',)
+    search_fields = ('name', 'email', 'message')
+    readonly_fields = ('name', 'email', 'topic', 'message', 'created_at')

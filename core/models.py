@@ -512,3 +512,46 @@ class FAQItem(models.Model):
 
     def __str__(self):
         return self.question
+
+
+class ContactSetting(models.Model):
+    """Dynamic official contact details, WhatsApp, phone, and hours on the Contact page."""
+    email = models.EmailField(default="contact@educacionparaella.org", help_text="Primary contact email")
+    phone = models.CharField(max_length=50, default="+34 632 65 50 88", help_text="Official contact phone / call number")
+    whatsapp_number = models.CharField(max_length=50, default="+34 632 65 50 88", help_text="Official WhatsApp number")
+    whatsapp_url = models.CharField(max_length=255, default="https://wa.me/34632655088?text=Hello%20Educaci%C3%B3n%20para%20Ella%2C%20I%20would%20like%20to%20get%20in%20touch.", help_text="WhatsApp direct chat link")
+    location_label = models.CharField(max_length=150, default="Barcelona, Spain & Kabul, Afghanistan", help_text="Operational hubs")
+    coverage_info = models.CharField(max_length=150, default="Connecting students across AF, IR, PK & IQ", help_text="Reach subtitle")
+    response_time = models.CharField(max_length=150, default="Responses typically sent within 24 to 48 hours", help_text="Typical response speed")
+    support_hours = models.CharField(max_length=150, default="Monday – Saturday · 9:00 AM – 7:00 PM CET", help_text="Operating hours")
+    safety_message = models.TextField(default="For students and families writing from inside Afghanistan: your safety is our utmost priority. All messages are encrypted, held strictly confidential, and never shared publicly.", help_text="Confidentiality guarantee")
+    facebook_url = models.CharField(max_length=255, default="#", blank=True, null=True)
+    telegram_url = models.CharField(max_length=255, default="#", blank=True, null=True)
+    youtube_url = models.CharField(max_length=255, default="#", blank=True, null=True)
+    is_active = models.BooleanField(default=True, help_text="Active toggle")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Contact Page Settings"
+        verbose_name_plural = "Contact Page Settings"
+
+    def __str__(self):
+        return f"Contact Details ({self.email} · {self.phone})"
+
+
+class ContactMessage(models.Model):
+    """Inbound contact form submissions saved directly to database."""
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    topic = models.CharField(max_length=100)
+    message = models.TextField()
+    is_resolved = models.BooleanField(default=False, help_text="Check when answered/handled")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Contact Message"
+        verbose_name_plural = "Contact Messages"
+
+    def __str__(self):
+        return f"{self.name} - {self.topic} ({self.created_at.strftime('%Y-%m-%d %H:%M')})"

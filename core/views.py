@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import (
     HeroNews,
     ClassProgram,
@@ -17,6 +18,8 @@ from .models import (
     InvolvementTrack,
     VolunteerJourneyStep,
     FAQItem,
+    ContactSetting,
+    ContactMessage,
 )
 
 
@@ -103,5 +106,27 @@ def get_involved(request):
 
 
 def contact(request):
-    """Contact page — contact info, social media."""
-    return render(request, 'core/contact.html')
+    """Contact page — contact info, WhatsApp, direct messaging."""
+    contact_info = ContactSetting.objects.filter(is_active=True).first()
+
+    if request.method == 'POST':
+        name = request.POST.get('name', '').strip()
+        email = request.POST.get('email', '').strip()
+        topic = request.POST.get('topic', 'General Inquiry').strip()
+        message = request.POST.get('message', '').strip()
+
+        if name and email and message:
+            ContactMessage.objects.create(
+                name=name,
+                email=email,
+                topic=topic,
+                message=message,
+            )
+            messages.success(request, "Thank you! Your message has been safely received. Our team will get back to you shortly.")
+            return redirect('core:contact')
+        else:
+            messages.error(request, "Please fill in all required fields before submitting.")
+
+    return render(request, 'core/contact.html', {
+        'contact_info': contact_info,
+    })

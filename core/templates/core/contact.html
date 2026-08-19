@@ -18,10 +18,23 @@
 <!-- Contact Form & Info Grid -->
 <section class="bg-white py-20 lg:py-24">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Flash Messages Notification Banner -->
+        {% if messages %}
+        <div class="mb-10 space-y-3">
+            {% for message in messages %}
+            <div class="p-4 rounded-2xl border text-sm font-semibold flex items-center gap-3 {% if message.tags == 'success' %}bg-emerald-50 text-emerald-900 border-emerald-200{% else %}bg-red-50 text-red-900 border-red-200{% endif %}">
+                <span class="text-lg">{% if message.tags == 'success' %}✅{% else %}⚠️{% endif %}</span>
+                <span>{{ message }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             
-            <!-- Left Column: Contact Details & Confidentiality -->
-            <div class="lg:col-span-5 space-y-8">
+            <!-- Left Column: Contact Details, WhatsApp & Confidentiality -->
+            <div class="lg:col-span-5 space-y-6">
                 <div>
                     <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-2">Reach Out</p>
                     <h2 class="text-3xl font-bold text-gray-900 tracking-tight">Let's Connect</h2>
@@ -32,25 +45,54 @@
 
                 <!-- Info Cards -->
                 <div class="space-y-4">
-                    <div class="flex items-start gap-4 p-5 bg-teal-50/50 rounded-2xl border border-teal-100">
-                        <div class="w-10 h-10 rounded-xl bg-[#167888] text-white flex items-center justify-center shrink-0 text-lg">
+                    <!-- WhatsApp Direct Quick Chat (Highlighted Card) -->
+                    <a href="{{ contact_info.whatsapp_url|default:'https://wa.me/34632655088?text=Hello%20Educaci%C3%B3n%20para%20Ella' }}" target="_blank" rel="noopener noreferrer" class="flex items-start gap-4 p-5 bg-emerald-50/70 hover:bg-emerald-50 rounded-2xl border border-emerald-200/90 shadow-xs hover:shadow-md transition-all group block">
+                        <div class="w-11 h-11 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 text-xl shadow-xs group-hover:scale-105 transition-transform">
+                            💬
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <p class="text-xs font-bold uppercase tracking-wider text-emerald-800">WhatsApp Direct Chat</p>
+                                <span class="text-[10px] font-extrabold uppercase tracking-wider bg-emerald-600 text-white px-2 py-0.5 rounded-full">Fast Reply</span>
+                            </div>
+                            <p class="text-base font-bold text-gray-900 mt-1">{{ contact_info.whatsapp_number|default:'+34 632 65 50 88' }}</p>
+                            <p class="text-xs text-emerald-700 mt-0.5 font-medium">Click to chat directly on WhatsApp →</p>
+                        </div>
+                    </a>
+
+                    <!-- Phone Number Card -->
+                    <a href="tel:{{ contact_info.phone|default:'+34632655088' }}" class="flex items-start gap-4 p-5 bg-teal-50/50 hover:bg-teal-50 rounded-2xl border border-teal-100 shadow-xs hover:shadow-md transition-all group block">
+                        <div class="w-11 h-11 rounded-xl bg-[#167888] text-white flex items-center justify-center shrink-0 text-xl shadow-xs group-hover:scale-105 transition-transform">
+                            📞
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold uppercase tracking-wider text-gray-500">Official Phone / Helpline</p>
+                            <p class="text-base font-bold text-gray-900 mt-1">{{ contact_info.phone|default:'+34 632 65 50 88' }}</p>
+                            <p class="text-xs text-gray-500 mt-0.5">{{ contact_info.support_hours|default:'Monday – Saturday · 9:00 AM – 7:00 PM CET' }}</p>
+                        </div>
+                    </a>
+
+                    <!-- Official Email Card -->
+                    <a href="mailto:{{ contact_info.email|default:'contact@educacionparaella.org' }}" class="flex items-start gap-4 p-5 bg-teal-50/50 hover:bg-teal-50 rounded-2xl border border-teal-100 shadow-xs hover:shadow-md transition-all group block">
+                        <div class="w-11 h-11 rounded-xl bg-[#167888] text-white flex items-center justify-center shrink-0 text-xl shadow-xs group-hover:scale-105 transition-transform">
                             📧
                         </div>
                         <div>
                             <p class="text-xs font-bold uppercase tracking-wider text-gray-500">Official Email</p>
-                            <p class="text-sm font-semibold text-gray-900 mt-0.5">contact@educacionparaella.org</p>
-                            <p class="text-xs text-gray-500 mt-0.5">Responses typically sent within 24 to 48 hours</p>
+                            <p class="text-sm font-semibold text-gray-900 mt-1">{{ contact_info.email|default:'contact@educacionparaella.org' }}</p>
+                            <p class="text-xs text-gray-500 mt-0.5">{{ contact_info.response_time|default:'Responses typically sent within 24 to 48 hours' }}</p>
                         </div>
-                    </div>
+                    </a>
 
+                    <!-- Operations Hub Card -->
                     <div class="flex items-start gap-4 p-5 bg-teal-50/50 rounded-2xl border border-teal-100">
-                        <div class="w-10 h-10 rounded-xl bg-[#167888] text-white flex items-center justify-center shrink-0 text-lg">
+                        <div class="w-11 h-11 rounded-xl bg-[#167888] text-white flex items-center justify-center shrink-0 text-xl shadow-xs">
                             🌍
                         </div>
                         <div>
-                            <p class="text-xs font-bold uppercase tracking-wider text-gray-500">Global Operations</p>
-                            <p class="text-sm font-semibold text-gray-900 mt-0.5">Afghanistan & International Diaspora</p>
-                            <p class="text-xs text-gray-500 mt-0.5">Connecting students across AF, IR, PK & IQ</p>
+                            <p class="text-xs font-bold uppercase tracking-wider text-gray-500">Global Operations & Hubs</p>
+                            <p class="text-sm font-semibold text-gray-900 mt-1">{{ contact_info.location_label|default:'Barcelona, Spain & Kabul, Afghanistan' }}</p>
+                            <p class="text-xs text-gray-500 mt-0.5">{{ contact_info.coverage_info|default:'Connecting students across AF, IR, PK & IQ' }}</p>
                         </div>
                     </div>
 
@@ -61,65 +103,50 @@
                             <p class="text-xs font-extrabold text-purple-900 uppercase tracking-wider">Student Safety & Privacy</p>
                         </div>
                         <p class="text-xs text-gray-600 leading-relaxed">
-                            For students and families writing from inside Afghanistan: your safety is our utmost priority. All messages are encrypted, held strictly confidential, and never shared publicly.
+                            {{ contact_info.safety_message|default:"For students and families writing from inside Afghanistan: your safety is our utmost priority. All messages are encrypted, held strictly confidential, and never shared publicly." }}
                         </p>
-                    </div>
-                </div>
-
-                <!-- Social Channels -->
-                <div class="pt-2">
-                    <p class="text-xs font-extrabold uppercase tracking-widest text-gray-900 mb-3">Community Channels</p>
-                    <div class="flex items-center gap-3">
-                        <a href="#" class="w-10 h-10 rounded-full bg-teal-50 hover:bg-[#167888] text-[#167888] hover:text-white flex items-center justify-center transition-all border border-teal-100 shadow-xs" aria-label="Facebook">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-teal-50 hover:bg-[#167888] text-[#167888] hover:text-white flex items-center justify-center transition-all border border-teal-100 shadow-xs" aria-label="Telegram">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.16l-1.97 9.28c-.15.65-.53.81-1.07.51l-3.03-2.23-1.46 1.41c-.16.16-.3.3-.61.3l.22-3.08 5.6-5.06c.24-.22-.05-.34-.37-.13l-6.93 4.36-2.98-.93c-.65-.2-.66-.65.14-.96l11.66-4.49c.54-.2 1.01.12.82.94z"/></svg>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-teal-50 hover:bg-[#167888] text-[#167888] hover:text-white flex items-center justify-center transition-all border border-teal-100 shadow-xs" aria-label="YouTube">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Column: Interactive Multi-Purpose Message Form -->
+            <!-- Right Column: Interactive Direct Message Form -->
             <div class="lg:col-span-7">
                 <div class="p-8 sm:p-10 bg-gray-50/70 rounded-3xl border border-gray-200/80 shadow-xs">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Send Us a Direct Message</h3>
-                    <p class="text-xs text-gray-600 mb-6">Select your inquiry type so our team can connect you with the appropriate coordinator.</p>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Send Us a Direct Message</h3>
+                    <p class="text-xs text-gray-600 mb-6">Select your inquiry topic so our team can connect you with the appropriate coordinator.</p>
 
-                    <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been received. Our team will contact you shortly.'); this.reset();" class="space-y-4">
+                    <form method="POST" action="{% url 'core:contact' %}" class="space-y-4">
+                        {% csrf_token %}
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Your Name *</label>
-                                <input type="text" required placeholder="Jane Doe" class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent">
+                                <input type="text" name="name" required placeholder="Jane Doe" class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Email Address *</label>
-                                <input type="email" required placeholder="you@example.com" class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent">
+                                <input type="email" name="email" required placeholder="you@example.com" class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent">
                             </div>
                         </div>
 
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Topic / Area of Inquiry *</label>
-                            <select required class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent">
-                                <option value="general">General Question</option>
-                                <option value="student-enroll">Student Enrollment / Course Placement Question</option>
-                                <option value="volunteer-teach">Volunteer Teacher Application (English, Spanish, German)</option>
-                                <option value="volunteer-tech">Tech & Coding Mentor Application (JavaScript, Web Dev)</option>
-                                <option value="volunteer-mindfulness">Mindfulness & Well-being Facilitator</option>
-                                <option value="translation">Curriculum & Translation Volunteer (Dari / Pashto)</option>
-                                <option value="partner">Organizational & NGO Partnership Inquiry</option>
+                            <select name="topic" required class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent">
+                                <option value="General Question">General Question</option>
+                                <option value="Student Enrollment">Student Enrollment / Course Placement Question</option>
+                                <option value="Volunteer Teacher">Volunteer Teacher Application (English, Spanish, German)</option>
+                                <option value="Volunteer Tech Mentor">Tech & Coding Mentor Application (JavaScript, Web Dev)</option>
+                                <option value="Volunteer Mindfulness">Mindfulness & Well-being Facilitator</option>
+                                <option value="Curriculum & Translation">Curriculum & Translation Volunteer (Dari / Pashto)</option>
+                                <option value="NGO & Institutional Partnership">Organizational & NGO Partnership Inquiry</option>
                             </select>
                         </div>
 
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">Your Message *</label>
-                            <textarea rows="5" required placeholder="Describe your question, your teaching background, or how you would like to collaborate with us..." class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent"></textarea>
+                            <textarea name="message" rows="5" required placeholder="Describe your question, your teaching background, or how you would like to collaborate with us..." class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent"></textarea>
                         </div>
 
-                        <button type="submit" class="w-full py-3.5 px-6 text-xs font-extrabold uppercase tracking-wider text-white bg-[#167888] hover:bg-teal-800 rounded-xl shadow-md hover:shadow-lg transition-all">
+                        <button type="submit" class="w-full py-4 px-6 text-xs font-extrabold uppercase tracking-wider text-white bg-[#167888] hover:bg-teal-800 rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer">
                             Submit Message
                         </button>
                     </form>
