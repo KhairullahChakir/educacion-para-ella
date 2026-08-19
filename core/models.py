@@ -265,3 +265,57 @@ class VolunteerStat(models.Model):
             return 'text-purple-600'
         else:
             return 'text-[#167888]'
+
+
+class VolunteerRole(models.Model):
+    """Volunteer profile tracks and impact roles displayed on the Volunteers page."""
+    COLOR_CHOICES = [
+        ('teal', 'Teal / Teaching'),
+        ('blue', 'Blue / Tech'),
+        ('purple', 'Purple / Well-being'),
+        ('amber', 'Amber / Content & Translation'),
+    ]
+
+    title = models.CharField(max_length=150, help_text="Role / Track Title (e.g. Language Educators, Software Developers & Tech Mentors)")
+    team_badge = models.CharField(max_length=60, default="Teaching Team", help_text="Team category (e.g. Teaching Team, Tech Team, Well-being Team, Content Team)")
+    icon = models.CharField(max_length=20, default="👩‍🏫", help_text="Emoji icon (e.g. 👩‍🏫, 💻, 🧘‍♀️, 📖)")
+    image = models.ImageField(upload_to='volunteer_role_images/', blank=True, null=True, help_text="Header artwork/illustration for the role card")
+    description = models.TextField(help_text="Role overview and contribution summary")
+    bullet_1 = models.CharField(max_length=200, help_text="First responsibility/impact point")
+    bullet_2 = models.CharField(max_length=200, help_text="Second responsibility/impact point")
+    button_text = models.CharField(max_length=60, default="Join this Team →", help_text="Button text")
+    button_url = models.CharField(max_length=255, default="/get-involved/", help_text="Target URL")
+    color_theme = models.CharField(max_length=30, choices=COLOR_CHOICES, default='teal')
+    order = models.PositiveIntegerField(default=0, help_text="Sort order")
+    is_active = models.BooleanField(default=True, help_text="Active toggle")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Volunteer Role Track"
+        verbose_name_plural = "Volunteer Role Tracks"
+
+    def __str__(self):
+        return f"{self.title} ({self.team_badge})"
+
+    @property
+    def badge_class(self):
+        if self.color_theme == 'blue':
+            return "bg-blue-50 text-blue-800 border-blue-200"
+        elif self.color_theme == 'purple':
+            return "bg-purple-50 text-purple-800 border-purple-200"
+        elif self.color_theme == 'amber':
+            return "bg-amber-50 text-amber-800 border-amber-200"
+        else:
+            return "bg-teal-50 text-teal-800 border-teal-200"
+
+    @property
+    def bullet_color_class(self):
+        if self.color_theme == 'blue':
+            return "bg-blue-600"
+        elif self.color_theme == 'purple':
+            return "bg-purple-600"
+        elif self.color_theme == 'amber':
+            return "bg-amber-600"
+        else:
+            return "bg-[#167888]"

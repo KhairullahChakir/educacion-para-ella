@@ -40,7 +40,7 @@
     </div>
 </section>
 
-<!-- Volunteer Impact Role Profiles -->
+<!-- Volunteer Impact Role Profiles (Dynamic VolunteerRole Backend Data) -->
 <section class="bg-gray-50/60 py-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-16">
@@ -52,93 +52,59 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- 1. Language Educators -->
-            <div class="p-8 bg-white rounded-3xl border border-gray-200/80 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-teal-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                        👩‍🏫
+            {% for role in volunteer_roles %}
+            <div class="bg-white rounded-3xl border border-gray-200/80 shadow-xs hover:border-[#167888] hover:shadow-xl transition-all flex flex-col justify-between group overflow-hidden">
+                <!-- Top Artwork Banner -->
+                {% if role.image %}
+                <div class="relative w-full h-44 overflow-hidden bg-gray-50 border-b border-gray-100">
+                    <img src="{{ role.image.url }}" alt="{{ role.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute top-3 left-3 w-9 h-9 rounded-xl bg-white/90 backdrop-blur-xs text-lg flex items-center justify-center shadow-xs">
+                        {{ role.icon }}
                     </div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#167888] bg-teal-50 px-2.5 py-1 rounded-full">Teaching Team</span>
-                    <h3 class="text-xl font-bold text-gray-900 mt-2">Language Educators (English, Spanish, German)</h3>
-                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">
-                        Passionate language teachers who lead weekly conversational and grammatical sessions, guiding students step-by-step through CEFR levels A0 to C1.
-                    </p>
-                    <ul class="mt-4 space-y-2 text-xs text-gray-600">
-                        <li class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-[#167888]"></span> Small group lessons (4-8 students per class)
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-[#167888]"></span> Tailored homework review & speaking encouragement
-                        </li>
-                    </ul>
                 </div>
-            </div>
+                {% endif %}
 
-            <!-- 2. Tech & Coding Mentors -->
-            <div class="p-8 bg-white rounded-3xl border border-gray-200/80 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                        💻
-                    </div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full">Tech Team</span>
-                    <h3 class="text-xl font-bold text-gray-900 mt-2">Software Developers & Tech Mentors</h3>
-                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">
-                        Engineers and digital creators teaching JavaScript, responsive HTML/CSS, computational thinking, and remote digital skills to foster financial independence.
-                    </p>
-                    <ul class="mt-4 space-y-2 text-xs text-gray-600">
-                        <li class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Live code-alongs and practical project building
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> 1-on-1 code reviews and freelancing guidance
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                <div class="p-8 flex-1 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full border {{ role.badge_class }} inline-block">
+                            {{ role.team_badge }}
+                        </span>
+                        <h3 class="text-xl font-bold text-gray-900 mt-2.5 leading-snug">
+                            {{ role.title }}
+                        </h3>
+                        <p class="text-xs text-gray-600 mt-2.5 leading-relaxed">
+                            {{ role.description }}
+                        </p>
 
-            <!-- 3. Well-Being & Mindfulness Facilitators -->
-            <div class="p-8 bg-white rounded-3xl border border-gray-200/80 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-purple-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                        🧘‍♀️
+                        <ul class="mt-4 space-y-2 text-xs text-gray-600">
+                            {% if role.bullet_1 %}
+                            <li class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full {{ role.bullet_color_class }} shrink-0"></span>
+                                <span>{{ role.bullet_1 }}</span>
+                            </li>
+                            {% endif %}
+                            {% if role.bullet_2 %}
+                            <li class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full {{ role.bullet_color_class }} shrink-0"></span>
+                                <span>{{ role.bullet_2 }}</span>
+                            </li>
+                            {% endif %}
+                        </ul>
                     </div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full">Well-being Team</span>
-                    <h3 class="text-xl font-bold text-gray-900 mt-2">Mindfulness & Mental Health Facilitators</h3>
-                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">
-                        Psychologists, counselors, and trained facilitators providing grounding circles, emotional decompression, and trauma-informed wellness spaces.
-                    </p>
-                    <ul class="mt-4 space-y-2 text-xs text-gray-600">
-                        <li class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Weekly guided mindfulness & somatic grounding
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Safe peer validation and coping strategies
-                        </li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- 4. Curriculum, Translation & Content Team -->
-            <div class="p-8 bg-white rounded-3xl border border-gray-200/80 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-amber-50 text-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                        📖
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#167888]">
+                        <a href="{{ role.button_url }}" class="group-hover:underline inline-flex items-center gap-1">
+                            {{ role.button_text }}
+                        </a>
+                        <span class="text-gray-300 group-hover:translate-x-1 transition-transform">&rarr;</span>
                     </div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full">Content Team</span>
-                    <h3 class="text-xl font-bold text-gray-900 mt-2">Curriculum Developers & Translators</h3>
-                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">
-                        Volunteers translating lesson guides into Dari and Pashto, formatting low-bandwidth downloadable PDFs, and curating open-source learning packages.
-                    </p>
-                    <ul class="mt-4 space-y-2 text-xs text-gray-600">
-                        <li class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span> Dari & Pashto curriculum translation
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span> Low-bandwidth study material preparation
-                        </li>
-                    </ul>
                 </div>
             </div>
+            {% empty %}
+            <div class="col-span-2 text-center py-10 text-sm text-gray-400">
+                No volunteer role profiles found. Add them in the Django admin.
+            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

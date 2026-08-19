@@ -10,6 +10,7 @@ from .models import (
     MindfulnessIntro,
     CountryReach,
     VolunteerStat,
+    VolunteerRole,
 )
 
 
@@ -103,3 +104,11 @@ class VolunteerStatAdmin(admin.ModelAdmin):
     list_filter = ('color_accent', 'is_active', 'created_at')
     list_editable = ('number_value', 'subtitle', 'color_accent', 'order', 'is_active')
     search_fields = ('number_value', 'label', 'subtitle')
+
+
+@admin.register(VolunteerRole)
+class VolunteerRoleAdmin(admin.ModelAdmin):
+    list_display = ('title', 'team_badge', 'color_theme', 'order', 'is_active', 'created_at')
+    list_filter = ('team_badge', 'color_theme', 'is_active', 'created_at')
+    list_editable = ('order', 'is_active')
+    search_fields = ('title', 'team_badge', 'description', 'bullet_1', 'bullet_2')
