@@ -15,3 +15,38 @@ def home(request):
 def dashboard(request):
     """Student dashboard — requires authentication."""
     return render(request, 'core/dashboard.html')
+
+
+def about(request):
+    """About Us page — project history, founders, volunteer community."""
+    return render(request, 'core/about.html')
+
+
+def classes(request):
+    """Our Classes page — English, Spanish, German, Photography, Programming."""
+    return render(request, 'core/classes.html')
+
+
+def mindfulness(request):
+    """Mindfulness & Well-being page."""
+    return render(request, 'core/mindfulness.html')
+
+
+def volunteers(request):
+    """Our Volunteers page."""
+    return render(request, 'core/volunteers.html')
+
+
+def mission(request):
+    """Our Mission page — values, vision, empowerment."""
+    return render(request, 'core/mission.html')
+
+
+def get_involved(request):
+    """Get Involved page — volunteer, teach, support, partner."""
+    return render(request, 'core/get_involved.html')
+
+
+def contact(request):
+    """Contact page — contact info, social media."""
+    return render(request, 'core/contact.html')

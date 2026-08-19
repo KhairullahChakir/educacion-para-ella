@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us — Education for Her{% endblock %}
+
+{% block content %}
+<!-- Hero Banner -->
+<section class="bg-gradient-to-br from-[#167888] via-[#1a8596] to-[#d8b49c] text-white py-20 lg:py-28">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-xs font-extrabold uppercase tracking-widest text-teal-200 mb-4">Our Story</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">About Educación para Ella</h1>
+        <p class="mt-6 text-lg text-teal-50/90 max-w-2xl mx-auto leading-relaxed">
+            A volunteer-led online education and well-being initiative created to support Afghan girls and women who have been deprived of access to education.
+        </p>
+    </div>
+</section>
+
+<!-- Why We Exist -->
+<section class="bg-white py-16 lg:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-3">Why We Exist</p>
+                <h2 class="text-3xl font-bold text-gray-900 tracking-tight">Every Girl Deserves the Opportunity to Learn</h2>
+                <p class="mt-5 text-gray-600 leading-relaxed">
+                    Since the Taliban's return to power in Afghanistan, girls and women have faced severe restrictions on education and participation in public life. For many Afghan girls, continuing their education through traditional institutions is no longer possible.
+                </p>
+                <p class="mt-4 text-gray-600 leading-relaxed">
+                    Educación para Ella was created as a response to this situation. We cannot remove every barrier that Afghan girls face, but we can help ensure that their desire to learn does not disappear.
+                </p>
+                <p class="mt-4 text-gray-600 leading-relaxed">
+                    An online classroom can become more than a place for lessons. It can become a connection to the outside world, a community, a source of confidence, and a reminder that students' ambitions and abilities still matter.
+                </p>
+            </div>
+            <div class="flex justify-center">
+                <div class="rounded-3xl overflow-hidden shadow-xl border border-gray-100 max-w-md">
+                    <img src="{% static 'images/hero_community.png' %}" alt="Afghan students learning together" class="w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- History Timeline -->
+<section class="bg-gray-50 py-16 lg:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+            <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-3">Our Journey</p>
+            <h2 class="text-3xl font-bold text-gray-900 tracking-tight">How It All Started</h2>
+        </div>
+
+        <div class="space-y-10">
+            <!-- Timeline Item 1 -->
+            <div class="flex gap-5">
+                <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full bg-[#167888] text-white flex items-center justify-center font-bold text-sm shrink-0">1</div>
+                    <div class="w-0.5 h-full bg-teal-200 mt-2"></div>
+                </div>
+                <div class="pb-4">
+                    <p class="text-xs font-bold text-[#167888] uppercase tracking-wider">September 2025</p>
+                    <h3 class="text-lg font-bold text-gray-900 mt-1">The Project Begins</h3>
+                    <p class="text-sm text-gray-600 mt-2 leading-relaxed">
+                        Started in response to severe restrictions on education for Afghan girls. The project was created to provide a safe and accessible way to continue learning, develop new skills, and stay connected to an educational community.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="flex gap-5">
+                <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full bg-[#167888] text-white flex items-center justify-center font-bold text-sm shrink-0">2</div>
+                    <div class="w-0.5 h-full bg-teal-200 mt-2"></div>
+                </div>
+                <div class="pb-4">
+                    <p class="text-xs font-bold text-[#167888] uppercase tracking-wider">Growing Community</p>
+                    <h3 class="text-lg font-bold text-gray-900 mt-1">25+ Volunteers Join</h3>
+                    <p class="text-sm text-gray-600 mt-2 leading-relaxed">
+                        More than 25 volunteers from around the world now contribute their time, knowledge, and skills. Teachers, educators, professionals, and people who believe strongly in the right to education.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="flex gap-5">
+                <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full bg-[#167888] text-white flex items-center justify-center font-bold text-sm shrink-0">3</div>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-[#167888] uppercase tracking-wider">Today & Beyond</p>
+                    <h3 class="text-lg font-bold text-gray-900 mt-1">Expanding Our Reach</h3>
+                    <p class="text-sm text-gray-600 mt-2 leading-relaxed">
+                        Combining language education, digital and creative skills, programming, and psychological well-being — creating a supportive learning community reaching students in Afghanistan, Iran, Pakistan, and Iraq.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Founders & Collaborators -->
+<section class="bg-white py-16 lg:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+            <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-3">Leadership</p>
+            <h2 class="text-3xl font-bold text-gray-900 tracking-tight">Founding & Collaboration</h2>
+            <p class="mt-3 text-base text-gray-600 max-w-xl mx-auto">
+                The project has grown through collaboration, volunteerism, and the shared commitment of people who want to support Afghan girls and women through education.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <!-- Founder 1 -->
+            <div class="p-8 bg-teal-50/50 rounded-2xl border border-teal-100 text-center">
+                <div class="w-16 h-16 mx-auto bg-[#167888] rounded-full flex items-center justify-center mb-4 text-2xl">
+                    👩‍💼
+                </div>
+                <h3 class="text-lg font-bold text-gray-900">Najiah Mohammadi</h3>
+                <p class="text-sm text-[#167888] font-semibold mt-1">Founder & Initiator</p>
+                <p class="mt-3 text-xs text-gray-600 leading-relaxed">
+                    Initiated Educación para Ella to ensure Afghan girls can continue learning despite the barriers they face.
+                </p>
+            </div>
+
+            <!-- Collaborator 2 -->
+            <div class="p-8 bg-teal-50/50 rounded-2xl border border-teal-100 text-center">
+                <div class="w-16 h-16 mx-auto bg-[#167888] rounded-full flex items-center justify-center mb-4 text-2xl">
+                    🤝
+                </div>
+                <h3 class="text-lg font-bold text-gray-900">Chloe</h3>
+                <p class="text-sm text-[#167888] font-semibold mt-1">Open Cultural Center</p>
+                <p class="mt-3 text-xs text-gray-600 leading-relaxed">
+                    A colleague and collaborator from Open Cultural Center who has supported the project since its inception.
+                </p>
+            </div>
+
+            <!-- Collaborator 3 -->
+            <div class="p-8 bg-teal-50/50 rounded-2xl border border-teal-100 text-center">
+                <div class="w-16 h-16 mx-auto bg-[#167888] rounded-full flex items-center justify-center mb-4 text-2xl">
+                    💪
+                </div>
+                <h3 class="text-lg font-bold text-gray-900">Carol</h3>
+                <p class="text-sm text-[#167888] font-semibold mt-1">Afghan Women on the Run</p>
+                <p class="mt-3 text-xs text-gray-600 leading-relaxed">
+                    A partner and supporter from Afghan Women on the Run, helping to build bridges for Afghan women's education.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="bg-[#167888] py-14">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Want to be part of this story?</h2>
+        <p class="mt-3 text-teal-100 text-base">Join our growing community of volunteers and educators from around the world.</p>
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="{% url 'core:get_involved' %}" class="px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider text-teal-900 bg-white rounded-full hover:bg-teal-50 shadow-lg transition-all">
+                Get Involved
+            </a>
+            <a href="{% url 'core:contact' %}" class="px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white border-2 border-white/40 rounded-full hover:bg-white/10 transition-all">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
