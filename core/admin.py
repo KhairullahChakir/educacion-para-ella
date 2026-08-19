@@ -15,6 +15,7 @@ from .models import (
     VisionPillar,
     InvolvementTrack,
     VolunteerJourneyStep,
+    FAQItem,
 )
 
 
@@ -152,3 +153,12 @@ class VolunteerJourneyStepAdmin(admin.ModelAdmin):
     list_filter = ('is_active', 'created_at')
     list_editable = ('step_number', 'icon_emoji', 'order', 'is_active')
     search_fields = ('title', 'description')
+
+
+@admin.register(FAQItem)
+class FAQItemAdmin(admin.ModelAdmin):
+    list_display = ('question', 'category', 'icon', 'order', 'is_active', 'created_at')
+    list_display_links = ('question',)
+    list_filter = ('category', 'is_active', 'created_at')
+    list_editable = ('category', 'icon', 'order', 'is_active')
+    search_fields = ('question', 'answer')

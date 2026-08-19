@@ -486,3 +486,29 @@ class VolunteerJourneyStep(models.Model):
 
     def __str__(self):
         return f"Step {self.step_number}: {self.title}"
+
+
+class FAQItem(models.Model):
+    """Frequently asked questions on Get Involved and information pages."""
+    CATEGORY_CHOICES = [
+        ('volunteer', 'Volunteer & Teaching'),
+        ('students', 'Students & Classes'),
+        ('safety', 'Safety & Privacy'),
+        ('general', 'General Questions'),
+    ]
+
+    question = models.CharField(max_length=255, help_text="The question title")
+    answer = models.TextField(help_text="The detailed answer text")
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='volunteer')
+    icon = models.CharField(max_length=20, default="💡", blank=True, null=True, help_text="Emoji icon badge")
+    order = models.PositiveIntegerField(default=0, help_text="Sort order (0 appears first)")
+    is_active = models.BooleanField(default=True, help_text="Uncheck to hide this FAQ")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "FAQ Item"
+        verbose_name_plural = "FAQ Items"
+
+    def __str__(self):
+        return self.question
