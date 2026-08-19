@@ -172,44 +172,32 @@
             {% for program in class_programs %}
             <div class="min-w-[300px] sm:min-w-[340px] max-w-[340px] bg-white rounded-3xl p-6 sm:p-7 border border-gray-200/80 hover:border-[#167888] hover:shadow-xl transition-all flex flex-col justify-between group snap-start shrink-0 transform hover:-translate-y-1">
                 <div>
-                    <!-- Top Card Header: Category Badge + Status Badge Overlay -->
-                    {% if program.image %}
-                    <div class="relative w-full h-40 rounded-2xl overflow-hidden mb-5 border border-gray-100 bg-gray-50">
-                        <img src="{{ program.image.url }}" alt="{{ program.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        <div class="absolute top-3 left-3">
-                            <span class="px-2.5 py-1 text-[10px] font-black uppercase tracking-wider rounded-lg border shadow-xs backdrop-blur-xs {{ program.category_icon_info.bg }}">
-                                {{ program.category_icon_info.icon }} {{ program.category_icon_info.label }}
-                            </span>
-                        </div>
-                        <div class="absolute top-3 right-3">
-                            <span class="px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider rounded-full border shadow-xs backdrop-blur-xs {{ program.status_badge_classes }}">
-                                ● {{ program.display_status }}
-                            </span>
-                        </div>
-                    </div>
-                    {% else %}
+                    <!-- Top Card Header: Category Badge + Single Status Badge -->
                     <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-[11px] font-black tracking-wider shadow-2xs {{ program.category_icon_info.bg }}">
-                            <span class="text-sm leading-none">{{ program.category_icon_info.icon }}</span>
-                            <span>{{ program.category_icon_info.label }}</span>
-                        </div>
+                        <span class="px-3 py-1 rounded-xl border text-xs font-extrabold uppercase tracking-wider shadow-2xs {{ program.category_icon_info.bg }}">
+                            {{ program.category_icon_info.label }}
+                        </span>
                         <span class="px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider rounded-full border shadow-2xs {{ program.status_badge_classes }}">
                             ● {{ program.display_status }}
                         </span>
                     </div>
-                    {% endif %}
 
-                    <!-- Level Badge -->
-                    <div class="mt-3 mb-1.5">
+                    <!-- Title -->
+                    <h3 class="text-lg font-bold text-gray-900 leading-snug group-hover:text-[#167888] transition-colors mt-2">
+                        {{ program.title }}
+                    </h3>
+
+                    <!-- Level & Format Badges (Clean & Informative) -->
+                    <div class="flex items-center gap-2 mt-2 mb-2">
                         <span class="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold bg-teal-50 text-[#167888] border border-teal-200/60 uppercase tracking-wider">
-                            {{ program.badge_text|default:program.track_type }}
+                            {{ program.get_level_category_display }}
+                        </span>
+                        <span class="text-[11px] text-gray-400 font-medium">
+                            {{ program.get_format_category_display }}
                         </span>
                     </div>
 
-                    <!-- Title & Summary -->
-                    <h3 class="text-lg font-bold text-gray-900 leading-snug group-hover:text-[#167888] transition-colors mt-1">
-                        {{ program.title }}
-                    </h3>
+                    <!-- Summary -->
                     <p class="mt-2 text-xs text-gray-600 leading-relaxed line-clamp-2">
                         {{ program.description|default:"Structured, safe learning with qualified volunteer educators and weekly live sessions." }}
                     </p>
