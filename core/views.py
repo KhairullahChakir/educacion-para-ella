@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import (
     HeroNews,
+    ClassesPageSetting,
     ClassProgram,
     HowItWorksStep,
     Partner,
@@ -59,9 +60,11 @@ def about(request):
 
 
 def classes(request):
-    """Our Classes page — English, Spanish, German, Photography, Programming."""
+    """Our Classes page — Language Lab, Skills, and Interactive Class Schedules."""
+    classes_setting = ClassesPageSetting.objects.filter(is_active=True).first()
     class_programs = ClassProgram.objects.filter(is_active=True).order_by('order', '-created_at')
     return render(request, 'core/classes.html', {
+        'classes_setting': classes_setting,
         'class_programs': class_programs,
     })
 

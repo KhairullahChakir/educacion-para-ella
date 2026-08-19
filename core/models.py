@@ -22,6 +22,30 @@ class HeroNews(models.Model):
         return f"{self.badge_text}: {self.title}"
 
 
+class ClassesPageSetting(models.Model):
+    """Dynamic header, hero headline, and term announcement for the Classes page."""
+    hero_badge = models.CharField(max_length=80, default="EDUCATION FOR HER LANGUAGE & SKILLS LAB", help_text="Top pill badge")
+    hero_headline = models.CharField(max_length=200, default="Educación para Ella Language & Skills Sanctuary", help_text="Main hero headline")
+    hero_subtitle = models.TextField(default="Free, safe, and inclusive virtual and offline classes connecting Afghan girls, refugees, and students with dedicated international educators.", help_text="Subtitle text under hero headline")
+    hero_image = models.ImageField(upload_to='classes_hero/', blank=True, null=True, help_text="Hero banner image")
+    
+    # Term Announcement Banner
+    announcement_prefix = models.CharField(max_length=150, default="All of our classes for the upcoming term are currently", help_text="Text before status")
+    announcement_status_highlight = models.CharField(max_length=60, default="open for registration", help_text="Highlighted status text (e.g. open for registration, closed)")
+    announcement_status_color = models.CharField(max_length=30, default="emerald", choices=[('emerald', 'Green (Open)'), ('red', 'Red (Closed)'), ('amber', 'Amber (Upcoming)')], help_text="Highlight color")
+    announcement_suffix = models.CharField(max_length=200, default="Registration for the autumn term is open. All courses are 100% free & camera-optional.", help_text="Text after status")
+    
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Classes Page Setting"
+        verbose_name_plural = "Classes Page Settings"
+
+    def __str__(self):
+        return self.hero_headline
+
+
 class ClassProgram(models.Model):
     """Dynamic class and course programs displayed in the Home page slider and Classes page."""
     STATUS_OPEN = 'open'
@@ -36,19 +60,61 @@ class ClassProgram(models.Model):
         (STATUS_CUSTOM, 'Custom Status Text'),
     ]
 
-    title = models.CharField(max_length=150, help_text="Class/Subject name (e.g. Spanish Language, Web Development)")
-    icon_or_flag = models.CharField(max_length=20, default="🇬🇧", help_text="Emoji icon or flag (e.g. 🇬🇧, 🇪🇸, 🇩🇪, 💻, 📸, 🧘‍♀️, 🖥️)")
-    badge_text = models.CharField(max_length=60, default="CEFR A0–A2", help_text="Level/Tag badge (e.g. CEFR A0–C1, JavaScript & Web, Visual Arts)")
-    track_type = models.CharField(max_length=60, default="All Levels", help_text="Track category (e.g. All Levels, Beginner Track, Digital Track, Well-being)")
-    description = models.TextField(help_text="Short overview of what students will learn")
-    schedule_time = models.CharField(max_length=120, default="Mon & Wed · 4:00 PM", help_text="Days & time / schedule info (e.g. Mon & Wed · 4:00 PM, Weekly Saturdays, Flexible Hours)")
+    SUBJECT_CHOICES = [
+        ('all', 'All Subjects'),
+        ('english', 'English'),
+        ('spanish', 'Spanish'),
+        ('german', 'German'),
+        ('catalan', 'Catalan'),
+        ('coding', 'Coding & Technology'),
+        ('photography', 'Photography & Visual Arts'),
+        ('mindfulness', 'Mindfulness & Well-Being'),
+        ('general', 'General Education'),
+    ]
+
+    LEVEL_CHOICES = [
+        ('all', 'All Levels'),
+        ('a1', 'A1 (Beginner)'),
+        ('a2', 'A2 (Elementary)'),
+        ('b1', 'B1 (Intermediate)'),
+        ('b2', 'B2 (Upper-Intermediate)'),
+        ('c1', 'C1 (Advanced)'),
+        ('foundations', 'Foundations'),
+        ('conversation', 'Conversation Group'),
+    ]
+
+    FORMAT_CHOICES = [
+        ('all', 'All Formats'),
+        ('online', 'Online Virtual Class'),
+        ('women_only', 'Women-Only Safe Circle'),
+        ('evenings', 'Evenings'),
+        ('mornings', 'Mornings'),
+        ('intensive', 'Intensive'),
+        ('offline', 'Offline Study Bundle'),
+    ]
+
+    title = models.CharField(max_length=150, help_text="Class name (e.g. English (Conversation Group), Spanish A1 (Women-only))")
+    icon_or_flag = models.CharField(max_length=20, default="🇬🇧", help_text="Emoji icon or flag (e.g. 🇬🇧, 🇪🇸, 🇩🇪, 💻, 📸, 🧘‍♀️)")
+    badge_text = models.CharField(max_length=60, default="A1 • Registration Open", help_text="Level/Tag badge (e.g. A1 • Registration Open, CEFR A0–C1)")
+    track_type = models.CharField(max_length=60, default="All Levels", help_text="Track category")
+    
+    subject_category = models.CharField(max_length=40, choices=SUBJECT_CHOICES, default='english', help_text="Filter category for Language/Subject")
+    level_category = models.CharField(max_length=40, choices=LEVEL_CHOICES, default='a1', help_text="Filter category for Level (A1, A2, B1, etc.)")
+    format_category = models.CharField(max_length=40, choices=FORMAT_CHOICES, default='online', help_text="Filter category for Format/Audience")
+    
+    start_date_text = models.CharField(max_length=100, default="September 2026", help_text="Start date string (e.g. September 2026 or July 6, 2026)")
+    timetable_text = models.CharField(max_length=150, default="Tuesdays & Thursdays, 17:30 – 19:00", help_text="Timetable/Schedule (e.g. Tuesdays / Thursdays, 18:00–20:00)")
+    location_text = models.CharField(max_length=100, default="Online Virtual Classroom", help_text="Format/Location (e.g. Online Virtual Classroom, Camera-Optional)")
+    
+    description = models.TextField(blank=True, default="", help_text="Short overview of what students will learn")
+    schedule_time = models.CharField(max_length=120, default="Mon & Wed · 4:00 PM", help_text="Brief schedule for home slider")
     status = models.CharField(max_length=30, choices=REGISTRATION_STATUS_CHOICES, default=STATUS_OPEN, help_text="Registration availability status")
-    custom_status_text = models.CharField(max_length=50, blank=True, null=True, help_text="Custom status label if 'Custom Status Text' selected above")
-    image = models.ImageField(upload_to='class_images/', blank=True, null=True, help_text="Course cover photo (optional, nice default used if blank)")
-    button_text = models.CharField(max_length=60, default="Explore levels →", help_text="Action link text")
-    button_url = models.CharField(max_length=255, default="/classes/", help_text="Target URL")
-    order = models.PositiveIntegerField(default=0, help_text="Sort order in the slider (0 appears first)")
-    is_active = models.BooleanField(default=True, help_text="Uncheck to hide this class from the slider")
+    custom_status_text = models.CharField(max_length=50, blank=True, null=True, help_text="Custom status label")
+    image = models.ImageField(upload_to='class_images/', blank=True, null=True, help_text="Course cover photo")
+    button_text = models.CharField(max_length=60, default="Get started", help_text="Action link text")
+    button_url = models.CharField(max_length=255, default="/register/", help_text="Target URL")
+    order = models.PositiveIntegerField(default=0, help_text="Sort order (0 appears first)")
+    is_active = models.BooleanField(default=True, help_text="Uncheck to hide this class")
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

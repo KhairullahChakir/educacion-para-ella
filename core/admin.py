@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import (
     HeroNews,
+    ClassesPageSetting,
     ClassProgram,
     HowItWorksStep,
     Partner,
@@ -33,18 +34,28 @@ class HeroNewsAdmin(admin.ModelAdmin):
     search_fields = ('title', 'subtitle', 'badge_text')
 
 
+@admin.register(ClassesPageSetting)
+class ClassesPageSettingAdmin(admin.ModelAdmin):
+    list_display = ('hero_headline', 'hero_badge', 'announcement_status_highlight', 'is_active', 'created_at')
+    list_editable = ('is_active',)
+    search_fields = ('hero_headline', 'hero_subtitle', 'announcement_prefix', 'announcement_suffix')
+
+
 @admin.register(ClassProgram)
 class ClassProgramAdmin(admin.ModelAdmin):
-    list_display = ('title', 'badge_text', 'schedule_time', 'status', 'order', 'is_active', 'created_at')
-    list_filter = ('status', 'is_active', 'created_at')
-    list_editable = ('status', 'order', 'is_active')
-    search_fields = ('title', 'description', 'badge_text', 'schedule_time')
+    list_display = ('title', 'subject_category', 'level_category', 'format_category', 'badge_text', 'start_date_text', 'status', 'order', 'is_active')
+    list_filter = ('subject_category', 'level_category', 'format_category', 'status', 'is_active', 'created_at')
+    list_editable = ('subject_category', 'level_category', 'format_category', 'status', 'order', 'is_active')
+    search_fields = ('title', 'description', 'badge_text', 'start_date_text', 'timetable_text')
     fieldsets = (
         ('General Information', {
-            'fields': ('title', 'icon_or_flag', 'badge_text', 'track_type', 'description', 'image')
+            'fields': ('title', 'subject_category', 'level_category', 'format_category', 'icon_or_flag', 'badge_text', 'description', 'image')
         }),
-        ('Schedule & Registration', {
-            'fields': ('schedule_time', 'status', 'custom_status_text', 'button_text', 'button_url')
+        ('Schedule & Timetable', {
+            'fields': ('start_date_text', 'timetable_text', 'location_text', 'schedule_time')
+        }),
+        ('Registration & Actions', {
+            'fields': ('status', 'custom_status_text', 'button_text', 'button_url')
         }),
         ('Visibility & Ordering', {
             'fields': ('order', 'is_active')

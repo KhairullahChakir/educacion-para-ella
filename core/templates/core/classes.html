@@ -1,255 +1,391 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Our Classes & Curriculum — Education for Her{% endblock %}
+{% block title %}Our Classes & Schedules — Education for Her{% endblock %}
 
 {% block content %}
-<!-- Hero Banner -->
-<section class="bg-gradient-to-br from-[#167888] via-[#1a8596] to-[#d8b49c] text-white py-20 lg:py-28">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p class="text-xs font-extrabold uppercase tracking-widest text-teal-200 mb-4">Comprehensive Curriculum</p>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">Our Classes & Programs</h1>
-        <p class="mt-6 text-lg text-teal-50/90 max-w-2xl mx-auto leading-relaxed">
-            Free online courses designed to build fluency, technical expertise, creative expression, and mental resilience for Afghan girls worldwide.
-        </p>
-    </div>
-</section>
+<!-- Hero Section (Language & Skills Lab) -->
+<section class="relative bg-gradient-to-r from-teal-950 via-[#167888] to-teal-900 text-white py-20 lg:py-28 overflow-hidden">
+    <!-- Subtle Ambient Backdrop -->
+    <div class="absolute inset-0 bg-radial from-teal-500/10 via-transparent to-black/30 pointer-events-none"></div>
 
-<!-- Learning Delivery Format (Low-Bandwidth & Safe) -->
-<section class="bg-white py-12 border-b border-gray-100">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div class="flex items-center gap-4 p-5 bg-teal-50/50 rounded-2xl border border-teal-100">
-                <div class="w-10 h-10 rounded-xl bg-[#167888] text-white flex items-center justify-center font-bold text-lg shrink-0">
-                    💻
-                </div>
-                <div>
-                    <h3 class="text-xs font-extrabold uppercase tracking-wider text-gray-900">Live Virtual Classes</h3>
-                    <p class="text-xs text-gray-500 mt-0.5">Small interactive groups via Zoom & Google Meet</p>
-                </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/15 border border-white/25 text-amber-300 text-[11px] font-extrabold tracking-widest uppercase mb-5 shadow-2xs backdrop-blur-xs">
+                <span class="w-2 h-2 rounded-full bg-[#00c49f] animate-pulse"></span>
+                {{ classes_setting.hero_badge|default:'EDUCACIÓN PARA ELLA LANGUAGE & SKILLS LAB' }}
             </div>
-
-            <div class="flex items-center gap-4 p-5 bg-teal-50/50 rounded-2xl border border-teal-100">
-                <div class="w-10 h-10 rounded-xl bg-[#167888] text-white flex items-center justify-center font-bold text-lg shrink-0">
-                    📦
-                </div>
-                <div>
-                    <h3 class="text-xs font-extrabold uppercase tracking-wider text-gray-900">Low-Bandwidth Packs</h3>
-                    <p class="text-xs text-gray-500 mt-0.5">Compressed video lessons & offline PDF study guides</p>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-4 p-5 bg-teal-50/50 rounded-2xl border border-teal-100">
-                <div class="w-10 h-10 rounded-xl bg-[#167888] text-white flex items-center justify-center font-bold text-lg shrink-0">
-                    🗣️
-                </div>
-                <div>
-                    <h3 class="text-xs font-extrabold uppercase tracking-wider text-gray-900">Native Language Mentors</h3>
-                    <p class="text-xs text-gray-500 mt-0.5">Bilingual teaching support in Dari and Pashto</p>
-                </div>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white">
+                {{ classes_setting.hero_headline|default:'Current schedule of classes' }}
+            </h1>
+            <p class="mt-4 text-base sm:text-lg text-teal-50/90 leading-relaxed font-normal">
+                {{ classes_setting.hero_subtitle|default:'Discover the different levels and current registration status for our free, safe, and inclusive virtual and offline learning sanctuary.' }}
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+                <a href="#class-schedule" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#00c49f] hover:bg-[#00a887] text-white text-xs font-extrabold uppercase tracking-wider shadow-md hover:shadow-lg transition-all">
+                    <span>Explore Class Schedules</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </a>
+                <a href="{% url 'accounts:register' %}" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/30 text-white text-xs font-extrabold uppercase tracking-wider transition-all">
+                    Register as Student
+                </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Language Classes (Detailed CEFR Framework) -->
-<section class="bg-gray-50/60 py-20">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-2">Language Academy</p>
-            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">Structured Language Programs</h2>
-            <p class="mt-3 text-sm text-gray-600">
-                Follow international CEFR (Common European Framework of Reference for Languages) standards from beginner to professional fluency.
+<!-- Term Announcement Banner (Dynamic) -->
+<section class="bg-gray-50 border-b border-gray-200 py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-4xl mx-auto">
+            <p class="text-sm sm:text-base font-semibold text-gray-800 leading-relaxed">
+                {{ classes_setting.announcement_prefix|default:'All of our classes are currently' }}
+                {% if classes_setting.announcement_status_color == 'red' %}
+                    <span class="text-red-600 font-extrabold uppercase tracking-wide">{{ classes_setting.announcement_status_highlight|default:'closed' }}</span>
+                {% elif classes_setting.announcement_status_color == 'amber' %}
+                    <span class="text-amber-600 font-extrabold uppercase tracking-wide">{{ classes_setting.announcement_status_highlight|default:'opening soon' }}</span>
+                {% else %}
+                    <span class="text-[#00c49f] font-extrabold uppercase tracking-wide">{{ classes_setting.announcement_status_highlight|default:'open for registration' }}</span>
+                {% endif %}.
+                {{ classes_setting.announcement_suffix|default:'Registration for the autumn term is open. All courses are 100% free & camera-optional.' }}
             </p>
         </div>
+    </div>
+</section>
 
-        <div class="space-y-12">
-            <!-- 1. English Language Track -->
-            <div class="bg-white rounded-3xl p-8 sm:p-10 border border-gray-200/80 shadow-xs">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-gray-100 gap-4">
-                    <div class="flex items-center gap-4">
-                        <div class="w-14 h-14 bg-teal-50 text-[#167888] rounded-2xl flex items-center justify-center text-3xl">
-                            🇬🇧
+<!-- Interactive Class Schedule & Filterable Catalog -->
+<section id="class-schedule" class="bg-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+            
+            <!-- Left Column: Interactive Filter Sidebar -->
+            <div class="lg:col-span-3 space-y-8">
+                <div class="bg-gray-50/80 rounded-3xl p-6 border border-gray-200/80 sticky top-28 shadow-2xs">
+                    
+                    <div class="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">
+                        <h2 class="text-sm font-extrabold uppercase tracking-wider text-gray-900">Filters</h2>
+                        <button type="button" id="clear-all-filters" class="text-xs font-bold text-[#00c49f] hover:underline cursor-pointer">
+                            Clear Filters ✕
+                        </button>
+                    </div>
+
+                    <!-- 1. Filter by Language / Subject -->
+                    <div class="space-y-2 mb-6">
+                        <p class="text-xs font-bold text-gray-700">Filter by language:</p>
+                        <div class="flex flex-col space-y-1" id="filter-subject-group">
+                            <button type="button" data-filter-type="subject" data-filter-value="all" class="filter-btn active text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Show all languages
+                            </button>
+                            <button type="button" data-filter-type="subject" data-filter-value="catalan" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Catalan
+                            </button>
+                            <button type="button" data-filter-type="subject" data-filter-value="english" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                English
+                            </button>
+                            <button type="button" data-filter-type="subject" data-filter-value="spanish" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Spanish
+                            </button>
+                            <button type="button" data-filter-type="subject" data-filter-value="german" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                German
+                            </button>
+                            <button type="button" data-filter-type="subject" data-filter-value="coding" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Coding & Tech
+                            </button>
+                            <button type="button" data-filter-type="subject" data-filter-value="photography" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Photography & Arts
+                            </button>
+                            <button type="button" data-filter-type="subject" data-filter-value="mindfulness" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Mindfulness
+                            </button>
                         </div>
+                    </div>
+
+                    <!-- 2. Filter by Level -->
+                    <div class="space-y-2 mb-6 pt-4 border-t border-gray-200">
+                        <p class="text-xs font-bold text-gray-700">Filter by level:</p>
+                        <div class="flex flex-col space-y-1" id="filter-level-group">
+                            <button type="button" data-filter-type="level" data-filter-value="all" class="filter-btn active text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Show all levels
+                            </button>
+                            <button type="button" data-filter-type="level" data-filter-value="a1" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                A1 (Beginner)
+                            </button>
+                            <button type="button" data-filter-type="level" data-filter-value="a2" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                A2 (Elementary)
+                            </button>
+                            <button type="button" data-filter-type="level" data-filter-value="b1" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                B1 (Intermediate)
+                            </button>
+                            <button type="button" data-filter-type="level" data-filter-value="b2" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                B2 (Advanced)
+                            </button>
+                            <button type="button" data-filter-type="level" data-filter-value="foundations" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Foundations
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 3. Filter by Format / Audience -->
+                    <div class="space-y-2 mb-6 pt-4 border-t border-gray-200">
+                        <p class="text-xs font-bold text-gray-700">Filter by format:</p>
+                        <div class="flex flex-col space-y-1" id="filter-format-group">
+                            <button type="button" data-filter-type="format" data-filter-value="all" class="filter-btn active text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Show all formats
+                            </button>
+                            <button type="button" data-filter-type="format" data-filter-value="online" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Online Virtual Class
+                            </button>
+                            <button type="button" data-filter-type="format" data-filter-value="women_only" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Women-Only Safe Space
+                            </button>
+                            <button type="button" data-filter-type="format" data-filter-value="evenings" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Evenings
+                            </button>
+                            <button type="button" data-filter-type="format" data-filter-value="mornings" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Mornings
+                            </button>
+                            <button type="button" data-filter-type="format" data-filter-value="intensive" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Intensive
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 4. Filter by Status -->
+                    <div class="space-y-2 pt-4 border-t border-gray-200">
+                        <p class="text-xs font-bold text-gray-700">Filter by status:</p>
+                        <div class="flex flex-col space-y-1" id="filter-status-group">
+                            <button type="button" data-filter-type="status" data-filter-value="all" class="filter-btn active text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Show all statuses
+                            </button>
+                            <button type="button" data-filter-type="status" data-filter-value="open" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Open for Registration
+                            </button>
+                            <button type="button" data-filter-type="status" data-filter-value="closed" class="filter-btn text-left px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                Registration Closed
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Right Column: Class Schedule Cards Grid -->
+            <div class="lg:col-span-9">
+                
+                <!-- Results Counter Header -->
+                <div class="flex items-center justify-between pb-6 mb-6 border-b border-gray-100">
+                    <p class="text-xs sm:text-sm font-bold text-gray-600">
+                        Showing <span id="results-count" class="font-extrabold text-gray-900">{{ class_programs|length }}</span> classes
+                    </p>
+                    <span class="text-[11px] font-semibold text-gray-400">All courses 100% Free</span>
+                </div>
+
+                <!-- Classes Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="classes-grid">
+                    {% for program in class_programs %}
+                    <div class="class-card bg-white rounded-3xl p-6 sm:p-7 border border-gray-200/90 shadow-2xs hover:shadow-lg hover:border-teal-300 transition-all flex flex-col justify-between"
+                         data-subject="{{ program.subject_category|default:'general' }}"
+                         data-level="{{ program.level_category|default:'all' }}"
+                         data-format="{{ program.format_category|default:'online' }}"
+                         data-status="{{ program.status|default:'open' }}">
+                        
                         <div>
-                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#167888] bg-teal-50 px-2.5 py-1 rounded-full">Primary Track</span>
-                            <h3 class="text-2xl font-bold text-gray-900 mt-1">English Language Program</h3>
+                            <h3 class="text-base sm:text-lg font-bold text-gray-900 leading-snug">
+                                {{ program.title }}
+                            </h3>
+                            
+                            <!-- Level & Registration Status line in vibrant teal -->
+                            <p class="text-xs sm:text-sm font-bold text-[#00c49f] mt-1.5 flex items-center gap-1.5">
+                                {{ program.badge_text|default:'A1 • Registration Open' }}
+                            </p>
+
+                            <!-- Course Metadata List -->
+                            <div class="mt-4 space-y-1.5 text-xs text-gray-600">
+                                <p class="leading-relaxed">
+                                    <span class="font-bold text-gray-900">Start date:</span> {{ program.start_date_text|default:'September 2026' }}
+                                </p>
+                                <p class="leading-relaxed">
+                                    <span class="font-bold text-gray-900">Timetable:</span> {{ program.timetable_text|default:program.schedule_time }}
+                                </p>
+                                <p class="leading-relaxed text-gray-500">
+                                    <span class="font-semibold text-gray-700">Location:</span> {{ program.location_text|default:'Online Virtual Classroom' }}
+                                </p>
+                            </div>
+
+                            {% if program.description %}
+                            <p class="text-xs text-gray-500 mt-3 line-clamp-2 leading-relaxed">
+                                {{ program.description }}
+                            </p>
+                            {% endif %}
                         </div>
+
+                        <!-- Action Button -->
+                        <div class="pt-6">
+                            {% if program.status == 'closed' %}
+                            <button disabled class="inline-flex items-center justify-center w-fit px-5 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-400 border border-gray-300 bg-gray-50 cursor-not-allowed">
+                                Closed
+                            </button>
+                            {% else %}
+                            <a href="{{ program.button_url|default:'/register/' }}" class="inline-flex items-center justify-center w-fit px-5 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider text-[#00c49f] border-2 border-[#00c49f] hover:bg-[#00c49f] hover:text-white transition-all cursor-pointer shadow-2xs">
+                                {{ program.button_text|default:'Get started' }}
+                            </a>
+                            {% endif %}
+                        </div>
+
                     </div>
-                    <span class="text-xs font-bold text-gray-500 bg-gray-100 px-4 py-2 rounded-full self-start sm:self-auto">Levels A0 to C1</span>
+                    {% empty %}
+                    <div class="col-span-full p-12 text-center bg-gray-50 rounded-3xl border border-gray-200">
+                        <p class="text-sm text-gray-500 font-medium">No class programs available at the moment.</p>
+                    </div>
+                    {% endfor %}
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-                    <div class="p-5 rounded-2xl bg-teal-50/40 border border-teal-100">
-                        <span class="text-xs font-black text-[#167888] bg-white px-2.5 py-1 rounded-lg border border-teal-200">A0 / A1</span>
-                        <h4 class="text-sm font-bold text-gray-900 mt-3">Absolute Beginner & Elementary</h4>
-                        <p class="text-xs text-gray-600 mt-1.5 leading-relaxed">Alphabet, basic phonetics, daily greetings, simple sentence building, and everyday vocabulary.</p>
-                    </div>
-
-                    <div class="p-5 rounded-2xl bg-teal-50/40 border border-teal-100">
-                        <span class="text-xs font-black text-[#167888] bg-white px-2.5 py-1 rounded-lg border border-teal-200">A2 / B1</span>
-                        <h4 class="text-sm font-bold text-gray-900 mt-3">Pre-Intermediate & Intermediate</h4>
-                        <p class="text-xs text-gray-600 mt-1.5 leading-relaxed">Conversational practice, expressing opinions, reading stories, and understanding spoken audio.</p>
-                    </div>
-
-                    <div class="p-5 rounded-2xl bg-teal-50/40 border border-teal-100">
-                        <span class="text-xs font-black text-[#167888] bg-white px-2.5 py-1 rounded-lg border border-teal-200">B2 / C1</span>
-                        <h4 class="text-sm font-bold text-gray-900 mt-3">Upper-Intermediate & Advanced</h4>
-                        <p class="text-xs text-gray-600 mt-1.5 leading-relaxed">Academic writing, TOEFL/IELTS preparation concepts, essay structuring, and professional communication.</p>
-                    </div>
+                <!-- Empty State (when filters yield 0 results) -->
+                <div id="no-results-state" class="hidden p-12 text-center bg-gray-50 rounded-3xl border border-gray-200 mt-6">
+                    <span class="text-3xl">🔍</span>
+                    <h4 class="text-base font-bold text-gray-900 mt-3">No classes match your selected filters</h4>
+                    <p class="text-xs text-gray-500 mt-1">Try resetting some of your filter criteria or view all courses.</p>
+                    <button type="button" onclick="resetAllFilters()" class="mt-4 inline-flex items-center px-5 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider text-white bg-[#00c49f] hover:bg-[#00a887] transition-all cursor-pointer">
+                        Reset All Filters
+                    </button>
                 </div>
+
             </div>
 
-            <!-- 2. Spanish & German Tracks -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Spanish -->
-                <div class="bg-white rounded-3xl p-8 border border-gray-200/80 shadow-xs flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-4 pb-6 border-b border-gray-100">
-                            <div class="w-12 h-12 bg-amber-50 text-amber-800 rounded-2xl flex items-center justify-center text-2xl">
-                                🇪🇸
-                            </div>
-                            <div>
-                                <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full">European Language</span>
-                                <h3 class="text-xl font-bold text-gray-900 mt-1">Spanish Program</h3>
-                            </div>
-                        </div>
+        </div>
 
-                        <p class="text-xs text-gray-600 mt-4 leading-relaxed">
-                            Discover the Hispanic world and connect with Spanish-speaking cultures and volunteer teachers.
-                        </p>
+    </div>
+</section>
 
-                        <div class="grid grid-cols-3 gap-3 mt-6">
-                            <div class="p-3 bg-amber-50/40 rounded-xl border border-amber-100 text-center">
-                                <p class="text-xs font-black text-amber-800">Level A0</p>
-                                <p class="text-[10px] text-gray-500 mt-1">Basics & Alphabet</p>
-                            </div>
-                            <div class="p-3 bg-amber-50/40 rounded-xl border border-amber-100 text-center">
-                                <p class="text-xs font-black text-amber-800">Level A1</p>
-                                <p class="text-[10px] text-gray-500 mt-1">Basic Grammar</p>
-                            </div>
-                            <div class="p-3 bg-amber-50/40 rounded-xl border border-amber-100 text-center">
-                                <p class="text-xs font-black text-amber-800">Level A2</p>
-                                <p class="text-[10px] text-gray-500 mt-1">Simple Dialogues</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- German -->
-                <div class="bg-white rounded-3xl p-8 border border-gray-200/80 shadow-xs flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-4 pb-6 border-b border-gray-100">
-                            <div class="w-12 h-12 bg-gray-100 text-gray-800 rounded-2xl flex items-center justify-center text-2xl">
-                                🇩🇪
-                            </div>
-                            <div>
-                                <span class="text-[10px] font-extrabold uppercase tracking-widest text-gray-700 bg-gray-100 px-2.5 py-1 rounded-full">European Language</span>
-                                <h3 class="text-xl font-bold text-gray-900 mt-1">German Program</h3>
-                            </div>
-                        </div>
-
-                        <p class="text-xs text-gray-600 mt-4 leading-relaxed">
-                            Build foundational German language skills and open pathways to study and international opportunities.
-                        </p>
-
-                        <div class="grid grid-cols-2 gap-3 mt-6">
-                            <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 text-center">
-                                <p class="text-xs font-black text-gray-800">Level A1</p>
-                                <p class="text-[10px] text-gray-500 mt-1">Foundations & Phonetics</p>
-                            </div>
-                            <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 text-center">
-                                <p class="text-xs font-black text-gray-800">Level A2</p>
-                                <p class="text-[10px] text-gray-500 mt-1">Everyday Communication</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- Low-Bandwidth & Safety Reassurance Banner -->
+<section class="bg-gray-50/70 border-t border-gray-200 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <h3 class="text-2xl font-bold text-gray-900 tracking-tight">Our Safe & Accessible Learning Framework</h3>
+            <p class="text-xs text-gray-600 mt-2">Designed specifically for Afghan students with internet and safety considerations.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div class="p-6 bg-white rounded-2xl border border-gray-200/80 shadow-2xs space-y-2">
+                <span class="text-2xl">🛡️</span>
+                <h4 class="text-sm font-bold text-gray-900">100% Confidential & Secure</h4>
+                <p class="text-xs text-gray-500 leading-relaxed">Cameras optional, anonymous student handles, and protected virtual rooms.</p>
+            </div>
+            <div class="p-6 bg-white rounded-2xl border border-gray-200/80 shadow-2xs space-y-2">
+                <span class="text-2xl">📦</span>
+                <h4 class="text-sm font-bold text-gray-900">Low-Bandwidth Study Packs</h4>
+                <p class="text-xs text-gray-500 leading-relaxed">Downloadable compressed audio lessons, PDF notes, and offline materials.</p>
+            </div>
+            <div class="p-6 bg-white rounded-2xl border border-gray-200/80 shadow-2xs space-y-2">
+                <span class="text-2xl">🌍</span>
+                <h4 class="text-sm font-bold text-gray-900">International Educators</h4>
+                <p class="text-xs text-gray-500 leading-relaxed">Learn directly from certified teachers across 12+ nations with Dari/Pashto bilingual support.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Programming, Digital & Creative Tracks -->
-<section class="bg-white py-20">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-2">Digital & Creative Skills</p>
-            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">Technology & Creative Arts</h2>
-            <p class="mt-3 text-sm text-gray-600">
-                Skills geared toward real-world freelancing, remote education, and personal self-expression.
-            </p>
-        </div>
+<!-- Client-Side Instant Filtering Script -->
+<style>
+.filter-btn {
+    color: #4b5563;
+    background-color: transparent;
+}
+.filter-btn:hover {
+    color: #0f766e;
+    background-color: rgba(0, 196, 159, 0.08);
+}
+.filter-btn.active {
+    color: #0f766e;
+    background-color: rgba(0, 196, 159, 0.15);
+    font-weight: 800;
+}
+</style>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Programming & Web Dev -->
-            <div class="p-8 bg-gradient-to-br from-blue-50/50 to-teal-50/30 rounded-3xl border border-blue-100 flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-blue-700 text-white flex items-center justify-center text-2xl mb-6 shadow-sm">
-                        💻
-                    </div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-blue-700 bg-white px-2.5 py-1 rounded-full border border-blue-200">Tech Track</span>
-                    <h3 class="text-xl font-bold text-gray-900 mt-2">JavaScript & Web Development</h3>
-                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">
-                        Learn to build websites from scratch. From HTML5 & Tailwind CSS styling to JavaScript logic and problem solving.
-                    </p>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const activeFilters = {
+        subject: 'all',
+        level: 'all',
+        format: 'all',
+        status: 'all'
+    };
 
-                    <div class="mt-6 space-y-2.5 text-xs text-gray-700">
-                        <div class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-700"></span> HTML5, Modern CSS, Responsive Layouts
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-700"></span> JavaScript Core & DOM Interactivity
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-700"></span> Git, GitHub & Freelancing Basics
-                        </div>
-                    </div>
-                </div>
-            </div>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const classCards = document.querySelectorAll('.class-card');
+    const resultsCountEl = document.getElementById('results-count');
+    const noResultsEl = document.getElementById('no-results-state');
+    const clearBtn = document.getElementById('clear-all-filters');
 
-            <!-- Photography & Visual Storytelling -->
-            <div class="p-8 bg-gradient-to-br from-purple-50/50 to-pink-50/30 rounded-3xl border border-purple-100 flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-purple-700 text-white flex items-center justify-center text-2xl mb-6 shadow-sm">
-                        📸
-                    </div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-purple-700 bg-white px-2.5 py-1 rounded-full border border-purple-200">Creative Track</span>
-                    <h3 class="text-xl font-bold text-gray-900 mt-2">Photography & Visual Storytelling</h3>
-                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">
-                        Education extends beyond textbooks. Learn framing, light, digital editing, and how to tell compelling visual stories through smartphones and cameras.
-                    </p>
+    function applyFilters() {
+        let visibleCount = 0;
 
-                    <div class="mt-6 space-y-2.5 text-xs text-gray-700">
-                        <div class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-purple-700"></span> Visual Storytelling & Framing Composition
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-purple-700"></span> Mobile Photography & Natural Light Techniques
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-purple-700"></span> Personal Portfolio & Cultural Expression
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        classCards.forEach(card => {
+            const cardSubject = card.getAttribute('data-subject') || '';
+            const cardLevel = card.getAttribute('data-level') || '';
+            const cardFormat = card.getAttribute('data-format') || '';
+            const cardStatus = card.getAttribute('data-status') || '';
 
-<!-- Call to Action -->
-<section class="bg-[#167888] py-16 text-white">
-    <div class="max-w-3xl mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold tracking-tight">Enroll in classes for free</h2>
-        <p class="mt-3 text-teal-100 text-base">Sign up as a student or take a placement assessment to join the right level.</p>
-        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="{% url 'accounts:register' %}" class="px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider text-teal-900 bg-white rounded-full hover:bg-teal-50 shadow-lg transition-all">
-                Register as Student
-            </a>
-            <a href="{% url 'core:contact' %}" class="px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white border-2 border-white/40 rounded-full hover:bg-white/10 transition-all">
-                Ask a Teacher
-            </a>
-        </div>
-    </div>
-</section>
+            const matchesSubject = (activeFilters.subject === 'all' || cardSubject === activeFilters.subject);
+            const matchesLevel = (activeFilters.level === 'all' || cardLevel === activeFilters.level);
+            const matchesFormat = (activeFilters.format === 'all' || cardFormat === activeFilters.format);
+            const matchesStatus = (activeFilters.status === 'all' || cardStatus === activeFilters.status);
+
+            if (matchesSubject && matchesLevel && matchesFormat && matchesStatus) {
+                card.style.display = 'flex';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        if (resultsCountEl) resultsCountEl.textContent = visibleCount;
+        if (noResultsEl) {
+            if (visibleCount === 0) {
+                noResultsEl.classList.remove('hidden');
+            } else {
+                noResultsEl.classList.add('hidden');
+            }
+        }
+    }
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const type = this.getAttribute('data-filter-type');
+            const value = this.getAttribute('data-filter-value');
+
+            // Set active filter value
+            activeFilters[type] = value;
+
+            // Update active styling in this button's group
+            const groupButtons = this.parentElement.querySelectorAll('.filter-btn');
+            groupButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            applyFilters();
+        });
+    });
+
+    window.resetAllFilters = function() {
+        activeFilters.subject = 'all';
+        activeFilters.level = 'all';
+        activeFilters.format = 'all';
+        activeFilters.status = 'all';
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            if (btn.getAttribute('data-filter-value') === 'all') {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        applyFilters();
+    };
+
+    if (clearBtn) {
+        clearBtn.addEventListener('click', resetAllFilters);
+    }
+});
+</script>
 {% endblock %}
