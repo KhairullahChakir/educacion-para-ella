@@ -1,15 +1,17 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import HeroNews, ClassProgram
+from .models import HeroNews, ClassProgram, HowItWorksStep
 
 
 def home(request):
     """Landing page — public."""
     hero_news_list = HeroNews.objects.filter(is_active=True).order_by('order', '-created_at')
     class_programs = ClassProgram.objects.filter(is_active=True).order_by('order', '-created_at')
+    how_it_works_steps = HowItWorksStep.objects.filter(is_active=True).order_by('order', 'step_number')
     return render(request, 'core/home.html', {
         'hero_news_list': hero_news_list,
         'class_programs': class_programs,
+        'how_it_works_steps': how_it_works_steps,
     })
 
 

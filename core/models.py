@@ -75,3 +75,24 @@ class ClassProgram(models.Model):
             return "bg-teal-100 text-teal-800 border-teal-200"
         else:
             return "bg-amber-100 text-amber-800 border-amber-200"
+
+
+class HowItWorksStep(models.Model):
+    """Dynamic student onboarding stages displayed on the Home page."""
+    step_number = models.PositiveIntegerField(default=1, help_text="Stage number (e.g. 1, 2, 3)")
+    title = models.CharField(max_length=150, help_text="Stage title (e.g. Sign Up for Free, Choose Your Subject)")
+    description = models.TextField(help_text="Detailed description of what happens at this stage")
+    image = models.ImageField(upload_to='step_images/', blank=True, null=True, help_text="Illustration/Photo representing this step")
+    button_text = models.CharField(max_length=60, blank=True, null=True, help_text="Optional link/button text")
+    button_url = models.CharField(max_length=255, blank=True, null=True, help_text="Optional link target")
+    order = models.PositiveIntegerField(default=0, help_text="Sort order")
+    is_active = models.BooleanField(default=True, help_text="Uncheck to hide this step")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', 'step_number']
+        verbose_name = "How It Works Step"
+        verbose_name_plural = "How It Works Steps"
+
+    def __str__(self):
+        return f"Step {self.step_number}: {self.title}"
