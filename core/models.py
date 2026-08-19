@@ -507,7 +507,7 @@ class InvolvementTrack(models.Model):
                 'badge': 'bg-purple-50 text-purple-800 border-purple-200',
                 'icon_bg': 'bg-purple-600 text-white',
                 'bullet_dot': 'bg-purple-600',
-                'button': 'bg-purple-700 hover:bg-purple-800 text-white shadow-purple-200',
+                'button': 'bg-[#fbbf24] hover:bg-[#f59e0b] text-gray-900 shadow-amber-200',
             }
         elif self.color_theme == 'blue':
             return {
@@ -515,7 +515,7 @@ class InvolvementTrack(models.Model):
                 'badge': 'bg-blue-50 text-blue-800 border-blue-200',
                 'icon_bg': 'bg-blue-600 text-white',
                 'bullet_dot': 'bg-blue-600',
-                'button': 'bg-blue-700 hover:bg-blue-800 text-white shadow-blue-200',
+                'button': 'bg-[#fbbf24] hover:bg-[#f59e0b] text-gray-900 shadow-amber-200',
             }
         elif self.color_theme == 'amber':
             return {
@@ -523,7 +523,7 @@ class InvolvementTrack(models.Model):
                 'badge': 'bg-amber-50 text-amber-800 border-amber-200',
                 'icon_bg': 'bg-amber-600 text-white',
                 'bullet_dot': 'bg-amber-600',
-                'button': 'bg-amber-500 hover:bg-amber-600 text-gray-900 shadow-amber-200',
+                'button': 'bg-[#fbbf24] hover:bg-[#f59e0b] text-gray-900 shadow-amber-200',
             }
         else:
             return {
@@ -531,7 +531,7 @@ class InvolvementTrack(models.Model):
                 'badge': 'bg-teal-50 text-teal-800 border-teal-200',
                 'icon_bg': 'bg-[#167888] text-white',
                 'bullet_dot': 'bg-[#167888]',
-                'button': 'bg-[#167888] hover:bg-teal-800 text-white shadow-teal-200',
+                'button': 'bg-[#fbbf24] hover:bg-[#f59e0b] text-gray-900 shadow-amber-200',
             }
 
 
