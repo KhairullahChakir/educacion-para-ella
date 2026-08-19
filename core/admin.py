@@ -14,6 +14,7 @@ from .models import (
     VolunteerCountry,
     VisionPillar,
     InvolvementTrack,
+    VolunteerJourneyStep,
 )
 
 
@@ -142,3 +143,12 @@ class InvolvementTrackAdmin(admin.ModelAdmin):
     list_filter = ('color_theme', 'is_active', 'created_at')
     list_editable = ('track_number', 'badge_label', 'color_theme', 'order', 'is_active')
     search_fields = ('title', 'description', 'badge_label', 'commitment_info')
+
+
+@admin.register(VolunteerJourneyStep)
+class VolunteerJourneyStepAdmin(admin.ModelAdmin):
+    list_display = ('step_number', 'title', 'icon_emoji', 'order', 'is_active', 'created_at')
+    list_display_links = ('title',)
+    list_filter = ('is_active', 'created_at')
+    list_editable = ('step_number', 'icon_emoji', 'order', 'is_active')
+    search_fields = ('title', 'description')

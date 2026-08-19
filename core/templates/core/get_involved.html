@@ -89,7 +89,7 @@
     </div>
 </section>
 
-<!-- Onboarding Process Steps -->
+<!-- Onboarding Process Steps (Dynamic Volunteer Journey) -->
 <section class="bg-gray-50/70 py-20 border-y border-gray-100">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-16">
@@ -101,37 +101,25 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="p-6 bg-white rounded-3xl border border-gray-200/80 text-center relative">
-                <div class="w-10 h-10 mx-auto rounded-full bg-[#167888] text-white flex items-center justify-center font-black text-sm mb-4">
-                    1
+            {% for step in volunteer_journey_steps %}
+            <div class="p-7 bg-white rounded-3xl border border-gray-200/80 shadow-xs hover:shadow-lg hover:border-[#167888] transition-all duration-300 transform hover:-translate-y-1 text-center relative flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 mx-auto rounded-2xl bg-[#167888] text-white flex items-center justify-center font-black text-base mb-4 shadow-md group-hover:scale-105 transition-transform">
+                        {{ step.step_number }}
+                    </div>
+                    <h3 class="text-base font-bold text-gray-900 leading-snug">
+                        {{ step.title }}
+                    </h3>
+                    <p class="text-xs text-gray-600 mt-2.5 leading-relaxed">
+                        {{ step.description }}
+                    </p>
                 </div>
-                <h3 class="text-base font-bold text-gray-900">1. Apply Online</h3>
-                <p class="text-xs text-gray-600 mt-2 leading-relaxed">Fill out our short interest form specifying your subject and time availability.</p>
             </div>
-
-            <div class="p-6 bg-white rounded-3xl border border-gray-200/80 text-center relative">
-                <div class="w-10 h-10 mx-auto rounded-full bg-[#167888] text-white flex items-center justify-center font-black text-sm mb-4">
-                    2
-                </div>
-                <h3 class="text-base font-bold text-gray-900">2. Intro Chat</h3>
-                <p class="text-xs text-gray-600 mt-2 leading-relaxed">A brief 15-minute video call to get acquainted, answer questions, and match class levels.</p>
+            {% empty %}
+            <div class="col-span-4 text-center py-10 text-sm text-gray-400">
+                No volunteer journey steps found. Add them in the Django admin.
             </div>
-
-            <div class="p-6 bg-white rounded-3xl border border-gray-200/80 text-center relative">
-                <div class="w-10 h-10 mx-auto rounded-full bg-[#167888] text-white flex items-center justify-center font-black text-sm mb-4">
-                    3
-                </div>
-                <h3 class="text-base font-bold text-gray-900">3. Safety Orientation</h3>
-                <p class="text-xs text-gray-600 mt-2 leading-relaxed">Receive student safety guidelines, sample lesson plans, and access to the shared drive.</p>
-            </div>
-
-            <div class="p-6 bg-white rounded-3xl border border-gray-200/80 text-center relative">
-                <div class="w-10 h-10 mx-auto rounded-full bg-[#167888] text-white flex items-center justify-center font-black text-sm mb-4">
-                    4
-                </div>
-                <h3 class="text-base font-bold text-gray-900">4. Teach & Empower</h3>
-                <p class="text-xs text-gray-600 mt-2 leading-relaxed">Meet your students online, teach your first class, and experience the transformative power of learning.</p>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

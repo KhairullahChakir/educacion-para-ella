@@ -467,3 +467,22 @@ class InvolvementTrack(models.Model):
                 'bullet_dot': 'bg-[#167888]',
                 'button': 'bg-[#167888] hover:bg-teal-800 text-white shadow-teal-200',
             }
+
+
+class VolunteerJourneyStep(models.Model):
+    """Step-by-step onboarding journey on the Get Involved page."""
+    step_number = models.PositiveIntegerField(default=1, help_text="Stage number (1, 2, 3, 4)")
+    title = models.CharField(max_length=150, help_text="Step Title (e.g. 1. Apply Online, 2. Intro Chat)")
+    description = models.TextField(help_text="Detailed description of what happens at this stage")
+    icon_emoji = models.CharField(max_length=20, default="📝", blank=True, null=True, help_text="Optional emoji icon")
+    order = models.PositiveIntegerField(default=0, help_text="Sort order")
+    is_active = models.BooleanField(default=True, help_text="Active toggle")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', 'step_number']
+        verbose_name = "Volunteer Journey Step"
+        verbose_name_plural = "Volunteer Journey Steps"
+
+    def __str__(self):
+        return f"Step {self.step_number}: {self.title}"
