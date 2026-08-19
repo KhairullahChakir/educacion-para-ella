@@ -32,11 +32,11 @@
 
         <div class="flex items-center gap-3">
             {% if user.profile.is_teacher %}
-                <a href="#create-course" class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider text-white bg-teal-800 rounded-xl hover:bg-teal-900 shadow-sm transition-all">
+                <a href="#create-course" class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] rounded-xl hover:bg-[#f59e0b] shadow-sm hover:shadow-md transition-all">
                     + Create New Course
                 </a>
             {% else %}
-                <a href="#browse-courses" class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider text-white bg-teal-800 rounded-xl hover:bg-teal-900 shadow-sm transition-all">
+                <a href="{% url 'core:classes' %}" class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] rounded-xl hover:bg-[#f59e0b] shadow-sm hover:shadow-md transition-all">
                     Explore Catalog
                 </a>
             {% endif %}
