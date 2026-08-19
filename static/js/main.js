@@ -4,6 +4,38 @@ let currentSlideIndex = 0;
 let autoSlideTimer = null;
 let classSliderTimer = null;
 
+// ==========================================
+// Class Programs Horizontal Slider Function
+// ==========================================
+function scrollClassSlider(direction) {
+    const container = document.getElementById('class-slider-container');
+    if (!container) return;
+
+    // Calculate actual card width including gap
+    const firstCard = container.querySelector('div');
+    const scrollAmount = firstCard ? (firstCard.offsetWidth + 24) : 360;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+
+    if (direction > 0) {
+        // Scrolling right (Next)
+        if (container.scrollLeft >= maxScroll - 15) {
+            container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    } else {
+        // Scrolling left (Prev)
+        if (container.scrollLeft <= 15) {
+            container.scrollTo({ left: maxScroll, behavior: 'smooth' });
+        } else {
+            container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        }
+    }
+}
+
+// Make globally accessible immediately
+window.scrollClassSlider = scrollClassSlider;
+
 document.addEventListener('DOMContentLoaded', function () {
     // Mobile menu toggle
     const menuBtn = document.getElementById('mobile-menu-btn');
@@ -41,11 +73,29 @@ document.addEventListener('DOMContentLoaded', function () {
         if (langText) langText.textContent = savedLang;
     }
 
-    // Initialize Hero Carousel Auto-play (Starts immediately)
+    // Initialize Hero Carousel Auto-play
     startAutoSlide();
 
     // Initialize Classes Horizontal Slider
     initClassSlider();
+
+    // Attach direct click listeners for Class Slider Arrow Buttons
+    const prevBtn = document.getElementById('class-slider-prev');
+    const nextBtn = document.getElementById('class-slider-next');
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            scrollClassSlider(-1);
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            scrollClassSlider(1);
+        });
+    }
 });
 
 // ==========================================
@@ -55,9 +105,7 @@ function goToSlide(index) {
     const slides = document.querySelectorAll('.hero-slide');
     if (!slides.length) return;
 
-    // Normalize index
     currentSlideIndex = (index + slides.length) % slides.length;
-
     const dots = document.querySelectorAll('.slide-dot');
 
     slides.forEach((slide, idx) => {
@@ -70,7 +118,6 @@ function goToSlide(index) {
         }
     });
 
-    // Update Progress Dots
     dots.forEach((dot, idx) => {
         if (idx === currentSlideIndex) {
             dot.className = "slide-dot w-8 h-2 rounded-full bg-white transition-all duration-300";
@@ -107,37 +154,12 @@ function stopAutoSlide() {
 }
 
 // ==========================================
-// Class Programs Horizontal Slider Functions
+// Class Slider Auto-Glide & Drag Handler
 // ==========================================
-function scrollClassSlider(direction) {
-    const container = document.getElementById('class-slider-container');
-    if (!container) return;
-
-    const scrollAmount = 360; // Card width + gap
-    const maxScroll = container.scrollWidth - container.clientWidth;
-    
-    if (direction > 0) {
-        // Scrolling right
-        if (container.scrollLeft >= maxScroll - 20) {
-            container.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-    } else {
-        // Scrolling left
-        if (container.scrollLeft <= 20) {
-            container.scrollTo({ left: maxScroll, behavior: 'smooth' });
-        } else {
-            container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        }
-    }
-}
-
 function initClassSlider() {
     const container = document.getElementById('class-slider-container');
     if (!container) return;
 
-    // Auto glide slider every 3.5s
     function startGlider() {
         stopGlider();
         classSliderTimer = setInterval(function () {
@@ -155,7 +177,7 @@ function initClassSlider() {
     // Start auto glide
     startGlider();
 
-    // Pause on hover / touch
+    // Pause on mouse / touch interaction
     container.addEventListener('mouseenter', stopGlider);
     container.addEventListener('mouseleave', startGlider);
     container.addEventListener('touchstart', stopGlider, { passive: true });
@@ -192,7 +214,7 @@ function initClassSlider() {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - container.offsetLeft;
-        const walk = (x - startX) * 1.5; // Scroll speed multiplier
+        const walk = (x - startX) * 1.5;
         container.scrollLeft = scrollLeft - walk;
     });
 }
