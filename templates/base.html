@@ -78,16 +78,18 @@
                         </div>
                     </div>
 
-                    <!-- White Pill Capsule Button (Dashboard / Log Out / Sign In) -->
+                    <!-- Auth Capsule Buttons (Dashboard / Log Out / Sign In) -->
                     {% if user.is_authenticated %}
-                        <a href="{% url 'core:dashboard' %}" class="px-5 py-2 text-xs font-extrabold uppercase tracking-wider text-teal-900 bg-white rounded-full hover:bg-teal-50 shadow-sm hover:shadow transition-all">
-                            Dashboard
-                        </a>
-                        <a href="{% url 'accounts:logout' %}" class="px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-white/90 hover:text-white bg-teal-800/80 hover:bg-teal-900 rounded-full border border-white/20 transition-all">
-                            Log Out
-                        </a>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'core:dashboard' %}" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-teal-900 bg-white rounded-full hover:bg-teal-50 shadow-xs hover:shadow transition-all whitespace-nowrap">
+                                <span>📊</span> Dashboard
+                            </a>
+                            <a href="{% url 'accounts:logout' %}" class="inline-flex items-center gap-1 px-3.5 py-2 text-xs font-extrabold uppercase tracking-wider text-white bg-teal-800/90 hover:bg-teal-900 border border-white/30 rounded-full transition-all whitespace-nowrap shadow-xs">
+                                <span>🚪</span> Log Out
+                            </a>
+                        </div>
                     {% else %}
-                        <a href="{% url 'accounts:login' %}" class="px-6 py-2.5 text-xs font-extrabold uppercase tracking-wider text-teal-900 bg-white rounded-full hover:bg-teal-50 shadow-sm hover:shadow transition-all">
+                        <a href="{% url 'accounts:login' %}" class="inline-flex items-center px-6 py-2.5 text-xs font-extrabold uppercase tracking-wider text-teal-900 bg-white rounded-full hover:bg-teal-50 shadow-sm hover:shadow transition-all whitespace-nowrap">
                             Sign In
                         </a>
                     {% endif %}
