@@ -170,24 +170,38 @@
         </div>        <!-- Class Cards Horizontal Scroll Container (Dynamic Backend Data) -->
         <div id="class-slider-container" class="flex gap-6 overflow-x-auto pb-6 scroll-smooth snap-x snap-mandatory scrollbar-none cursor-grab">
             {% for program in class_programs %}
-            <div class="min-w-[300px] sm:min-w-[340px] max-w-[340px] bg-white rounded-3xl p-6 sm:p-7 border border-gray-200/80 hover:border-[#167888] hover:shadow-xl transition-all flex flex-col justify-between group snap-start shrink-0 transform hover:-translate-y-1">
+            <div class="min-w-[300px] sm:min-w-[340px] max-w-[340px] bg-white rounded-3xl p-5 sm:p-6 border border-gray-200/80 hover:border-[#167888] hover:shadow-xl transition-all flex flex-col justify-between group snap-start shrink-0 transform hover:-translate-y-1">
                 <div>
-                    <!-- Top Card Header: Category Badge + Single Status Badge -->
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 rounded-xl border text-xs font-extrabold uppercase tracking-wider shadow-2xs {{ program.category_icon_info.bg }}">
-                            {{ program.category_icon_info.label }}
-                        </span>
-                        <span class="px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider rounded-full border shadow-2xs {{ program.status_badge_classes }}">
-                            ● {{ program.display_status }}
-                        </span>
+                    <!-- Top Half Cover Artwork / Image with Badges -->
+                    <div class="relative w-full h-44 rounded-2xl overflow-hidden mb-4 border border-gray-100 bg-gray-100 shadow-2xs">
+                        {% if program.image %}
+                            <img src="{{ program.image.url }}" alt="{{ program.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        {% else %}
+                            <img src="{% static 'images/hero_student.png' %}" alt="{{ program.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        {% endif %}
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                        
+                        <!-- Floating Category Pill -->
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider bg-white/95 backdrop-blur-md text-gray-900 border border-white/60 shadow-xs">
+                                {{ program.category_icon_info.label }}
+                            </span>
+                        </div>
+                        
+                        <!-- Floating Status Pill -->
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider rounded-full border shadow-xs bg-white/95 backdrop-blur-md {{ program.status_badge_classes }}">
+                                ● {{ program.display_status }}
+                            </span>
+                        </div>
                     </div>
 
                     <!-- Title -->
-                    <h3 class="text-lg font-bold text-gray-900 leading-snug group-hover:text-[#167888] transition-colors mt-2">
+                    <h3 class="text-lg font-bold text-gray-900 leading-snug group-hover:text-[#167888] transition-colors">
                         {{ program.title }}
                     </h3>
 
-                    <!-- Level & Format Badges (Clean & Informative) -->
+                    <!-- Level & Format Badges -->
                     <div class="flex items-center gap-2 mt-2 mb-2">
                         <span class="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold bg-teal-50 text-[#167888] border border-teal-200/60 uppercase tracking-wider">
                             {{ program.get_level_category_display }}
@@ -212,7 +226,7 @@
                 </div>
 
                 <!-- Card Bottom Solid Amber-Gold Button -->
-                <div class="mt-6 pt-4 border-t border-gray-100">
+                <div class="mt-5 pt-4 border-t border-gray-100">
                     <a href="{{ program.button_url|default:'/classes/' }}" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-xs hover:shadow-md transition-all">
                         <span>{{ program.button_text|default:'Get Started' }}</span>
                         <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
