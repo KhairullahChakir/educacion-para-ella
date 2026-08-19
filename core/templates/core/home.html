@@ -5,7 +5,7 @@
 
 {% block content %}
 <!-- Dynamic Backend News Hero Carousel Banner -->
-<section id="hero-carousel-section" class="bg-gradient-to-br from-[#167888] via-[#1a8596] to-[#d8b49c] text-white pt-8 pb-16 lg:pt-12 lg:pb-24 overflow-hidden relative">
+<section id="hero-carousel-section" class="bg-gradient-to-br from-[#167888] via-[#1a8596] to-[#125c68] text-white pt-8 pb-16 lg:pt-12 lg:pb-24 overflow-hidden relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {% if hero_news_list %}
@@ -16,7 +16,7 @@
                 <!-- Text Content -->
                 <div class="lg:col-span-6 space-y-6">
                     <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 border border-white/25 text-[11px] font-extrabold uppercase tracking-widest text-teal-100">
-                        <span class="w-2 h-2 rounded-full bg-amber-300 animate-pulse"></span>
+                        <span class="w-2 h-2 rounded-full bg-[#fbbf24] animate-pulse"></span>
                         {{ news.badge_text }}
                     </div>
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.15]">
@@ -26,7 +26,7 @@
                         {{ news.subtitle }}
                     </p>
                     <div class="pt-2 flex flex-wrap items-center gap-4">
-                        <a href="{{ news.button_url }}" class="inline-flex items-center justify-center px-9 py-4 text-xs sm:text-sm font-extrabold uppercase tracking-widest text-gray-900 bg-[#e8b49b] hover:bg-[#e2a88e] rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+                        <a href="{{ news.button_url }}" class="inline-flex items-center justify-center px-9 py-4 text-xs sm:text-sm font-extrabold uppercase tracking-widest text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
                             {{ news.button_text }}
                         </a>
                         <a href="{% url 'core:about' %}" class="inline-flex items-center justify-center px-7 py-3.5 text-xs font-bold uppercase tracking-wider text-white border border-white/40 hover:bg-white/10 rounded-full transition-all">
@@ -49,7 +49,7 @@
                                 <img src="{% static 'images/hero_student.png' %}" alt="{{ news.title }}" class="w-full h-auto object-cover max-h-[380px]">
                             {% endif %}
                             <div class="absolute inset-0 bg-gradient-to-t from-teal-950/60 via-transparent to-transparent flex items-end p-6">
-                                <span class="text-xs font-extrabold uppercase tracking-wider text-amber-200 bg-teal-950/80 px-4 py-2 rounded-xl border border-amber-300/30">{{ news.badge_text }}</span>
+                                <span class="text-xs font-extrabold uppercase tracking-wider text-[#fbbf24] bg-teal-950/80 px-4 py-2 rounded-xl border border-[#fbbf24]/30">{{ news.badge_text }}</span>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                     The ideal platform for Afghan students to learn, build, and master new skills in Dari, Pashto, and English.
                 </p>
                 <div>
-                    <a href="{% url 'accounts:register' %}" class="inline-flex items-center justify-center px-9 py-4 text-xs sm:text-sm font-extrabold uppercase tracking-widest text-gray-900 bg-[#e8b49b] hover:bg-[#e2a88e] rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+                    <a href="{% url 'accounts:register' %}" class="inline-flex items-center justify-center px-9 py-4 text-xs sm:text-sm font-extrabold uppercase tracking-widest text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
                         START FOR FREE
                     </a>
                 </div>
