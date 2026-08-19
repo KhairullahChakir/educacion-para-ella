@@ -142,6 +142,26 @@ class ClassProgram(models.Model):
         else:
             return "bg-amber-100 text-amber-800 border-amber-200"
 
+    @property
+    def category_icon_info(self):
+        cat = (self.subject_category or '').lower()
+        if 'catalan' in cat:
+            return {'label': 'CATALÀ', 'code': 'CAT', 'bg': 'bg-amber-100 text-amber-900 border-amber-200', 'badge_bg': 'bg-amber-50 text-amber-800', 'icon': '🗣️'}
+        elif 'english' in cat:
+            return {'label': 'ENGLISH', 'code': 'EN', 'bg': 'bg-blue-100 text-blue-900 border-blue-200', 'badge_bg': 'bg-blue-50 text-blue-800', 'icon': '🇬🇧'}
+        elif 'spanish' in cat:
+            return {'label': 'ESPAÑOL', 'code': 'ES', 'bg': 'bg-rose-100 text-rose-900 border-rose-200', 'badge_bg': 'bg-rose-50 text-rose-800', 'icon': '🇪🇸'}
+        elif 'german' in cat:
+            return {'label': 'DEUTSCH', 'code': 'DE', 'bg': 'bg-stone-100 text-stone-900 border-stone-300', 'badge_bg': 'bg-stone-50 text-stone-800', 'icon': '🇩🇪'}
+        elif 'coding' in cat:
+            return {'label': 'TECH & CODE', 'code': 'CODE', 'bg': 'bg-teal-100 text-teal-900 border-teal-200', 'badge_bg': 'bg-teal-50 text-teal-800', 'icon': '💻'}
+        elif 'photo' in cat:
+            return {'label': 'ARTS & PHOTO', 'code': 'PHOTO', 'bg': 'bg-purple-100 text-purple-900 border-purple-200', 'badge_bg': 'bg-purple-50 text-purple-800', 'icon': '📸'}
+        elif 'mindful' in cat:
+            return {'label': 'WELL-BEING', 'code': 'HEAL', 'bg': 'bg-emerald-100 text-emerald-900 border-emerald-200', 'badge_bg': 'bg-emerald-50 text-emerald-800', 'icon': '🧘‍♀️'}
+        else:
+            return {'label': 'CLASS', 'code': 'CLASS', 'bg': 'bg-teal-100 text-teal-900 border-teal-200', 'badge_bg': 'bg-teal-50 text-teal-800', 'icon': '📚'}
+
 
 class HowItWorksStep(models.Model):
     """Dynamic student onboarding stages displayed on the Home page."""
