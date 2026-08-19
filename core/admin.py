@@ -11,6 +11,7 @@ from .models import (
     CountryReach,
     VolunteerStat,
     VolunteerRole,
+    VolunteerCountry,
 )
 
 
@@ -112,3 +113,12 @@ class VolunteerRoleAdmin(admin.ModelAdmin):
     list_filter = ('team_badge', 'color_theme', 'is_active', 'created_at')
     list_editable = ('order', 'is_active')
     search_fields = ('title', 'team_badge', 'description', 'bullet_1', 'bullet_2')
+
+
+@admin.register(VolunteerCountry)
+class VolunteerCountryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'country_code', 'flag_emoji', 'tag_label', 'order', 'is_active', 'created_at')
+    list_display_links = ('name',)
+    list_filter = ('is_active', 'created_at')
+    list_editable = ('flag_emoji', 'tag_label', 'order', 'is_active')
+    search_fields = ('name', 'country_code', 'tag_label')

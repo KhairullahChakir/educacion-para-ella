@@ -319,3 +319,23 @@ class VolunteerRole(models.Model):
             return "bg-amber-600"
         else:
             return "bg-[#167888]"
+
+
+class VolunteerCountry(models.Model):
+    """Countries and origins from which volunteers connect worldwide."""
+    name = models.CharField(max_length=100, help_text="Country Name (e.g. Spain, Germany, United Kingdom, United States, Canada, Greece, Afghan Diaspora)")
+    country_code = models.CharField(max_length=10, default="ES", help_text="Country Code (e.g. ES, DE, GB, US, CA, GR, AF)")
+    flag_emoji = models.CharField(max_length=20, default="🇪🇸", help_text="Flag Emoji (e.g. 🇪🇸, 🇩🇪, 🇬🇧, 🇺🇸, 🇨🇦, 🇬🇷, 🇦🇫)")
+    flag_image = models.ImageField(upload_to='volunteer_flag_images/', blank=True, null=True, help_text="Optional custom flag image")
+    tag_label = models.CharField(max_length=60, default="Educators & Mentors", blank=True, null=True, help_text="Optional role tag")
+    order = models.PositiveIntegerField(default=0, help_text="Sort order")
+    is_active = models.BooleanField(default=True, help_text="Active toggle")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Volunteer Origin Country"
+        verbose_name_plural = "Volunteer Origin Countries"
+
+    def __str__(self):
+        return f"{self.flag_emoji} {self.name} ({self.country_code})"

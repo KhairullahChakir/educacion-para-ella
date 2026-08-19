@@ -12,6 +12,7 @@ from .models import (
     CountryReach,
     VolunteerStat,
     VolunteerRole,
+    VolunteerCountry,
 )
 
 
@@ -69,9 +70,11 @@ def volunteers(request):
     """Our Volunteers page."""
     volunteer_stats = VolunteerStat.objects.filter(is_active=True).order_by('order', '-created_at')
     volunteer_roles = VolunteerRole.objects.filter(is_active=True).order_by('order', '-created_at')
+    volunteer_countries = VolunteerCountry.objects.filter(is_active=True).order_by('order', '-created_at')
     return render(request, 'core/volunteers.html', {
         'volunteer_stats': volunteer_stats,
         'volunteer_roles': volunteer_roles,
+        'volunteer_countries': volunteer_countries,
     })
 
 
