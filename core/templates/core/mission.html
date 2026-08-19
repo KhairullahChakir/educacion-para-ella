@@ -15,40 +15,46 @@
     </div>
 </section>
 
-<!-- Vision Manifesto Block -->
+<!-- Vision Manifesto Block (Option 1: Modern Illuminated Vision Grid) -->
 <section class="bg-white py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <span class="text-4xl text-amber-400 block mb-4">✨</span>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-amber-50 text-amber-500 border border-amber-200/60 shadow-xs mb-4 text-2xl">
+            ✨
+        </div>
+        <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-2">Our Manifesto</p>
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">Our Vision for the Future</h2>
         <p class="mt-4 text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">
             We envision a world where every Afghan girl and woman can access education safely and freely, choose her own learning path, cultivate her unique talents, and build her own independent future.
         </p>
 
-        <!-- Manifesto Pillars -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12 text-left">
-            <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100/80">
-                <p class="text-xs font-extrabold uppercase tracking-wider text-[#167888] mb-1">Pillar 01</p>
-                <h3 class="text-base font-bold text-gray-900">Education Creates Possibilities</h3>
-                <p class="text-xs text-gray-600 mt-2 leading-relaxed">Knowledge expands horizons, unlocks creativity, and connects individuals to global opportunities.</p>
-            </div>
+        <!-- Dynamic Manifesto Pillars Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12 text-left">
+            {% for pillar in vision_pillars %}
+            <div class="p-7 bg-white rounded-3xl border border-gray-200/90 shadow-xs hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 {{ pillar.color_classes.border_hover }} group flex flex-col justify-between">
+                <div>
+                    <!-- Top Pill & Icon Header -->
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 text-[11px] font-extrabold uppercase tracking-widest rounded-full border {{ pillar.color_classes.badge }}">
+                            PILLAR {{ pillar.pillar_number }}
+                        </span>
+                        <div class="w-11 h-11 rounded-2xl flex items-center justify-center text-xl shadow-xs border {{ pillar.color_classes.icon_bg }} group-hover:scale-110 transition-transform">
+                            {{ pillar.icon }}
+                        </div>
+                    </div>
 
-            <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100/80">
-                <p class="text-xs font-extrabold uppercase tracking-wider text-[#167888] mb-1">Pillar 02</p>
-                <h3 class="text-base font-bold text-gray-900">Skills Create Independence</h3>
-                <p class="text-xs text-gray-600 mt-2 leading-relaxed">Mastering languages and tech empowers women with autonomy and remote work capability.</p>
+                    <h3 class="text-xl font-bold text-gray-900 mt-2 leading-snug">
+                        {{ pillar.title }}
+                    </h3>
+                    <p class="text-xs text-gray-600 mt-2.5 leading-relaxed">
+                        {{ pillar.description }}
+                    </p>
+                </div>
             </div>
-
-            <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100/80">
-                <p class="text-xs font-extrabold uppercase tracking-wider text-[#167888] mb-1">Pillar 03</p>
-                <h3 class="text-base font-bold text-gray-900">Community Creates Strength</h3>
-                <p class="text-xs text-gray-600 mt-2 leading-relaxed">Solidarity with international educators and peers breaks isolation and rebuilds confidence.</p>
+            {% empty %}
+            <div class="col-span-2 text-center py-10 text-sm text-gray-400">
+                No vision pillars found. Add them in the Django admin.
             </div>
-
-            <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100/80">
-                <p class="text-xs font-extrabold uppercase tracking-wider text-[#167888] mb-1">Pillar 04</p>
-                <h3 class="text-base font-bold text-gray-900">Dreams Cannot Be Erased</h3>
-                <p class="text-xs text-gray-600 mt-2 leading-relaxed">No restriction can extinguish a student's innate right to learn, aspire, and achieve.</p>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

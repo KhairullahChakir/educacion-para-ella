@@ -340,3 +340,61 @@ class VolunteerCountry(models.Model):
 
     def __str__(self):
         return f"{self.flag_emoji} {self.name} ({self.country_code})"
+
+
+class VisionPillar(models.Model):
+    """Our Vision for the Future manifesto pillars on the Mission page."""
+    COLOR_CHOICES = [
+        ('teal', 'Teal'),
+        ('blue', 'Blue'),
+        ('purple', 'Purple'),
+        ('amber', 'Amber'),
+    ]
+
+    pillar_number = models.CharField(max_length=20, default="01", help_text="Numeral tag (e.g. 01, 02, 03, 04)")
+    title = models.CharField(max_length=150, help_text="Pillar title (e.g. Education Creates Possibilities)")
+    description = models.TextField(help_text="Core manifesto message")
+    icon = models.CharField(max_length=20, default="🌟", help_text="Emoji icon (e.g. 🌟, 💻, 🤝, 🕊️)")
+    accent_color = models.CharField(max_length=30, choices=COLOR_CHOICES, default='teal')
+    order = models.PositiveIntegerField(default=0, help_text="Sort order")
+    is_active = models.BooleanField(default=True, help_text="Active toggle")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Vision Manifesto Pillar"
+        verbose_name_plural = "Vision Manifesto Pillars"
+
+    def __str__(self):
+        return f"Pillar {self.pillar_number}: {self.title}"
+
+    @property
+    def color_classes(self):
+        if self.accent_color == 'blue':
+            return {
+                'badge': 'bg-blue-100 text-blue-900 border-blue-200',
+                'border_hover': 'hover:border-blue-400 hover:shadow-blue-50',
+                'icon_bg': 'bg-blue-50 text-blue-800 border-blue-100',
+                'accent': 'text-blue-700',
+            }
+        elif self.accent_color == 'purple':
+            return {
+                'badge': 'bg-purple-100 text-purple-900 border-purple-200',
+                'border_hover': 'hover:border-purple-400 hover:shadow-purple-50',
+                'icon_bg': 'bg-purple-50 text-purple-800 border-purple-100',
+                'accent': 'text-purple-700',
+            }
+        elif self.accent_color == 'amber':
+            return {
+                'badge': 'bg-amber-100 text-amber-900 border-amber-200',
+                'border_hover': 'hover:border-amber-400 hover:shadow-amber-50',
+                'icon_bg': 'bg-amber-50 text-amber-800 border-amber-100',
+                'accent': 'text-amber-700',
+            }
+        else:
+            return {
+                'badge': 'bg-teal-100 text-teal-900 border-teal-200',
+                'border_hover': 'hover:border-[#167888] hover:shadow-teal-50',
+                'icon_bg': 'bg-teal-50 text-[#167888] border-teal-100',
+                'accent': 'text-[#167888]',
+            }

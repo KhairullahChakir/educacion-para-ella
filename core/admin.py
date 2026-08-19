@@ -12,6 +12,7 @@ from .models import (
     VolunteerStat,
     VolunteerRole,
     VolunteerCountry,
+    VisionPillar,
 )
 
 
@@ -122,3 +123,12 @@ class VolunteerCountryAdmin(admin.ModelAdmin):
     list_filter = ('is_active', 'created_at')
     list_editable = ('flag_emoji', 'tag_label', 'order', 'is_active')
     search_fields = ('name', 'country_code', 'tag_label')
+
+
+@admin.register(VisionPillar)
+class VisionPillarAdmin(admin.ModelAdmin):
+    list_display = ('pillar_number', 'title', 'icon', 'accent_color', 'order', 'is_active', 'created_at')
+    list_display_links = ('title',)
+    list_filter = ('accent_color', 'is_active', 'created_at')
+    list_editable = ('pillar_number', 'icon', 'accent_color', 'order', 'is_active')
+    search_fields = ('title', 'description', 'pillar_number')

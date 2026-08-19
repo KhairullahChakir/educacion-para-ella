@@ -13,6 +13,7 @@ from .models import (
     VolunteerStat,
     VolunteerRole,
     VolunteerCountry,
+    VisionPillar,
 )
 
 
@@ -80,7 +81,10 @@ def volunteers(request):
 
 def mission(request):
     """Our Mission page — values, vision, empowerment."""
-    return render(request, 'core/mission.html')
+    vision_pillars = VisionPillar.objects.filter(is_active=True).order_by('order', '-created_at')
+    return render(request, 'core/mission.html', {
+        'vision_pillars': vision_pillars,
+    })
 
 
 def get_involved(request):
