@@ -136,3 +136,25 @@ class AboutStory(models.Model):
 
     def __str__(self):
         return self.headline
+
+
+class FounderCollaborator(models.Model):
+    """Founders and key leadership collaborators featured on the About Us page."""
+    name = models.CharField(max_length=150, help_text="Leader / Founder Name (e.g. Najiah Mohammadi, Chloe, Carol)")
+    role_title = models.CharField(max_length=150, help_text="Title / Role (e.g. Founder & Project Lead, Key Collaborator, Advocacy Partner)")
+    organization = models.CharField(max_length=150, default="Educación para Ella", help_text="Affiliated Organization")
+    bio = models.TextField(help_text="Detailed profile bio and contribution story")
+    location = models.CharField(max_length=150, default="📍 Kabul & Global", help_text="Location / Region")
+    image = models.ImageField(upload_to='leader_images/', blank=True, null=True, help_text="Portrait photo or illustrated avatar")
+    badge_theme = models.CharField(max_length=30, default="teal", choices=[('teal', 'Teal'), ('amber', 'Amber'), ('purple', 'Purple'), ('blue', 'Blue')], help_text="Visual color accent")
+    order = models.PositiveIntegerField(default=0, help_text="Sort order (0 appears first)")
+    is_active = models.BooleanField(default=True, help_text="Uncheck to hide this profile")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Founder & Collaborator"
+        verbose_name_plural = "Founders & Key Collaborators"
+
+    def __str__(self):
+        return f"{self.name} ({self.role_title})"

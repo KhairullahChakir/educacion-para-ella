@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import HeroNews, ClassProgram, HowItWorksStep, Partner, AboutStory
+from .models import HeroNews, ClassProgram, HowItWorksStep, Partner, AboutStory, FounderCollaborator
 
 
 @admin.register(HeroNews)
@@ -51,3 +51,11 @@ class AboutStoryAdmin(admin.ModelAdmin):
     list_filter = ('is_active', 'created_at')
     list_editable = ('is_active',)
     search_fields = ('headline', 'paragraph_1', 'paragraph_2', 'quote_text')
+
+
+@admin.register(FounderCollaborator)
+class FounderCollaboratorAdmin(admin.ModelAdmin):
+    list_display = ('name', 'role_title', 'organization', 'location', 'order', 'is_active', 'created_at')
+    list_filter = ('organization', 'badge_theme', 'is_active', 'created_at')
+    list_editable = ('order', 'is_active')
+    search_fields = ('name', 'role_title', 'organization', 'bio')
