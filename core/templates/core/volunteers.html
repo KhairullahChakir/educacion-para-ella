@@ -15,33 +15,27 @@
     </div>
 </section>
 
-<!-- Impact Stats Strip -->
+<!-- Impact Stats Strip (Dynamic VolunteerStat Backend Data) -->
 <section class="bg-white py-12 border-b border-gray-100">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100 text-center">
-                <p class="text-3xl sm:text-4xl font-black text-[#167888]">25+</p>
-                <p class="mt-1 text-xs font-bold text-gray-700 uppercase tracking-wider">Active Volunteers</p>
-                <p class="text-[11px] text-gray-400 mt-0.5">Teaching & mentoring weekly</p>
+            {% for stat in volunteer_stats %}
+            <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100 hover:border-[#167888] hover:shadow-md transition-all text-center group">
+                <p class="text-3xl sm:text-4xl font-black {{ stat.text_color_class }} group-hover:scale-105 transition-transform inline-block">
+                    {{ stat.number_value }}
+                </p>
+                <p class="mt-1.5 text-xs font-bold text-gray-800 uppercase tracking-wider">
+                    {{ stat.label }}
+                </p>
+                <p class="text-[11px] text-gray-500 mt-0.5 leading-tight">
+                    {{ stat.subtitle }}
+                </p>
             </div>
-
-            <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100 text-center">
-                <p class="text-3xl sm:text-4xl font-black text-[#167888]">12+</p>
-                <p class="mt-1 text-xs font-bold text-gray-700 uppercase tracking-wider">Countries Represented</p>
-                <p class="text-[11px] text-gray-400 mt-0.5">Global international solidarity</p>
+            {% empty %}
+            <div class="col-span-4 text-center py-6 text-sm text-gray-400">
+                No statistics found. Add them in the Django admin.
             </div>
-
-            <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100 text-center">
-                <p class="text-3xl sm:text-4xl font-black text-[#167888]">100+</p>
-                <p class="mt-1 text-xs font-bold text-gray-700 uppercase tracking-wider">Teaching Hours / Month</p>
-                <p class="text-[11px] text-gray-400 mt-0.5">Free virtual education</p>
-            </div>
-
-            <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100 text-center">
-                <p class="text-3xl sm:text-4xl font-black text-amber-600">4</p>
-                <p class="mt-1 text-xs font-bold text-gray-700 uppercase tracking-wider">Student Regions</p>
-                <p class="text-[11px] text-gray-400 mt-0.5">AF, IR, PK & IQ</p>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

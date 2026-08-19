@@ -235,3 +235,33 @@ class CountryReach(models.Model):
 
     def __str__(self):
         return f"{self.country_name} ({self.country_code})"
+
+
+class VolunteerStat(models.Model):
+    """Dynamic impact numbers and statistics strip displayed on the Volunteers page."""
+    number_value = models.CharField(max_length=50, default="25+", help_text="The stat number / metric (e.g. 25+, 12+, 100+, 4)")
+    label = models.CharField(max_length=100, help_text="Stat label (e.g. Active Volunteers, Countries Represented)")
+    subtitle = models.CharField(max_length=150, help_text="Stat subtitle explanation (e.g. Teaching & mentoring weekly)")
+    color_accent = models.CharField(max_length=30, default="teal", choices=[('teal', 'Teal'), ('amber', 'Amber'), ('blue', 'Blue'), ('purple', 'Purple')], help_text="Number highlight color")
+    order = models.PositiveIntegerField(default=0, help_text="Display order")
+    is_active = models.BooleanField(default=True, help_text="Active toggle")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Volunteer Impact Statistic"
+        verbose_name_plural = "Volunteer Impact Statistics"
+
+    def __str__(self):
+        return f"{self.number_value} - {self.label}"
+
+    @property
+    def text_color_class(self):
+        if self.color_accent == 'amber':
+            return 'text-amber-600'
+        elif self.color_accent == 'blue':
+            return 'text-blue-600'
+        elif self.color_accent == 'purple':
+            return 'text-purple-600'
+        else:
+            return 'text-[#167888]'

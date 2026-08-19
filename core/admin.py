@@ -9,6 +9,7 @@ from .models import (
     MethodologyPillar,
     MindfulnessIntro,
     CountryReach,
+    VolunteerStat,
 )
 
 
@@ -93,3 +94,12 @@ class CountryReachAdmin(admin.ModelAdmin):
     list_filter = ('badge_tag', 'is_active', 'created_at')
     list_editable = ('order', 'is_active')
     search_fields = ('country_name', 'country_code', 'description')
+
+
+@admin.register(VolunteerStat)
+class VolunteerStatAdmin(admin.ModelAdmin):
+    list_display = ('label', 'number_value', 'subtitle', 'color_accent', 'order', 'is_active', 'created_at')
+    list_display_links = ('label',)
+    list_filter = ('color_accent', 'is_active', 'created_at')
+    list_editable = ('number_value', 'subtitle', 'color_accent', 'order', 'is_active')
+    search_fields = ('number_value', 'label', 'subtitle')

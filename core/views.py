@@ -10,6 +10,7 @@ from .models import (
     MethodologyPillar,
     MindfulnessIntro,
     CountryReach,
+    VolunteerStat,
 )
 
 
@@ -65,7 +66,10 @@ def mindfulness(request):
 
 def volunteers(request):
     """Our Volunteers page."""
-    return render(request, 'core/volunteers.html')
+    volunteer_stats = VolunteerStat.objects.filter(is_active=True).order_by('order', '-created_at')
+    return render(request, 'core/volunteers.html', {
+        'volunteer_stats': volunteer_stats,
+    })
 
 
 def mission(request):
