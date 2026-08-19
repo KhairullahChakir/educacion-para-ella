@@ -399,3 +399,71 @@ class VisionPillar(models.Model):
                 'icon_bg': 'bg-teal-50 text-[#167888] border-teal-100',
                 'accent': 'text-[#167888]',
             }
+
+
+class InvolvementTrack(models.Model):
+    """Specialized volunteer and partnership opportunities on the Get Involved page."""
+    COLOR_CHOICES = [
+        ('teal', 'Teal / Teaching'),
+        ('purple', 'Purple / Mindfulness'),
+        ('blue', 'Blue / Tech & Translation'),
+        ('amber', 'Amber / Institutional Partner'),
+    ]
+
+    track_number = models.CharField(max_length=20, default="01", help_text="Track number (e.g. 01, 02, 03, 04)")
+    title = models.CharField(max_length=150, help_text="Track Title (e.g. Volunteer Language Teacher, Mindfulness Facilitator)")
+    badge_label = models.CharField(max_length=60, default="TEACHING TRACK", help_text="Badge label (e.g. TEACHING TRACK, WELL-BEING, TECH & CODE, PARTNERSHIP)")
+    icon = models.CharField(max_length=20, default="👩‍🏫", help_text="Emoji icon (e.g. 👩‍🏫, 🧘‍♀️, 💻, 🤝)")
+    image = models.ImageField(upload_to='involvement_images/', blank=True, null=True, help_text="Header illustration for the opportunity card")
+    description = models.TextField(help_text="Track overview and role expectations")
+    commitment_info = models.CharField(max_length=150, default="2 to 4 hours per week", help_text="Weekly time commitment")
+    skills_or_platform = models.CharField(max_length=200, default="Zoom / Google Meet with curriculum provided", help_text="Platform or background required")
+    button_text = models.CharField(max_length=60, default="Apply Now →", help_text="Button text")
+    button_url = models.CharField(max_length=255, default="/accounts/register/", help_text="Target URL")
+    color_theme = models.CharField(max_length=30, choices=COLOR_CHOICES, default='teal')
+    order = models.PositiveIntegerField(default=0, help_text="Sort order")
+    is_active = models.BooleanField(default=True, help_text="Active toggle")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Involvement Opportunity Track"
+        verbose_name_plural = "Involvement Opportunity Tracks"
+
+    def __str__(self):
+        return f"Track {self.track_number}: {self.title}"
+
+    @property
+    def style_classes(self):
+        if self.color_theme == 'purple':
+            return {
+                'border_hover': 'hover:border-purple-500 hover:shadow-purple-100',
+                'badge': 'bg-purple-50 text-purple-800 border-purple-200',
+                'icon_bg': 'bg-purple-600 text-white',
+                'bullet_dot': 'bg-purple-600',
+                'button': 'bg-purple-700 hover:bg-purple-800 text-white shadow-purple-200',
+            }
+        elif self.color_theme == 'blue':
+            return {
+                'border_hover': 'hover:border-blue-500 hover:shadow-blue-100',
+                'badge': 'bg-blue-50 text-blue-800 border-blue-200',
+                'icon_bg': 'bg-blue-600 text-white',
+                'bullet_dot': 'bg-blue-600',
+                'button': 'bg-blue-700 hover:bg-blue-800 text-white shadow-blue-200',
+            }
+        elif self.color_theme == 'amber':
+            return {
+                'border_hover': 'hover:border-amber-500 hover:shadow-amber-100',
+                'badge': 'bg-amber-50 text-amber-800 border-amber-200',
+                'icon_bg': 'bg-amber-600 text-white',
+                'bullet_dot': 'bg-amber-600',
+                'button': 'bg-amber-500 hover:bg-amber-600 text-gray-900 shadow-amber-200',
+            }
+        else:
+            return {
+                'border_hover': 'hover:border-[#167888] hover:shadow-teal-100',
+                'badge': 'bg-teal-50 text-teal-800 border-teal-200',
+                'icon_bg': 'bg-[#167888] text-white',
+                'bullet_dot': 'bg-[#167888]',
+                'button': 'bg-[#167888] hover:bg-teal-800 text-white shadow-teal-200',
+            }

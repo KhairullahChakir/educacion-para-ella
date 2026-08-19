@@ -14,6 +14,7 @@ from .models import (
     VolunteerRole,
     VolunteerCountry,
     VisionPillar,
+    InvolvementTrack,
 )
 
 
@@ -89,7 +90,10 @@ def mission(request):
 
 def get_involved(request):
     """Get Involved page — volunteer, teach, support, partner."""
-    return render(request, 'core/get_involved.html')
+    involvement_tracks = InvolvementTrack.objects.filter(is_active=True).order_by('order', '-created_at')
+    return render(request, 'core/get_involved.html', {
+        'involvement_tracks': involvement_tracks,
+    })
 
 
 def contact(request):

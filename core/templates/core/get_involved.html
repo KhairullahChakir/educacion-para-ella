@@ -15,7 +15,7 @@
     </div>
 </section>
 
-<!-- 4 Specialized Volunteer & Collaboration Tracks -->
+<!-- 4 Specialized Volunteer & Collaboration Tracks (Dynamic Illustrated Cards) -->
 <section class="bg-white py-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-16">
@@ -27,113 +27,64 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- 1. Teach Languages -->
-            <div class="p-8 sm:p-10 bg-teal-50/40 rounded-3xl border-2 border-teal-100 hover:border-[#167888] hover:shadow-xl transition-all group flex flex-col justify-between">
+            {% for track in involvement_tracks %}
+            <div class="bg-white rounded-3xl border border-gray-200/90 shadow-xs hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 {{ track.style_classes.border_hover }} group flex flex-col justify-between overflow-hidden">
                 <div>
-                    <div class="w-14 h-14 bg-[#167888] text-white rounded-2xl flex items-center justify-center mb-6 text-2xl group-hover:scale-105 transition-transform shadow-md">
-                        👩‍🏫
+                    <!-- Header Artwork Illustration -->
+                    {% if track.image %}
+                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-gray-100">
+                        <img src="{{ track.image.url }}" alt="{{ track.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-3 left-4 flex items-center gap-2">
+                            <span class="px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest bg-white/95 backdrop-blur-md text-gray-900 rounded-full shadow-xs">
+                                TRACK {{ track.track_number }}
+                            </span>
+                            <span class="px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest rounded-full border {{ track.style_classes.badge }} bg-white/95 backdrop-blur-md">
+                                {{ track.badge_label }}
+                            </span>
+                        </div>
                     </div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#167888] bg-white px-3 py-1 rounded-full border border-teal-200">Track 01</span>
-                    <h3 class="text-2xl font-bold text-gray-900 mt-2">Volunteer Language Teacher</h3>
-                    <p class="mt-3 text-xs sm:text-sm text-gray-600 leading-relaxed">
-                        Teach English (A0–C1), Spanish, or German in live small-group online classes (4–8 students). Guide learners through grammar, pronunciation, and conversational practice.
-                    </p>
-                    <ul class="mt-5 space-y-2.5 text-xs text-gray-700">
-                        <li class="flex items-center gap-2.5">
-                            <span class="w-2 h-2 rounded-full bg-[#167888]"></span> <strong>Commitment:</strong> 2 to 4 hours per week
-                        </li>
-                        <li class="flex items-center gap-2.5">
-                            <span class="w-2 h-2 rounded-full bg-[#167888]"></span> <strong>Platform:</strong> Zoom / Google Meet with curriculum provided
-                        </li>
-                    </ul>
-                </div>
-                <div class="mt-8 pt-6 border-t border-teal-100">
-                    <a href="{% url 'accounts:register' %}" class="inline-flex items-center justify-center w-full sm:w-auto px-7 py-3 text-xs font-extrabold uppercase tracking-wider text-white bg-[#167888] hover:bg-teal-800 rounded-full transition-all shadow-sm">
-                        Register as Teacher
-                    </a>
-                </div>
-            </div>
+                    {% endif %}
 
-            <!-- 2. Facilitate Well-being -->
-            <div class="p-8 sm:p-10 bg-purple-50/40 rounded-3xl border-2 border-purple-100 hover:border-purple-600 hover:shadow-xl transition-all group flex flex-col justify-between">
-                <div>
-                    <div class="w-14 h-14 bg-purple-700 text-white rounded-2xl flex items-center justify-center mb-6 text-2xl group-hover:scale-105 transition-transform shadow-md">
-                        🧘‍♀️
-                    </div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-purple-700 bg-white px-3 py-1 rounded-full border border-purple-200">Track 02</span>
-                    <h3 class="text-2xl font-bold text-gray-900 mt-2">Mindfulness Facilitator</h3>
-                    <p class="mt-3 text-xs sm:text-sm text-gray-600 leading-relaxed">
-                        Lead compassionate mental health, somatic breathing, and safe listening circles for students navigating displacement, anxiety, or domestic isolation.
-                    </p>
-                    <ul class="mt-5 space-y-2.5 text-xs text-gray-700">
-                        <li class="flex items-center gap-2.5">
-                            <span class="w-2 h-2 rounded-full bg-purple-700"></span> <strong>Commitment:</strong> 1 to 2 hours per week
-                        </li>
-                        <li class="flex items-center gap-2.5">
-                            <span class="w-2 h-2 rounded-full bg-purple-700"></span> <strong>Background:</strong> Mental health, counseling, or meditation practice
-                        </li>
-                    </ul>
-                </div>
-                <div class="mt-8 pt-6 border-t border-purple-100">
-                    <a href="{% url 'core:contact' %}" class="inline-flex items-center justify-center w-full sm:w-auto px-7 py-3 text-xs font-extrabold uppercase tracking-wider text-white bg-purple-700 hover:bg-purple-800 rounded-full transition-all shadow-sm">
-                        Apply to Facilitate
-                    </a>
-                </div>
-            </div>
+                    <div class="p-7 sm:p-8">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-2xl flex items-center justify-center text-xl shadow-xs {{ track.style_classes.icon_bg }}">
+                                {{ track.icon }}
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 leading-snug">
+                                {{ track.title }}
+                            </h3>
+                        </div>
 
-            <!-- 3. Tech & Content Development -->
-            <div class="p-8 sm:p-10 bg-blue-50/40 rounded-3xl border-2 border-blue-100 hover:border-blue-600 hover:shadow-xl transition-all group flex flex-col justify-between">
-                <div>
-                    <div class="w-14 h-14 bg-blue-700 text-white rounded-2xl flex items-center justify-center mb-6 text-2xl group-hover:scale-105 transition-transform shadow-md">
-                        💻
-                    </div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-blue-700 bg-white px-3 py-1 rounded-full border border-blue-200">Track 03</span>
-                    <h3 class="text-2xl font-bold text-gray-900 mt-2">Tech Mentor & Translator</h3>
-                    <p class="mt-3 text-xs sm:text-sm text-gray-600 leading-relaxed">
-                        Teach JavaScript coding fundamentals, review student coding projects, or help translate curriculum guides into Dari and Pashto.
-                    </p>
-                    <ul class="mt-5 space-y-2.5 text-xs text-gray-700">
-                        <li class="flex items-center gap-2.5">
-                            <span class="w-2 h-2 rounded-full bg-blue-700"></span> <strong>Commitment:</strong> Flexible task-based hours
-                        </li>
-                        <li class="flex items-center gap-2.5">
-                            <span class="w-2 h-2 rounded-full bg-blue-700"></span> <strong>Skills:</strong> Web Dev (JS/CSS), Dari/Pashto bilingual translation
-                        </li>
-                    </ul>
-                </div>
-                <div class="mt-8 pt-6 border-t border-blue-100">
-                    <a href="{% url 'core:contact' %}" class="inline-flex items-center justify-center w-full sm:w-auto px-7 py-3 text-xs font-extrabold uppercase tracking-wider text-white bg-blue-700 hover:bg-blue-800 rounded-full transition-all shadow-sm">
-                        Join Tech & Translation
-                    </a>
-                </div>
-            </div>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed mt-2">
+                            {{ track.description }}
+                        </p>
 
-            <!-- 4. Institutional Partnerships -->
-            <div class="p-8 sm:p-10 bg-amber-50/40 rounded-3xl border-2 border-amber-100 hover:border-amber-500 hover:shadow-xl transition-all group flex flex-col justify-between">
-                <div>
-                    <div class="w-14 h-14 bg-amber-600 text-white rounded-2xl flex items-center justify-center mb-6 text-2xl group-hover:scale-105 transition-transform shadow-md">
-                        🤝
+                        <!-- Key Highlight Details -->
+                        <div class="mt-6 space-y-2.5 pt-4 border-t border-gray-100 text-xs text-gray-700">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-2.5 h-2.5 rounded-full {{ track.style_classes.bullet_dot }} shrink-0"></span>
+                                <span><strong>Commitment:</strong> {{ track.commitment_info }}</span>
+                            </div>
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-2.5 h-2.5 rounded-full {{ track.style_classes.bullet_dot }} shrink-0"></span>
+                                <span><strong>Focus & Platform:</strong> {{ track.skills_or_platform }}</span>
+                            </div>
+                        </div>
                     </div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-700 bg-white px-3 py-1 rounded-full border border-amber-200">Track 04</span>
-                    <h3 class="text-2xl font-bold text-gray-900 mt-2">NGO & Institutional Partner</h3>
-                    <p class="mt-3 text-xs sm:text-sm text-gray-600 leading-relaxed">
-                        Partner with Educación para Ella to provide educational software licenses, sponsor digital access kits, or refer students in need of academic support.
-                    </p>
-                    <ul class="mt-5 space-y-2.5 text-xs text-gray-700">
-                        <li class="flex items-center gap-2.5">
-                            <span class="w-2 h-2 rounded-full bg-amber-600"></span> <strong>Partners:</strong> Universities, non-profits, philanthropic donors
-                        </li>
-                        <li class="flex items-center gap-2.5">
-                            <span class="w-2 h-2 rounded-full bg-amber-600"></span> <strong>Impact:</strong> Institutional scale & resource provision
-                        </li>
-                    </ul>
                 </div>
-                <div class="mt-8 pt-6 border-t border-amber-100">
-                    <a href="{% url 'core:contact' %}" class="inline-flex items-center justify-center w-full sm:w-auto px-7 py-3 text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-amber-300 hover:bg-amber-400 rounded-full transition-all shadow-sm">
-                        Partner With Us
+
+                <div class="px-7 pb-7 sm:px-8 sm:pb-8 pt-0">
+                    <a href="{{ track.button_url }}" class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider rounded-full transition-all shadow-md hover:shadow-lg {{ track.style_classes.button }}">
+                        {{ track.button_text }}
                     </a>
                 </div>
             </div>
+            {% empty %}
+            <div class="col-span-2 text-center py-10 text-sm text-gray-400">
+                No involvement tracks found. Add them in the Django admin.
+            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
