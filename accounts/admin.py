@@ -21,6 +21,21 @@ class UserAdmin(BaseUserAdmin):
     list_display = ('username', 'email', 'get_role_badge', 'get_admin_badge', 'is_active', 'date_joined')
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'profile__role', 'date_joined')
     search_fields = ('username', 'email', 'first_name', 'last_name', 'profile__bio')
+    fieldsets = (
+        ('👤 Account Credentials', {
+            'fields': ('username', 'password', 'email')
+        }),
+        ('📝 Personal Information', {
+            'fields': ('first_name', 'last_name')
+        }),
+        ('🛡️ Permissions & Access Control', {
+            'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')
+        }),
+        ('📅 Important Timestamps', {
+            'fields': ('last_login', 'date_joined'),
+            'classes': ('collapse',)
+        }),
+    )
 
     @admin.display(description='Role')
     def get_role_badge(self, obj):
