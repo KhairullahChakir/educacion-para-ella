@@ -57,6 +57,25 @@ class UserAdmin(BaseUserAdmin):
         return format_html('<span style="color: #64748b; font-size: 11px; font-weight: 600;">Member</span>')
 
 
-# Re-register UserAdmin
+from django.contrib.auth.models import User, Group
+
+class CustomGroupAdmin(admin.ModelAdmin):
+    list_display = ('name', 'get_members_count', 'get_permissions_count')
+    search_fields = ('name',)
+
+    @admin.display(description='👥 Active Members')
+    def get_members_count(self, obj):
+        count = obj.user_set.count()
+        return format_html('<span style="background: #f1f5f9; color: #334155; font-weight: 800; font-size: 11px; padding: 3px 10px; border-radius: 9999px;">{} Members</span>', count)
+
+    @admin.display(description='🛡️ Assigned Permissions')
+    def get_permissions_count(self, obj):
+        count = obj.permissions.count()
+        return format_html('<span style="background: #e6fffa; color: #167888; border: 1px solid #99f6e4; font-weight: 800; font-size: 11px; padding: 3px 10px; border-radius: 9999px;">{} Permissions</span>', count)
+
+
+# Re-register UserAdmin and GroupAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+admin.site.unregister(Group)
+admin.site.register(Group, CustomGroupAdmin)
