@@ -107,6 +107,7 @@ class ClassProgram(models.Model):
 
     title = models.CharField(max_length=150, help_text="Class name (e.g. English, Spanish, Sewing Class, Web Development)")
     teacher_name = models.CharField(max_length=150, blank=True, default="", help_text="Teacher / Educator name(s) (e.g. Charlotte, Kelly, Narges Akhlaqi, Alena)")
+    show_teacher_name = models.BooleanField(default=True, help_text="Check to display the teacher's name publicly on class cards, uncheck to hide")
     level_exam_required = models.BooleanField(default=False, help_text="Check if Level Exam is required before joining")
     icon_or_flag = models.CharField(max_length=20, default="🇬🇧", help_text="Emoji icon or flag (e.g. 🇬🇧, 🇪🇸, 🇩🇪, 🇫🇷, 💻, 📸, 🧵, 💄, 🧠, 🧘)")
     badge_text = models.CharField(max_length=60, default="A1 • Registration Open", help_text="Level/Tag badge")

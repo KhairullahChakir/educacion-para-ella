@@ -224,7 +224,7 @@
                             </div>
 
                             <!-- Teacher Info -->
-                            {% if program.teacher_name %}
+                            {% if program.teacher_name and program.show_teacher_name %}
                             <div class="flex items-center gap-1.5 text-xs text-gray-700 my-2.5 font-medium bg-gray-50/80 px-3 py-1.5 rounded-xl border border-gray-100">
                                 <span>👩‍🏫</span>
                                 <span>Teacher: <strong class="text-gray-900 font-bold">{{ program.teacher_name }}</strong></span>
