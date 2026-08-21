@@ -201,38 +201,67 @@
                         {{ program.title }}
                     </h3>
 
-                    <!-- Level & Format Badges -->
-                    <div class="flex items-center gap-2 mt-2 mb-2">
+                    <!-- Level & Exam Badges -->
+                    <div class="flex items-center gap-1.5 flex-wrap mt-2 mb-2">
                         <span class="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold bg-teal-50 text-[#167888] border border-teal-200/60 uppercase tracking-wider">
                             {{ program.get_level_category_display }}
                         </span>
-                        <span class="text-[11px] text-gray-400 font-medium">
-                            {{ program.get_format_category_display }}
+                        {% if program.level_exam_required %}
+                        <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-50 text-amber-900 border border-amber-300 uppercase tracking-wider">
+                            📝 Exam Required
                         </span>
+                        {% endif %}
+                    </div>
+
+                    <!-- Teacher Info -->
+                    {% if program.teacher_name %}
+                    <div class="flex items-center gap-1.5 text-xs text-gray-700 my-2.5 font-medium bg-gray-50/80 px-3 py-1.5 rounded-xl border border-gray-100">
+                        <span>👩‍🏫</span>
+                        <span>Teacher: <strong class="text-gray-900 font-bold">{{ program.teacher_name }}</strong></span>
+                    </div>
+                    {% endif %}
+
+                    <!-- Schedule Metadata -->
+                    <div class="space-y-1 text-xs text-gray-600 mt-2">
+                        <p class="leading-relaxed flex items-center justify-between">
+                            <span class="font-semibold text-gray-600">Days:</span>
+                            <span class="text-gray-900 font-bold truncate max-w-[170px]">{{ program.timetable_text }}</span>
+                        </p>
                     </div>
 
                     <!-- Summary -->
-                    <p class="mt-2 text-xs text-gray-600 leading-relaxed line-clamp-2">
-                        {{ program.description|default:"Structured, safe learning with qualified volunteer educators and weekly live sessions." }}
+                    {% if program.description %}
+                    <p class="mt-2.5 text-xs text-gray-500 leading-relaxed line-clamp-2">
+                        {{ program.description }}
                     </p>
-
-                    <!-- Schedule / Timing Info Strip -->
-                    <div class="mt-4 flex items-center gap-2 p-2.5 rounded-xl bg-gray-50/90 border border-gray-100 text-gray-700 text-xs">
-                        <svg class="w-4 h-4 text-[#167888] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <span class="text-[11px] font-semibold truncate">{{ program.schedule_time }}</span>
-                    </div>
+                    {% endif %}
                 </div>
 
-                <!-- Card Bottom Solid Amber-Gold Button -->
-                <div class="mt-5 pt-4 border-t border-gray-100">
-                    <a href="{{ program.button_url|default:'/classes/' }}" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-xs hover:shadow-md transition-all">
-                        <span>{{ program.button_text|default:'Get Started' }}</span>
+                <!-- Action Button -->
+                <div class="pt-4 mt-3 border-t border-gray-100">
+                    {% if program.status == 'closed' %}
+                    <button disabled class="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-400 border border-gray-300 bg-gray-50 cursor-not-allowed">
+                        Registration Closed
+                    </button>
+                    {% elif user.is_authenticated and enrolled_program_ids and program.id in enrolled_program_ids %}
+                    <a href="{% url 'core:dashboard' %}" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider text-emerald-900 bg-emerald-100 hover:bg-emerald-200 border border-emerald-300 transition-all shadow-xs">
+                        <span>✓ Enrolled · View in Dashboard</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                    {% elif user.is_authenticated %}
+                    <a href="{% url 'core:enroll_course' program.id %}?next={% url 'core:home' %}" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] transition-all cursor-pointer shadow-xs hover:shadow-md">
+                        <span>+ Enroll for Free</span>
                         <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
+                    {% else %}
+                    <a href="{% url 'accounts:register' %}?next={% url 'core:classes' %}" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] transition-all cursor-pointer shadow-xs hover:shadow-md">
+                        <span>+ Enroll for Free</span>
+                        <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                    {% endif %}
                 </div>
             </div>
+
             {% empty %}
             <div class="p-8 text-center text-sm text-gray-500 w-full">
                 No active class programs found. Add classes in the Django Admin.

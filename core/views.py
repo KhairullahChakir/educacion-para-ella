@@ -37,11 +37,16 @@ def home(request):
     class_programs = ClassProgram.objects.filter(is_active=True).order_by('order', '-created_at')
     how_it_works_steps = HowItWorksStep.objects.filter(is_active=True).order_by('order', 'step_number')
     partners = Partner.objects.filter(is_active=True).order_by('order', '-created_at')
+    enrolled_program_ids = set()
+    if request.user.is_authenticated:
+        enrolled_program_ids = set(CourseEnrollment.objects.filter(user=request.user, is_active=True).values_list('program_id', flat=True))
+
     return render(request, 'core/home.html', {
         'hero_news_list': hero_news_list,
         'class_programs': class_programs,
         'how_it_works_steps': how_it_works_steps,
         'partners': partners,
+        'enrolled_program_ids': enrolled_program_ids,
     })
 
 
