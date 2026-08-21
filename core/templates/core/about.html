@@ -79,7 +79,22 @@
         </div>
 
         <div class="space-y-8 relative before:absolute before:inset-0 before:left-5 before:w-0.5 before:bg-teal-200">
-            <!-- Step 1 -->
+            {% for milestone in milestones %}
+            <!-- Milestone Step -->
+            <div class="flex gap-6 relative">
+                <div class="w-10 h-10 rounded-full bg-[#167888] text-white flex items-center justify-center font-bold text-sm shrink-0 z-10 shadow-md">
+                    {{ milestone.step_number|default:forloop.counter }}
+                </div>
+                <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-200/80 shadow-xs flex-1">
+                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-[#167888] bg-teal-50 px-3 py-1 rounded-full border border-teal-100">{{ milestone.badge_date }}</span>
+                    <h3 class="text-xl font-bold text-gray-900 mt-3">{{ milestone.title }}</h3>
+                    <p class="text-sm text-gray-600 mt-2 leading-relaxed">
+                        {{ milestone.description }}
+                    </p>
+                </div>
+            </div>
+            {% empty %}
+            <!-- Fallback Step 1 -->
             <div class="flex gap-6 relative">
                 <div class="w-10 h-10 rounded-full bg-[#167888] text-white flex items-center justify-center font-bold text-sm shrink-0 z-10 shadow-md">
                     1
@@ -93,7 +108,7 @@
                 </div>
             </div>
 
-            <!-- Step 2 -->
+            <!-- Fallback Step 2 -->
             <div class="flex gap-6 relative">
                 <div class="w-10 h-10 rounded-full bg-[#167888] text-white flex items-center justify-center font-bold text-sm shrink-0 z-10 shadow-md">
                     2
@@ -107,7 +122,7 @@
                 </div>
             </div>
 
-            <!-- Step 3 -->
+            <!-- Fallback Step 3 -->
             <div class="flex gap-6 relative">
                 <div class="w-10 h-10 rounded-full bg-[#167888] text-white flex items-center justify-center font-bold text-sm shrink-0 z-10 shadow-md">
                     3
@@ -120,6 +135,7 @@
                     </p>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </section>

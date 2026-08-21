@@ -6,6 +6,7 @@ from .models import (
     HowItWorksStep,
     Partner,
     AboutStory,
+    AboutMilestone,
     FounderCollaborator,
     MethodologyPillar,
     MindfulnessIntro,
@@ -91,6 +92,22 @@ class AboutStoryAdmin(admin.ModelAdmin):
     list_filter = ('is_active', 'created_at')
     list_editable = ('is_active',)
     search_fields = ('headline', 'paragraph_1', 'paragraph_2', 'quote_text')
+
+
+@admin.register(AboutMilestone)
+class AboutMilestoneAdmin(admin.ModelAdmin):
+    list_display = ('step_number', 'title', 'badge_date', 'order', 'is_active', 'created_at')
+    list_filter = ('is_active', 'created_at')
+    list_editable = ('badge_date', 'order', 'is_active')
+    search_fields = ('title', 'description', 'badge_date')
+    fieldsets = (
+        ('📍 Milestone Step Details', {
+            'fields': ('step_number', 'badge_date', 'title', 'description')
+        }),
+        ('⚙️ Visibility & Order', {
+            'fields': ('order', 'is_active')
+        }),
+    )
 
 
 @admin.register(FounderCollaborator)

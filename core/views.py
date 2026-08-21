@@ -8,6 +8,7 @@ from .models import (
     HowItWorksStep,
     Partner,
     AboutStory,
+    AboutMilestone,
     FounderCollaborator,
     MethodologyPillar,
     MindfulnessIntro,
@@ -87,10 +88,12 @@ def unenroll_course(request, program_id):
 def about(request):
     """About Us page — project history, founders, volunteer community."""
     about_story = AboutStory.objects.filter(is_active=True).first()
+    milestones = AboutMilestone.objects.filter(is_active=True).order_by('order', 'step_number', 'created_at')
     founders = FounderCollaborator.objects.filter(is_active=True).order_by('order', '-created_at')
     methodology_pillars = MethodologyPillar.objects.filter(is_active=True).order_by('order', '-created_at')
     return render(request, 'core/about.html', {
         'about_story': about_story,
+        'milestones': milestones,
         'founders': founders,
         'methodology_pillars': methodology_pillars,
     })

@@ -248,6 +248,25 @@ class AboutStory(models.Model):
         return self.headline
 
 
+class AboutMilestone(models.Model):
+    """Dynamic Journey & Timeline milestones on the About Us page."""
+    step_number = models.PositiveIntegerField(default=1, help_text="Step number badge (e.g. 1, 2, 3)")
+    badge_date = models.CharField(max_length=80, default="September 2025", help_text="Time badge (e.g. September 2025, Rapid Expansion, Today & Beyond)")
+    title = models.CharField(max_length=150, help_text="Milestone title (e.g. Initiative Founded, 25+ Global Volunteers Join)")
+    description = models.TextField(help_text="Detailed story or explanation for this milestone")
+    order = models.PositiveIntegerField(default=0, help_text="Sort order")
+    is_active = models.BooleanField(default=True, help_text="Uncheck to hide this milestone")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', 'step_number', 'created_at']
+        verbose_name = "About Page Milestone"
+        verbose_name_plural = "About Page Milestones (Journey)"
+
+    def __str__(self):
+        return f"{self.step_number}. {self.title} ({self.badge_date})"
+
+
 class FounderCollaborator(models.Model):
     """Founders and key leadership collaborators featured on the About Us page."""
     name = models.CharField(max_length=150, help_text="Leader / Founder Name (e.g. Najiah Mohammadi, Chloe, Carol, Ansoh)")
