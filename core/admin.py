@@ -51,7 +51,7 @@ class ClassesPageSettingAdmin(admin.ModelAdmin):
 
 @admin.register(ClassProgram)
 class ClassProgramAdmin(admin.ModelAdmin):
-    list_display = ('title', 'get_category_badge', 'teacher_name', 'show_teacher_name', 'timetable_text', 'level_exam_required', 'status', 'order', 'is_active')
+    list_display = ('title', 'get_category_badge', 'teacher_name', 'show_teacher_name', 'level_exam_required', 'status', 'order', 'is_active')
     list_filter = ('subject_category', 'level_category', 'format_category', 'show_teacher_name', 'level_exam_required', 'status', 'is_active', 'created_at')
     list_editable = ('show_teacher_name', 'level_exam_required', 'status', 'order', 'is_active')
     search_fields = ('title', 'teacher_name', 'description', 'timetable_text')
