@@ -49,13 +49,13 @@ class ClassesPageSettingAdmin(admin.ModelAdmin):
 
 @admin.register(ClassProgram)
 class ClassProgramAdmin(admin.ModelAdmin):
-    list_display = ('title', 'subject_category', 'level_category', 'format_category', 'badge_text', 'start_date_text', 'status', 'order', 'is_active')
-    list_filter = ('subject_category', 'level_category', 'format_category', 'status', 'is_active', 'created_at')
-    list_editable = ('subject_category', 'level_category', 'format_category', 'status', 'order', 'is_active')
-    search_fields = ('title', 'description', 'badge_text', 'start_date_text', 'timetable_text')
+    list_display = ('title', 'subject_category', 'level_category', 'teacher_name', 'timetable_text', 'level_exam_required', 'status', 'order', 'is_active')
+    list_filter = ('subject_category', 'level_category', 'format_category', 'level_exam_required', 'status', 'is_active', 'created_at')
+    list_editable = ('subject_category', 'level_category', 'teacher_name', 'timetable_text', 'level_exam_required', 'status', 'order', 'is_active')
+    search_fields = ('title', 'teacher_name', 'description', 'timetable_text')
     fieldsets = (
         ('General Information', {
-            'fields': ('title', 'subject_category', 'level_category', 'format_category', 'icon_or_flag', 'badge_text', 'description', 'image')
+            'fields': ('title', 'subject_category', 'level_category', 'format_category', 'teacher_name', 'level_exam_required', 'icon_or_flag', 'badge_text', 'description', 'image')
         }),
         ('Schedule & Timetable', {
             'fields': ('start_date_text', 'timetable_text', 'location_text', 'schedule_time')

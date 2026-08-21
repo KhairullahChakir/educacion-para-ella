@@ -61,7 +61,7 @@
             
             <!-- Left Column: Interactive Filter Sidebar -->
             <div class="lg:col-span-3 space-y-8">
-                <div class="bg-gray-50/80 rounded-3xl p-6 border border-gray-200/80 sticky top-28 shadow-2xs">
+                <div class="bg-gray-50/90 rounded-3xl p-6 border border-gray-200/80 sticky top-28 shadow-2xs">
                     
                     <div class="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">
                         <h2 class="text-sm font-extrabold uppercase tracking-wider text-gray-900">Filters</h2>
@@ -70,36 +70,56 @@
                         </button>
                     </div>
 
-                    <!-- 1. Filter by Language / Subject -->
+                    <!-- 1. Filter by Language / Track -->
                     <div class="space-y-2 mb-6">
-                        <p class="text-xs font-bold text-gray-700">Filter by language:</p>
+                        <p class="text-xs font-bold text-gray-700 uppercase tracking-wider">Subject & Track:</p>
                         <div class="flex flex-col space-y-1" id="filter-subject-group">
                             <button type="button" data-filter-type="subject" data-filter-value="all" class="filter-btn active flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>Show all languages</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100/70 text-teal-800" data-count-for="subject-all">16</span>
-                            </button>
-                            <button type="button" data-filter-type="subject" data-filter-value="catalan" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>Catalan</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="subject-catalan">4</span>
+                                <span>Show all subjects</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100/70 text-teal-800" data-count-for="subject-all">21</span>
                             </button>
                             <button type="button" data-filter-type="subject" data-filter-value="english" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
                                 <span>English</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="subject-english">3</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="subject-english">8</span>
                             </button>
                             <button type="button" data-filter-type="subject" data-filter-value="spanish" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
                                 <span>Spanish</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="subject-spanish">6</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="subject-spanish">4</span>
+                            </button>
+                            <button type="button" data-filter-type="subject" data-filter-value="german" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                <span>German</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="subject-german">1</span>
+                            </button>
+                            <button type="button" data-filter-type="subject" data-filter-value="french" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                <span>French</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="subject-french">1</span>
                             </button>
                             <button type="button" data-filter-type="subject" data-filter-value="coding" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>Coding & Tech</span>
+                                <span>Web Dev & Coding</span>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="subject-coding">1</span>
                             </button>
                             <button type="button" data-filter-type="subject" data-filter-value="photography" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>Photography & Arts</span>
+                                <span>Photography</span>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="subject-photography">1</span>
                             </button>
+                            <button type="button" data-filter-type="subject" data-filter-value="sewing" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                <span>Sewing (خیاطی)</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="subject-sewing">1</span>
+                            </button>
+                            <button type="button" data-filter-type="subject" data-filter-value="makeup" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                <span>Makeup & Haircut</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="subject-makeup">1</span>
+                            </button>
+                            <button type="button" data-filter-type="subject" data-filter-value="lifeskills" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                <span>Life Skills (مهارت‌ها)</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="subject-lifeskills">1</span>
+                            </button>
+                            <button type="button" data-filter-type="subject" data-filter-value="psychological" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                <span>1:1 Psychological Support</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="subject-psychological">1</span>
+                            </button>
                             <button type="button" data-filter-type="subject" data-filter-value="mindfulness" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>Mindfulness</span>
+                                <span>Mindfulness Session</span>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="subject-mindfulness">1</span>
                             </button>
                         </div>
@@ -107,81 +127,28 @@
 
                     <!-- 2. Filter by Level -->
                     <div class="space-y-2 mb-6 pt-4 border-t border-gray-200">
-                        <p class="text-xs font-bold text-gray-700">Filter by level:</p>
+                        <p class="text-xs font-bold text-gray-700 uppercase tracking-wider">Level:</p>
                         <div class="flex flex-col space-y-1" id="filter-level-group">
                             <button type="button" data-filter-type="level" data-filter-value="all" class="filter-btn active flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
                                 <span>Show all levels</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100/70 text-teal-800" data-count-for="level-all">16</span>
                             </button>
-                            <button type="button" data-filter-type="level" data-filter-value="a1" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>A1 (Beginner)</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="level-a1">6</span>
-                            </button>
-                            <button type="button" data-filter-type="level" data-filter-value="a2" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>A2 (Elementary)</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="level-a2">2</span>
+                            <button type="button" data-filter-type="level" data-filter-value="b2" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                <span>B2 (Upper-Intermediate)</span>
                             </button>
                             <button type="button" data-filter-type="level" data-filter-value="b1" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
                                 <span>B1 (Intermediate)</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="level-b1">3</span>
                             </button>
-                            <button type="button" data-filter-type="level" data-filter-value="b2" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>B2 (Advanced)</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="level-b2">1</span>
+                            <button type="button" data-filter-type="level" data-filter-value="a2" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                <span>A2 (Elementary)</span>
                             </button>
-                            <button type="button" data-filter-type="level" data-filter-value="foundations" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>Foundations</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="level-foundations">1</span>
+                            <button type="button" data-filter-type="level" data-filter-value="a1" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                <span>A1 (Beginner)</span>
                             </button>
-                        </div>
-                    </div>
-
-                    <!-- 3. Filter by Format / Audience -->
-                    <div class="space-y-2 mb-6 pt-4 border-t border-gray-200">
-                        <p class="text-xs font-bold text-gray-700">Filter by format:</p>
-                        <div class="flex flex-col space-y-1" id="filter-format-group">
-                            <button type="button" data-filter-type="format" data-filter-value="all" class="filter-btn active flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>Show all formats</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100/70 text-teal-800" data-count-for="format-all">16</span>
+                            <button type="button" data-filter-type="level" data-filter-value="a0_a1" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                <span>A0/A1 (Foundations)</span>
                             </button>
-                            <button type="button" data-filter-type="format" data-filter-value="online" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>Online Virtual Class</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="format-online">8</span>
-                            </button>
-                            <button type="button" data-filter-type="format" data-filter-value="women_only" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>Women-Only Safe Space</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="format-women_only">3</span>
-                            </button>
-                            <button type="button" data-filter-type="format" data-filter-value="evenings" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>Evenings</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="format-evenings">2</span>
-                            </button>
-                            <button type="button" data-filter-type="format" data-filter-value="mornings" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>Mornings</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="format-mornings">1</span>
-                            </button>
-                            <button type="button" data-filter-type="format" data-filter-value="intensive" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>Intensive</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="format-intensive">1</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- 4. Filter by Status -->
-                    <div class="space-y-2 pt-4 border-t border-gray-200">
-                        <p class="text-xs font-bold text-gray-700">Filter by status:</p>
-                        <div class="flex flex-col space-y-1" id="filter-status-group">
-                            <button type="button" data-filter-type="status" data-filter-value="all" class="filter-btn active flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>Show all statuses</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100/70 text-teal-800" data-count-for="status-all">16</span>
-                            </button>
-                            <button type="button" data-filter-type="status" data-filter-value="open" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>Open for Registration</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="status-open">16</span>
-                            </button>
-                            <button type="button" data-filter-type="status" data-filter-value="closed" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
-                                <span>Registration Closed</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200/60 text-gray-600" data-count-for="status-closed">0</span>
+                            <button type="button" data-filter-type="level" data-filter-value="kids" class="filter-btn flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all">
+                                <span>For Kids</span>
                             </button>
                         </div>
                     </div>
@@ -189,15 +156,19 @@
                 </div>
             </div>
 
-            <!-- Right Column: Class Schedule Cards Grid -->
+            <!-- Right Column: Live Search + Cards Grid -->
             <div class="lg:col-span-9">
                 
-                <!-- Results Counter Header -->
-                <div class="flex items-center justify-between pb-6 mb-6 border-b border-gray-100">
-                    <p class="text-xs sm:text-sm font-bold text-gray-600">
-                        Showing <span id="results-count" class="font-extrabold text-gray-900">{{ class_programs|length }}</span> classes
-                    </p>
-                    <span class="text-[11px] font-semibold text-gray-400">All courses 100% Free</span>
+                <!-- Live Search Bar & Results Counter Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 mb-6 border-b border-gray-100">
+                    <div class="relative flex-1 max-w-md">
+                        <input type="text" id="class-search-input" placeholder="Search by class, teacher, or subject..." class="w-full pl-10 pr-4 py-2.5 text-xs rounded-2xl border border-gray-200 bg-gray-50/80 focus:bg-white focus:border-[#167888] focus:ring-2 focus:ring-[#167888]/20 transition-all outline-none">
+                        <svg class="w-4 h-4 text-gray-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    </div>
+                    <div class="flex items-center justify-between sm:justify-end gap-3 text-xs">
+                        <p class="font-bold text-gray-600">Showing <span id="results-count" class="font-black text-gray-900">{{ class_programs|length }}</span> classes</p>
+                        <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">100% Free Access</span>
+                    </div>
                 </div>
 
                 <!-- Classes Grid -->
@@ -207,7 +178,8 @@
                          data-subject="{{ program.subject_category|default:'general' }}"
                          data-level="{{ program.level_category|default:'all' }}"
                          data-format="{{ program.format_category|default:'online' }}"
-                         data-status="{{ program.status|default:'open' }}">
+                         data-status="{{ program.status|default:'open' }}"
+                         data-search="{{ program.title|lower }} {{ program.teacher_name|lower }} {{ program.get_subject_category_display|lower }} {{ program.get_level_category_display|lower }} {{ program.timetable_text|lower }}">
                         
                         <div>
                             <!-- Top-Half Cover Image with Floating Badges -->
@@ -235,45 +207,47 @@
                             </div>
 
                             <!-- Full Course Title -->
-                            <h3 class="text-base font-bold text-gray-900 leading-snug group-hover:text-[#167888] transition-colors">
+                            <h3 class="text-lg font-bold text-gray-900 leading-snug group-hover:text-[#167888] transition-colors">
                                 {{ program.title }}
                             </h3>
-                            
-                            <!-- Level & Format Badges -->
-                            <div class="flex items-center gap-2 mt-2 mb-3">
+
+                            <!-- Level & Exam Badges -->
+                            <div class="flex items-center gap-1.5 flex-wrap mt-2 mb-2">
                                 <span class="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold bg-teal-50 text-[#167888] border border-teal-200/60 uppercase tracking-wider">
                                     {{ program.get_level_category_display }}
                                 </span>
-                                <span class="text-[11px] text-gray-400 font-medium">
-                                    {{ program.get_format_category_display }}
+                                {% if program.level_exam_required %}
+                                <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-50 text-amber-900 border border-amber-300 uppercase tracking-wider">
+                                    📝 Exam Required
                                 </span>
+                                {% endif %}
                             </div>
 
-                            <!-- Course Metadata List -->
-                            <div class="space-y-1.5 text-xs text-gray-600 p-3 rounded-2xl bg-gray-50/80 border border-gray-100">
+                            <!-- Teacher Info -->
+                            {% if program.teacher_name %}
+                            <div class="flex items-center gap-1.5 text-xs text-gray-700 my-2.5 font-medium bg-gray-50/80 px-3 py-1.5 rounded-xl border border-gray-100">
+                                <span>👩‍🏫</span>
+                                <span>Teacher: <strong class="text-gray-900 font-bold">{{ program.teacher_name }}</strong></span>
+                            </div>
+                            {% endif %}
+
+                            <!-- Schedule Metadata -->
+                            <div class="space-y-1 text-xs text-gray-600 mt-2">
                                 <p class="leading-relaxed flex items-center justify-between">
-                                    <span class="font-bold text-gray-700">Start date:</span>
-                                    <span class="text-gray-900 font-semibold">{{ program.start_date_text|default:'September 2026' }}</span>
-                                </p>
-                                <p class="leading-relaxed flex items-center justify-between">
-                                    <span class="font-bold text-gray-700">Timetable:</span>
-                                    <span class="text-gray-900 font-semibold truncate max-w-[170px]">{{ program.timetable_text|default:program.schedule_time }}</span>
-                                </p>
-                                <p class="leading-relaxed flex items-center justify-between text-gray-500">
-                                    <span class="font-bold text-gray-700">Location:</span>
-                                    <span class="text-gray-800 truncate max-w-[170px]">{{ program.location_text|default:'Online Classroom' }}</span>
+                                    <span class="font-semibold text-gray-600">Days:</span>
+                                    <span class="text-gray-900 font-bold truncate max-w-[170px]">{{ program.timetable_text }}</span>
                                 </p>
                             </div>
 
                             {% if program.description %}
-                            <p class="text-xs text-gray-500 mt-3 line-clamp-2 leading-relaxed">
+                            <p class="text-xs text-gray-500 mt-2.5 line-clamp-2 leading-relaxed">
                                 {{ program.description }}
                             </p>
                             {% endif %}
                         </div>
 
                         <!-- Action Button -->
-                        <div class="pt-5 mt-2 border-t border-gray-100">
+                        <div class="pt-4 mt-3 border-t border-gray-100">
                             {% if program.status == 'closed' %}
                             <button disabled class="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-400 border border-gray-300 bg-gray-50 cursor-not-allowed">
                                 Registration Closed
@@ -307,7 +281,7 @@
                 <!-- Empty State (when filters yield 0 results) -->
                 <div id="no-results-state" class="hidden p-12 text-center bg-gray-50 rounded-3xl border border-gray-200 mt-6">
                     <span class="text-3xl">🔍</span>
-                    <h4 class="text-base font-bold text-gray-900 mt-3">No classes match your selected filters</h4>
+                    <h4 class="text-base font-bold text-gray-900 mt-3">No classes match your search or filters</h4>
                     <p class="text-xs text-gray-500 mt-1">Try resetting some of your filter criteria or view all courses.</p>
                     <button type="button" onclick="resetAllFilters()" class="mt-4 inline-flex items-center px-5 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] transition-all cursor-pointer shadow-xs">
                         Reset All Filters
@@ -348,7 +322,7 @@
     </div>
 </section>
 
-<!-- Client-Side Instant Filtering Script -->
+<!-- Client-Side Instant Filtering & Search Script -->
 <style>
 .filter-btn {
     color: #4b5563;
@@ -370,8 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const activeFilters = {
         subject: 'all',
         level: 'all',
-        format: 'all',
-        status: 'all'
+        search: ''
     };
 
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -379,22 +352,42 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultsCountEl = document.getElementById('results-count');
     const noResultsEl = document.getElementById('no-results-state');
     const clearBtn = document.getElementById('clear-all-filters');
+    const searchInput = document.getElementById('class-search-input');
+
+    // Count dynamically per subject
+    function updateCounts() {
+        const counts = {};
+        classCards.forEach(card => {
+            const subj = card.getAttribute('data-subject');
+            counts[subj] = (counts[subj] || 0) + 1;
+        });
+        document.querySelectorAll('[data-count-for]').forEach(el => {
+            const key = el.getAttribute('data-count-for').replace('subject-', '');
+            if (key === 'all') {
+                el.textContent = classCards.length;
+            } else if (counts[key]) {
+                el.textContent = counts[key];
+            } else {
+                el.textContent = '0';
+            }
+        });
+    }
+    updateCounts();
 
     function applyFilters() {
         let visibleCount = 0;
+        const query = activeFilters.search.toLowerCase().trim();
 
         classCards.forEach(card => {
             const cardSubject = card.getAttribute('data-subject') || '';
             const cardLevel = card.getAttribute('data-level') || '';
-            const cardFormat = card.getAttribute('data-format') || '';
-            const cardStatus = card.getAttribute('data-status') || '';
+            const cardSearch = (card.getAttribute('data-search') || '').toLowerCase();
 
             const matchesSubject = (activeFilters.subject === 'all' || cardSubject === activeFilters.subject);
             const matchesLevel = (activeFilters.level === 'all' || cardLevel === activeFilters.level);
-            const matchesFormat = (activeFilters.format === 'all' || cardFormat === activeFilters.format);
-            const matchesStatus = (activeFilters.status === 'all' || cardStatus === activeFilters.status);
+            const matchesSearch = (!query || cardSearch.includes(query));
 
-            if (matchesSubject && matchesLevel && matchesFormat && matchesStatus) {
+            if (matchesSubject && matchesLevel && matchesSearch) {
                 card.style.display = 'flex';
                 visibleCount++;
             } else {
@@ -410,6 +403,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 noResultsEl.classList.add('hidden');
             }
         }
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            activeFilters.search = this.value;
+            applyFilters();
+        });
     }
 
     filterButtons.forEach(btn => {
@@ -432,8 +432,9 @@ document.addEventListener('DOMContentLoaded', function() {
     window.resetAllFilters = function() {
         activeFilters.subject = 'all';
         activeFilters.level = 'all';
-        activeFilters.format = 'all';
-        activeFilters.status = 'all';
+        activeFilters.search = '';
+
+        if (searchInput) searchInput.value = '';
 
         document.querySelectorAll('.filter-btn').forEach(btn => {
             if (btn.getAttribute('data-filter-value') === 'all') {

@@ -66,22 +66,32 @@ class ClassProgram(models.Model):
         ('english', 'English'),
         ('spanish', 'Spanish'),
         ('german', 'German'),
+        ('french', 'French'),
         ('catalan', 'Catalan'),
-        ('coding', 'Coding & Technology'),
+        ('coding', 'Web Development & Coding'),
         ('photography', 'Photography & Visual Arts'),
-        ('mindfulness', 'Mindfulness & Well-Being'),
+        ('sewing', 'Sewing Class (خیاطی)'),
+        ('makeup', 'Makeup & Haircut'),
+        ('lifeskills', 'Life Skills (مهارت‌های زندگی)'),
+        ('psychological', '1:1 Psychological Support'),
+        ('mindfulness', 'Mindfulness Session'),
         ('general', 'General Education'),
     ]
 
     LEVEL_CHOICES = [
-        ('all', 'All Levels'),
+        ('all', 'All Levels / Open'),
+        ('a0', 'A0 (Absolute Beginner)'),
+        ('a0_a1', 'A0/A1'),
         ('a1', 'A1 (Beginner)'),
+        ('a1_a2', 'A1/A2'),
         ('a2', 'A2 (Elementary)'),
         ('b1', 'B1 (Intermediate)'),
         ('b2', 'B2 (Upper-Intermediate)'),
         ('c1', 'C1 (Advanced)'),
+        ('c2', 'C2 (Mastery)'),
+        ('kids', 'For Kids'),
+        ('speaking', 'Speaking & Conversation'),
         ('foundations', 'Foundations'),
-        ('conversation', 'Conversation Group'),
     ]
 
     FORMAT_CHOICES = [
@@ -90,25 +100,28 @@ class ClassProgram(models.Model):
         ('women_only', 'Women-Only Safe Circle'),
         ('evenings', 'Evenings'),
         ('mornings', 'Mornings'),
+        ('biweekly', 'Bi-weekly (Twice a month)'),
         ('intensive', 'Intensive'),
         ('offline', 'Offline Study Bundle'),
     ]
 
-    title = models.CharField(max_length=150, help_text="Class name (e.g. English (Conversation Group), Spanish A1 (Women-only))")
-    icon_or_flag = models.CharField(max_length=20, default="🇬🇧", help_text="Emoji icon or flag (e.g. 🇬🇧, 🇪🇸, 🇩🇪, 💻, 📸, 🧘‍♀️)")
-    badge_text = models.CharField(max_length=60, default="A1 • Registration Open", help_text="Level/Tag badge (e.g. A1 • Registration Open, CEFR A0–C1)")
+    title = models.CharField(max_length=150, help_text="Class name (e.g. English, Spanish, Sewing Class, Web Development)")
+    teacher_name = models.CharField(max_length=150, blank=True, default="", help_text="Teacher / Educator name(s) (e.g. Charlotte, Kelly, Narges Akhlaqi, Alena)")
+    level_exam_required = models.BooleanField(default=False, help_text="Check if Level Exam is required before joining")
+    icon_or_flag = models.CharField(max_length=20, default="🇬🇧", help_text="Emoji icon or flag (e.g. 🇬🇧, 🇪🇸, 🇩🇪, 🇫🇷, 💻, 📸, 🧵, 💄, 🧠, 🧘)")
+    badge_text = models.CharField(max_length=60, default="A1 • Registration Open", help_text="Level/Tag badge")
     track_type = models.CharField(max_length=60, default="All Levels", help_text="Track category")
     
     subject_category = models.CharField(max_length=40, choices=SUBJECT_CHOICES, default='english', help_text="Filter category for Language/Subject")
     level_category = models.CharField(max_length=40, choices=LEVEL_CHOICES, default='a1', help_text="Filter category for Level (A1, A2, B1, etc.)")
     format_category = models.CharField(max_length=40, choices=FORMAT_CHOICES, default='online', help_text="Filter category for Format/Audience")
     
-    start_date_text = models.CharField(max_length=100, default="September 2026", help_text="Start date string (e.g. September 2026 or July 6, 2026)")
-    timetable_text = models.CharField(max_length=150, default="Tuesdays & Thursdays, 17:30 – 19:00", help_text="Timetable/Schedule (e.g. Tuesdays / Thursdays, 18:00–20:00)")
+    start_date_text = models.CharField(max_length=100, default="Active Term", help_text="Start date string (e.g. Active Term, September 2026)")
+    timetable_text = models.CharField(max_length=150, default="Tuesdays & Thursdays", help_text="Timetable/Days (e.g. Tuesday, Thursday)")
     location_text = models.CharField(max_length=100, default="Online Virtual Classroom", help_text="Format/Location (e.g. Online Virtual Classroom, Camera-Optional)")
     
     description = models.TextField(blank=True, default="", help_text="Short overview of what students will learn")
-    schedule_time = models.CharField(max_length=120, default="Mon & Wed · 4:00 PM", help_text="Brief schedule for home slider")
+    schedule_time = models.CharField(max_length=120, default="Tuesdays & Thursdays", help_text="Brief schedule for home slider & cards")
     status = models.CharField(max_length=30, choices=REGISTRATION_STATUS_CHOICES, default=STATUS_OPEN, help_text="Registration availability status")
     custom_status_text = models.CharField(max_length=50, blank=True, null=True, help_text="Custom status label")
     image = models.ImageField(upload_to='class_images/', blank=True, null=True, help_text="Course cover photo")
@@ -124,7 +137,7 @@ class ClassProgram(models.Model):
         verbose_name_plural = "Class Programs"
 
     def __str__(self):
-        return f"{self.title} ({self.get_status_display()})"
+        return f"{self.title} - {self.get_level_category_display()} ({self.teacher_name or 'No Teacher Assigned'})"
 
     @property
     def display_status(self):
@@ -154,12 +167,22 @@ class ClassProgram(models.Model):
             return {'label': 'Spanish', 'code': 'ES', 'bg': 'bg-rose-100 text-rose-900 border-rose-300'}
         elif 'german' in cat:
             return {'label': 'German', 'code': 'DE', 'bg': 'bg-stone-100 text-stone-900 border-stone-300'}
-        elif 'coding' in cat:
-            return {'label': 'Coding & Tech', 'code': 'CODE', 'bg': 'bg-teal-100 text-teal-900 border-teal-300'}
+        elif 'french' in cat:
+            return {'label': 'French', 'code': 'FR', 'bg': 'bg-indigo-100 text-indigo-900 border-indigo-300'}
+        elif 'coding' in cat or 'web' in cat:
+            return {'label': 'Web Development', 'code': 'CODE', 'bg': 'bg-teal-100 text-teal-900 border-teal-300'}
         elif 'photo' in cat:
-            return {'label': 'Photography', 'code': 'ARTS', 'bg': 'bg-purple-100 text-purple-900 border-purple-300'}
+            return {'label': 'Photography', 'code': 'PHOTO', 'bg': 'bg-purple-100 text-purple-900 border-purple-300'}
+        elif 'sewing' in cat:
+            return {'label': 'Sewing Class', 'code': 'SEW', 'bg': 'bg-pink-100 text-pink-900 border-pink-300'}
+        elif 'makeup' in cat:
+            return {'label': 'Makeup & Haircut', 'code': 'BEAUTY', 'bg': 'bg-rose-100 text-rose-900 border-rose-300'}
+        elif 'lifeskill' in cat:
+            return {'label': 'Life Skills', 'code': 'SKILLS', 'bg': 'bg-emerald-100 text-emerald-900 border-emerald-300'}
+        elif 'psychological' in cat:
+            return {'label': 'Psychological Support', 'code': 'SUPPORT', 'bg': 'bg-violet-100 text-violet-900 border-violet-300'}
         elif 'mindful' in cat:
-            return {'label': 'Mindfulness', 'code': 'HEAL', 'bg': 'bg-emerald-100 text-emerald-900 border-emerald-300'}
+            return {'label': 'Mindfulness', 'code': 'HEAL', 'bg': 'bg-teal-100 text-teal-900 border-teal-300'}
         else:
             return {'label': 'General', 'code': 'CLASS', 'bg': 'bg-teal-100 text-teal-900 border-teal-300'}
 
