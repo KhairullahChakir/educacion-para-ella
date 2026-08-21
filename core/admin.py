@@ -50,10 +50,21 @@ class ClassesPageSettingAdmin(admin.ModelAdmin):
 
 @admin.register(ClassProgram)
 class ClassProgramAdmin(admin.ModelAdmin):
-    list_display = ('title', 'subject_category', 'level_category', 'teacher_name', 'show_teacher_name', 'timetable_text', 'level_exam_required', 'status', 'order', 'is_active')
+    list_display = ('title', 'get_category_badge', 'teacher_name', 'show_teacher_name', 'timetable_text', 'level_exam_required', 'status', 'order', 'is_active')
     list_filter = ('subject_category', 'level_category', 'format_category', 'show_teacher_name', 'level_exam_required', 'status', 'is_active', 'created_at')
-    list_editable = ('subject_category', 'level_category', 'teacher_name', 'show_teacher_name', 'timetable_text', 'level_exam_required', 'status', 'order', 'is_active')
+    list_editable = ('show_teacher_name', 'level_exam_required', 'status', 'order', 'is_active')
     search_fields = ('title', 'teacher_name', 'description', 'timetable_text')
+
+    @admin.display(description='Track / Level')
+    def get_category_badge(self, obj):
+        return format_html(
+            '<div style="display:flex; flex-direction:column; gap:3px;">'
+            '<span style="font-weight:800; font-size:12px; color:#1e293b;">{}</span>'
+            '<span style="background:#e6fffa; color:#167888; border:1px solid #99f6e4; font-weight:700; font-size:10px; padding:1px 6px; border-radius:6px; width:fit-content;">{}</span>'
+            '</div>',
+            obj.get_subject_category_display(),
+            obj.get_level_category_display()
+        )
     fieldsets = (
         ('📚 Course General Information', {
             'fields': ('title', 'subject_category', 'level_category', 'format_category', 'icon_or_flag', 'badge_text', 'description', 'image')

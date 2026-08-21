@@ -362,18 +362,26 @@
            ========================================================= */
         #changelist {
             display: flex !important;
-            gap: 24px !important;
+            gap: 20px !important;
             align-items: flex-start !important;
             width: 100% !important;
+            max-width: 100% !important;
         }
 
         #changelist-form {
-            flex: 1 1 auto !important;
+            flex: 1 1 0% !important;
+            min-width: 0 !important;
             background: #ffffff !important;
             border: 1px solid #e2e8f0 !important;
             border-radius: 20px !important;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
             overflow: hidden !important;
+        }
+
+        #changelist .results {
+            overflow-x: auto !important;
+            width: 100% !important;
+            -webkit-overflow-scrolling: touch !important;
         }
 
         /* Action Dropdown & Buttons Bar */
