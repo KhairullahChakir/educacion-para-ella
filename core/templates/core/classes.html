@@ -354,13 +354,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const clearBtn = document.getElementById('clear-all-filters');
     const searchInput = document.getElementById('class-search-input');
 
-    // Count dynamically per subject
+    // Count dynamically per subject and level
     function updateCounts() {
         const counts = {};
         classCards.forEach(card => {
-            const subj = card.getAttribute('data-subject');
+            const subj = card.getAttribute('data-subject') || '';
             counts[subj] = (counts[subj] || 0) + 1;
         });
+
         document.querySelectorAll('[data-count-for]').forEach(el => {
             const key = el.getAttribute('data-count-for').replace('subject-', '');
             if (key === 'all') {
@@ -416,6 +417,19 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', function() {
             const type = this.getAttribute('data-filter-type');
             const value = this.getAttribute('data-filter-value');
+
+            // If user clicks a Subject, reset Level filter to "all" so they see all classes in that subject!
+            if (type === 'subject') {
+                activeFilters.level = 'all';
+                // Reset level buttons visual state
+                document.querySelectorAll('[data-filter-type="level"]').forEach(b => {
+                    if (b.getAttribute('data-filter-value') === 'all') {
+                        b.classList.add('active');
+                    } else {
+                        b.classList.remove('active');
+                    }
+                });
+            }
 
             // Set active filter value
             activeFilters[type] = value;
