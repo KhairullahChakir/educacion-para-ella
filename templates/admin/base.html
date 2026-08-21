@@ -4,67 +4,484 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{{ title }} | {{ site_title|default:"Educación para Ella Admin" }}{% endblock %}</title>
-    <!-- Tailwind CSS & Inter Font -->
+    <!-- Tailwind CSS & Plus Jakarta Sans Font -->
     <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
-        * { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+        /* Modern Reset & Font */
+        *, ::before, ::after {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+            box-sizing: border-box;
+        }
         
-        /* Modern Django Admin Override Reset */
-        body { margin: 0; background-color: #f8fafc; color: #0f172a; }
-        
-        /* Custom Clean Scrollbar */
+        body {
+            margin: 0;
+            background-color: #f8fafc !important;
+            color: #0f172a !important;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        
-        /* Table & Form Polish */
-        .admin-table { width: 100%; border-collapse: separate; border-spacing: 0; }
-        .admin-table th { background: #f8fafc; color: #475569; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 12px 16px; border-bottom: 1px solid #e2e8f0; }
-        .admin-table td { padding: 14px 16px; border-bottom: 1px solid #f1f5f9; font-size: 13px; color: #1e293b; }
-        .admin-table tr:hover td { background: #f8fafc; }
-        .admin-table tr:last-child td { border-bottom: none; }
-        
-        /* Standard Django admin input cleanup */
-        input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="number"], select, textarea {
-            background-color: #ffffff;
-            border: 1px solid #cbd5e1;
-            border-radius: 12px;
-            padding: 8px 14px;
-            font-size: 13px;
-            color: #0f172a;
-            outline: none;
-            transition: all 0.2s;
+
+        /* =========================================================
+           MODERN SAAS FORM & CHANGE-FORM STYLING
+           ========================================================= */
+        #content-main {
+            width: 100%;
         }
-        input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:focus {
-            border-color: #167888;
-            box-shadow: 0 0 0 3px rgba(22, 120, 136, 0.15);
+
+        form {
+            width: 100%;
         }
-        
-        .btn-gold {
-            background-color: #fbbf24;
-            color: #111827;
-            font-weight: 800;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 8px 18px;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
+
+        /* Fieldset Cards */
+        fieldset.module {
+            background: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 20px !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+            margin-bottom: 24px !important;
+            overflow: hidden !important;
+            padding: 0 !important;
         }
-        .btn-gold:hover {
-            background-color: #f59e0b;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.25);
+
+        fieldset.module h2 {
+            background: #f8fafc !important;
+            color: #0f172a !important;
+            font-size: 13px !important;
+            font-weight: 800 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.05em !important;
+            padding: 16px 24px !important;
+            margin: 0 !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+        }
+
+        /* Form Rows */
+        .form-row {
+            padding: 20px 24px !important;
+            border-bottom: 1px solid #f1f5f9 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+            background: #ffffff !important;
+        }
+
+        .form-row:last-child {
+            border-bottom: none !important;
+        }
+
+        .form-row label {
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            color: #1e293b !important;
+            display: block !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            float: none !important;
+            width: auto !important;
+            text-align: left !important;
+        }
+
+        .form-row label.required::after {
+            content: " *" !important;
+            color: #e11d48 !important;
+            font-weight: 900 !important;
+        }
+
+        /* Modern Form Controls */
+        .form-row input[type="text"],
+        .form-row input[type="password"],
+        .form-row input[type="email"],
+        .form-row input[type="url"],
+        .form-row input[type="number"],
+        .form-row select,
+        .form-row textarea {
+            width: 100% !important;
+            max-width: 680px !important;
+            background: #ffffff !important;
+            border: 1.5px solid #cbd5e1 !important;
+            border-radius: 12px !important;
+            padding: 10px 16px !important;
+            font-size: 13px !important;
+            font-weight: 500 !important;
+            color: #0f172a !important;
+            outline: none !important;
+            transition: all 0.2s ease !important;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02) !important;
+        }
+
+        .form-row textarea {
+            min-height: 120px !important;
+            line-height: 1.6 !important;
+        }
+
+        .form-row input:focus,
+        .form-row select:focus,
+        .form-row textarea:focus {
+            border-color: #167888 !important;
+            box-shadow: 0 0 0 4px rgba(22, 120, 136, 0.12) !important;
+        }
+
+        /* Checkbox Rows */
+        .form-row.checkbox-row,
+        .form-row .vCheckboxLabel {
+            display: inline-flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            gap: 10px !important;
+        }
+
+        .form-row input[type="checkbox"] {
+            width: 18px !important;
+            height: 18px !important;
+            border-radius: 6px !important;
+            accent-color: #167888 !important;
+            cursor: pointer !important;
+        }
+
+        /* File Upload widget */
+        .form-row input[type="file"] {
+            font-size: 12px !important;
+            color: #475569 !important;
+            padding: 6px 0 !important;
+        }
+
+        .form-row .file-upload {
+            font-size: 12px !important;
+            color: #64748b !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            flex-wrap: wrap !important;
+        }
+
+        .form-row .file-upload a {
+            color: #167888 !important;
+            font-weight: 700 !important;
+            text-decoration: underline !important;
+        }
+
+        /* Help Text */
+        .form-row .help, p.help {
+            font-size: 11px !important;
+            font-weight: 500 !important;
+            color: #64748b !important;
+            margin: 2px 0 0 0 !important;
+            padding: 0 !important;
+        }
+
+        /* Submit Action Bar at bottom of forms */
+        .submit-row {
+            background: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 20px !important;
+            padding: 16px 24px !important;
+            margin-top: 24px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-end !important;
+            gap: 10px !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+            flex-wrap: wrap !important;
+        }
+
+        .submit-row input,
+        .submit-row input[type="submit"] {
+            background-color: #f1f5f9 !important;
+            color: #334155 !important;
+            font-weight: 700 !important;
+            font-size: 12px !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.04em !important;
+            padding: 10px 20px !important;
+            border-radius: 12px !important;
+            border: 1px solid #cbd5e1 !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+            box-shadow: none !important;
+            margin: 0 !important;
+        }
+
+        .submit-row input:hover {
+            background-color: #e2e8f0 !important;
+            color: #0f172a !important;
+        }
+
+        .submit-row input.default,
+        .submit-row input[name="_save"] {
+            background-color: #fbbf24 !important;
+            color: #111827 !important;
+            font-weight: 800 !important;
+            border: 1px solid #f59e0b !important;
+            box-shadow: 0 2px 6px rgba(251, 191, 36, 0.25) !important;
+        }
+
+        .submit-row input.default:hover,
+        .submit-row input[name="_save"]:hover {
+            background-color: #f59e0b !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35) !important;
+        }
+
+        .submit-row a.deletelink {
+            background: #fee2e2 !important;
+            color: #991b1b !important;
+            font-weight: 700 !important;
+            font-size: 12px !important;
+            padding: 10px 18px !important;
+            border-radius: 12px !important;
+            border: 1px solid #fecaca !important;
+            margin-right: auto !important;
+            text-decoration: none !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .submit-row a.deletelink:hover {
+            background: #fecaca !important;
+        }
+
+        /* History & Object Tools in top right */
+        ul.object-tools {
+            display: flex !important;
+            gap: 8px !important;
+            margin-bottom: 20px !important;
+            list-style: none !important;
+            padding: 0 !important;
+            float: right !important;
+        }
+
+        ul.object-tools li a {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            background: #ffffff !important;
+            color: #167888 !important;
+            font-weight: 700 !important;
+            font-size: 12px !important;
+            padding: 8px 16px !important;
+            border-radius: 12px !important;
+            border: 1px solid #cbd5e1 !important;
+            text-decoration: none !important;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03) !important;
+            transition: all 0.2s ease !important;
+        }
+
+        ul.object-tools li a:hover {
+            background: #f8fafc !important;
+            border-color: #167888 !important;
+        }
+
+        ul.object-tools li a.addlink {
+            background: #fbbf24 !important;
+            color: #111827 !important;
+            font-weight: 800 !important;
+            border-color: #f59e0b !important;
+        }
+
+        ul.object-tools li a.addlink:hover {
+            background: #f59e0b !important;
+        }
+
+        /* =========================================================
+           MODERN CHANGELIST / TABLE LIST VIEW
+           ========================================================= */
+        #changelist {
+            display: flex !important;
+            gap: 24px !important;
+            align-items: flex-start !important;
+            width: 100% !important;
+        }
+
+        #changelist-form {
+            flex: 1 1 auto !important;
+            background: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 20px !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+            overflow: hidden !important;
+        }
+
+        #changelist table {
+            width: 100% !important;
+            border-collapse: collapse !important;
+        }
+
+        #changelist thead th {
+            background: #f8fafc !important;
+            color: #475569 !important;
+            font-size: 11px !important;
+            font-weight: 800 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.05em !important;
+            padding: 14px 18px !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+            text-align: left !important;
+        }
+
+        #changelist thead th a {
+            color: #475569 !important;
+            text-decoration: none !important;
+        }
+
+        #changelist tbody tr {
+            transition: background-color 0.15s ease !important;
+        }
+
+        #changelist tbody tr:hover {
+            background-color: #f8fafc !important;
+        }
+
+        #changelist tbody td,
+        #changelist tbody th {
+            padding: 14px 18px !important;
+            border-bottom: 1px solid #f1f5f9 !important;
+            font-size: 13px !important;
+            color: #1e293b !important;
+            vertical-align: middle !important;
+        }
+
+        #changelist tbody tr:last-child td,
+        #changelist tbody tr:last-child th {
+            border-bottom: none !important;
+        }
+
+        #changelist tbody th a {
+            color: #167888 !important;
+            font-weight: 700 !important;
+            text-decoration: none !important;
+        }
+
+        #changelist tbody th a:hover {
+            text-decoration: underline !important;
+        }
+
+        /* Filter Sidebar in Change List */
+        #changelist-filter {
+            width: 260px !important;
+            flex-shrink: 0 !important;
+            background: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 20px !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+            padding: 20px !important;
+            position: sticky !important;
+            top: 80px !important;
+        }
+
+        #changelist-filter h2 {
+            font-size: 13px !important;
+            font-weight: 800 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.05em !important;
+            color: #0f172a !important;
+            margin: 0 0 16px 0 !important;
+            padding-bottom: 10px !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+        }
+
+        #changelist-filter h3 {
+            font-size: 12px !important;
+            font-weight: 700 !important;
+            color: #167888 !important;
+            margin: 16px 0 8px 0 !important;
+        }
+
+        #changelist-filter ul {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 0 16px 0 !important;
+        }
+
+        #changelist-filter li {
+            margin-bottom: 4px !important;
+        }
+
+        #changelist-filter li a {
+            font-size: 12px !important;
+            color: #475569 !important;
+            text-decoration: none !important;
+            display: block !important;
+            padding: 4px 8px !important;
+            border-radius: 8px !important;
+            transition: all 0.15s ease !important;
+        }
+
+        #changelist-filter li a:hover {
+            background-color: #f1f5f9 !important;
+            color: #0f172a !important;
+        }
+
+        #changelist-filter li.selected a {
+            background-color: #e6fffa !important;
+            color: #167888 !important;
+            font-weight: 700 !important;
+        }
+
+        /* Search toolbar */
+        #toolbar {
+            background: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 16px !important;
+            padding: 12px 18px !important;
+            margin-bottom: 20px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+        }
+
+        #toolbar form input[type="text"] {
+            border: 1.5px solid #cbd5e1 !important;
+            border-radius: 10px !important;
+            padding: 8px 14px !important;
+            font-size: 13px !important;
+            width: 280px !important;
+            outline: none !important;
+        }
+
+        #toolbar form input[type="submit"] {
+            background-color: #fbbf24 !important;
+            color: #111827 !important;
+            font-weight: 800 !important;
+            font-size: 11px !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.04em !important;
+            padding: 9px 16px !important;
+            border-radius: 10px !important;
+            border: none !important;
+            cursor: pointer !important;
+        }
+
+        /* Pagination */
+        .paginator {
+            background: #f8fafc !important;
+            border-top: 1px solid #e2e8f0 !important;
+            padding: 14px 20px !important;
+            font-size: 12px !important;
+            color: #64748b !important;
+            font-weight: 600 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+        }
+
+        .paginator a:link, .paginator a:visited {
+            background: #ffffff !important;
+            color: #0f172a !important;
+            padding: 4px 10px !important;
+            border-radius: 8px !important;
+            border: 1px solid #cbd5e1 !important;
+            margin: 0 2px !important;
+            text-decoration: none !important;
+            font-weight: 700 !important;
         }
     </style>
     {% block extrahead %}{% endblock %}

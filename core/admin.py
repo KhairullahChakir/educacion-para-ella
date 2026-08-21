@@ -99,6 +99,20 @@ class FounderCollaboratorAdmin(admin.ModelAdmin):
     list_filter = ('organization', 'badge_theme', 'is_active', 'created_at')
     list_editable = ('order', 'is_active')
     search_fields = ('name', 'role_title', 'organization', 'bio')
+    fieldsets = (
+        ('👤 Leader Identity', {
+            'fields': ('name', 'role_title', 'organization', 'location')
+        }),
+        ('📸 Profile Photo & Styling', {
+            'fields': ('image', 'badge_theme')
+        }),
+        ('📝 Biography & Contribution Story', {
+            'fields': ('bio',)
+        }),
+        ('⚙️ Visibility & Display Order', {
+            'fields': ('order', 'is_active')
+        }),
+    )
 
 
 @admin.register(MethodologyPillar)
