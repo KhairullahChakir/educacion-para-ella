@@ -8,6 +8,8 @@ from .models import UserProfile
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
     can_delete = False
+    extra = 0
+    max_num = 1
     verbose_name_plural = '👤 Student / Teacher Profile'
     fieldsets = (
         (None, {
@@ -29,7 +31,7 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('first_name', 'last_name')
         }),
         ('🛡️ Permissions & Access Control', {
-            'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')
+            'fields': ('is_active', 'is_staff', 'is_superuser')
         }),
         ('📅 Important Timestamps', {
             'fields': ('last_login', 'date_joined'),
