@@ -27,6 +27,10 @@ from .models import (
     StudyMaterial,
 )
 
+admin.site.site_header = "Educación para Ella — Admin Sanctuary"
+admin.site.site_title = "Admin Portal — Educación para Ella"
+admin.site.index_title = "Platform Management & Content Control"
+
 
 @admin.register(HeroNews)
 class HeroNewsAdmin(admin.ModelAdmin):
