@@ -1,0 +1,171 @@
+﻿{% extends "admin/base.html" %}
+{% load i18n static %}
+
+{% block content %}
+<div class="space-y-8">
+
+    <!-- Top Metric Overview Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs flex items-center justify-between">
+            <div>
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Class Programs</p>
+                <h3 class="text-2xl font-black text-slate-900 mt-1">16 Active</h3>
+                <a href="{% url 'admin:core_classprogram_changelist' %}" class="text-xs font-bold text-[#167888] hover:underline mt-2 inline-block">Manage Classes &rarr;</a>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-teal-50 text-[#167888] flex items-center justify-center text-xl font-black">
+                📚
+            </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs flex items-center justify-between">
+            <div>
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Student Enrollments</p>
+                <h3 class="text-2xl font-black text-slate-900 mt-1">Active</h3>
+                <a href="{% url 'admin:core_courseenrollment_changelist' %}" class="text-xs font-bold text-[#167888] hover:underline mt-2 inline-block">View Enrollments &rarr;</a>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center text-xl font-black">
+                🎓
+            </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs flex items-center justify-between">
+            <div>
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Study Materials</p>
+                <h3 class="text-2xl font-black text-slate-900 mt-1">PDF Vault</h3>
+                <a href="{% url 'admin:core_studymaterial_changelist' %}" class="text-xs font-bold text-[#167888] hover:underline mt-2 inline-block">Manage Files &rarr;</a>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center text-xl font-black">
+                📁
+            </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs flex items-center justify-between">
+            <div>
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Team & Leadership</p>
+                <h3 class="text-2xl font-black text-slate-900 mt-1">4 Leaders</h3>
+                <a href="{% url 'admin:core_foundercollaborator_changelist' %}" class="text-xs font-bold text-[#167888] hover:underline mt-2 inline-block">Edit Profiles &rarr;</a>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-700 flex items-center justify-center text-xl font-black">
+                🌟
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Layout (Apps Grid + Recent Actions) -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        
+        <!-- Left 2 Cols: Organized Management Apps -->
+        <div class="lg:col-span-2 space-y-6">
+
+            {% if app_list %}
+                {% for app in app_list %}
+                <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden">
+                    <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between">
+                        <div class="flex items-center gap-2.5">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#167888]"></span>
+                            <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider">{{ app.name }}</h2>
+                        </div>
+                        <span class="text-xs text-slate-400 font-semibold">{{ app.models|length }} models</span>
+                    </div>
+
+                    <div class="divide-y divide-slate-100">
+                        {% for model in app.models %}
+                        <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                            <div>
+                                {% if model.admin_url %}
+                                    <a href="{{ model.admin_url }}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors flex items-center gap-2">
+                                        <span>{{ model.name }}</span>
+                                    </a>
+                                {% else %}
+                                    <span class="text-sm font-bold text-slate-500">{{ model.name }}</span>
+                                {% endif %}
+                            </div>
+
+                            <div class="flex items-center gap-2">
+                                {% if model.add_url %}
+                                    <a href="{{ model.add_url }}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs hover:shadow-xs transition-all flex items-center gap-1">
+                                        <span>+ Add</span>
+                                    </a>
+                                {% endif %}
+                                {% if model.admin_url %}
+                                    <a href="{{ model.admin_url }}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">
+                                        View / Edit
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="p-12 text-center bg-white rounded-3xl border border-slate-200">
+                    <p class="text-sm text-slate-500">You do not have permission to view or edit anything.</p>
+                </div>
+            {% endif %}
+
+        </div>
+
+        <!-- Right 1 Col: Recent Actions & Helpful Quick Links -->
+        <div class="space-y-6">
+
+            <!-- Recent Activity Timeline -->
+            <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs">
+                <h3 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider pb-3 mb-4 border-b border-slate-100 flex items-center gap-2">
+                    <span>⚡</span> Recent Actions
+                </h3>
+
+                {% load log %}
+                {% get_admin_log 8 as admin_log for_user user %}
+                {% if not admin_log %}
+                    <p class="text-xs text-slate-400">No recent actions recorded.</p>
+                {% else %}
+                    <ul class="space-y-3.5">
+                        {% for entry in admin_log %}
+                        <li class="flex items-start gap-3 text-xs">
+                            <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold shrink-0 mt-0.5">
+                                {% if entry.is_addition %}+{% elif entry.is_change %}✏️{% elif entry.is_deletion %}✕{% endif %}
+                            </span>
+                            <div class="flex-1 min-w-0">
+                                {% if entry.is_deletion or not entry.get_admin_url %}
+                                    <span class="font-bold text-slate-800 truncate block">{{ entry.object_repr }}</span>
+                                {% else %}
+                                    <a href="{{ entry.get_admin_url }}" class="font-bold text-[#167888] hover:underline truncate block">{{ entry.object_repr }}</a>
+                                {% endif %}
+                                <span class="text-[11px] text-slate-400 block mt-0.5">
+                                    {% if entry.content_type %}
+                                        {{ entry.content_type.name|capfirst }}
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <!-- Quick Platform Shortcuts -->
+            <div class="bg-gradient-to-br from-[#167888] to-[#125c68] rounded-3xl p-6 text-white shadow-md space-y-4">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">🚀</span>
+                    <h3 class="text-sm font-extrabold uppercase tracking-wider">Quick Actions</h3>
+                </div>
+                <p class="text-xs text-teal-100 leading-relaxed">
+                    Instantly create new learning opportunities or manage registered students with one click.
+                </p>
+                <div class="space-y-2 pt-2">
+                    <a href="{% url 'admin:core_classprogram_add' %}" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-black uppercase tracking-wider text-slate-900 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-xs transition-all text-center">
+                        + Add New Class Program
+                    </a>
+                    <a href="{% url 'admin:core_studymaterial_add' %}" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-white/15 hover:bg-white/25 border border-white/20 transition-all text-center">
+                        + Upload Study PDF Material
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
