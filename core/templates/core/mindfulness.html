@@ -7,10 +7,14 @@
 <!-- Hero Banner -->
 <section class="bg-gradient-to-br from-[#167888] via-[#1a8596] to-[#d8b49c] text-white py-20 lg:py-28">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p class="text-xs font-extrabold uppercase tracking-widest text-teal-200 mb-4">Emotional Space for Learning</p>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">Mindfulness & Mental Well-being</h1>
+        <p class="text-xs font-extrabold uppercase tracking-widest text-teal-200 mb-4">
+            {{ mindfulness_intro.hero_badge|default:"Emotional Space for Learning" }}
+        </p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
+            {{ mindfulness_intro.hero_headline|default:"Mindfulness & Mental Well-being" }}
+        </h1>
         <p class="mt-6 text-lg text-teal-50/90 max-w-2xl mx-auto leading-relaxed">
-            Education requires emotional and mental space. We provide compassionate, safe virtual circles for Afghan girls and women to pause, connect, and heal.
+            {{ mindfulness_intro.hero_subtitle|default:"Education requires emotional and mental space. We provide compassionate, safe virtual circles for Afghan girls and women to pause, connect, and heal." }}
         </p>
     </div>
 </section>
@@ -87,7 +91,7 @@
     </div>
 </section>
 
-<!-- Session Pillars -->
+<!-- Session Pillars (Dynamic MindfulnessCirclePractice Backend Data) -->
 <section class="bg-gray-50/70 py-20 border-y border-gray-100">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-16">
@@ -99,6 +103,25 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {% for pillar in mindfulness_pillars %}
+            <div class="p-8 bg-white rounded-3xl border border-gray-200/80 hover:border-[#167888] hover:shadow-xl transition-all group flex flex-col justify-between transform hover:-translate-y-1">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl {{ pillar.icon_bg_class }} flex items-center justify-center text-2xl mb-6 group-hover:scale-105 transition-transform shadow-xs">
+                        {{ pillar.icon }}
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 leading-snug">
+                        {{ pillar.title }}
+                    </h3>
+                    <p class="mt-2 text-xs text-gray-600 leading-relaxed">
+                        {{ pillar.description }}
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-100 text-[11px] font-bold {{ pillar.tag_text_class }}">
+                    {{ pillar.footer_tag }}
+                </div>
+            </div>
+            {% empty %}
+            <!-- Fallback Pillar 1 -->
             <div class="p-8 bg-white rounded-3xl border border-gray-200/80 hover:shadow-lg transition-all group flex flex-col justify-between">
                 <div>
                     <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-800 flex items-center justify-center text-2xl mb-6 group-hover:scale-105 transition-transform">
@@ -114,6 +137,7 @@
                 </div>
             </div>
 
+            <!-- Fallback Pillar 2 -->
             <div class="p-8 bg-white rounded-3xl border border-gray-200/80 hover:shadow-lg transition-all group flex flex-col justify-between">
                 <div>
                     <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-800 flex items-center justify-center text-2xl mb-6 group-hover:scale-105 transition-transform">
@@ -129,6 +153,7 @@
                 </div>
             </div>
 
+            <!-- Fallback Pillar 3 -->
             <div class="p-8 bg-white rounded-3xl border border-gray-200/80 hover:shadow-lg transition-all group flex flex-col justify-between">
                 <div>
                     <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-800 flex items-center justify-center text-2xl mb-6 group-hover:scale-105 transition-transform">
@@ -144,6 +169,7 @@
                 </div>
             </div>
 
+            <!-- Fallback Pillar 4 -->
             <div class="p-8 bg-white rounded-3xl border border-gray-200/80 hover:shadow-lg transition-all group flex flex-col justify-between">
                 <div>
                     <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-800 flex items-center justify-center text-2xl mb-6 group-hover:scale-105 transition-transform">
@@ -158,6 +184,7 @@
                     PDF journals included
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -211,17 +238,21 @@
     </div>
 </section>
 
-<!-- Call to Action Banner -->
+<!-- Call to Action Banner (Dynamic Backend Data) -->
 <section class="bg-[#167888] py-16 text-white">
     <div class="max-w-3xl mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold tracking-tight">Your well-being and voice matter</h2>
-        <p class="mt-3 text-teal-100 text-base">Join our free weekly mindfulness sessions or volunteer as a facilitator.</p>
+        <h2 class="text-3xl font-bold tracking-tight">
+            {{ mindfulness_intro.cta_headline|default:"Your well-being and voice matter" }}
+        </h2>
+        <p class="mt-3 text-teal-100 text-base">
+            {{ mindfulness_intro.cta_subtitle|default:"Join our free weekly mindfulness sessions or volunteer as a facilitator." }}
+        </p>
         <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="{% url 'accounts:register' %}" class="px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] rounded-full shadow-lg hover:shadow-xl transition-all">
-                Join a Mindfulness Circle
+            <a href="{{ mindfulness_intro.cta_button_1_url|default:'/register/' }}" class="px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] rounded-full shadow-lg hover:shadow-xl transition-all">
+                {{ mindfulness_intro.cta_button_1_text|default:"Join a Mindfulness Circle" }}
             </a>
-            <a href="{% url 'core:get_involved' %}" class="px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white border-2 border-white/40 rounded-full hover:bg-white/10 transition-all">
-                Volunteer as Facilitator
+            <a href="{{ mindfulness_intro.cta_button_2_url|default:'/get-involved/' }}" class="px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white border-2 border-white/40 rounded-full hover:bg-white/10 transition-all">
+                {{ mindfulness_intro.cta_button_2_text|default:"Volunteer as Facilitator" }}
             </a>
         </div>
     </div>

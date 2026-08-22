@@ -323,6 +323,12 @@ class MethodologyPillar(models.Model):
 
 class MindfulnessIntro(models.Model):
     """Dynamic Trauma-Informed Learning Intro on the Mindfulness & Well-being page."""
+    # Top Hero Section
+    hero_badge = models.CharField(max_length=80, default="Emotional Space for Learning", help_text="Top hero pill badge")
+    hero_headline = models.CharField(max_length=200, default="Mindfulness & Mental Well-being", help_text="Top main page title")
+    hero_subtitle = models.TextField(default="Education requires emotional and mental space. We provide compassionate, safe virtual circles for Afghan girls and women to pause, connect, and heal.", help_text="Top subtitle description")
+
+    # Trauma-Informed Framework Story
     badge_text = models.CharField(max_length=60, default="Trauma-Informed Learning", help_text="Category pill text")
     headline = models.CharField(max_length=250, default="Healing and learning must go hand in hand")
     paragraph_1 = models.TextField(help_text="First paragraph explaining emotional challenges & context")
@@ -331,18 +337,80 @@ class MindfulnessIntro(models.Model):
     safety_point_1_desc = models.CharField(max_length=200, default="Camera-optional, anonymous handles respected")
     safety_point_2_title = models.CharField(max_length=100, default="Practical Daily Tools")
     safety_point_2_desc = models.CharField(max_length=200, default="Breathing and somatic exercises usable anytime from home")
-    button_text = models.CharField(max_length=60, default="Join Next Safe Circle →", help_text="Action button label")
-    button_url = models.CharField(max_length=255, default="/contact/", help_text="Action button destination")
+    button_text = models.CharField(max_length=60, default="Join Next Safe Circle →", blank=True, help_text="Action button label (optional)")
+    button_url = models.CharField(max_length=255, default="/contact/", blank=True, help_text="Action button destination")
     image = models.ImageField(upload_to='mindfulness_images/', blank=True, null=True, help_text="Mindfulness illustration/artwork")
+
+    # Bottom Call to Action Banner
+    cta_headline = models.CharField(max_length=200, default="Your well-being and voice matter", help_text="Bottom CTA banner title")
+    cta_subtitle = models.TextField(default="Join our free weekly mindfulness sessions or volunteer as a facilitator.", help_text="Bottom CTA subtitle")
+    cta_button_1_text = models.CharField(max_length=60, default="Join a Mindfulness Circle", help_text="Primary CTA button label")
+    cta_button_1_url = models.CharField(max_length=255, default="/register/", help_text="Primary CTA button URL")
+    cta_button_2_text = models.CharField(max_length=60, default="Volunteer as Facilitator", help_text="Secondary CTA button label")
+    cta_button_2_url = models.CharField(max_length=255, default="/get-involved/", help_text="Secondary CTA button URL")
+
     is_active = models.BooleanField(default=True, help_text="Active toggle")
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name = "Mindfulness Page Intro"
-        verbose_name_plural = "Mindfulness Page Intros"
+        verbose_name = "Mindfulness Page Setting"
+        verbose_name_plural = "Mindfulness Page Settings"
 
     def __str__(self):
         return self.headline
+
+
+class MindfulnessPillar(models.Model):
+    """Dynamic Practice Pillars in the 'What Our Circles Include' section."""
+    THEME_CHOICES = [
+        ('teal', 'Teal Theme'),
+        ('purple', 'Purple Theme'),
+        ('amber', 'Amber Theme'),
+        ('blue', 'Blue Theme'),
+        ('rose', 'Rose Theme'),
+        ('emerald', 'Emerald Theme'),
+    ]
+
+    title = models.CharField(max_length=150, help_text="Pillar title (e.g. Guided Meditation, Safe Sisterhood Circles)")
+    icon = models.CharField(max_length=20, default="🧘‍♀️", help_text="Emoji or icon badge (e.g. 🧘‍♀️, 💬, 🌱, 📖, 🕯️)")
+    theme_color = models.CharField(max_length=30, choices=THEME_CHOICES, default='teal', help_text="Visual color theme")
+    description = models.TextField(help_text="Detailed description of this practice")
+    footer_tag = models.CharField(max_length=100, default="Daily 20-min routines", help_text="Bottom pill text (e.g. Daily 20-min routines, Moderated & confidential)")
+    order = models.PositiveIntegerField(default=0, help_text="Sort order")
+    is_active = models.BooleanField(default=True, help_text="Uncheck to hide this practice")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', '-created_at']
+        verbose_name = "Mindfulness Circle Practice"
+        verbose_name_plural = "Mindfulness Circle Practices"
+
+    def __str__(self):
+        return f"{self.icon} {self.title}"
+
+    @property
+    def icon_bg_class(self):
+        theme_map = {
+            'teal': 'bg-teal-50 text-teal-800',
+            'purple': 'bg-purple-50 text-purple-800',
+            'amber': 'bg-amber-50 text-amber-800',
+            'blue': 'bg-blue-50 text-blue-800',
+            'rose': 'bg-rose-50 text-rose-800',
+            'emerald': 'bg-emerald-50 text-emerald-800',
+        }
+        return theme_map.get(self.theme_color, 'bg-teal-50 text-teal-800')
+
+    @property
+    def tag_text_class(self):
+        theme_map = {
+            'teal': 'text-[#167888]',
+            'purple': 'text-purple-700',
+            'amber': 'text-amber-700',
+            'blue': 'text-blue-700',
+            'rose': 'text-rose-700',
+            'emerald': 'text-emerald-700',
+        }
+        return theme_map.get(self.theme_color, 'text-[#167888]')
 
 
 class CountryReach(models.Model):

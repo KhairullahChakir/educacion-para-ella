@@ -11,6 +11,7 @@ from .models import (
     FounderCollaborator,
     MethodologyPillar,
     MindfulnessIntro,
+    MindfulnessPillar,
     CountryReach,
     VolunteerStat,
     VolunteerRole,
@@ -157,10 +158,43 @@ class MethodologyPillarAdmin(admin.ModelAdmin):
 
 @admin.register(MindfulnessIntro)
 class MindfulnessIntroAdmin(admin.ModelAdmin):
-    list_display = ('headline', 'badge_text', 'safety_point_1_title', 'is_active', 'created_at')
+    list_display = ('hero_headline', 'headline', 'badge_text', 'is_active', 'created_at')
     list_filter = ('is_active', 'created_at')
     list_editable = ('is_active',)
-    search_fields = ('headline', 'paragraph_1', 'paragraph_2', 'safety_point_1_title', 'safety_point_2_title')
+    search_fields = ('hero_headline', 'hero_subtitle', 'headline', 'paragraph_1', 'paragraph_2')
+    fieldsets = (
+        ('✨ Top Hero Banner', {
+            'fields': ('hero_badge', 'hero_headline', 'hero_subtitle')
+        }),
+        ('🌿 Trauma-Informed Framework Story', {
+            'fields': ('badge_text', 'headline', 'paragraph_1', 'paragraph_2', 'image')
+        }),
+        ('🛡️ Safety Points & Optional Action', {
+            'fields': ('safety_point_1_title', 'safety_point_1_desc', 'safety_point_2_title', 'safety_point_2_desc', 'button_text', 'button_url')
+        }),
+        ('📢 Bottom Call to Action Banner', {
+            'fields': ('cta_headline', 'cta_subtitle', 'cta_button_1_text', 'cta_button_1_url', 'cta_button_2_text', 'cta_button_2_url')
+        }),
+        ('⚙️ Visibility & Status', {
+            'fields': ('is_active',)
+        }),
+    )
+
+
+@admin.register(MindfulnessPillar)
+class MindfulnessPillarAdmin(admin.ModelAdmin):
+    list_display = ('title', 'icon', 'theme_color', 'footer_tag', 'order', 'is_active', 'created_at')
+    list_filter = ('theme_color', 'is_active', 'created_at')
+    list_editable = ('icon', 'theme_color', 'footer_tag', 'order', 'is_active')
+    search_fields = ('title', 'description', 'footer_tag')
+    fieldsets = (
+        ('🧘 Practice Details', {
+            'fields': ('title', 'icon', 'theme_color', 'description', 'footer_tag')
+        }),
+        ('⚙️ Visibility & Order', {
+            'fields': ('order', 'is_active')
+        }),
+    )
 
 
 @admin.register(CountryReach)

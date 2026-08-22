@@ -12,6 +12,7 @@ from .models import (
     FounderCollaborator,
     MethodologyPillar,
     MindfulnessIntro,
+    MindfulnessPillar,
     CountryReach,
     VolunteerStat,
     VolunteerRole,
@@ -122,9 +123,11 @@ def classes(request):
 def mindfulness(request):
     """Mindfulness & Well-being page."""
     mindfulness_intro = MindfulnessIntro.objects.filter(is_active=True).first()
+    mindfulness_pillars = MindfulnessPillar.objects.filter(is_active=True).order_by('order', '-created_at')
     countries = CountryReach.objects.filter(is_active=True).order_by('order', '-created_at')
     return render(request, 'core/mindfulness.html', {
         'mindfulness_intro': mindfulness_intro,
+        'mindfulness_pillars': mindfulness_pillars,
         'countries': countries,
     })
 
