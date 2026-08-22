@@ -87,13 +87,58 @@
             </div>
 
             <div class="lg:col-span-5 flex justify-center">
-                <div class="relative w-full max-w-md">
-                    <div class="rounded-3xl overflow-hidden shadow-2xl border border-gray-100 bg-teal-900">
-                        {% if mindfulness_intro.image %}
-                        <img src="{{ mindfulness_intro.image.url }}" alt="{{ mindfulness_intro.headline }}" class="w-full h-auto object-cover">
-                        {% else %}
-                        <img src="{% static 'images/hero_student.png' %}" alt="Mindfulness for Afghan students" class="w-full h-auto object-cover">
-                        {% endif %}
+                <div class="relative w-full max-w-lg">
+                    <!-- Ambient Glow Behind Frame -->
+                    <div class="absolute -top-4 -right-4 w-40 h-40 bg-teal-300/25 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="absolute -bottom-4 -left-4 w-40 h-40 bg-amber-300/25 rounded-full blur-2xl pointer-events-none"></div>
+
+                    <!-- Outer Sanctuary Layer Card -->
+                    <div class="relative p-3 sm:p-4 rounded-[2.5rem] bg-gradient-to-br from-teal-100/70 via-emerald-50/50 to-amber-100/60 border border-teal-200/60 shadow-2xl shadow-teal-900/10 group">
+                        
+                        <!-- Inner Visual Container -->
+                        <div class="relative rounded-[2rem] overflow-hidden border border-white/90 shadow-md bg-teal-950 min-h-[340px] sm:min-h-[380px] flex flex-col justify-between">
+                            {% if mindfulness_intro.image %}
+                            <img src="{{ mindfulness_intro.image.url }}" alt="{{ mindfulness_intro.headline }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            {% else %}
+                            <img src="{% static 'images/hero_student.png' %}" alt="Mindfulness for Afghan students" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            {% endif %}
+                            
+                            <!-- Vignette Gradient Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-black/30 pointer-events-none"></div>
+
+                            <!-- Top Floating Chips -->
+                            <div class="relative z-10 p-4 flex items-center justify-between gap-2">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-white/80 shadow-xs text-[11px] font-extrabold uppercase tracking-wider text-[#167888]">
+                                    <span>🌿</span>
+                                    <span>Safe Sanctuary</span>
+                                </span>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-950/85 backdrop-blur-md border border-emerald-400/30 shadow-xs text-[11px] font-bold text-emerald-300">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    <span>Live Circle</span>
+                                </span>
+                            </div>
+
+                            <!-- Bottom Floating Sanctuary Card -->
+                            <div class="relative z-10 p-3 sm:p-4 m-3 rounded-2xl bg-white/95 backdrop-blur-md border border-white/90 shadow-lg">
+                                <div class="flex items-center justify-between gap-2 mb-1.5">
+                                    <h4 class="text-xs sm:text-sm font-extrabold text-slate-900 flex items-center gap-1.5">
+                                        <span>🧘‍♀️</span>
+                                        <span>Emotional Well-Being Space</span>
+                                    </h4>
+                                    <span class="text-[10px] font-black text-[#167888] bg-teal-50 px-2 py-0.5 rounded-md border border-teal-100 uppercase">Weekly</span>
+                                </div>
+                                <p class="text-[11px] text-slate-600 leading-relaxed">
+                                    A gentle peer circle with breathing routines and stress relief.
+                                </p>
+                                <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between gap-2 text-[10px] font-bold text-slate-500 flex-wrap">
+                                    <span class="flex items-center gap-1 text-emerald-700">✓ Camera-Optional</span>
+                                    <span class="flex items-center gap-1 text-teal-700">✓ Anonymous Handles</span>
+                                    <span class="flex items-center gap-1 text-amber-700">✓ 100% Free</span>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
