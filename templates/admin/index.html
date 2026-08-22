@@ -1,5 +1,5 @@
-﻿{% extends "admin/base.html" %}
-{% load i18n static %}
+{% extends "admin/base.html" %}
+{% load i18n static log %}
 
 {% block content %}
 <div class="space-y-8">
@@ -8,8 +8,8 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs flex items-center justify-between">
             <div>
-                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Class Programs</p>
-                <h3 class="text-2xl font-black text-slate-900 mt-1">16 Active</h3>
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Classes & Curriculum</p>
+                <h3 class="text-2xl font-black text-slate-900 mt-1">21 Courses</h3>
                 <a href="{% url 'admin:core_classprogram_changelist' %}" class="text-xs font-bold text-[#167888] hover:underline mt-2 inline-block">Manage Classes &rarr;</a>
             </div>
             <div class="w-12 h-12 rounded-2xl bg-teal-50 text-[#167888] flex items-center justify-center text-xl font-black">
@@ -20,7 +20,7 @@
         <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs flex items-center justify-between">
             <div>
                 <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Student Enrollments</p>
-                <h3 class="text-2xl font-black text-slate-900 mt-1">Active</h3>
+                <h3 class="text-2xl font-black text-slate-900 mt-1">Live Database</h3>
                 <a href="{% url 'admin:core_courseenrollment_changelist' %}" class="text-xs font-bold text-[#167888] hover:underline mt-2 inline-block">View Enrollments &rarr;</a>
             </div>
             <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center text-xl font-black">
@@ -30,18 +30,18 @@
 
         <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs flex items-center justify-between">
             <div>
-                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Study Materials</p>
-                <h3 class="text-2xl font-black text-slate-900 mt-1">PDF Vault</h3>
-                <a href="{% url 'admin:core_studymaterial_changelist' %}" class="text-xs font-bold text-[#167888] hover:underline mt-2 inline-block">Manage Files &rarr;</a>
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Mindfulness Sanctuary</p>
+                <h3 class="text-2xl font-black text-slate-900 mt-1">4 Practices</h3>
+                <a href="{% url 'admin:core_mindfulnesspillar_changelist' %}" class="text-xs font-bold text-[#167888] hover:underline mt-2 inline-block">Edit Practices &rarr;</a>
             </div>
-            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center text-xl font-black">
-                📁
+            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-xl font-black">
+                🌿
             </div>
         </div>
 
         <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs flex items-center justify-between">
             <div>
-                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Team & Leadership</p>
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Leadership Team</p>
                 <h3 class="text-2xl font-black text-slate-900 mt-1">4 Leaders</h3>
                 <a href="{% url 'admin:core_foundercollaborator_changelist' %}" class="text-xs font-bold text-[#167888] hover:underline mt-2 inline-block">Edit Profiles &rarr;</a>
             </div>
@@ -51,63 +51,495 @@
         </div>
     </div>
 
-    <!-- Main Content Layout (Apps Grid + Recent Actions) -->
+    <!-- Main Page-by-Page Management Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         
-        <!-- Left 2 Cols: Organized Management Apps -->
+        <!-- Left 2 Cols: Page-by-Page Settings Cards -->
         <div class="lg:col-span-2 space-y-6">
 
-            {% if app_list %}
-                {% for app in app_list %}
-                <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden">
-                    <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between">
-                        <div class="flex items-center gap-2.5">
-                            <span class="w-2.5 h-2.5 rounded-full bg-[#167888]"></span>
-                            <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider">{{ app.name }}</h2>
+            <!-- 1. HOMEPAGE SECTION -->
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden">
+                <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl">🏠</span>
+                        <div>
+                            <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider">Homepage (/) Content</h2>
+                            <p class="text-[11px] text-slate-500">Live announcements ticker, 3-step guide, and partner logos</p>
                         </div>
-                        <span class="text-xs text-slate-400 font-semibold">{{ app.models|length }} models</span>
                     </div>
+                    <span class="text-[11px] font-bold text-[#167888] bg-teal-50 px-2.5 py-1 rounded-full border border-teal-100">3 Models</span>
+                </div>
 
-                    <div class="divide-y divide-slate-100">
-                        {% for model in app.models %}
-                        <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                <div class="divide-y divide-slate-100">
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">📢</span>
                             <div>
-                                {% if model.admin_url %}
-                                    <a href="{{ model.admin_url }}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors flex items-center gap-2">
-                                        <span>{{ model.name }}</span>
-                                    </a>
-                                {% else %}
-                                    <span class="text-sm font-bold text-slate-500">{{ model.name }}</span>
-                                {% endif %}
-                            </div>
-
-                            <div class="flex items-center gap-2">
-                                {% if model.add_url %}
-                                    <a href="{{ model.add_url }}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs hover:shadow-xs transition-all flex items-center gap-1">
-                                        <span>+ Add</span>
-                                    </a>
-                                {% endif %}
-                                {% if model.admin_url %}
-                                    <a href="{{ model.admin_url }}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">
-                                        View / Edit
-                                    </a>
-                                {% endif %}
+                                <a href="{% url 'admin:core_heronews_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Hero News Ticker</a>
+                                <p class="text-xs text-slate-400">Top flashing headline announcements</p>
                             </div>
                         </div>
-                        {% endfor %}
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_heronews_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_heronews_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🪜</span>
+                            <div>
+                                <a href="{% url 'admin:core_howitworksstep_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">How It Works Steps</a>
+                                <p class="text-xs text-slate-400">3-Step guide for new Afghan students</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_howitworksstep_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_howitworksstep_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🤝</span>
+                            <div>
+                                <a href="{% url 'admin:core_partner_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Solidarity Partners & Collaborators</a>
+                                <p class="text-xs text-slate-400">Partner organization logos (OCC, AWOTR, Global Volunteers)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_partner_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_partner_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
                     </div>
                 </div>
-                {% endfor %}
-            {% else %}
-                <div class="p-12 text-center bg-white rounded-3xl border border-slate-200">
-                    <p class="text-sm text-slate-500">You do not have permission to view or edit anything.</p>
+            </div>
+
+            <!-- 2. CLASSES & CURRICULUM SECTION -->
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden">
+                <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl">🎓</span>
+                        <div>
+                            <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider">Our Classes (/classes/) & Study Vault</h2>
+                            <p class="text-[11px] text-slate-500">21 Courses, student enrollments, page settings, and PDF vault</p>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-bold text-[#167888] bg-teal-50 px-2.5 py-1 rounded-full border border-teal-100">4 Models</span>
                 </div>
-            {% endif %}
+
+                <div class="divide-y divide-slate-100">
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">📚</span>
+                            <div>
+                                <a href="{% url 'admin:core_classprogram_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Class Programs & Courses</a>
+                                <p class="text-xs text-slate-400">Manage all 21 courses, teacher names, show/hide toggles & exam badges</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_classprogram_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_classprogram_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">📝</span>
+                            <div>
+                                <a href="{% url 'admin:core_courseenrollment_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Student Course Enrollments</a>
+                                <p class="text-xs text-slate-400">View enrolled students and class participation records</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_courseenrollment_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_courseenrollment_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">⚙️</span>
+                            <div>
+                                <a href="{% url 'admin:core_classespagesetting_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Classes Page Banner Settings</a>
+                                <p class="text-xs text-slate-400">Header title, description, and search placeholder</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_classespagesetting_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">📁</span>
+                            <div>
+                                <a href="{% url 'admin:core_studymaterial_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Study PDF Materials Vault</a>
+                                <p class="text-xs text-slate-400">Low-bandwidth offline PDF downloads and study guides</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_studymaterial_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_studymaterial_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. ABOUT US SECTION -->
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden">
+                <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl">📖</span>
+                        <div>
+                            <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider">About Us (/about/) Content</h2>
+                            <p class="text-[11px] text-slate-500">Origin story, dynamic timeline, leadership bios, and methodology</p>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-bold text-[#167888] bg-teal-50 px-2.5 py-1 rounded-full border border-teal-100">4 Models</span>
+                </div>
+
+                <div class="divide-y divide-slate-100">
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">📜</span>
+                            <div>
+                                <a href="{% url 'admin:core_aboutstory_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Origin Story & Mission</a>
+                                <p class="text-xs text-slate-400">The founding history, purpose, and impact vision</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_aboutstory_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🗺️</span>
+                            <div>
+                                <a href="{% url 'admin:core_aboutmilestone_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Our Journey So Far (Milestones Timeline)</a>
+                                <p class="text-xs text-slate-400">Dynamic 3-stage growth milestones on the About page</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_aboutmilestone_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_aboutmilestone_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🌟</span>
+                            <div>
+                                <a href="{% url 'admin:core_foundercollaborator_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Founders & Leadership Team</a>
+                                <p class="text-xs text-slate-400">Najiah, Chloe, Carol, Ansoh leadership profiles & bios</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_foundercollaborator_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_foundercollaborator_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🧩</span>
+                            <div>
+                                <a href="{% url 'admin:core_methodologypillar_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">4-Pillar Holistic Methodology</a>
+                                <p class="text-xs text-slate-400">Creative Arts, Digital Literacy, Languages, Well-Being</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_methodologypillar_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_methodologypillar_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. MINDFULNESS & SANCTUARY SECTION -->
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden">
+                <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl">🌿</span>
+                        <div>
+                            <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider">Mindfulness & Well-being (/mindfulness/)</h2>
+                            <p class="text-[11px] text-slate-500">Trauma framework, photo, 4 practice cards, and 4-country reach</p>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-bold text-[#167888] bg-teal-50 px-2.5 py-1 rounded-full border border-teal-100">3 Models</span>
+                </div>
+
+                <div class="divide-y divide-slate-100">
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">⚙️</span>
+                            <div>
+                                <a href="{% url 'admin:core_mindfulnessintro_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Mindfulness Page Settings</a>
+                                <p class="text-xs text-slate-400">Hero title, trauma framework story, sanctuary photograph & CTA banner</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_mindfulnessintro_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🧘‍♀️</span>
+                            <div>
+                                <a href="{% url 'admin:core_mindfulnesspillar_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Mindfulness Circle Practices</a>
+                                <p class="text-xs text-slate-400">Manage the 4 practice cards (Meditation, Sisterhood, Stress, Journaling)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_mindfulnesspillar_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_mindfulnesspillar_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🇦🇫</span>
+                            <div>
+                                <a href="{% url 'admin:core_countryreach_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Four-Country Regional Reach</a>
+                                <p class="text-xs text-slate-400">Afghanistan, Iran, Pakistan, Iraq student community reach</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_countryreach_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_countryreach_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. VOLUNTEERS & GET INVOLVED SECTION -->
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden">
+                <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl">🤝</span>
+                        <div>
+                            <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider">Volunteers & Get Involved (/volunteers/, /get-involved/)</h2>
+                            <p class="text-[11px] text-slate-500">Impact metrics, volunteer tracks, countries, and journey steps</p>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-bold text-[#167888] bg-teal-50 px-2.5 py-1 rounded-full border border-teal-100">5 Models</span>
+                </div>
+
+                <div class="divide-y divide-slate-100">
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">📊</span>
+                            <div>
+                                <a href="{% url 'admin:core_volunteerstat_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Volunteer Impact Stats</a>
+                                <p class="text-xs text-slate-400">120+ active volunteers, student teaching hours</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_volunteerstat_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_volunteerstat_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">👩‍🏫</span>
+                            <div>
+                                <a href="{% url 'admin:core_volunteerrole_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Volunteer Roles</a>
+                                <p class="text-xs text-slate-400">Teaching, Mentorship, and Support role profiles</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_volunteerrole_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_volunteerrole_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🌍</span>
+                            <div>
+                                <a href="{% url 'admin:core_volunteercountry_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Volunteer Global Countries</a>
+                                <p class="text-xs text-slate-400">Countries from which international volunteer educators teach</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_volunteercountry_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_volunteercountry_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🚀</span>
+                            <div>
+                                <a href="{% url 'admin:core_involvementtrack_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Involvement Opportunity Tracks</a>
+                                <p class="text-xs text-slate-400">Language teaching, tech mentorship, organizational solidarity</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_involvementtrack_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_involvementtrack_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🛣️</span>
+                            <div>
+                                <a href="{% url 'admin:core_volunteerjourneystep_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Volunteer Journey Steps</a>
+                                <p class="text-xs text-slate-400">4-Step volunteer onboarding roadmap</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_volunteerjourneystep_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_volunteerjourneystep_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. CONTACT & SITE SETTINGS SECTION -->
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden">
+                <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl">💬</span>
+                        <div>
+                            <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider">Contact (/contact/), FAQs & Footer Settings</h2>
+                            <p class="text-[11px] text-slate-500">Live incoming student messages, contact info, FAQs, and footer links</p>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-bold text-[#167888] bg-teal-50 px-2.5 py-1 rounded-full border border-teal-100">4 Models</span>
+                </div>
+
+                <div class="divide-y divide-slate-100">
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">📬</span>
+                            <div>
+                                <a href="{% url 'admin:core_contactmessage_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Incoming Student & Contact Messages</a>
+                                <p class="text-xs text-slate-400">View and respond to inquiries submitted via the Contact form</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_contactmessage_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View Messages</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">📞</span>
+                            <div>
+                                <a href="{% url 'admin:core_contactsetting_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Contact Page Settings</a>
+                                <p class="text-xs text-slate-400">Direct Telegram/WhatsApp support handles and response guarantee text</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_contactsetting_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">❓</span>
+                            <div>
+                                <a href="{% url 'admin:core_faqitem_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Frequently Asked Questions (FAQs)</a>
+                                <p class="text-xs text-slate-400">Class safety, technical requirements, and certificate FAQs</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_faqitem_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_faqitem_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">⚓</span>
+                            <div>
+                                <a href="{% url 'admin:core_footersetting_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Footer Settings & Quick Links</a>
+                                <p class="text-xs text-slate-400">Mission snippet, copyright text, and navigation links</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_footerquicklink_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">Quick Links</a>
+                            <a href="{% url 'admin:core_footersetting_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">Footer Settings</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. USER ACCOUNTS & PERMISSION ROLES -->
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden">
+                <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl">👥</span>
+                        <div>
+                            <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider">User Accounts & Permission Groups</h2>
+                            <p class="text-[11px] text-slate-500">Student & teacher logins, password resets, and staff role permissions</p>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-bold text-[#167888] bg-teal-50 px-2.5 py-1 rounded-full border border-teal-100">2 Models</span>
+                </div>
+
+                <div class="divide-y divide-slate-100">
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">👤</span>
+                            <div>
+                                <a href="{% url 'admin:auth_user_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Users & Student Profiles</a>
+                                <p class="text-xs text-slate-400">Manage user accounts, roles, bios, and password resets</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:auth_user_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:auth_user_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🛡️</span>
+                            <div>
+                                <a href="{% url 'admin:auth_group_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Permission Groups & Staff Roles</a>
+                                <p class="text-xs text-slate-400">Teacher, Support Coordinator, and Content Editor permission groups</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:auth_group_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:auth_group_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
-        <!-- Right 1 Col: Recent Actions & Helpful Quick Links -->
+        <!-- Right 1 Col: Recent Actions & Helpful Quick Shortcuts -->
         <div class="space-y-6">
+
+            <!-- Quick Platform Shortcuts -->
+            <div class="bg-gradient-to-br from-[#167888] to-[#125c68] rounded-3xl p-6 text-white shadow-md space-y-4">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">🚀</span>
+                    <h3 class="text-sm font-extrabold uppercase tracking-wider">Quick Actions</h3>
+                </div>
+                <p class="text-xs text-teal-100 leading-relaxed">
+                    Instantly create new learning opportunities, upload PDF study packs, or add team members with one click.
+                </p>
+                <div class="space-y-2 pt-2">
+                    <a href="{% url 'admin:core_classprogram_add' %}" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-black uppercase tracking-wider text-slate-900 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-xs transition-all text-center">
+                        + Add New Class Program
+                    </a>
+                    <a href="{% url 'admin:core_studymaterial_add' %}" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-white/15 hover:bg-white/25 border border-white/20 transition-all text-center">
+                        + Upload Study PDF Material
+                    </a>
+                    <a href="{% url 'admin:core_foundercollaborator_add' %}" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-white/15 hover:bg-white/25 border border-white/20 transition-all text-center">
+                        + Add Team Member
+                    </a>
+                </div>
+            </div>
 
             <!-- Recent Activity Timeline -->
             <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs">
@@ -115,7 +547,6 @@
                     <span>⚡</span> Recent Actions
                 </h3>
 
-                {% load log %}
                 {% get_admin_log 8 as admin_log for_user user %}
                 {% if not admin_log %}
                     <p class="text-xs text-slate-400">No recent actions recorded.</p>
@@ -142,25 +573,6 @@
                         {% endfor %}
                     </ul>
                 {% endif %}
-            </div>
-
-            <!-- Quick Platform Shortcuts -->
-            <div class="bg-gradient-to-br from-[#167888] to-[#125c68] rounded-3xl p-6 text-white shadow-md space-y-4">
-                <div class="flex items-center gap-2">
-                    <span class="text-xl">🚀</span>
-                    <h3 class="text-sm font-extrabold uppercase tracking-wider">Quick Actions</h3>
-                </div>
-                <p class="text-xs text-teal-100 leading-relaxed">
-                    Instantly create new learning opportunities or manage registered students with one click.
-                </p>
-                <div class="space-y-2 pt-2">
-                    <a href="{% url 'admin:core_classprogram_add' %}" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-black uppercase tracking-wider text-slate-900 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-xs transition-all text-center">
-                        + Add New Class Program
-                    </a>
-                    <a href="{% url 'admin:core_studymaterial_add' %}" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-white/15 hover:bg-white/25 border border-white/20 transition-all text-center">
-                        + Upload Study PDF Material
-                    </a>
-                </div>
             </div>
 
         </div>
