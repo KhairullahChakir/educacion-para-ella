@@ -17,6 +17,8 @@ from .models import (
     VolunteerRole,
     VolunteerCountry,
     VisionPillar,
+    MissionPageSetting,
+    CoreValue,
     InvolvementTrack,
     VolunteerJourneyStep,
     FAQItem,
@@ -231,6 +233,31 @@ class VolunteerCountryAdmin(admin.ModelAdmin):
     search_fields = ('name', 'country_code', 'tag_label')
 
 
+@admin.register(MissionPageSetting)
+class MissionPageSettingAdmin(admin.ModelAdmin):
+    list_display = ('hero_headline', 'manifesto_headline', 'values_headline', 'is_active', 'created_at')
+    list_filter = ('is_active', 'created_at')
+    list_editable = ('is_active',)
+    search_fields = ('hero_headline', 'hero_subtitle', 'manifesto_headline', 'values_headline')
+    fieldsets = (
+        ('✨ Top Hero Banner', {
+            'fields': ('hero_badge', 'hero_headline', 'hero_subtitle')
+        }),
+        ('🌟 Manifesto Header Section', {
+            'fields': ('manifesto_badge', 'manifesto_headline', 'manifesto_subtitle')
+        }),
+        ('📜 Values Header Section', {
+            'fields': ('values_badge', 'values_headline', 'values_subtitle')
+        }),
+        ('📢 Bottom Call to Action Banner', {
+            'fields': ('cta_headline', 'cta_subtitle', 'cta_button_1_text', 'cta_button_1_url', 'cta_button_2_text', 'cta_button_2_url')
+        }),
+        ('⚙️ Visibility & Status', {
+            'fields': ('is_active',)
+        }),
+    )
+
+
 @admin.register(VisionPillar)
 class VisionPillarAdmin(admin.ModelAdmin):
     list_display = ('pillar_number', 'title', 'icon', 'accent_color', 'order', 'is_active', 'created_at')
@@ -238,6 +265,31 @@ class VisionPillarAdmin(admin.ModelAdmin):
     list_filter = ('accent_color', 'is_active', 'created_at')
     list_editable = ('pillar_number', 'icon', 'accent_color', 'order', 'is_active')
     search_fields = ('title', 'description', 'pillar_number')
+    fieldsets = (
+        ('🌟 Vision Pillar Details', {
+            'fields': ('pillar_number', 'title', 'icon', 'accent_color', 'image', 'description')
+        }),
+        ('⚙️ Visibility & Order', {
+            'fields': ('order', 'is_active')
+        }),
+    )
+
+
+@admin.register(CoreValue)
+class CoreValueAdmin(admin.ModelAdmin):
+    list_display = ('value_number', 'title', 'tag', 'icon', 'theme_color', 'order', 'is_active', 'created_at')
+    list_display_links = ('title',)
+    list_filter = ('theme_color', 'is_active', 'created_at')
+    list_editable = ('value_number', 'tag', 'icon', 'theme_color', 'order', 'is_active')
+    search_fields = ('title', 'tag', 'description', 'action_text')
+    fieldsets = (
+        ('📖 Core Value Details', {
+            'fields': ('value_number', 'title', 'tag', 'icon', 'theme_color', 'description', 'action_text')
+        }),
+        ('⚙️ Visibility & Order', {
+            'fields': ('order', 'is_active')
+        }),
+    )
 
 
 @admin.register(InvolvementTrack)

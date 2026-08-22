@@ -599,6 +599,97 @@ class VisionPillar(models.Model):
             }
 
 
+class MissionPageSetting(models.Model):
+    """Dynamic page titles, manifesto header, and CTA settings on the Mission & Values page."""
+    # Top Hero Banner
+    hero_badge = models.CharField(max_length=80, default="Core Philosophy & Guiding Principles", help_text="Top hero pill badge")
+    hero_headline = models.CharField(max_length=200, default="Our Mission & Values", help_text="Top main page title")
+    hero_subtitle = models.TextField(default="To ensure Afghan girls and women continue learning, developing critical skills, and building self-reliance despite every systemic barrier.", help_text="Top subtitle description")
+
+    # Manifesto Section Header
+    manifesto_badge = models.CharField(max_length=80, default="Our Manifesto", help_text="Manifesto pill badge")
+    manifesto_headline = models.CharField(max_length=200, default="Our Vision for the Future", help_text="Manifesto title")
+    manifesto_subtitle = models.TextField(default="We envision a world where every Afghan girl and woman can access education safely and freely, choose her own learning path, cultivate her unique talents, and build her own independent future.", help_text="Manifesto subtitle")
+
+    # Values Section Header
+    values_badge = models.CharField(max_length=80, default="Our Values", help_text="Values pill badge")
+    values_headline = models.CharField(max_length=200, default="The 6 Values That Guide Us", help_text="Values section title")
+    values_subtitle = models.TextField(default="How our fundamental commitments translate into every course, classroom, and community interaction.", help_text="Values section subtitle")
+
+    # Bottom Call to Action Banner
+    cta_headline = models.CharField(max_length=200, default="Stand with Afghan students", help_text="Bottom CTA title")
+    cta_subtitle = models.TextField(default="Support our mission by learning, volunteering, or partnering with us.", help_text="Bottom CTA subtitle")
+    cta_button_1_text = models.CharField(max_length=60, default="Get Involved", help_text="Primary CTA button label")
+    cta_button_1_url = models.CharField(max_length=255, default="/get-involved/", help_text="Primary CTA button URL")
+    cta_button_2_text = models.CharField(max_length=60, default="Start Learning", help_text="Secondary CTA button label")
+    cta_button_2_url = models.CharField(max_length=255, default="/register/", help_text="Secondary CTA button URL")
+
+    is_active = models.BooleanField(default=True, help_text="Active toggle")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Mission Page Setting"
+        verbose_name_plural = "Mission Page Settings"
+
+    def __str__(self):
+        return self.hero_headline
+
+
+class CoreValue(models.Model):
+    """Dynamic 6 Core Values displayed on the Mission page."""
+    COLOR_CHOICES = [
+        ('teal', 'Teal'),
+        ('blue', 'Blue'),
+        ('amber', 'Amber'),
+        ('purple', 'Purple'),
+        ('green', 'Green'),
+        ('rose', 'Rose'),
+    ]
+
+    value_number = models.PositiveIntegerField(default=1, help_text="Value sequence (e.g. 1, 2, 3, 4, 5, 6)")
+    title = models.CharField(max_length=150, help_text="Value Title (e.g. Education as a Right, Universal Accessibility)")
+    tag = models.CharField(max_length=80, default="Universal Principle", help_text="Pill tag (e.g. Universal Principle, Accessibility, Agency, Solidarity, Protection, Resilience)")
+    icon = models.CharField(max_length=20, default="📖", help_text="Emoji icon (e.g. 📖, 🌍, 💪, 🤝, 🛡️, 🌱)")
+    theme_color = models.CharField(max_length=30, choices=COLOR_CHOICES, default='teal')
+    description = models.TextField(help_text="Detailed explanation of this core commitment")
+    action_text = models.CharField(max_length=255, default="100% free courses with zero financial barriers.", help_text="Our action bullet at the bottom of the card")
+    order = models.PositiveIntegerField(default=0, help_text="Sort order")
+    is_active = models.BooleanField(default=True, help_text="Uncheck to hide this value")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', 'value_number']
+        verbose_name = "Core Value"
+        verbose_name_plural = "Core Values"
+
+    def __str__(self):
+        return f"{self.value_number}. {self.title}"
+
+    @property
+    def icon_bg_class(self):
+        mapping = {
+            'teal': 'bg-teal-50 text-teal-800',
+            'blue': 'bg-blue-50 text-blue-800',
+            'amber': 'bg-amber-50 text-amber-800',
+            'purple': 'bg-purple-50 text-purple-800',
+            'green': 'bg-green-50 text-green-800',
+            'rose': 'bg-rose-50 text-rose-800',
+        }
+        return mapping.get(self.theme_color, 'bg-teal-50 text-teal-800')
+
+    @property
+    def tag_class(self):
+        mapping = {
+            'teal': 'text-[#167888] bg-teal-50',
+            'blue': 'text-blue-700 bg-blue-50',
+            'amber': 'text-amber-700 bg-amber-50',
+            'purple': 'text-purple-700 bg-purple-50',
+            'green': 'text-green-700 bg-green-50',
+            'rose': 'text-rose-700 bg-rose-50',
+        }
+        return mapping.get(self.theme_color, 'text-[#167888] bg-teal-50')
+
+
 class InvolvementTrack(models.Model):
     """Specialized volunteer and partnership opportunities on the Get Involved page."""
     COLOR_CHOICES = [

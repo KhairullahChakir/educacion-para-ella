@@ -18,6 +18,8 @@ from .models import (
     VolunteerRole,
     VolunteerCountry,
     VisionPillar,
+    MissionPageSetting,
+    CoreValue,
     InvolvementTrack,
     VolunteerJourneyStep,
     FAQItem,
@@ -146,9 +148,13 @@ def volunteers(request):
 
 def mission(request):
     """Our Mission page — values, vision, empowerment."""
+    mission_setting = MissionPageSetting.objects.filter(is_active=True).first()
     vision_pillars = VisionPillar.objects.filter(is_active=True).order_by('order', '-created_at')
+    core_values = CoreValue.objects.filter(is_active=True).order_by('order', 'value_number')
     return render(request, 'core/mission.html', {
+        'mission_setting': mission_setting,
         'vision_pillars': vision_pillars,
+        'core_values': core_values,
     })
 
 

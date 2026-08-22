@@ -257,7 +257,64 @@
                 </div>
             </div>
 
-            <!-- 4. MINDFULNESS & SANCTUARY SECTION -->
+            <!-- 4. OUR MISSION & VALUES SECTION -->
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden">
+                <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl">🎯</span>
+                        <div>
+                            <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider">Our Mission & Values (/mission/) Content</h2>
+                            <p class="text-[11px] text-slate-500">Page banner, 4 vision manifesto pillars, and 6 core value cards</p>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-bold text-[#167888] bg-teal-50 px-2.5 py-1 rounded-full border border-teal-100">3 Models</span>
+                </div>
+
+                <div class="divide-y divide-slate-100">
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">⚙️</span>
+                            <div>
+                                <a href="{% url 'admin:core_missionpagesetting_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Mission Page Settings</a>
+                                <p class="text-xs text-slate-400">Hero title, manifesto header, values intro, and CTA banner</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_missionpagesetting_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🌟</span>
+                            <div>
+                                <a href="{% url 'admin:core_visionpillar_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Vision Manifesto Pillars</a>
+                                <p class="text-xs text-slate-400">4 Manifesto pillars with artwork illustrations (Possibility, Tech, Equality, Peace)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_visionpillar_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_visionpillar_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">📜</span>
+                            <div>
+                                <a href="{% url 'admin:core_corevalue_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">6 Core Values</a>
+                                <p class="text-xs text-slate-400">Manage the 6 core value commitments (Right, Accessibility, Agency, Solidarity, Safety, Hope)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_corevalue_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_corevalue_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. MINDFULNESS & SANCTUARY SECTION -->
             <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden">
                 <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between">
                     <div class="flex items-center gap-3">
