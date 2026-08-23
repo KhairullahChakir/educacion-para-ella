@@ -4,120 +4,338 @@
 {% block title %}{{ program.title }} ({{ program.get_level_category_display }}) — Education for Her{% endblock %}
 
 {% block content %}
-<div class="bg-gray-50/50 py-10 sm:py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Back Link -->
-        <div class="mb-6">
-            <a href="{% url 'core:classes' %}" class="inline-flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-[#167888] transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-                <span>Back to all classes</span>
+<!-- Top Breadcrumbs -->
+<div class="bg-gray-50 border-b border-gray-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+        <nav class="flex items-center gap-2 text-xs font-semibold text-gray-500">
+            <a href="{% url 'core:home' %}" class="hover:text-[#167888] transition-colors">Home</a>
+            <span>/</span>
+            <a href="{% url 'core:classes' %}" class="hover:text-[#167888] transition-colors">Our Classes</a>
+            <span>/</span>
+            <span class="text-gray-900 font-bold truncate max-w-xs sm:max-w-md">{{ program.title }} ({{ program.get_level_category_display }})</span>
+        </nav>
+    </div>
+</div>
+
+<!-- Rich Hero Banner -->
+<section class="relative bg-gradient-to-r from-teal-950 via-[#167888] to-teal-900 text-white py-12 lg:py-16 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Left Info -->
+            <div class="lg:col-span-8 space-y-4">
+                <!-- Badges Strip -->
+                <div class="flex items-center gap-2 flex-wrap">
+                    <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-white/15 text-amber-300 border border-white/20 shadow-xs">
+                        {{ program.icon_or_flag }} {{ program.get_subject_category_display }}
+                    </span>
+                    <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-teal-800/90 text-teal-100 border border-teal-600/50">
+                        {{ program.get_level_category_display }}
+                    </span>
+                    <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider border shadow-xs bg-white text-gray-900 {{ program.status_badge_classes }}">
+                        ● {{ program.display_status }}
+                    </span>
+                    {% if program.level_exam_required %}
+                    <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#fbbf24] text-gray-900 shadow-xs">
+                        📝 Placement Exam Required
+                    </span>
+                    {% endif %}
+                </div>
+
+                <!-- Course Title -->
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
+                    {{ program.title }} <span class="text-teal-200 font-bold text-2xl sm:text-3xl lg:text-4xl">({{ program.get_level_category_display }})</span>
+                </h1>
+
+                <!-- Subtitle / Mission Intro -->
+                <p class="text-base sm:text-lg text-teal-50/90 leading-relaxed max-w-3xl">
+                    {{ program.description|default:"A comprehensive, empowering digital learning program designed to provide Afghan women and girls with high-quality education and certified skills." }}
+                </p>
+
+                <!-- Quick Highlights Row -->
+                <div class="pt-2 flex flex-wrap items-center gap-3 text-xs font-bold text-teal-100">
+                    <div class="flex items-center gap-1.5 bg-white/10 px-3.5 py-2 rounded-xl border border-white/15">
+                        <span>📅</span>
+                        <span>Schedule: <strong class="text-white">{{ program.timetable_text }}</strong></span>
+                    </div>
+                    {% if program.teacher_name and program.show_teacher_name %}
+                    <div class="flex items-center gap-1.5 bg-white/10 px-3.5 py-2 rounded-xl border border-white/15">
+                        <span>👩‍🏫</span>
+                        <span>Educator: <strong class="text-white">{{ program.teacher_name }}</strong></span>
+                    </div>
+                    {% endif %}
+                    <div class="flex items-center gap-1.5 bg-white/10 px-3.5 py-2 rounded-xl border border-white/15">
+                        <span>🛡️</span>
+                        <span>100% Free & Safe</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Cover Preview on Desktop -->
+            <div class="hidden lg:flex lg:col-span-4 justify-end">
+                <div class="w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20 bg-teal-900/40 backdrop-blur-xs">
+                    {% if program.image %}
+                        <img src="{{ program.image.url }}" alt="{{ program.title }}" class="w-full h-60 object-cover">
+                    {% else %}
+                        <div class="w-full h-60 flex flex-col items-center justify-center p-6 text-center">
+                            <span class="text-6xl mb-3">{{ program.icon_or_flag }}</span>
+                            <span class="text-white font-extrabold text-lg">{{ program.title }}</span>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Main 2-Column Content Layout -->
+<section class="bg-gray-50/60 py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+            
+            <!-- Left Main Column (8 cols / ~66%) -->
+            <div class="lg:col-span-8 space-y-8">
+                
+                <!-- 1. About This Course -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200/80 shadow-xs space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-2xl bg-teal-50 text-[#167888] flex items-center justify-center text-xl font-bold">
+                            📖
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-gray-900">About This Course</h2>
+                            <p class="text-xs text-gray-500">Learning objectives and course overview</p>
+                        </div>
+                    </div>
+
+                    <div class="prose prose-slate text-sm text-gray-700 leading-relaxed space-y-3 pt-2">
+                        {% if program.description %}
+                            <p>{{ program.description }}</p>
+                        {% endif %}
+                        <p>
+                            Delivered in interactive virtual classrooms, this course enables Afghan students to study with international and diaspora volunteer educators. All learning materials, worksheets, and study packs are completely free of charge.
+                        </p>
+                    </div>
+
+                    <!-- Level Assessment Notice if applicable -->
+                    {% if program.level_exam_required or program.prerequisites %}
+                    <div class="mt-4 p-4 rounded-2xl bg-amber-50/80 border border-amber-200/80 flex items-start gap-3">
+                        <span class="text-xl">📝</span>
+                        <div class="space-y-1">
+                            <h4 class="text-xs font-bold text-amber-900 uppercase tracking-wider">Level Assessment & Requirements</h4>
+                            <p class="text-xs text-amber-800 leading-relaxed">
+                                {{ program.prerequisites|default:"This class requires an entry level placement exam or completion of the prerequisite level to ensure you are placed in the most suitable group." }}
+                            </p>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- 2. What You Will Learn / Syllabus -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200/80 shadow-xs space-y-5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-2xl bg-teal-50 text-[#167888] flex items-center justify-center text-xl font-bold">
+                            🎯
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-gray-900">Key Learning Modules & Skills</h2>
+                            <p class="text-xs text-gray-500">Core competencies gained through this program</p>
+                        </div>
+                    </div>
+
+                    {% if program.syllabus %}
+                    <div class="p-5 bg-gray-50 rounded-2xl text-xs sm:text-sm text-gray-700 leading-relaxed whitespace-pre-line border border-gray-100">
+                        {{ program.syllabus }}
+                    </div>
+                    {% else %}
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <div class="flex items-start gap-2.5 p-3 rounded-xl bg-gray-50 border border-gray-100">
+                            <span class="text-teal-600 font-bold">✓</span>
+                            <span class="text-xs text-gray-700 font-medium">Interactive live conversational speaking circles</span>
+                        </div>
+                        <div class="flex items-start gap-2.5 p-3 rounded-xl bg-gray-50 border border-gray-100">
+                            <span class="text-teal-600 font-bold">✓</span>
+                            <span class="text-xs text-gray-700 font-medium">Structured grammar, reading, and vocabulary building</span>
+                        </div>
+                        <div class="flex items-start gap-2.5 p-3 rounded-xl bg-gray-50 border border-gray-100">
+                            <span class="text-teal-600 font-bold">✓</span>
+                            <span class="text-xs text-gray-700 font-medium">Downloadable offline lesson summaries & exercises</span>
+                        </div>
+                        <div class="flex items-start gap-2.5 p-3 rounded-xl bg-gray-50 border border-gray-100">
+                            <span class="text-teal-600 font-bold">✓</span>
+                            <span class="text-xs text-gray-700 font-medium">Certificate of completion upon term final review</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- 3. Safe Learning Environment Guarantees -->
+                <div class="bg-gradient-to-r from-teal-900 to-[#167888] rounded-3xl p-6 sm:p-8 text-white shadow-md">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-2xl">🛡️</span>
+                        <div>
+                            <h3 class="text-lg font-bold">Safe & Private Virtual Sanctuary</h3>
+                            <p class="text-xs text-teal-100">Strict safety protocols designed for Afghan women and girls</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-teal-100 leading-relaxed pt-2">
+                        <div class="bg-white/10 p-3.5 rounded-2xl border border-white/15">
+                            <strong class="text-white block mb-1">📹 Camera Optional</strong>
+                            You are never required to turn on your video camera during live sessions.
+                        </div>
+                        <div class="bg-white/10 p-3.5 rounded-2xl border border-white/15">
+                            <strong class="text-white block mb-1">🔒 Private Identity</strong>
+                            Use any pseudonym or nickname for class registration and interaction.
+                        </div>
+                        <div class="bg-white/10 p-3.5 rounded-2xl border border-white/15">
+                            <strong class="text-white block mb-1">📱 Low-Bandwidth</strong>
+                            Access recordings and lightweight PDF offline study summaries.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Sidebar Column (4 cols / ~34%) -->
+            <div class="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
+                
+                <div class="bg-white rounded-3xl p-6 sm:p-7 border-2 border-[#167888]/20 shadow-xl space-y-6">
+                    
+                    <!-- Cover image inside card for mobile -->
+                    <div class="lg:hidden w-full h-44 rounded-2xl overflow-hidden mb-2 bg-gray-100">
+                        {% if program.image %}
+                            <img src="{{ program.image.url }}" alt="{{ program.title }}" class="w-full h-full object-cover">
+                        {% else %}
+                            <div class="w-full h-full flex items-center justify-center text-4xl">{{ program.icon_or_flag }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Price & Status -->
+                    <div class="text-center pb-4 border-b border-gray-100">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider {{ program.status_badge_classes }} mb-2">
+                            ● {{ program.display_status }}
+                        </span>
+                        <div class="text-2xl font-black text-gray-900">
+                            100% Free Tuition
+                        </div>
+                        <p class="text-xs text-emerald-700 font-bold mt-0.5">Zero enrollment or material fees</p>
+                    </div>
+
+                    <!-- Key Spec List -->
+                    <div class="space-y-3 text-xs text-gray-700">
+                        <div class="flex items-center justify-between py-1.5 border-b border-gray-50">
+                            <span class="text-gray-500 font-medium">📅 Schedule</span>
+                            <span class="font-bold text-gray-900">{{ program.timetable_text }}</span>
+                        </div>
+                        <div class="flex items-center justify-between py-1.5 border-b border-gray-50">
+                            <span class="text-gray-500 font-medium">👩‍🏫 Educator</span>
+                            <span class="font-bold text-gray-900">{% if program.teacher_name and program.show_teacher_name %}{{ program.teacher_name }}{% else %}International Educator{% endif %}</span>
+                        </div>
+                        <div class="flex items-center justify-between py-1.5 border-b border-gray-50">
+                            <span class="text-gray-500 font-medium">📍 Location</span>
+                            <span class="font-bold text-gray-900">{{ program.location_text }}</span>
+                        </div>
+                        <div class="flex items-center justify-between py-1.5 border-b border-gray-50">
+                            <span class="text-gray-500 font-medium">📊 Level</span>
+                            <span class="font-bold text-teal-800">{{ program.get_level_category_display }}</span>
+                        </div>
+                        <div class="flex items-center justify-between py-1.5">
+                            <span class="text-gray-500 font-medium">📜 Certificate</span>
+                            <span class="font-bold text-gray-900">Issued upon completion</span>
+                        </div>
+                    </div>
+
+                    <!-- Primary Action Button -->
+                    <div class="space-y-3 pt-2">
+                        {% if program.status == 'closed' %}
+                        <button disabled class="w-full py-4 px-6 rounded-2xl text-xs font-black uppercase tracking-wider text-gray-400 border border-gray-300 bg-gray-100 cursor-not-allowed text-center block">
+                            Registration Currently Closed
+                        </button>
+                        {% else %}
+                        <a href="{{ program.registration_form_url|default:'https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form' }}" target="_blank" rel="noopener noreferrer" class="w-full py-4 px-6 rounded-2xl text-xs sm:text-sm font-black uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2 group cursor-pointer">
+                            <span>Register via Official Form</span>
+                            <svg class="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                        {% endif %}
+
+                        {% if user.is_authenticated %}
+                            {% if is_enrolled %}
+                            <a href="{% url 'core:dashboard' %}" class="w-full py-3 px-5 rounded-2xl text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-colors text-center block">
+                                ✓ Enrolled · Open Dashboard
+                            </a>
+                            {% else %}
+                            <a href="{% url 'core:enroll_course' program.id %}?next={% url 'core:class_detail' program.id %}" class="w-full py-3 px-5 rounded-2xl text-xs font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 border border-gray-200 transition-colors text-center block">
+                                + Save to My Dashboard
+                            </a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+
+                    <!-- Help / Support link -->
+                    <div class="pt-4 border-t border-gray-100 text-center">
+                        <p class="text-[11px] text-gray-500">
+                            Have questions? <a href="{% url 'core:contact' %}" class="text-[#167888] font-bold hover:underline">Contact Support</a>
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Back Link -->
+                <div class="text-center">
+                    <a href="{% url 'core:classes' %}" class="inline-flex items-center gap-1.5 text-xs font-bold text-gray-600 hover:text-[#167888] transition-colors">
+                        <span>← Back to All Class Schedules</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Related Classes Section -->
+{% if related_programs %}
+<section class="bg-white py-16 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-1">Related Programs</p>
+                <h3 class="text-2xl font-bold text-gray-900">Explore Other Classes</h3>
+            </div>
+            <a href="{% url 'core:classes' %}" class="text-xs font-bold text-[#167888] hover:underline flex items-center gap-1">
+                <span>View Full Catalog</span>
+                <span>→</span>
             </a>
         </div>
 
-        <!-- Main Clean Course Card -->
-        <div class="bg-white rounded-3xl border border-gray-200/90 shadow-sm overflow-hidden">
-            
-            <!-- Top Cover Image if exists -->
-            {% if program.image %}
-            <div class="w-full h-64 sm:h-80 bg-gray-100 relative overflow-hidden">
-                <img src="{{ program.image.url }}" alt="{{ program.title }}" class="w-full h-full object-cover">
-                <div class="absolute top-4 left-4 flex items-center gap-2">
-                    <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-white/95 text-gray-900 shadow-sm">
-                        {{ program.icon_or_flag }} {{ program.get_subject_category_display }}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {% for rel_program in related_programs %}
+            <div class="bg-white rounded-3xl border border-gray-200/90 shadow-xs hover:border-[#167888] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6 flex flex-col justify-between group">
+                <div>
+                    <div class="relative w-full h-36 rounded-2xl overflow-hidden mb-4 bg-gray-100">
+                        {% if rel_program.image %}
+                            <img src="{{ rel_program.image.url }}" alt="{{ rel_program.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        {% else %}
+                            <div class="w-full h-full flex items-center justify-center text-3xl">{{ rel_program.icon_or_flag }}</div>
+                        {% endif %}
+                    </div>
+                    <h4 class="text-base font-bold text-gray-900 group-hover:text-[#167888] transition-colors">{{ rel_program.title }}</h4>
+                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-teal-700 bg-teal-50 px-2 py-0.5 rounded-md mt-2 inline-block">
+                        {{ rel_program.get_level_category_display }}
                     </span>
-                    <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-[#167888] text-white shadow-sm">
-                        {{ program.get_level_category_display }}
-                    </span>
+                    <p class="text-xs text-gray-600 mt-2">Days: <strong>{{ rel_program.timetable_text }}</strong></p>
                 </div>
-            </div>
-            {% endif %}
-
-            <div class="p-6 sm:p-10 space-y-8">
-                
-                <!-- Header -->
-                <div class="space-y-3">
-                    {% if not program.image %}
-                    <div class="flex items-center gap-2 flex-wrap mb-2">
-                        <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-teal-50 text-[#167888] border border-teal-200">
-                            {{ program.icon_or_flag }} {{ program.get_subject_category_display }}
-                        </span>
-                        <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-teal-800 text-white">
-                            {{ program.get_level_category_display }}
-                        </span>
-                        <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider border {{ program.status_badge_classes }}">
-                            ● {{ program.display_status }}
-                        </span>
-                    </div>
-                    {% endif %}
-
-                    <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-                        {{ program.title }}
-                    </h1>
-                    
-                    {% if program.level_exam_required %}
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-amber-50 text-amber-900 border border-amber-200 text-xs font-bold">
-                        <span>📝 Placement exam required for this level</span>
-                    </div>
-                    {% endif %}
-                </div>
-
-                <!-- Fast Info Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
-                    <div class="p-4 rounded-2xl bg-gray-50 border border-gray-100">
-                        <span class="text-xs text-gray-500 font-medium block">Schedule</span>
-                        <span class="text-sm font-bold text-gray-900 mt-1 block">📅 {{ program.timetable_text }}</span>
-                    </div>
-
-                    <div class="p-4 rounded-2xl bg-gray-50 border border-gray-100">
-                        <span class="text-xs text-gray-500 font-medium block">Instructor</span>
-                        <span class="text-sm font-bold text-gray-900 mt-1 block">
-                            👩‍🏫 {% if program.teacher_name and program.show_teacher_name %}{{ program.teacher_name }}{% else %}International Volunteer Educator{% endif %}
-                        </span>
-                    </div>
-
-                    <div class="p-4 rounded-2xl bg-gray-50 border border-gray-100">
-                        <span class="text-xs text-gray-500 font-medium block">Tuition</span>
-                        <span class="text-sm font-bold text-emerald-700 mt-1 block">✨ 100% Free for Afghan girls</span>
-                    </div>
-                </div>
-
-                <!-- Course Description / Details -->
-                {% if program.description %}
-                <div class="space-y-2 pt-2 border-t border-gray-100">
-                    <h2 class="text-sm font-bold text-gray-900 uppercase tracking-wider">About This Course</h2>
-                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed">
-                        {{ program.description }}
-                    </p>
-                </div>
-                {% endif %}
-
-                <!-- Syllabus if available -->
-                {% if program.syllabus %}
-                <div class="space-y-2 pt-2 border-t border-gray-100">
-                    <h2 class="text-sm font-bold text-gray-900 uppercase tracking-wider">What You'll Learn</h2>
-                    <div class="p-4 rounded-2xl bg-gray-50 text-xs sm:text-sm text-gray-700 leading-relaxed whitespace-pre-line border border-gray-100">
-                        {{ program.syllabus }}
-                    </div>
-                </div>
-                {% endif %}
-
-                <!-- Registration Button Area -->
-                <div class="pt-6 border-t border-gray-100 space-y-3">
-                    <a href="{{ program.registration_form_url|default:'https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form' }}" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl text-sm font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer">
-                        <span>Register on Official Form</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                <div class="pt-4 mt-4 border-t border-gray-100">
+                    <a href="{% url 'core:class_detail' rel_program.id %}" class="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] transition-all shadow-xs">
+                        Explore & Register →
                     </a>
-
-                    <p class="text-xs text-gray-500">
-                        Registration is open to all Afghan girls and women worldwide. Classes are conducted online with camera optional.
-                    </p>
                 </div>
-
             </div>
-
+            {% endfor %}
         </div>
-
     </div>
-</div>
+</section>
+{% endif %}
+
 {% endblock %}
