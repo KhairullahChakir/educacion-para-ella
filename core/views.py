@@ -134,7 +134,7 @@ def class_detail(request, program_id):
     if not related_programs.exists():
         related_programs = ClassProgram.objects.filter(is_active=True).exclude(id=program.id).order_by('order')[:3]
 
-    study_materials = StudyMaterial.objects.filter(is_active=True, subject_category=program.subject_category).order_by('order')[:4]
+    study_materials = StudyMaterial.objects.filter(is_active=True, subject=program.subject_category).order_by('order')[:4]
     if not study_materials.exists():
         study_materials = StudyMaterial.objects.filter(is_active=True).order_by('order')[:4]
 
