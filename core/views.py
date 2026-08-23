@@ -122,6 +122,30 @@ def classes(request):
     })
 
 
+def class_detail(request, program_id):
+    """Dedicated Course Detail and Registration Page for a specific class."""
+    from django.shortcuts import get_object_or_404
+    program = get_object_or_404(ClassProgram, id=program_id, is_active=True)
+    is_enrolled = False
+    if request.user.is_authenticated:
+        is_enrolled = CourseEnrollment.objects.filter(user=request.user, program=program, is_active=True).exists()
+
+    related_programs = ClassProgram.objects.filter(is_active=True).exclude(id=program.id).filter(subject_category=program.subject_category).order_by('order')[:3]
+    if not related_programs.exists():
+        related_programs = ClassProgram.objects.filter(is_active=True).exclude(id=program.id).order_by('order')[:3]
+
+    study_materials = StudyMaterial.objects.filter(is_active=True, subject_category=program.subject_category).order_by('order')[:4]
+    if not study_materials.exists():
+        study_materials = StudyMaterial.objects.filter(is_active=True).order_by('order')[:4]
+
+    return render(request, 'core/class_detail.html', {
+        'program': program,
+        'is_enrolled': is_enrolled,
+        'related_programs': related_programs,
+        'study_materials': study_materials,
+    })
+
+
 def mindfulness(request):
     """Mindfulness & Well-being page."""
     mindfulness_intro = MindfulnessIntro.objects.filter(is_active=True).first()

@@ -14,6 +14,7 @@ urlpatterns = [
     path('get-involved/', views.get_involved, name='get_involved'),
     path('contact/', views.contact, name='contact'),
     path('subscribe/', views.subscribe_newsletter, name='subscribe_newsletter'),
+    path('classes/<int:program_id>/', views.class_detail, name='class_detail'),
     path('classes/<int:program_id>/enroll/', views.enroll_course, name='enroll_course'),
     path('classes/<int:program_id>/unenroll/', views.unenroll_course, name='unenroll_course'),
 ]

@@ -71,7 +71,7 @@ class ClassProgramAdmin(admin.ModelAdmin):
         )
     fieldsets = (
         ('📚 Course General Information', {
-            'fields': ('title', 'subject_category', 'level_category', 'format_category', 'icon_or_flag', 'badge_text', 'description', 'image')
+            'fields': ('title', 'subject_category', 'level_category', 'format_category', 'icon_or_flag', 'badge_text', 'description', 'syllabus', 'prerequisites', 'image')
         }),
         ('👩‍🏫 Teacher & Placement Details', {
             'fields': ('teacher_name', 'show_teacher_name', 'level_exam_required')
@@ -80,7 +80,7 @@ class ClassProgramAdmin(admin.ModelAdmin):
             'fields': ('start_date_text', 'timetable_text', 'location_text', 'schedule_time')
         }),
         ('🎯 Registration & Actions', {
-            'fields': ('status', 'custom_status_text', 'button_text', 'button_url')
+            'fields': ('status', 'custom_status_text', 'registration_form_url', 'button_text', 'button_url')
         }),
         ('⚙️ Visibility & Ordering', {
             'fields': ('order', 'is_active')
