@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="px-7 pb-7 sm:px-8 sm:pb-8 pt-0">
-                    <a href="{{ track.button_url }}" class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider rounded-full transition-all shadow-md hover:shadow-lg {{ track.style_classes.button }}">
+                    <a href="{{ track.button_url }}" {% if 'http' in track.button_url %}target="_blank" rel="noopener noreferrer"{% endif %} class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider rounded-full transition-all shadow-md hover:shadow-lg {{ track.style_classes.button }}">
                         {{ track.button_text }}
                     </a>
                 </div>
