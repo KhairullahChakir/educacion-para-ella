@@ -31,7 +31,11 @@ from .models import (
     SocialMediaLink,
     CourseEnrollment,
     StudyMaterial,
+    BlogCategory,
+    BlogPost,
 )
+from django.db.models import Q
+from django.core.paginator import Paginator
 
 
 def home(request):
@@ -233,3 +237,72 @@ def subscribe_newsletter(request):
             
     next_url = request.POST.get('next', request.META.get('HTTP_REFERER', '/'))
     return redirect(next_url)
+
+
+def blog_list(request):
+    """Stories & Newsroom digital magazine hub."""
+    categories = BlogCategory.objects.filter(is_active=True).order_by('order', 'name')
+    selected_category_slug = request.GET.get('category', '').strip()
+    search_query = request.GET.get('q', '').strip()
+
+    posts = BlogPost.objects.filter(is_published=True).select_related('category').order_by('-is_featured', '-published_at', '-created_at')
+
+    # Spotlight post for top magazine banner
+    spotlight_post = None
+    if not selected_category_slug and not search_query:
+        spotlight_post = posts.filter(is_featured=True).first()
+        if not spotlight_post:
+            spotlight_post = posts.first()
+
+    if selected_category_slug:
+        posts = posts.filter(category__slug=selected_category_slug)
+
+    if search_query:
+        posts = posts.filter(
+            Q(title__icontains=search_query) |
+            Q(excerpt__icontains=search_query) |
+            Q(content__icontains=search_query) |
+            Q(author_name__icontains=search_query)
+        )
+
+    # Exclude spotlight from grid only when on default all view
+    if spotlight_post and not selected_category_slug and not search_query:
+        posts = posts.exclude(id=spotlight_post.id)
+
+    paginator = Paginator(posts, 9)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'core/blog_list.html', {
+        'categories': categories,
+        'selected_category_slug': selected_category_slug,
+        'search_query': search_query,
+        'spotlight_post': spotlight_post,
+        'posts': page_obj,
+        'page_obj': page_obj,
+        'total_count': posts.count() + (1 if spotlight_post else 0),
+    })
+
+
+def blog_detail(request, slug):
+    """Dedicated editorial story & news reading view."""
+    post = get_object_or_404(BlogPost, slug=slug, is_published=True)
+    
+    # Increment view counter
+    BlogPost.objects.filter(id=post.id).update(views_count=post.views_count + 1)
+    post.refresh_from_db()
+
+    # Related stories in same category
+    related_posts = BlogPost.objects.filter(
+        is_published=True
+    ).exclude(id=post.id)
+
+    if post.category:
+        related_posts = related_posts.filter(category=post.category)
+
+    related_posts = related_posts.order_by('-published_at')[:3]
+
+    return render(request, 'core/blog_detail.html', {
+        'post': post,
+        'related_posts': related_posts,
+    })

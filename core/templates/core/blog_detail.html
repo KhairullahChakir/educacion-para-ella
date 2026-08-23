@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ post.title }} — Educación para Ella{% endblock %}
+
+{% block content %}
+<!-- Top Breadcrumbs -->
+<div class="bg-gray-50 border-b border-gray-200/80">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+        <nav class="flex items-center gap-2 text-xs font-semibold text-gray-500">
+            <a href="{% url 'core:home' %}" class="hover:text-[#167888] transition-colors">Home</a>
+            <span>/</span>
+            <a href="{% url 'core:blog_list' %}" class="hover:text-[#167888] transition-colors">Stories & Newsroom</a>
+            <span>/</span>
+            <span class="text-gray-900 font-bold truncate max-w-xs sm:max-w-md">{{ post.title }}</span>
+        </nav>
+    </div>
+</div>
+
+<article class="bg-white py-12 lg:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        
+        <!-- Header Strip -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-3 flex-wrap">
+                {% if post.category %}
+                <a href="{% url 'core:blog_list' %}?category={{ post.category.slug }}" class="px-3 py-1 rounded-lg text-xs font-black uppercase tracking-wider border {{ post.category.badge_class }} hover:opacity-80 transition-opacity">
+                    {{ post.category.icon }} {{ post.category.name }}
+                </a>
+                {% endif %}
+                <span class="text-xs text-gray-400 font-medium">·</span>
+                <span class="text-xs text-gray-500 font-semibold">{{ post.published_at|date:"F j, Y" }}</span>
+                <span class="text-xs text-gray-400 font-medium">·</span>
+                <span class="text-xs text-teal-800 font-bold">⏱️ {{ post.reading_time_minutes }} min read</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight leading-tight">
+                {{ post.title }}
+            </h1>
+
+            <p class="text-base sm:text-lg text-gray-600 leading-relaxed font-medium">
+                {{ post.excerpt }}
+            </p>
+
+            <!-- Author & Contributor Card -->
+            <div class="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-gray-100">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-50 text-[#167888] border border-teal-200 flex items-center justify-center text-xl font-bold">
+                        ✍️
+                    </div>
+                    <div>
+                        <span class="text-sm font-bold text-gray-900 block">{{ post.author_name }}</span>
+                        <span class="text-xs text-gray-500 block">{{ post.author_role }}</span>
+                    </div>
+                </div>
+
+                <!-- Social Share Links -->
+                <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold text-gray-400 mr-1">Share:</span>
+                    <!-- WhatsApp -->
+                    <a href="https://api.whatsapp.com/send?text={{ post.title|urlencode }}%20{{ request.build_absolute_uri|urlencode }}" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 flex items-center justify-center border border-emerald-200 transition-all text-xs font-bold" title="Share on WhatsApp">
+                        💬
+                    </a>
+                    <!-- Telegram -->
+                    <a href="https://t.me/share/url?url={{ request.build_absolute_uri|urlencode }}&text={{ post.title|urlencode }}" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-700 flex items-center justify-center border border-sky-200 transition-all text-xs font-bold" title="Share on Telegram">
+                        ✈️
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri|urlencode }}" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 flex items-center justify-center border border-blue-200 transition-all text-xs font-bold" title="Share on LinkedIn">
+                        💼
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Hero Image -->
+        <div class="rounded-3xl overflow-hidden shadow-lg border border-gray-200/80 bg-gray-100">
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-80 sm:h-96 object-cover">
+            {% else %}
+                <img src="{% static 'images/hero_student.png' %}" alt="{{ post.title }}" class="w-full h-80 sm:h-96 object-cover">
+            {% endif %}
+            {% if post.image_caption %}
+            <div class="p-3 bg-gray-50 border-t border-gray-100 text-[11px] text-gray-500 text-center italic">
+                {{ post.image_caption }}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Article Rich Body Content -->
+        <div class="prose prose-slate max-w-none text-gray-800 text-sm sm:text-base leading-relaxed space-y-4 pt-4 border-b border-gray-100 pb-10">
+            {{ post.content|linebreaks }}
+        </div>
+
+        <!-- Article Footnote & Direct CTAs -->
+        <div class="bg-gradient-to-r from-teal-900 to-[#167888] rounded-3xl p-8 text-white space-y-4 shadow-md">
+            <h3 class="text-xl font-bold">Support Education for Afghan Women</h3>
+            <p class="text-xs sm:text-sm text-teal-100 leading-relaxed max-w-2xl">
+                Educación para Ella provides 100% free virtual classrooms in English, Spanish, German, Coding, and Well-Being. Help us keep education accessible.
+            </p>
+            <div class="flex items-center gap-3 flex-wrap pt-2">
+                <a href="{% url 'core:classes' %}" class="px-6 py-3 rounded-xl text-xs font-extrabold uppercase tracking-wider text-gray-900 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-xs transition-all">
+                    Explore Our Free Classes
+                </a>
+                <a href="{% url 'core:get_involved' %}" class="px-6 py-3 rounded-xl text-xs font-extrabold uppercase tracking-wider text-white border border-white/30 hover:bg-white/10 transition-all">
+                    Volunteer as Educator
+                </a>
+            </div>
+        </div>
+
+        <!-- Back to Stories Link -->
+        <div class="pt-4 text-center">
+            <a href="{% url 'core:blog_list' %}" class="inline-flex items-center gap-2 text-xs font-bold text-[#167888] hover:underline">
+                <span>← Back to all Stories & News</span>
+            </a>
+        </div>
+
+    </div>
+</article>
+
+<!-- Related Stories Grid -->
+{% if related_posts %}
+<section class="bg-gray-50 py-16 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="text-xs font-extrabold uppercase tracking-widest text-[#167888] mb-1">More Stories</p>
+                <h3 class="text-2xl font-bold text-gray-900">You Might Also Like</h3>
+            </div>
+            <a href="{% url 'core:blog_list' %}" class="text-xs font-bold text-[#167888] hover:underline flex items-center gap-1">
+                <span>View All</span>
+                <span>→</span>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {% for rel_post in related_posts %}
+            <div class="bg-white rounded-3xl border border-gray-200/80 shadow-xs hover:border-[#167888] hover:shadow-lg transition-all p-6 flex flex-col justify-between group">
+                <div class="space-y-3">
+                    <div class="relative w-full h-36 rounded-2xl overflow-hidden bg-teal-900">
+                        {% if rel_post.image %}
+                            <img src="{{ rel_post.image.url }}" alt="{{ rel_post.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        {% else %}
+                            <img src="{% static 'images/hero_student.png' %}" alt="{{ rel_post.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        {% endif %}
+                    </div>
+                    <span class="text-[10px] font-semibold text-gray-400 block">{{ rel_post.published_at|date:"F j, Y" }}</span>
+                    <a href="{% url 'core:blog_detail' rel_post.slug %}" class="block group-hover:text-[#167888] transition-colors">
+                        <h4 class="text-base font-bold text-gray-900 leading-snug">{{ rel_post.title }}</h4>
+                    </a>
+                </div>
+                <div class="pt-4 mt-3 border-t border-gray-100">
+                    <a href="{% url 'core:blog_detail' rel_post.slug %}" class="text-xs font-bold text-[#167888] group-hover:underline inline-flex items-center gap-1">
+                        <span>Read Story</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

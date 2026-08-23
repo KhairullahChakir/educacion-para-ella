@@ -30,6 +30,8 @@ from .models import (
     SocialMediaLink,
     CourseEnrollment,
     StudyMaterial,
+    BlogCategory,
+    BlogPost,
 )
 
 admin.site.site_header = "Educación para Ella — Admin Sanctuary"
@@ -384,3 +386,24 @@ class StudyMaterialAdmin(admin.ModelAdmin):
     list_filter = ('subject', 'file_type', 'is_active', 'created_at')
     list_editable = ('subject', 'file_type', 'file_size_text', 'order', 'is_active')
     search_fields = ('title', 'description')
+
+
+@admin.register(BlogCategory)
+class BlogCategoryAdmin(admin.ModelAdmin):
+    list_display = ('icon', 'name', 'slug', 'theme_color', 'order', 'is_active')
+    list_display_links = ('name',)
+    list_filter = ('theme_color', 'is_active')
+    list_editable = ('theme_color', 'order', 'is_active')
+    prepopulated_fields = {'slug': ('name',)}
+    search_fields = ('name', 'description')
+
+
+@admin.register(BlogPost)
+class BlogPostAdmin(admin.ModelAdmin):
+    list_display = ('title', 'category', 'author_name', 'reading_time_minutes', 'is_featured', 'is_published', 'published_at', 'views_count')
+    list_display_links = ('title',)
+    list_filter = ('category', 'is_featured', 'is_published', 'published_at')
+    list_editable = ('is_featured', 'is_published', 'published_at')
+    prepopulated_fields = {'slug': ('title',)}
+    search_fields = ('title', 'author_name', 'excerpt', 'content')
+    date_hierarchy = 'published_at'

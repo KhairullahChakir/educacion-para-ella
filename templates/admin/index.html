@@ -525,9 +525,51 @@
                         </div>
                     </div>
                 </div>
+            <!-- 7. STORIES & NEWSROOM SECTION -->
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden">
+                <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl">📰</span>
+                        <div>
+                            <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider">Stories & Newsroom (/blog/)</h2>
+                            <p class="text-[11px] text-slate-500">Student voices, volunteer experiences, news releases, and categories</p>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-bold text-[#167888] bg-teal-50 px-2.5 py-1 rounded-full border border-teal-100">2 Models</span>
+                </div>
+
+                <div class="divide-y divide-slate-100">
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">✍️</span>
+                            <div>
+                                <a href="{% url 'admin:core_blogpost_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Stories & Articles (Blog Posts)</a>
+                                <p class="text-xs text-slate-400">Write, edit, and feature inspirational stories, student journeys, and news</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_blogpost_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add Story</a>
+                            <a href="{% url 'admin:core_blogpost_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/60 transition-colors group">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🏷️</span>
+                            <div>
+                                <a href="{% url 'admin:core_blogcategory_changelist' %}" class="text-sm font-bold text-slate-800 group-hover:text-[#167888] transition-colors">Story Categories & Themes</a>
+                                <p class="text-xs text-slate-400">Manage categories: Student Voices, Volunteer Reflections, News, Well-Being</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'admin:core_blogcategory_add' %}" class="px-3 py-1.5 rounded-xl text-xs font-extrabold text-slate-800 bg-[#fbbf24] hover:bg-[#f59e0b] shadow-2xs transition-all">+ Add</a>
+                            <a href="{% url 'admin:core_blogcategory_changelist' %}" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all">View / Edit</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- 7. USER ACCOUNTS & PERMISSION ROLES -->
+            <!-- 8. USER ACCOUNTS & PERMISSION ROLES -->
             <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden">
                 <div class="px-6 py-4 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between">
                     <div class="flex items-center gap-3">

@@ -997,3 +997,69 @@ class StudyMaterial(models.Model):
         elif self.file_url:
             return self.file_url
         return "#"
+
+
+class BlogCategory(models.Model):
+    """Categories for the Stories & Newsroom magazine (e.g. Student Voices, Volunteer Experiences, News)."""
+    THEME_COLORS = [
+        ('teal', 'Teal / Student Voices'),
+        ('amber', 'Amber / News & Announcements'),
+        ('purple', 'Purple / Well-Being & Resilience'),
+        ('blue', 'Blue / Volunteer Reflections'),
+        ('emerald', 'Emerald / Tech & Skills'),
+    ]
+
+    name = models.CharField(max_length=100, help_text="e.g. Student Voices, Volunteer Reflections, News & Updates")
+    slug = models.SlugField(max_length=100, unique=True, help_text="URL-friendly identifier (e.g. student-voices)")
+    icon = models.CharField(max_length=20, default="🎓", help_text="Emoji icon (e.g. 🎓, 👩‍🏫, 📢, 🧠, 💻)")
+    theme_color = models.CharField(max_length=30, choices=THEME_COLORS, default='teal')
+    description = models.CharField(max_length=255, blank=True, default="", help_text="Short category overview")
+    order = models.PositiveIntegerField(default=0, help_text="Display sorting order")
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['order', 'name']
+        verbose_name = "Story Category"
+        verbose_name_plural = "Story Categories"
+
+    def __str__(self):
+        return f"{self.icon} {self.name}"
+
+    @property
+    def badge_class(self):
+        mapping = {
+            'teal': 'bg-teal-50 text-teal-800 border-teal-200',
+            'amber': 'bg-amber-50 text-amber-900 border-amber-200',
+            'purple': 'bg-purple-50 text-purple-800 border-purple-200',
+            'blue': 'bg-blue-50 text-blue-800 border-blue-200',
+            'emerald': 'bg-emerald-50 text-emerald-800 border-emerald-200',
+        }
+        return mapping.get(self.theme_color, 'bg-teal-50 text-teal-800 border-teal-200')
+
+
+class BlogPost(models.Model):
+    """Dynamic articles, student journeys, volunteer stories, and news releases."""
+    title = models.CharField(max_length=250, help_text="Article headline")
+    slug = models.SlugField(max_length=250, unique=True, help_text="URL-friendly slug (auto-generated from title)")
+    category = models.ForeignKey(BlogCategory, on_delete=models.SET_NULL, null=True, blank=True, related_name='posts')
+    author_name = models.CharField(max_length=120, default="Educación para Ella Team", help_text="Author name or pseudonym")
+    author_role = models.CharField(max_length=120, blank=True, default="Community Contributor", help_text="e.g. Volunteer English Teacher, Alumna, Director")
+    image = models.ImageField(upload_to='blog_images/', blank=True, null=True, help_text="Featured header photo")
+    image_caption = models.CharField(max_length=255, blank=True, default="", help_text="Optional photo caption/credits")
+    excerpt = models.TextField(help_text="Engaging 2-3 sentence summary shown on story cards and previews")
+    content = models.TextField(help_text="Full article body content (supports paragraphs and line breaks)")
+    reading_time_minutes = models.PositiveIntegerField(default=3, help_text="Estimated reading time in minutes")
+    is_featured = models.BooleanField(default=False, help_text="Pin as the Spotlight Story on the top of the Stories page")
+    is_published = models.BooleanField(default=True, help_text="Toggle visibility on the live website")
+    published_at = models.DateField(help_text="Publication date displayed publicly")
+    views_count = models.PositiveIntegerField(default=0, help_text="View counter")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-is_featured', '-published_at', '-created_at']
+        verbose_name = "Story / Article"
+        verbose_name_plural = "Stories & Newsroom"
+
+    def __str__(self):
+        return self.title
