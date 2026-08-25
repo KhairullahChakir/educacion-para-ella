@@ -152,13 +152,13 @@ class ClassProgram(models.Model):
     @property
     def status_badge_classes(self):
         if self.status == self.STATUS_OPEN:
-            return "bg-emerald-100 text-emerald-800 border-emerald-200"
+            return "bg-red-50 text-red-600 border-red-200"
         elif self.status == self.STATUS_CLOSED:
-            return "bg-red-100 text-red-800 border-red-200"
+            return "bg-gray-100 text-gray-600 border-gray-200"
         elif self.status == self.STATUS_NOT_REQUIRED:
-            return "bg-teal-100 text-teal-800 border-teal-200"
+            return "bg-teal-50 text-teal-700 border-teal-200"
         else:
-            return "bg-amber-100 text-amber-800 border-amber-200"
+            return "bg-amber-50 text-amber-700 border-amber-200"
 
     @property
     def category_icon_info(self):
