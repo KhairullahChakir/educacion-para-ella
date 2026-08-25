@@ -1,5 +1,41 @@
 [
 {
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$u3MtisGlp0rw36IDvNHecz$kLLBRIG0n9tfpI4fnCphOBEzUI2mEJLO8qX5O6B+FTo=",
+    "last_login": "2026-08-19T06:21:07Z",
+    "is_superuser": true,
+    "username": "anosh",
+    "first_name": "",
+    "last_name": "",
+    "email": "kayrullah786@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-08-13T17:48:49Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$L5jk9y53XF9JXbtfq6cimd$63A9RX3bcWyA3HQ6SFda6bcS8LLVag9o85fUYjUPdUw=",
+    "last_login": "2026-08-21T08:35:06.177Z",
+    "is_superuser": true,
+    "username": "AnoshSaib",
+    "first_name": "",
+    "last_name": "",
+    "email": "kayrullah786@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-08-19T09:11:12.295Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
   "model": "core.heronews",
   "pk": 1,
   "fields": {
