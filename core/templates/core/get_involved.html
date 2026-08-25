@@ -30,9 +30,9 @@
             {% for track in involvement_tracks %}
             <div id="track-{{ track.track_number }}" class="bg-white rounded-3xl border border-gray-200/90 shadow-xs hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 {{ track.style_classes.border_hover }} group flex flex-col justify-between overflow-hidden scroll-mt-32">
                 <div>
-                    <!-- Header Artwork Illustration -->
+                    <!-- Header Artwork Illustration (Full 16:9 Visibility) -->
                     {% if track.image %}
-                    <div class="relative w-full h-48 sm:h-52 overflow-hidden bg-gray-100">
+                    <div class="relative w-full aspect-video overflow-hidden bg-gray-100">
                         <img src="{{ track.image.url }}" alt="{{ track.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                         <div class="absolute bottom-3 left-4 flex items-center gap-2">
