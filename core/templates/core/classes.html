@@ -182,8 +182,8 @@
                          data-search="{{ program.title|lower }} {{ program.teacher_name|lower }} {{ program.get_subject_category_display|lower }} {{ program.get_level_category_display|lower }} {{ program.timetable_text|lower }}">
                         
                         <div>
-                            <!-- Top-Half Cover Image (Clean & Unobstructed) -->
-                            <div class="relative w-full h-40 rounded-2xl overflow-hidden mb-4 border border-gray-100 bg-gray-100 shadow-2xs">
+                            <!-- Top-Half Cover Image (Full 16:9 Visibility) -->
+                            <div class="relative w-full aspect-video rounded-2xl overflow-hidden mb-4 border border-gray-100 bg-gray-100 shadow-2xs">
                                 {% if program.image %}
                                     <img src="{{ program.image.url }}" alt="{{ program.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                 {% else %}

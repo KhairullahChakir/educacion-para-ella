@@ -172,8 +172,8 @@
             {% for program in class_programs %}
             <div class="min-w-[300px] sm:min-w-[340px] max-w-[340px] bg-white rounded-3xl p-5 sm:p-6 border border-gray-200/80 hover:border-[#167888] hover:shadow-xl transition-all flex flex-col justify-between group snap-start shrink-0 transform hover:-translate-y-1">
                 <div>
-                    <!-- Top Half Cover Artwork / Image (Clean & Unobstructed) -->
-                    <div class="relative w-full h-44 rounded-2xl overflow-hidden mb-4 border border-gray-100 bg-gray-100 shadow-2xs">
+                    <!-- Top Half Cover Artwork / Image (Full 16:9 Visibility) -->
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden mb-4 border border-gray-100 bg-gray-100 shadow-2xs">
                         {% if program.image %}
                             <img src="{{ program.image.url }}" alt="{{ program.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         {% else %}
