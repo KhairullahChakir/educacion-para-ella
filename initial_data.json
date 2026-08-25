@@ -1,0 +1,2323 @@
+[
+{
+  "model": "core.heronews",
+  "pk": 1,
+  "fields": {
+    "badge_text": "100% FREE & SAFE ONLINE ACADEMY",
+    "title": "Education for Her",
+    "subtitle": "The empowering learning platform for Afghan women and girls to master international languages (English, German, Spanish, French), coding & digital tech, creative arts, and mental well-being in Dari, Pashto, and English.",
+    "button_text": "START FOR FREE",
+    "button_url": "/classes/",
+    "image": "news_images/hero_afghan_student_chalkboard.jpg",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-13T17:28:10.273Z"
+  }
+},
+{
+  "model": "core.heronews",
+  "pk": 2,
+  "fields": {
+    "badge_text": "LIVE GLOBAL MENTORSHIP",
+    "title": "Global Languages & Future Tech",
+    "subtitle": "Live interactive classes in English, German & Spanish, Python, Web Development, Photography, and Life Skills taught by caring international volunteer educators.",
+    "button_text": "EXPLORE FREE CLASSES",
+    "button_url": "/classes/",
+    "image": "news_images/hero_afghan_student_writing_home.png",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-13T17:28:10.278Z"
+  }
+},
+{
+  "model": "core.heronews",
+  "pk": 3,
+  "fields": {
+    "badge_text": "SAFE & OFFLINE-READY",
+    "title": "Low-Bandwidth Learning & Safe Circles",
+    "subtitle": "Download lightweight offline PDF study guides, join camera-optional mindfulness circles, and learn securely from anywhere in Afghanistan or the diaspora.",
+    "button_text": "JOIN A MINDFULNESS CIRCLE",
+    "button_url": "/mindfulness/",
+    "image": "news_images/hero_afghan_woman_resilience.png",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-13T17:28:10.279Z"
+  }
+},
+{
+  "model": "core.classespagesetting",
+  "pk": 2,
+  "fields": {
+    "hero_badge": "EDUCACIÓN PARA ELLA LANGUAGE & SKILLS LAB",
+    "hero_headline": "Current schedule of classes",
+    "hero_subtitle": "Discover the different levels and current registration status for our free, safe, and inclusive virtual and offline learning sanctuary.",
+    "hero_image": "",
+    "announcement_prefix": "All of our classes are currently",
+    "announcement_status_highlight": "open for registration",
+    "announcement_status_color": "emerald",
+    "announcement_suffix": "Registration for the autumn term is open. All courses are 100% free, camera-optional, and confidential.",
+    "is_active": true,
+    "created_at": "2026-08-19T09:41:41.154Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 61,
+  "fields": {
+    "title": "English",
+    "teacher_name": "Charlotte",
+    "show_teacher_name": false,
+    "level_exam_required": true,
+    "icon_or_flag": "🇬🇧",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "languages",
+    "subject_category": "english",
+    "level_category": "b2",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Tuesday, Thursday · 7:30 / 11:30 KBL",
+    "location_text": "Online Virtual Classroom",
+    "description": "Advanced conversational mastery, professional communication, and academic reading for Afghan women.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "7:30 / 11:30 KBL",
+    "status": "open",
+    "custom_status_text": "In Progress",
+    "image": "class_images/course_english_b2.jpg",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.788Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 62,
+  "fields": {
+    "title": "English",
+    "teacher_name": "Kelly",
+    "show_teacher_name": false,
+    "level_exam_required": true,
+    "icon_or_flag": "🇬🇧",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "languages",
+    "subject_category": "english",
+    "level_category": "b1",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Monday, Tuesday, Wednesday · 7:30 / 11:30 KBL",
+    "location_text": "Online Virtual Classroom",
+    "description": "Intermediate language training focusing on fluency, structured grammar, and practical vocabulary.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "7:30 / 11:30 KBL",
+    "status": "open",
+    "custom_status_text": "In Progress",
+    "image": "class_images/course_english_b1.png",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.792Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 63,
+  "fields": {
+    "title": "English",
+    "teacher_name": "Natalie",
+    "show_teacher_name": false,
+    "level_exam_required": true,
+    "icon_or_flag": "🇬🇧",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "languages",
+    "subject_category": "english",
+    "level_category": "a2",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Saturday, Sunday · 8:30 - 9:30 pm KBL",
+    "location_text": "Online Virtual Classroom",
+    "description": "Elementary English building conversational confidence, reading comprehension, and essential vocabulary.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "8:30 - 9:30 pm KBL",
+    "status": "open",
+    "custom_status_text": "In Progress",
+    "image": "class_images/course_english_a2.png",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.793Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 64,
+  "fields": {
+    "title": "English",
+    "teacher_name": "Ronny",
+    "show_teacher_name": false,
+    "level_exam_required": true,
+    "icon_or_flag": "🇬🇧",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "languages",
+    "subject_category": "english",
+    "level_category": "a2",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Tuesday, Thursday · 6:30 - 7:30 pm KBL",
+    "location_text": "Online Virtual Classroom",
+    "description": "Elementary level English classes focusing on active speaking, listening, and essential everyday dialogues.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "6:30 - 7:30 pm KBL",
+    "status": "open",
+    "custom_status_text": "In Progress",
+    "image": "class_images/course_english_a2.png",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.794Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 65,
+  "fields": {
+    "title": "English",
+    "teacher_name": "Lily",
+    "show_teacher_name": false,
+    "level_exam_required": true,
+    "icon_or_flag": "🇬🇧",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "languages",
+    "subject_category": "english",
+    "level_category": "a1",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Wednesday, Friday · 1:30 - 2:30 pm KBL",
+    "location_text": "Online Virtual Classroom",
+    "description": "Foundational beginner English covering alphabet, basic pronunciation, common vocabulary, and simple sentences.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "1:30 - 2:30 pm KBL",
+    "status": "open",
+    "custom_status_text": "In Progress",
+    "image": "class_images/course_english_a1.png",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 5,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.795Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 66,
+  "fields": {
+    "title": "English",
+    "teacher_name": "Pragati & Shakera",
+    "show_teacher_name": false,
+    "level_exam_required": true,
+    "icon_or_flag": "🇬🇧",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "languages",
+    "subject_category": "english",
+    "level_category": "a1",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Monday, Wednesday, Saturday",
+    "location_text": "Online Virtual Classroom",
+    "description": "Beginner English cohort with dedicated mentors for step-by-step listening and speaking mastery.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Scheduled Weekly",
+    "status": "open",
+    "custom_status_text": "Registration Open",
+    "image": "class_images/course_english_a1.png",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 6,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.796Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 67,
+  "fields": {
+    "title": "English",
+    "teacher_name": "Mursal",
+    "show_teacher_name": false,
+    "level_exam_required": true,
+    "icon_or_flag": "🇬🇧",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "languages",
+    "subject_category": "english",
+    "level_category": "a0_a1",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Tuesday, Wednesday",
+    "location_text": "Online Virtual Classroom",
+    "description": "Introductory starter level English for students starting from the beginning with patient guidance.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Scheduled Weekly",
+    "status": "open",
+    "custom_status_text": "Registration Open",
+    "image": "class_images/course_english_a0_a1.jpg",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 7,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.796Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 68,
+  "fields": {
+    "title": "English",
+    "teacher_name": "Solmaz",
+    "show_teacher_name": false,
+    "level_exam_required": false,
+    "icon_or_flag": "🇬🇧",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "languages",
+    "subject_category": "english",
+    "level_category": "a0_a1",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Saturday, Tuesday",
+    "location_text": "Online Virtual Classroom",
+    "description": "Open introductory English class without placement exam prerequisites.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Scheduled Weekly",
+    "status": "open",
+    "custom_status_text": "Open Access",
+    "image": "class_images/course_english_a0_a1.jpg",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 8,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.797Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 69,
+  "fields": {
+    "title": "Spanish",
+    "teacher_name": "Acacia & Marcela",
+    "show_teacher_name": false,
+    "level_exam_required": true,
+    "icon_or_flag": "🇪🇸",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "languages",
+    "subject_category": "spanish",
+    "level_category": "a1",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Monday, Thursday",
+    "location_text": "Online Virtual Classroom",
+    "description": "Beginner Spanish course taught by native volunteer educators covering grammar and everyday conversation.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Scheduled Weekly",
+    "status": "open",
+    "custom_status_text": "In Progress",
+    "image": "class_images/course_spanish_a1.jpg",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 9,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.798Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 70,
+  "fields": {
+    "title": "Spanish",
+    "teacher_name": "Ronny",
+    "show_teacher_name": false,
+    "level_exam_required": false,
+    "icon_or_flag": "🇪🇸",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "languages",
+    "subject_category": "spanish",
+    "level_category": "a1",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Tuesday, Thursday",
+    "location_text": "Online Virtual Classroom",
+    "description": "Spanish A1 speaking and vocabulary building in a welcoming, interactive virtual circle.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Scheduled Weekly",
+    "status": "open",
+    "custom_status_text": "In Progress",
+    "image": "class_images/course_spanish_a1.jpg",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 10,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.798Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 71,
+  "fields": {
+    "title": "Spanish",
+    "teacher_name": "Jainee",
+    "show_teacher_name": false,
+    "level_exam_required": false,
+    "icon_or_flag": "🇪🇸",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "languages",
+    "subject_category": "spanish",
+    "level_category": "a1",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Tuesday",
+    "location_text": "Online Virtual Classroom",
+    "description": "Weekly focused Spanish language practice for beginner learners.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Weekly Session",
+    "status": "open",
+    "custom_status_text": "In Progress",
+    "image": "class_images/course_spanish_a1.jpg",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 11,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.799Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 72,
+  "fields": {
+    "title": "Spanish (for kids)",
+    "teacher_name": "Marta",
+    "show_teacher_name": false,
+    "level_exam_required": false,
+    "icon_or_flag": "🇪🇸",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "languages",
+    "subject_category": "spanish",
+    "level_category": "kids",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Monday",
+    "location_text": "Online Virtual Classroom",
+    "description": "Engaging, story-based Spanish learning tailored for young Afghan girls and children.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Weekly Session",
+    "status": "open",
+    "custom_status_text": "In Progress",
+    "image": "class_images/course_spanish_kids.jpg",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 12,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.800Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 73,
+  "fields": {
+    "title": "German",
+    "teacher_name": "Franzesca & Jonas",
+    "show_teacher_name": false,
+    "level_exam_required": true,
+    "icon_or_flag": "🇩🇪",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "languages",
+    "subject_category": "german",
+    "level_category": "a1",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Tuesday, Friday",
+    "location_text": "Online Virtual Classroom",
+    "description": "Foundational German A1 language course taught by European volunteer educators.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Scheduled Weekly",
+    "status": "open",
+    "custom_status_text": "In Progress",
+    "image": "class_images/course_german_a1.jpg",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 13,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.800Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 74,
+  "fields": {
+    "title": "Photography",
+    "teacher_name": "Ahmad Ibrahimi",
+    "show_teacher_name": false,
+    "level_exam_required": false,
+    "icon_or_flag": "📷",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "creative",
+    "subject_category": "photography",
+    "level_category": "all",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Friday, Saturday",
+    "location_text": "Online Virtual Classroom",
+    "description": "Visual storytelling, mobile photography techniques, composition, and creative digital arts.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Weekend Workshop",
+    "status": "open",
+    "custom_status_text": "Registration Open",
+    "image": "class_images/course_photography.jpg",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 14,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.801Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 75,
+  "fields": {
+    "title": "Sewing Class",
+    "teacher_name": "Belqis",
+    "show_teacher_name": false,
+    "level_exam_required": false,
+    "icon_or_flag": "🧵",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "creative",
+    "subject_category": "sewing",
+    "level_category": "all",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Tuesday, Friday",
+    "location_text": "Online Virtual Classroom",
+    "description": "Practical tailoring, pattern design, garment creation, and vocational textile skills for women.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Bi-weekly Workshop",
+    "status": "open",
+    "custom_status_text": "Registration Open",
+    "image": "class_images/course_sewing.jpg",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 15,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.802Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 76,
+  "fields": {
+    "title": "Web Development",
+    "teacher_name": "Alena",
+    "show_teacher_name": false,
+    "level_exam_required": false,
+    "icon_or_flag": "💻",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "coding",
+    "subject_category": "coding",
+    "level_category": "all",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Monday, Wednesday, Saturday",
+    "location_text": "Online Virtual Classroom",
+    "description": "HTML, CSS, JavaScript, and modern web design skills empowering Afghan women for global remote opportunities.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Scheduled Weekly",
+    "status": "open",
+    "custom_status_text": "Registration Open",
+    "image": "class_images/course_web_dev.png",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 16,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.803Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 77,
+  "fields": {
+    "title": "Life Skills (مهارت‌های زندگی)",
+    "teacher_name": "Narges",
+    "show_teacher_name": false,
+    "level_exam_required": false,
+    "icon_or_flag": "🌿",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "mindfulness",
+    "subject_category": "lifeskills",
+    "level_category": "all",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Tuesday · Every 15 days (twice a month)",
+    "location_text": "Online Virtual Classroom",
+    "description": "Empowerment workshops on communication, problem solving, decision making, and personal resilience.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Bi-weekly (Twice a month)",
+    "status": "open",
+    "custom_status_text": "In Progress",
+    "image": "class_images/course_life_skills.jpg",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 17,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.804Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 78,
+  "fields": {
+    "title": "1:1 Psychological Support",
+    "teacher_name": "Narges",
+    "show_teacher_name": false,
+    "level_exam_required": false,
+    "icon_or_flag": "🧠",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "mindfulness",
+    "subject_category": "psychological",
+    "level_category": "all",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Wednesday · Every 15 days (twice a month)",
+    "location_text": "Online Virtual Classroom",
+    "description": "Confidential, trauma-informed individual counseling and mental health support for Afghan women.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Private Confidential Sessions",
+    "status": "open",
+    "custom_status_text": "In Progress",
+    "image": "class_images/course_psychological_support.jpg",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 18,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.804Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 79,
+  "fields": {
+    "title": "Mindfulness Session",
+    "teacher_name": "Kelly",
+    "show_teacher_name": false,
+    "level_exam_required": false,
+    "icon_or_flag": "🧘🏻‍♀️",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "mindfulness",
+    "subject_category": "mindfulness",
+    "level_category": "all",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Wednesday · Every 15 days (twice a month)",
+    "location_text": "Online Virtual Classroom",
+    "description": "Guided somatic breathing, grounding meditations, and safe emotional healing circles.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Bi-weekly (Twice a month)",
+    "status": "open",
+    "custom_status_text": "In Progress",
+    "image": "class_images/course_mindfulness_session.jpg",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 19,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.805Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 80,
+  "fields": {
+    "title": "French",
+    "teacher_name": "International Volunteer Educator",
+    "show_teacher_name": false,
+    "level_exam_required": false,
+    "icon_or_flag": "🇫🇷",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "languages",
+    "subject_category": "french",
+    "level_category": "a1",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Scheduled Weekly",
+    "location_text": "Online Virtual Classroom",
+    "description": "Beginner French language fundamentals and everyday conversational practice.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Upcoming Cohort",
+    "status": "open",
+    "custom_status_text": "Upcoming Cohort",
+    "image": "class_images/course_french_a1.jpg",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 20,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.806Z"
+  }
+},
+{
+  "model": "core.classprogram",
+  "pk": 81,
+  "fields": {
+    "title": "Makeup & Haircut",
+    "teacher_name": "Professional Stylist",
+    "show_teacher_name": false,
+    "level_exam_required": false,
+    "icon_or_flag": "💄",
+    "badge_text": "A1 • Registration Open",
+    "track_type": "creative",
+    "subject_category": "makeup",
+    "level_category": "all",
+    "format_category": "online",
+    "start_date_text": "Active Term",
+    "timetable_text": "Scheduled Weekly",
+    "location_text": "Online Virtual Classroom",
+    "description": "Beauty artistry, self-care, haircutting techniques, and professional styling vocational training.",
+    "syllabus": "",
+    "prerequisites": "",
+    "registration_form_url": "https://airtable.com/appeHj1M0LfqNli1C/pagrUUP1hLsSXum9N/form",
+    "schedule_time": "Upcoming Cohort",
+    "status": "open",
+    "custom_status_text": "Upcoming Cohort",
+    "image": "class_images/course_makeup_haircut.jpg",
+    "button_text": "Explore & Register",
+    "button_url": "/register/",
+    "order": 21,
+    "is_active": true,
+    "created_at": "2026-08-23T11:31:28.808Z"
+  }
+},
+{
+  "model": "core.howitworksstep",
+  "pk": 1,
+  "fields": {
+    "step_number": 1,
+    "title": "Sign Up for Free",
+    "description": "Create a free student account with your preferred username and email in less than one minute. Zero fees, 100% private.",
+    "image": "step_images/step_1_signup_realistic.jpg",
+    "button_text": "Create Account →",
+    "button_url": "/register/",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-19T06:46:52.389Z"
+  }
+},
+{
+  "model": "core.howitworksstep",
+  "pk": 2,
+  "fields": {
+    "step_number": 2,
+    "title": "Choose Your Subject",
+    "description": "Pick your learning track in English, Spanish, German, Web Coding, Photography, or Mindfulness circles according to your goals.",
+    "image": "step_images/step_2_choose_realistic.jpg",
+    "button_text": "Browse Classes →",
+    "button_url": "/classes/",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-19T06:46:52.398Z"
+  }
+},
+{
+  "model": "core.howitworksstep",
+  "pk": 3,
+  "fields": {
+    "step_number": 3,
+    "title": "Attend & Grow",
+    "description": "Join live interactive sessions with dedicated international volunteer teachers or download offline study packages anytime.",
+    "image": "step_images/step_3_attend_realistic.jpg",
+    "button_text": "Start Learning →",
+    "button_url": "/register/",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-19T06:46:52.403Z"
+  }
+},
+{
+  "model": "core.partner",
+  "pk": 1,
+  "fields": {
+    "name": "Open Cultural Center (OCC)",
+    "role_description": "Curriculum Support & Volunteer Coordination",
+    "icon_or_logo": "🌐",
+    "logo": "partner_logos/openculturalcenter_logo.png",
+    "website_url": "https://openculturalcenter.org/",
+    "badge_label": "Founding Partner",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-19T06:51:44.378Z"
+  }
+},
+{
+  "model": "core.partner",
+  "pk": 2,
+  "fields": {
+    "name": "Afghan Women on the Run",
+    "role_description": "Advocacy, Outreach & Student Support",
+    "icon_or_logo": "🕊️",
+    "logo": "partner_logos/awotr_logo.png",
+    "website_url": "https://www.afghanwomenontherun.com/",
+    "badge_label": "Solidarity Partner",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-19T06:51:44.382Z"
+  }
+},
+{
+  "model": "core.partner",
+  "pk": 3,
+  "fields": {
+    "name": "25+ Global Volunteer Educators",
+    "role_description": "Language Teachers, Tech Mentors & Counselors",
+    "icon_or_logo": "🤝",
+    "logo": "partner_logos/global_volunteer_logo.png",
+    "website_url": "/volunteers/",
+    "badge_label": "International Network",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-19T06:51:44.383Z"
+  }
+},
+{
+  "model": "core.aboutstory",
+  "pk": 1,
+  "fields": {
+    "badge_text": "Origin & Purpose",
+    "headline": "When classroom doors are closed, we keep learning alive",
+    "paragraph_1": "Since the restrictions placed on girls' education in Afghanistan, millions of bright, ambitious students have been prevented from attending secondary schools and universities. Traditional paths to literacy, independence, and career development disappeared overnight.",
+    "paragraph_2": "Educación para Ella (\"Education for Her\") was founded in September 2025 as a direct, grassroots response. We cannot dismantle every physical barrier immediately, but we can ensure that an Afghan girl's dream of learning, speaking new languages, and coding never dies.",
+    "quote_text": "An online classroom is more than a place for lessons. It is a connection to the world, a supportive sisterhood, a source of dignity, and proof that their future still matters.",
+    "image": "about_images/about_afghan_classroom_faizabad.jpg",
+    "is_active": true,
+    "created_at": "2026-08-19T07:05:05.152Z"
+  }
+},
+{
+  "model": "core.aboutmilestone",
+  "pk": 1,
+  "fields": {
+    "step_number": 1,
+    "badge_date": "September 2025",
+    "title": "Initiative Founded",
+    "description": "Najiah Mohammadi established the project with support from colleagues at Open Cultural Center and Afghan Women on the Run, launching the first pilot English and mindfulness circles.",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-21T11:08:03.219Z"
+  }
+},
+{
+  "model": "core.aboutmilestone",
+  "pk": 2,
+  "fields": {
+    "step_number": 2,
+    "badge_date": "Rapid Expansion",
+    "title": "25+ Global Volunteers Join",
+    "description": "Teachers from across Europe, the Americas, and Asia volunteered to offer structured Spanish, German, Photography, and Web Development tracks alongside English (CEFR A0–C1).",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-21T11:08:03.221Z"
+  }
+},
+{
+  "model": "core.aboutmilestone",
+  "pk": 3,
+  "fields": {
+    "step_number": 3,
+    "badge_date": "Today & Beyond",
+    "title": "Regional & Diaspora Impact",
+    "description": "Providing safe digital classrooms to students in Afghanistan as well as displaced Afghan women living in Iran, Pakistan, and Iraq, backed by open-access learning materials.",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-21T11:08:03.222Z"
+  }
+},
+{
+  "model": "core.foundercollaborator",
+  "pk": 1,
+  "fields": {
+    "name": "Najiah Mohammadi",
+    "role_title": "Founder & Project Lead",
+    "organization": "Educación para Ella",
+    "bio": "Initiated the project in September 2025 in response to education bans. Najiah coordinates the international volunteer network, designs curriculum pathways, and advocates tirelessly for Afghan women's right to study.",
+    "location": "📍 Barcelona - Spain",
+    "image": "leader_images/WhatsApp_Image_2026-08-22_at_2.21.59_PM_1.jpeg",
+    "badge_theme": "teal",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-19T07:08:00.703Z"
+  }
+},
+{
+  "model": "core.foundercollaborator",
+  "pk": 2,
+  "fields": {
+    "name": "Chloe",
+    "role_title": "Key Collaborator",
+    "organization": "Open Cultural Center (OCC)",
+    "bio": "Collaborator and colleague from Open Cultural Center, offering organizational solidarity, cross-cultural learning resources, and volunteer coordination support since the initiative's inception.",
+    "location": "📍 International Partner",
+    "image": "leader_images/chloe_occ.jpg",
+    "badge_theme": "amber",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-19T07:08:00.706Z"
+  }
+},
+{
+  "model": "core.foundercollaborator",
+  "pk": 3,
+  "fields": {
+    "name": "Carol",
+    "role_title": "Advocacy Partner",
+    "organization": "Afghan Women on the Run",
+    "bio": "Partner from Afghan Women on the Run, supporting student outreach, student well-being initiatives, and amplifying the voices of Afghan women living in displacement.",
+    "location": "📍 Advocacy & Solidarity",
+    "image": "leader_images/carol_awotr.jpg",
+    "badge_theme": "purple",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-19T07:08:00.709Z"
+  }
+},
+{
+  "model": "core.foundercollaborator",
+  "pk": 4,
+  "fields": {
+    "name": "Ansoh",
+    "role_title": "Lead Software & AI Engineer",
+    "organization": "Educación para Ella",
+    "bio": "Architect and lead engineer of the Educación para Ella digital learning platform. Builds the secure virtual school systems, interactive coding tracks, and AI-assisted educational tools that empower Afghan girls to learn safely without barriers.",
+    "location": "📍 Global & Tech Lead",
+    "image": "leader_images/ansoh_engineer.jpg",
+    "badge_theme": "blue",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2026-08-19T07:12:19.873Z"
+  }
+},
+{
+  "model": "core.methodologypillar",
+  "pk": 1,
+  "fields": {
+    "title": "Languages",
+    "tag": "Global Communication",
+    "icon": "🗣️",
+    "description": "Comprehensive language instruction spanning English, Spanish, and German to open pathways to global education, scholarships, and cross-cultural discourse.",
+    "skills_list": "English (CEFR A0–C1), Spanish (A0–A2), German (A1–A2)",
+    "image": "methodology_images/methodology_languages.jpg",
+    "link_url": "/classes/",
+    "button_text": "Explore Languages →",
+    "badge_color": "teal",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-19T07:16:11.442Z"
+  }
+},
+{
+  "model": "core.methodologypillar",
+  "pk": 2,
+  "fields": {
+    "title": "Digital & Tech Literacy",
+    "tag": "Economic Self-Reliance",
+    "icon": "💻",
+    "description": "Hands-on coding, modern web development, and digital productivity skills equipping women with practical freelance and remote career tools.",
+    "skills_list": "HTML5, Responsive CSS, JavaScript Logic, Digital Safety",
+    "image": "methodology_images/methodology_digital_tech.jpg",
+    "link_url": "/classes/",
+    "button_text": "Explore Tech Track →",
+    "badge_color": "blue",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-19T07:16:11.446Z"
+  }
+},
+{
+  "model": "core.methodologypillar",
+  "pk": 3,
+  "fields": {
+    "title": "Creative Arts",
+    "tag": "Voice & Expression",
+    "icon": "📸",
+    "description": "Visual storytelling and photography workshops encouraging Afghan girls to capture their world, preserve culture, and express creative perspectives.",
+    "skills_list": "Visual Storytelling, Composition Framing, Mobile Photo",
+    "image": "methodology_images/methodology_creative_arts.jpg",
+    "link_url": "/classes/",
+    "button_text": "Explore Creative Track →",
+    "badge_color": "purple",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-19T07:16:11.449Z"
+  }
+},
+{
+  "model": "core.methodologypillar",
+  "pk": 4,
+  "fields": {
+    "title": "Trauma-Informed Well-being",
+    "tag": "Mental Health & Sisterhood",
+    "icon": "🧘‍♀️",
+    "description": "Safe, confidential peer circles and somatic grounding exercises designed to nurture emotional resilience, alleviate stress, and build community bonds.",
+    "skills_list": "Guided Meditation, Peer Sisterhood, Stress Regulation",
+    "image": "methodology_images/methodology_wellbeing_sanctuary.jpg",
+    "link_url": "/mindfulness/",
+    "button_text": "Discover Safe Circles →",
+    "badge_color": "amber",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2026-08-19T07:16:11.452Z"
+  }
+},
+{
+  "model": "core.mindfulnessintro",
+  "pk": 1,
+  "fields": {
+    "hero_badge": "Emotional Space for Learning",
+    "hero_headline": "Mindfulness & Mental Well-being",
+    "hero_subtitle": "Education requires emotional and mental space. We provide compassionate, safe virtual circles for Afghan girls and women to pause, connect, and heal.",
+    "badge_text": "Trauma-Informed Learning",
+    "headline": "Healing and learning must go hand in hand",
+    "paragraph_1": "Living under severe educational and societal bans creates acute stress, uncertainty, and feelings of isolation. When young women are confined to their homes or navigating displacement in foreign countries, cognitive retention and learning require emotional safety.",
+    "paragraph_2": "Our mindfulness sessions are structured specifically to address these challenges. Led by empathetic facilitators, these circles provide somatic grounding techniques, emotional regulation exercises, and a trusted peer community where students are heard without judgment.",
+    "safety_point_1_title": "100% Confidential & Safe",
+    "safety_point_1_desc": "Camera-optional, anonymous handles respected",
+    "safety_point_2_title": "Practical Daily Tools",
+    "safety_point_2_desc": "Breathing & somatic exercises usable anytime from home",
+    "button_text": "Join Next Safe Circle →",
+    "button_url": "/contact/",
+    "image": "mindfulness_images/mindfulness_sanctuary.jpg",
+    "cta_headline": "Your well-being and voice matter",
+    "cta_subtitle": "Join our free weekly mindfulness sessions or volunteer as a facilitator.",
+    "cta_button_1_text": "Join a Mindfulness Circle",
+    "cta_button_1_url": "/register/",
+    "cta_button_2_text": "Volunteer as Facilitator",
+    "cta_button_2_url": "/get-involved/",
+    "is_active": true,
+    "created_at": "2026-08-19T07:22:00.391Z"
+  }
+},
+{
+  "model": "core.mindfulnesspillar",
+  "pk": 1,
+  "fields": {
+    "title": "Guided Meditation",
+    "icon": "🧘‍♀️",
+    "theme_color": "teal",
+    "description": "Somatic body scans, progressive muscle relaxation, and visualization techniques to calm the nervous system.",
+    "footer_tag": "Daily 20-min routines",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-22T08:58:42.507Z"
+  }
+},
+{
+  "model": "core.mindfulnesspillar",
+  "pk": 2,
+  "fields": {
+    "title": "Safe Sisterhood Circles",
+    "icon": "💬",
+    "theme_color": "purple",
+    "description": "Moderated peer listening spaces where participants can share their feelings, validate each other's experiences, and build lifelong friendships.",
+    "footer_tag": "Moderated & confidential",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-22T08:58:42.510Z"
+  }
+},
+{
+  "model": "core.mindfulnesspillar",
+  "pk": 3,
+  "fields": {
+    "title": "Stress Resilience",
+    "icon": "🌱",
+    "theme_color": "amber",
+    "description": "Practical behavioral tools and mindful journaling exercises to cope with uncertainty and prevent academic burnout.",
+    "footer_tag": "Coping toolkits provided",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-22T08:58:42.511Z"
+  }
+},
+{
+  "model": "core.mindfulnesspillar",
+  "pk": 4,
+  "fields": {
+    "title": "Reflective Journaling",
+    "icon": "📖",
+    "theme_color": "blue",
+    "description": "Prompt-based writing in Dari, Pashto, or English to help process thoughts, express aspirations, and cultivate daily gratitude.",
+    "footer_tag": "PDF journals included",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2026-08-22T08:58:42.512Z"
+  }
+},
+{
+  "model": "core.countryreach",
+  "pk": 1,
+  "fields": {
+    "country_code": "AF",
+    "country_name": "Afghanistan",
+    "flag_emoji": "🇦🇫",
+    "flag_image": "flag_images/afghanistan.png",
+    "badge_tag": "Inside Country",
+    "description": "Connecting students across Kabul, Herat, Mazar-i-Sharif, and provincial towns studying under severe schooling bans.",
+    "student_impact_label": "Live Daily Classes",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-19T07:24:38.264Z"
+  }
+},
+{
+  "model": "core.countryreach",
+  "pk": 2,
+  "fields": {
+    "country_code": "IR",
+    "country_name": "Iran",
+    "flag_emoji": "🇮🇷",
+    "flag_image": "flag_images/iran.png",
+    "badge_tag": "Diaspora Community",
+    "description": "Supporting Afghan refugee girls and displaced young women residing in Tehran, Mashhad, Isfahan, and Shiraz.",
+    "student_impact_label": "Refugee Education Tracks",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-19T07:24:38.267Z"
+  }
+},
+{
+  "model": "core.countryreach",
+  "pk": 3,
+  "fields": {
+    "country_code": "PK",
+    "country_name": "Pakistan",
+    "flag_emoji": "🇵🇰",
+    "flag_image": "flag_images/pakistan.png",
+    "badge_tag": "Diaspora Community",
+    "description": "Providing virtual educational continuity and safe circles to displaced students awaiting third-country visas and resettlement.",
+    "student_impact_label": "Transit & Resettlement Circles",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-19T07:24:38.268Z"
+  }
+},
+{
+  "model": "core.countryreach",
+  "pk": 4,
+  "fields": {
+    "country_code": "IQ",
+    "country_name": "Iraq",
+    "flag_emoji": "🇮🇶",
+    "flag_image": "flag_images/iraq.png",
+    "badge_tag": "Regional Outreach",
+    "description": "Extending mindfulness spaces, language classes, and supportive sisterhood circles to Afghan families across the broader Middle East.",
+    "student_impact_label": "Middle East Outreach",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2026-08-19T07:24:38.269Z"
+  }
+},
+{
+  "model": "core.volunteerstat",
+  "pk": 1,
+  "fields": {
+    "number_value": "25+",
+    "label": "Active Volunteers",
+    "subtitle": "Teaching & mentoring weekly",
+    "color_accent": "teal",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-19T07:28:29.351Z"
+  }
+},
+{
+  "model": "core.volunteerstat",
+  "pk": 2,
+  "fields": {
+    "number_value": "12+",
+    "label": "Countries Represented",
+    "subtitle": "Global international solidarity",
+    "color_accent": "teal",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-19T07:28:29.354Z"
+  }
+},
+{
+  "model": "core.volunteerstat",
+  "pk": 3,
+  "fields": {
+    "number_value": "100+",
+    "label": "Teaching Hours / Month",
+    "subtitle": "Free virtual education",
+    "color_accent": "teal",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-19T07:28:29.354Z"
+  }
+},
+{
+  "model": "core.volunteerstat",
+  "pk": 4,
+  "fields": {
+    "number_value": "4",
+    "label": "Student Regions",
+    "subtitle": "AF, IR, PK & IQ",
+    "color_accent": "amber",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2026-08-19T07:28:29.355Z"
+  }
+},
+{
+  "model": "core.volunteerrole",
+  "pk": 1,
+  "fields": {
+    "title": "Language Educators (English, Spanish, German)",
+    "team_badge": "Teaching Team",
+    "icon": "👩‍🏫",
+    "image": "volunteer_role_images/role_languages.jpg",
+    "description": "Passionate language teachers who lead weekly conversational and grammatical sessions, guiding students step-by-step through CEFR levels A0 to C1.",
+    "bullet_1": "Small group lessons (4-8 students per class)",
+    "bullet_2": "Tailored homework review & speaking encouragement",
+    "button_text": "Apply as Language Teacher",
+    "button_url": "https://airtable.com/appeHj1M0LfqNli1C/pagcGBJvfYn8gdzHQ/form",
+    "color_theme": "teal",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-19T07:34:04.881Z"
+  }
+},
+{
+  "model": "core.volunteerrole",
+  "pk": 2,
+  "fields": {
+    "title": "Software Developers & Tech Mentors",
+    "team_badge": "Tech Team",
+    "icon": "💻",
+    "image": "volunteer_role_images/role_tech.jpg",
+    "description": "Engineers and digital creators teaching JavaScript, responsive HTML/CSS, computational thinking, and remote digital skills to foster financial independence.",
+    "bullet_1": "Live code-alongs and practical project building",
+    "bullet_2": "1-on-1 code reviews and freelancing guidance",
+    "button_text": "Join Tech Team →",
+    "button_url": "/get-involved/",
+    "color_theme": "blue",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-19T07:34:04.884Z"
+  }
+},
+{
+  "model": "core.volunteerrole",
+  "pk": 3,
+  "fields": {
+    "title": "Mindfulness & Mental Health Facilitators",
+    "team_badge": "Well-being Team",
+    "icon": "🧘‍♀️",
+    "image": "volunteer_role_images/role_wellbeing.jpg",
+    "description": "Psychologists, counselors, and trained facilitators providing grounding circles, emotional decompression, and trauma-informed wellness spaces.",
+    "bullet_1": "Weekly guided mindfulness & somatic grounding",
+    "bullet_2": "Safe peer validation and coping strategies",
+    "button_text": "Join Well-being Team →",
+    "button_url": "/get-involved/",
+    "color_theme": "purple",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-19T07:34:04.886Z"
+  }
+},
+{
+  "model": "core.volunteerrole",
+  "pk": 4,
+  "fields": {
+    "title": "Curriculum Developers & Translators",
+    "team_badge": "Content Team",
+    "icon": "📖",
+    "image": "volunteer_role_images/role_content.jpg",
+    "description": "Volunteers translating lesson guides into Dari and Pashto, formatting low-bandwidth downloadable PDFs, and curating open-source learning packages.",
+    "bullet_1": "Dari & Pashto curriculum translation",
+    "bullet_2": "Low-bandwidth study material preparation",
+    "button_text": "Join Content Team →",
+    "button_url": "/get-involved/",
+    "color_theme": "amber",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2026-08-19T07:34:04.889Z"
+  }
+},
+{
+  "model": "core.volunteercountry",
+  "pk": 2,
+  "fields": {
+    "name": "Spain",
+    "country_code": "ES",
+    "flag_emoji": "🇪🇸",
+    "flag_image": "volunteer_flag_images/spain.png",
+    "description": "Spanish language educators and volunteer coordinators supporting the initiative in solidarity with Open Cultural Center.",
+    "tag_label": "LANGUAGE & OCC SOLIDARITY",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-19T07:39:34.483Z"
+  }
+},
+{
+  "model": "core.volunteercountry",
+  "pk": 3,
+  "fields": {
+    "name": "Germany",
+    "country_code": "DE",
+    "flag_emoji": "🇩🇪",
+    "flag_image": "volunteer_flag_images/germany.png",
+    "description": "Educators leading beginner German tracks and software engineers delivering coding mentorship sessions.",
+    "tag_label": "GERMAN & TECH MENTORS",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-19T07:39:34.484Z"
+  }
+},
+{
+  "model": "core.volunteercountry",
+  "pk": 4,
+  "fields": {
+    "name": "United Kingdom",
+    "country_code": "GB",
+    "flag_emoji": "🇬🇧",
+    "flag_image": "volunteer_flag_images/uk.png",
+    "description": "Certified ESL instructors providing structured English (CEFR A0–C1) curriculum and international university preparation.",
+    "tag_label": "ENGLISH & ACADEMIC PREP",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-19T07:39:34.485Z"
+  }
+},
+{
+  "model": "core.volunteercountry",
+  "pk": 5,
+  "fields": {
+    "name": "United States",
+    "country_code": "US",
+    "flag_emoji": "🇺🇸",
+    "flag_image": "volunteer_flag_images/usa.png",
+    "description": "Software engineers and digital creators guiding interactive web development and remote freelancing skills.",
+    "tag_label": "WEB & CODING TRACK",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2026-08-19T07:39:34.486Z"
+  }
+},
+{
+  "model": "core.volunteercountry",
+  "pk": 6,
+  "fields": {
+    "name": "Canada",
+    "country_code": "CA",
+    "flag_emoji": "🇨🇦",
+    "flag_image": "volunteer_flag_images/canada.png",
+    "description": "Volunteer teachers and mental wellness advocates hosting conversation clubs and trauma-informed peer circles.",
+    "tag_label": "ESL & SISTERHOOD CIRCLES",
+    "order": 5,
+    "is_active": true,
+    "created_at": "2026-08-19T07:39:34.487Z"
+  }
+},
+{
+  "model": "core.volunteercountry",
+  "pk": 7,
+  "fields": {
+    "name": "Greece",
+    "country_code": "GR",
+    "flag_emoji": "🇬🇷",
+    "flag_image": "volunteer_flag_images/greece.png",
+    "description": "Community facilitators and cross-cultural mentors working closely with refugee learning hubs and diaspora families.",
+    "tag_label": "DIASPORA COMMUNITY HUB",
+    "order": 6,
+    "is_active": true,
+    "created_at": "2026-08-19T07:39:34.487Z"
+  }
+},
+{
+  "model": "core.volunteercountry",
+  "pk": 8,
+  "fields": {
+    "name": "Afghanistan",
+    "country_code": "AF",
+    "flag_emoji": "🇦🇫",
+    "flag_image": "volunteer_flag_images/afghanistan.png",
+    "description": "Dedicated local coordinators, student ambassadors, and peer mentors keeping education alive within Afghan provinces.",
+    "tag_label": "INSIDE COUNTRY LEADERSHIP",
+    "order": 7,
+    "is_active": true,
+    "created_at": "2026-08-19T07:39:34.488Z"
+  }
+},
+{
+  "model": "core.volunteercountry",
+  "pk": 9,
+  "fields": {
+    "name": "France",
+    "country_code": "FR",
+    "flag_emoji": "🇫🇷",
+    "flag_image": "volunteer_flag_images/france.png",
+    "description": "Visual arts instructors and photography mentors teaching creative storytelling, framing, and personal voice.",
+    "tag_label": "VISUAL ARTS & STORYTELLING",
+    "order": 8,
+    "is_active": true,
+    "created_at": "2026-08-19T07:39:34.488Z"
+  }
+},
+{
+  "model": "core.volunteercountry",
+  "pk": 10,
+  "fields": {
+    "name": "Italy",
+    "country_code": "IT",
+    "flag_emoji": "🇮🇹",
+    "flag_image": "volunteer_flag_images/italy.png",
+    "description": "Educators assisting with creative media, design tools, and European cultural exchange dialogues.",
+    "tag_label": "CREATIVE MEDIA & DESIGN",
+    "order": 9,
+    "is_active": true,
+    "created_at": "2026-08-19T07:39:34.488Z"
+  }
+},
+{
+  "model": "core.volunteercountry",
+  "pk": 11,
+  "fields": {
+    "name": "Netherlands",
+    "country_code": "NL",
+    "flag_emoji": "🇳🇱",
+    "flag_image": "volunteer_flag_images/netherlands.png",
+    "description": "Curriculum specialists designing low-bandwidth digital resources and open-source learning packages.",
+    "tag_label": "DIGITAL CURRICULUM DESIGN",
+    "order": 10,
+    "is_active": true,
+    "created_at": "2026-08-19T07:39:34.489Z"
+  }
+},
+{
+  "model": "core.volunteercountry",
+  "pk": 12,
+  "fields": {
+    "name": "Sweden",
+    "country_code": "SE",
+    "flag_emoji": "🇸🇪",
+    "flag_image": "volunteer_flag_images/sweden.png",
+    "description": "Mindfulness practitioners and counselors hosting somatic grounding sessions and emotional wellness circles.",
+    "tag_label": "TRAUMA-INFORMED CARE",
+    "order": 11,
+    "is_active": true,
+    "created_at": "2026-08-19T07:39:34.489Z"
+  }
+},
+{
+  "model": "core.volunteercountry",
+  "pk": 13,
+  "fields": {
+    "name": "Switzerland",
+    "country_code": "CH",
+    "flag_emoji": "🇨🇭",
+    "flag_image": "volunteer_flag_images/switzerland.png",
+    "description": "Human rights advocates and educational outreach volunteers supporting international solidarity initiatives.",
+    "tag_label": "GLOBAL ADVOCACY & OUTREACH",
+    "order": 12,
+    "is_active": true,
+    "created_at": "2026-08-19T07:39:34.490Z"
+  }
+},
+{
+  "model": "core.visionpillar",
+  "pk": 1,
+  "fields": {
+    "pillar_number": "01",
+    "title": "Education Creates Possibilities",
+    "description": "Knowledge expands horizons, unlocks creativity, and connects individuals to global opportunities.",
+    "icon": "🌟",
+    "image": "vision_images/vision_education_knowledge.jpg",
+    "accent_color": "teal",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-19T08:14:28.632Z"
+  }
+},
+{
+  "model": "core.visionpillar",
+  "pk": 2,
+  "fields": {
+    "pillar_number": "02",
+    "title": "Skills Create Independence",
+    "description": "Mastering languages and tech empowers women with autonomy, self-reliance, and remote work capability.",
+    "icon": "💻",
+    "image": "vision_images/vision_digital_skills.jpg",
+    "accent_color": "blue",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-19T08:14:28.635Z"
+  }
+},
+{
+  "model": "core.visionpillar",
+  "pk": 3,
+  "fields": {
+    "pillar_number": "03",
+    "title": "Community Creates Strength",
+    "description": "Solidarity with international educators and peers breaks isolation, nurtures sisterhood, and rebuilds confidence.",
+    "icon": "🤝",
+    "image": "vision_images/vision_global_solidarity.jpg",
+    "accent_color": "purple",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-19T08:14:28.635Z"
+  }
+},
+{
+  "model": "core.visionpillar",
+  "pk": 4,
+  "fields": {
+    "pillar_number": "04",
+    "title": "Dreams Cannot Be Erased",
+    "description": "No ban or restriction can extinguish a student's innate human right to learn, aspire, and achieve her full potential.",
+    "icon": "🕊️",
+    "image": "vision_images/vision_resilience_hope.jpg",
+    "accent_color": "amber",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2026-08-19T08:14:28.636Z"
+  }
+},
+{
+  "model": "core.missionpagesetting",
+  "pk": 1,
+  "fields": {
+    "hero_badge": "Core Philosophy & Guiding Principles",
+    "hero_headline": "Our Mission & Values",
+    "hero_subtitle": "To ensure Afghan girls and women continue learning, developing critical skills, and building self-reliance despite every systemic barrier.",
+    "manifesto_badge": "Our Manifesto",
+    "manifesto_headline": "Our Vision for the Future",
+    "manifesto_subtitle": "We envision a world where every Afghan girl and woman can access education safely and freely, choose her own learning path, cultivate her unique talents, and build her own independent future.",
+    "values_badge": "Our Values",
+    "values_headline": "The 6 Values That Guide Us",
+    "values_subtitle": "How our fundamental commitments translate into every course, classroom, and community interaction.",
+    "cta_headline": "Stand with Afghan students",
+    "cta_subtitle": "Support our mission by learning, volunteering, or partnering with us.",
+    "cta_button_1_text": "Get Involved",
+    "cta_button_1_url": "/get-involved/",
+    "cta_button_2_text": "Start Learning",
+    "cta_button_2_url": "/register/",
+    "is_active": true,
+    "created_at": "2026-08-22T10:32:26.795Z"
+  }
+},
+{
+  "model": "core.corevalue",
+  "pk": 1,
+  "fields": {
+    "value_number": 1,
+    "title": "Education as a Right",
+    "tag": "Universal Principle",
+    "icon": "📖",
+    "theme_color": "teal",
+    "description": "Education is a fundamental human right, not a privilege. When physical classrooms are shuttered, educational access must not disappear.",
+    "action_text": "100% free courses with zero financial barriers.",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-22T10:32:26.799Z"
+  }
+},
+{
+  "model": "core.corevalue",
+  "pk": 2,
+  "fields": {
+    "value_number": 2,
+    "title": "Universal Accessibility",
+    "tag": "Accessibility",
+    "icon": "🌍",
+    "theme_color": "blue",
+    "description": "Using online classrooms, low-bandwidth video compression, and offline PDFs to reach students in remote provinces and refugee settlements.",
+    "action_text": "Low-bandwidth bundles & mobile-ready study guides.",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-22T10:32:26.800Z"
+  }
+},
+{
+  "model": "core.corevalue",
+  "pk": 3,
+  "fields": {
+    "value_number": 3,
+    "title": "Self-Empowerment",
+    "tag": "Agency",
+    "icon": "💪",
+    "theme_color": "amber",
+    "description": "Teaching actionable skills in web coding, foreign languages, and visual arts that build economic agency and long-term autonomy.",
+    "action_text": "Real-world tech and language portfolio building.",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-22T10:32:26.801Z"
+  }
+},
+{
+  "model": "core.corevalue",
+  "pk": 4,
+  "fields": {
+    "value_number": 4,
+    "title": "Global Community",
+    "tag": "Solidarity",
+    "icon": "🤝",
+    "theme_color": "purple",
+    "description": "Connecting Afghan students with dedicated volunteer mentors worldwide, creating an empathetic, mutually supportive network.",
+    "action_text": "International volunteer teaching pairings.",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2026-08-22T10:32:26.801Z"
+  }
+},
+{
+  "model": "core.corevalue",
+  "pk": 5,
+  "fields": {
+    "value_number": 5,
+    "title": "Dignity & Safety",
+    "tag": "Protection",
+    "icon": "🛡️",
+    "theme_color": "teal",
+    "description": "Ensuring confidential, safe, and respectful virtual learning spaces with privacy safeguards for every student and facilitator.",
+    "action_text": "Camera-optional & anonymous handle support.",
+    "order": 5,
+    "is_active": true,
+    "created_at": "2026-08-22T10:32:26.802Z"
+  }
+},
+{
+  "model": "core.corevalue",
+  "pk": 6,
+  "fields": {
+    "value_number": 6,
+    "title": "Hope & Resilience",
+    "tag": "Resilience",
+    "icon": "🌱",
+    "theme_color": "green",
+    "description": "Believing that continuing to learn is an active stance of courage, resilience, and hope for a brighter future.",
+    "action_text": "Integrated mindfulness & well-being circles.",
+    "order": 6,
+    "is_active": true,
+    "created_at": "2026-08-22T10:32:26.802Z"
+  }
+},
+{
+  "model": "core.involvementtrack",
+  "pk": 1,
+  "fields": {
+    "track_number": "01",
+    "title": "Volunteer Language Teacher",
+    "badge_label": "TEACHING TRACK",
+    "icon": "👩‍🏫",
+    "image": "involvement_images/track_volunteer_teacher.jpg",
+    "description": "Teach English (A0–C1), Spanish, or German in live small-group online classes (4–8 students). Guide learners through grammar, pronunciation, and conversational practice.",
+    "commitment_info": "2 to 4 hours per week",
+    "skills_or_platform": "Zoom / Google Meet with curriculum provided",
+    "button_text": "REGISTER AS TEACHER →",
+    "button_url": "https://airtable.com/appeHj1M0LfqNli1C/pagcGBJvfYn8gdzHQ/form",
+    "color_theme": "teal",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-19T08:43:30.319Z"
+  }
+},
+{
+  "model": "core.involvementtrack",
+  "pk": 2,
+  "fields": {
+    "track_number": "02",
+    "title": "Mindfulness Facilitator",
+    "badge_label": "WELL-BEING & CARE",
+    "icon": "🧘‍♀️",
+    "image": "involvement_images/track_mindfulness_care.jpg",
+    "description": "Lead compassionate mental health, somatic breathing, and safe listening circles for students navigating displacement, anxiety, or domestic isolation.",
+    "commitment_info": "1 to 2 hours per week",
+    "skills_or_platform": "Mental health, counseling, or meditation practice",
+    "button_text": "Apply to Facilitate →",
+    "button_url": "/contact/",
+    "color_theme": "purple",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-19T08:43:30.322Z"
+  }
+},
+{
+  "model": "core.involvementtrack",
+  "pk": 3,
+  "fields": {
+    "track_number": "03",
+    "title": "Tech Mentor & Translator",
+    "badge_label": "TECH & TRANSLATION",
+    "icon": "💻",
+    "image": "involvement_images/track_tech_translator.jpg",
+    "description": "Teach JavaScript coding fundamentals, review student coding projects, or help translate curriculum guides into Dari and Pashto.",
+    "commitment_info": "Flexible task-based hours",
+    "skills_or_platform": "Web Dev (JS/HTML), Dari/Pashto bilingual translation",
+    "button_text": "Join Tech & Translation →",
+    "button_url": "/contact/",
+    "color_theme": "blue",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-19T08:43:30.323Z"
+  }
+},
+{
+  "model": "core.involvementtrack",
+  "pk": 4,
+  "fields": {
+    "track_number": "04",
+    "title": "NGO & Institutional Partner",
+    "badge_label": "SOLIDARITY PARTNERSHIP",
+    "icon": "🤝",
+    "image": "involvement_images/track_institutional_partner.jpg",
+    "description": "Partner with Educación para Ella to provide educational software licenses, sponsor digital access kits, or refer students in need of academic support.",
+    "commitment_info": "Strategic alliance & resource provision",
+    "skills_or_platform": "Universities, non-profits, philanthropic foundations",
+    "button_text": "Partner With Us →",
+    "button_url": "/contact/",
+    "color_theme": "amber",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2026-08-19T08:43:30.324Z"
+  }
+},
+{
+  "model": "core.volunteerjourneystep",
+  "pk": 1,
+  "fields": {
+    "step_number": 1,
+    "title": "1. Apply Online",
+    "description": "Fill out our short interest form specifying your subject and time availability.",
+    "icon_emoji": "📝",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-19T08:46:35.783Z"
+  }
+},
+{
+  "model": "core.volunteerjourneystep",
+  "pk": 2,
+  "fields": {
+    "step_number": 2,
+    "title": "2. Intro Chat",
+    "description": "A brief 15-minute video call to get acquainted, answer questions, and match class levels.",
+    "icon_emoji": "💬",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-19T08:46:35.786Z"
+  }
+},
+{
+  "model": "core.volunteerjourneystep",
+  "pk": 3,
+  "fields": {
+    "step_number": 3,
+    "title": "3. Safety Orientation",
+    "description": "Receive student safety guidelines, sample lesson plans, and access to the shared drive.",
+    "icon_emoji": "🛡️",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-19T08:46:35.787Z"
+  }
+},
+{
+  "model": "core.volunteerjourneystep",
+  "pk": 4,
+  "fields": {
+    "step_number": 4,
+    "title": "4. Teach & Empower",
+    "description": "Meet your students online, teach your first class, and experience the transformative power of learning.",
+    "icon_emoji": "✨",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2026-08-19T08:46:35.788Z"
+  }
+},
+{
+  "model": "core.faqitem",
+  "pk": 1,
+  "fields": {
+    "question": "Do I need to speak Dari or Pashto to volunteer as a teacher?",
+    "answer": "No. Our language classes (English, Spanish, German) are taught in immersion format. We also have bilingual coordinators who assist absolute beginner levels whenever needed.",
+    "category": "volunteer",
+    "icon": "🗣️",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-19T08:48:36.593Z"
+  }
+},
+{
+  "model": "core.faqitem",
+  "pk": 2,
+  "fields": {
+    "question": "What is the minimum time commitment?",
+    "answer": "Most volunteer teachers dedicate 2 to 4 hours per week (1–2 class sessions of 60 minutes each, plus brief preparation time).",
+    "category": "volunteer",
+    "icon": "⏱️",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-19T08:48:36.596Z"
+  }
+},
+{
+  "model": "core.faqitem",
+  "pk": 3,
+  "fields": {
+    "question": "How is digital safety maintained?",
+    "answer": "Student and teacher safety is our highest priority. All virtual meetings are password-protected, cameras are optional for students, and recording of live faces without consent is strictly prohibited.",
+    "category": "safety",
+    "icon": "🛡️",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-19T08:48:36.596Z"
+  }
+},
+{
+  "model": "core.faqitem",
+  "pk": 4,
+  "fields": {
+    "question": "What materials and lesson plans are provided?",
+    "answer": "Educación para Ella provides standardized CEFR curriculums, slide decks, vocabulary worksheets, and homework exercises so teachers can focus on guiding and inspiring learners.",
+    "category": "volunteer",
+    "icon": "📚",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2026-08-19T08:48:36.597Z"
+  }
+},
+{
+  "model": "core.faqitem",
+  "pk": 5,
+  "fields": {
+    "question": "Can organizations or universities partner with us?",
+    "answer": "Yes! We collaborate with educational non-profits, universities, tech organizations, and student clubs for curriculum sharing, student sponsorships, and volunteer exchange.",
+    "category": "general",
+    "icon": "🤝",
+    "order": 5,
+    "is_active": true,
+    "created_at": "2026-08-19T08:48:36.598Z"
+  }
+},
+{
+  "model": "core.contactsetting",
+  "pk": 1,
+  "fields": {
+    "email": "contact@educacionparaella.org",
+    "phone": "+34 632 65 50 88",
+    "whatsapp_number": "+34 632 65 50 88",
+    "whatsapp_url": "https://wa.me/34632655088?text=Hello%20Educaci%C3%B3n%20para%20Ella%2C%20I%20would%20like%20to%20get%20in%20touch.",
+    "location_label": "Barcelona, Spain & Kabul, Afghanistan",
+    "coverage_info": "Connecting students across AF, IR, PK & IQ",
+    "response_time": "Responses typically sent within 24 to 48 hours",
+    "support_hours": "Monday – Saturday · 9:00 AM – 7:00 PM CET",
+    "safety_message": "For students and families writing from inside Afghanistan: your safety is our utmost priority. All messages are encrypted, held strictly confidential, and never shared publicly.",
+    "facebook_url": "#",
+    "telegram_url": "#",
+    "youtube_url": "#",
+    "is_active": true,
+    "created_at": "2026-08-19T08:51:36.842Z"
+  }
+},
+{
+  "model": "core.footersetting",
+  "pk": 1,
+  "fields": {
+    "brand_name": "Educación para Ella",
+    "brand_subtitle": "Education for Her",
+    "mission_text_1": "Educación para Ella connects Afghan girls and students with qualified educators and interactive digital courses in Dari, Pashto, and English.",
+    "mission_text_2": "Together with local mentors and global partners, we work to ensure every student can continue learning safely from home.",
+    "mission_link_text": "Read our full mission →",
+    "mission_link_url": "/mission/",
+    "region_1_title": "Afghanistan",
+    "region_1_desc": "Kabul, Herat, Mazar & All Provinces",
+    "region_1_badge": "Offline Study Bundles Available",
+    "region_2_title": "Global Network",
+    "region_2_desc": "Connecting Afghan Diaspora in Iran, Pakistan, Iraq & Worldwide",
+    "commitment_title": "Open Access",
+    "commitment_badge": "100% Free Education",
+    "commitment_desc": "Education for Her is certified to provide safe, free, high-quality, and accessible digital learning resources for all Afghan students.",
+    "commitment_icon": "🎓",
+    "facebook_url": "#",
+    "telegram_url": "#",
+    "youtube_url": "#",
+    "copyright_text": "© 2025-2026 Educación para Ella (Education for Her). Built with ❤️ for Afghan students worldwide.",
+    "is_active": true,
+    "created_at": "2026-08-19T08:57:55.922Z"
+  }
+},
+{
+  "model": "core.footerquicklink",
+  "pk": 1,
+  "fields": {
+    "title": "Our Classes",
+    "subtitle": "English, Spanish, German, Tech",
+    "url": "/classes/",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-19T08:57:55.927Z"
+  }
+},
+{
+  "model": "core.footerquicklink",
+  "pk": 2,
+  "fields": {
+    "title": "Get Involved",
+    "subtitle": "Join as volunteer or teacher",
+    "url": "/get-involved/",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-19T08:57:55.930Z"
+  }
+},
+{
+  "model": "core.footerquicklink",
+  "pk": 3,
+  "fields": {
+    "title": "Mindfulness",
+    "subtitle": "Well-being & supportive community",
+    "url": "/mindfulness/",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-19T08:57:55.931Z"
+  }
+},
+{
+  "model": "core.socialmedialink",
+  "pk": 1,
+  "fields": {
+    "name": "WhatsApp",
+    "platform": "whatsapp",
+    "url": "https://wa.me/34632655088?text=Hello%20Educaci%C3%B3n%20para%20Ella%2C%20I%20would%20like%20to%20get%20in%20touch.",
+    "emoji_icon": "💬",
+    "order": 1,
+    "is_active": true,
+    "show_in_footer": true,
+    "show_in_contact": true,
+    "created_at": "2026-08-19T09:01:27.986Z"
+  }
+},
+{
+  "model": "core.socialmedialink",
+  "pk": 2,
+  "fields": {
+    "name": "Telegram",
+    "platform": "telegram",
+    "url": "https://t.me/educacionparaella",
+    "emoji_icon": "✈️",
+    "order": 2,
+    "is_active": true,
+    "show_in_footer": true,
+    "show_in_contact": true,
+    "created_at": "2026-08-19T09:01:27.992Z"
+  }
+},
+{
+  "model": "core.socialmedialink",
+  "pk": 3,
+  "fields": {
+    "name": "Instagram",
+    "platform": "instagram",
+    "url": "https://instagram.com/educacionparaella",
+    "emoji_icon": "📸",
+    "order": 3,
+    "is_active": true,
+    "show_in_footer": true,
+    "show_in_contact": true,
+    "created_at": "2026-08-19T09:01:27.994Z"
+  }
+},
+{
+  "model": "core.socialmedialink",
+  "pk": 4,
+  "fields": {
+    "name": "YouTube",
+    "platform": "youtube",
+    "url": "https://youtube.com/@educacionparaella",
+    "emoji_icon": "🎥",
+    "order": 4,
+    "is_active": true,
+    "show_in_footer": true,
+    "show_in_contact": true,
+    "created_at": "2026-08-19T09:01:27.995Z"
+  }
+},
+{
+  "model": "core.socialmedialink",
+  "pk": 5,
+  "fields": {
+    "name": "Facebook",
+    "platform": "facebook",
+    "url": "https://facebook.com/educacionparaella",
+    "emoji_icon": "📘",
+    "order": 5,
+    "is_active": true,
+    "show_in_footer": true,
+    "show_in_contact": true,
+    "created_at": "2026-08-19T09:01:27.996Z"
+  }
+},
+{
+  "model": "core.socialmedialink",
+  "pk": 6,
+  "fields": {
+    "name": "LinkedIn",
+    "platform": "linkedin",
+    "url": "https://linkedin.com/company/educacionparaella",
+    "emoji_icon": "💼",
+    "order": 6,
+    "is_active": true,
+    "show_in_footer": true,
+    "show_in_contact": true,
+    "created_at": "2026-08-19T09:01:27.997Z"
+  }
+},
+{
+  "model": "core.studymaterial",
+  "pk": 1,
+  "fields": {
+    "title": "English A1 Complete Study Guide",
+    "subject": "english",
+    "file_type": "PDF",
+    "file_size_text": "2.4 MB",
+    "file": "",
+    "file_url": "/media/class_images/english_language.jpg",
+    "description": "Bilingual vocabulary & grammar foundations for Afghan students.",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-19T11:30:38.852Z"
+  }
+},
+{
+  "model": "core.studymaterial",
+  "pk": 2,
+  "fields": {
+    "title": "Catalan & Spanish Phrasebook",
+    "subject": "catalan",
+    "file_type": "PDF",
+    "file_size_text": "1.8 MB",
+    "file": "",
+    "file_url": "/media/class_images/spanish_language.jpg",
+    "description": "Essential expressions, everyday vocabulary & audio transcripts.",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-19T11:30:38.856Z"
+  }
+},
+{
+  "model": "core.studymaterial",
+  "pk": 3,
+  "fields": {
+    "title": "Python & Coding Starter Pack",
+    "subject": "coding",
+    "file_type": "ZIP",
+    "file_size_text": "4.1 MB",
+    "file": "",
+    "file_url": "/media/class_images/javascript_and_web_dev.jpg",
+    "description": "Beginner exercises, cheatsheets and visual coding guide.",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-19T11:30:38.856Z"
+  }
+},
+{
+  "model": "core.blogcategory",
+  "pk": 1,
+  "fields": {
+    "name": "Student Voices & Journeys",
+    "slug": "student-voices",
+    "icon": "🎓",
+    "theme_color": "teal",
+    "description": "Real transformative stories from Afghan women learning from home",
+    "order": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "core.blogcategory",
+  "pk": 2,
+  "fields": {
+    "name": "Volunteer & Teacher Reflections",
+    "slug": "volunteer-reflections",
+    "icon": "👩‍🏫",
+    "theme_color": "blue",
+    "description": "Personal stories and reflections from our diaspora and global educators",
+    "order": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "core.blogcategory",
+  "pk": 3,
+  "fields": {
+    "name": "News & Community Milestones",
+    "slug": "news-and-milestones",
+    "icon": "📢",
+    "theme_color": "amber",
+    "description": "Official announcements, new cohort registrations, and partnerships",
+    "order": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "core.blogcategory",
+  "pk": 4,
+  "fields": {
+    "name": "Well-Being & Inner Strength",
+    "slug": "well-being-resilience",
+    "icon": "🧠",
+    "theme_color": "purple",
+    "description": "Trauma-informed care, somatic grounding, and mental resilience",
+    "order": 4,
+    "is_active": true
+  }
+},
+{
+  "model": "core.blogcategory",
+  "pk": 5,
+  "fields": {
+    "name": "Tech & Vocational Skills",
+    "slug": "tech-and-vocational",
+    "icon": "💻",
+    "theme_color": "emerald",
+    "description": "Digital literacy, web development, photography, and sewing",
+    "order": 5,
+    "is_active": true
+  }
+},
+{
+  "model": "core.blogpost",
+  "pk": 1,
+  "fields": {
+    "title": "From Whispers to Words: How 15 Afghan Girls Mastered Intermediate English from Their Rooms",
+    "slug": "from-whispers-to-words-afghan-girls-mastering-english",
+    "category": 1,
+    "author_name": "Zahra (Student Contributor)",
+    "author_role": "English B1 Alumna & Peer Mentor",
+    "image": "",
+    "image_caption": "",
+    "excerpt": "When traditional schools closed their gates, a virtual room with a low-bandwidth mobile connection became our sanctuary. Here is how our English cohort built confidence, one conversational circle at a time.",
+    "content": "When the heavy silence fell across our cities and secondary schools closed their doors, many of us feared our dreams had ended. For months, our textbooks remained packed away in closets, gathering dust while the world outside grew increasingly quiet.\n\nThen, through a shared link in a private group, I discovered Educación para Ella.\n\n### The First Day in Virtual Class\nI still remember the feeling of logging in for my first A2 English speaking circle. My hands were shaking. I had never spoken English with a foreign teacher before, and I was terrified of making pronunciation mistakes. But our educator greeted us with such warmth and kindness. There was no pressure to turn on cameras, no judgment for broken grammar—only patient encouragement.\n\n'Every mistake is just a stepping stone to speaking with power,' our teacher told us.\n\n### Building Fluency and Sisterhood\nOver the following twelve weeks, our group of 15 girls from Kabul, Herat, and Mazar met every Tuesday and Thursday. We practiced storytelling, academic reading, and vocabulary that helped us prepare for international placement exams. Between classes, we formed study circles, recording voice notes to practice pronunciation despite unstable power cuts and slow internet.\n\nToday, eight of us have successfully advanced to the B2 Upper-Intermediate level. We are now helping younger girls in the A0 beginner classes as peer tutors. Education is not just about books; it is the spark that keeps our dignity and future alive.\n\nTo every sister reading this: never lose hope. As long as we have the courage to learn, our voices will be heard across the world.",
+    "reading_time_minutes": 4,
+    "is_featured": true,
+    "is_published": true,
+    "published_at": "2026-08-15",
+    "views_count": 3,
+    "created_at": "2026-08-23T11:52:44.964Z",
+    "updated_at": "2026-08-23T11:52:44.964Z"
+  }
+},
+{
+  "model": "core.blogpost",
+  "pk": 2,
+  "fields": {
+    "title": "Teaching Across 5 Time Zones: What My Afghan Students Taught Me About Resilience",
+    "slug": "teaching-across-time-zones-volunteer-reflection",
+    "category": 2,
+    "author_name": "Elena R.",
+    "author_role": "Volunteer English Educator (Madrid, Spain)",
+    "image": "",
+    "image_caption": "",
+    "excerpt": "As a volunteer educator logging in from Europe twice a week, I expected to teach grammar rules. Instead, my students taught me the true meaning of perseverance, joy, and intellectual courage.",
+    "content": "Every Tuesday evening at 6:30 PM CET, I open my laptop and join the virtual classroom link. On the other side of the screen, logging in from Kabul and surrounding provinces, are ten eager young women with notebooks open, ready for our evening lesson.\n\nMany of them have spent the day dealing with power outages, unstable mobile data, and immense daily challenges. Yet, the moment our lesson begins, the chat fills with questions: 'Teacher, can we analyze this poem today?' 'How can I explain this scientific term in my essay?'\n\n### The Hunger to Learn\nIn European classrooms, we often take educational access for granted. With my Afghan students, every single 60-minute session is treated as sacred. If a student loses connection due to a neighborhood blackout, she logs back in five minutes later from her sibling’s phone, apologizing for the brief delay and immediately asking where we left off in the reading.\n\n### A Safe & Respectful Sanctuary\nTeaching here has shown me what digital humanitarian education can achieve when done with deep respect. By keeping classes free, camera-optional, and structured around high academic standards, we are not just teaching a language—we are holding open a window to the wider world.\n\nVolunteering with Educación para Ella has been the most meaningful teaching experience of my life. To anyone considering joining as a volunteer teacher: take the leap. Your two hours a week can transform a life.",
+    "reading_time_minutes": 5,
+    "is_featured": false,
+    "is_published": true,
+    "published_at": "2026-08-02",
+    "views_count": 1,
+    "created_at": "2026-08-23T11:52:44.966Z",
+    "updated_at": "2026-08-23T11:52:44.966Z"
+  }
+},
+{
+  "model": "core.blogpost",
+  "pk": 3,
+  "fields": {
+    "title": "Breaking Barriers: Launching Our First Full-Stack Coding & Web Development Cohort",
+    "slug": "launching-first-full-stack-coding-cohort",
+    "category": 5,
+    "author_name": "Educación para Ella Tech Team",
+    "author_role": "Digital Skills Initiative",
+    "image": "",
+    "image_caption": "",
+    "excerpt": "How 25 young women are learning HTML, CSS, JavaScript, and remote digital workflows to build independence and contribute to open-source software.",
+    "content": "Digital literacy and technology skills represent one of the most powerful tools for economic empowerment and intellectual autonomy. This month, we officially launched our dedicated Web Development & Coding Program, welcoming 25 Afghan women into a structured 12-week technical track.\n\n### The Curriculum & Hands-On Practice\nDesigned in collaboration with volunteer software engineers and tech mentors, the curriculum covers:\n- **Foundations of the Web:** HTML5 semantics, modern CSS3 styling, and mobile responsiveness.\n- **JavaScript & Logic:** Variables, functions, DOM manipulation, and interactive web elements.\n- **Git & GitHub Workflows:** Collaborative version control and open-source project contributions.\n- **Remote Freelance & Career Preparedness:** Portfolio building, code reviews, and remote communication tools.\n\n### Overcoming Hardware & Bandwidth Hurdles\nTo ensure no student is left behind due to hardware limitations, our team provides lightweight, offline-accessible code exercises and browser-based coding sandboxes that require minimal internet data.\n\nOur goal is simple: to equip every participant with verified technical skills that allow them to collaborate with international organizations and build digital projects from anywhere.",
+    "reading_time_minutes": 3,
+    "is_featured": false,
+    "is_published": true,
+    "published_at": "2026-07-20",
+    "views_count": 0,
+    "created_at": "2026-08-23T11:52:44.968Z",
+    "updated_at": "2026-08-23T11:52:44.968Z"
+  }
+},
+{
+  "model": "core.blogpost",
+  "pk": 4,
+  "fields": {
+    "title": "Breathe & Ground: Somatic Mindfulness Practices for Managing Stress and Anxiety",
+    "slug": "somatic-mindfulness-practices-for-managing-stress",
+    "category": 4,
+    "author_name": "Dr. Soraya & Kelly M.",
+    "author_role": "Well-Being & Trauma-Informed Facilitators",
+    "image": "",
+    "image_caption": "",
+    "excerpt": "Practical, discreet grounding techniques and breathing exercises designed for women experiencing prolonged stress, isolation, and uncertainty.",
+    "content": "Living under conditions of sustained uncertainty and confinement places tremendous strain on the nervous system. When the mind is overwhelmed with worries about the future, our bodies often react with muscle tension, rapid breathing, and chronic exhaustion.\n\nIn our bi-weekly Mindfulness and 1:1 Psychological Support circles, we practice simple, scientifically validated somatic exercises that help reset the body’s threat response.\n\n### 1. The 4-7-8 Calming Breath\nThis simple breathing rhythm helps activate the parasympathetic nervous system:\n- Inhale quietly through the nose for **4 counts**.\n- Hold your breath gently for **7 counts**.\n- Exhale completely through the mouth for **8 counts**, making a gentle whooshing sound.\n- Repeat for 4 cycles.\n\n### 2. The 5-4-3-2-1 Sensory Grounding\nWhen feeling anxious or disconnected, quietly name:\n- **5 things you can see** around the room.\n- **4 things you can physically touch** (your sleeve, the chair, a pen).\n- **3 sounds you can hear** in the distance.\n- **2 things you can smell**.\n- **1 positive truth** about your resilience and strength.\n\n### A Gentle Reminder\nRemember: your feelings of frustration or grief are completely valid. Taking five minutes each day to breathe and ground yourself is not selfish—it is an act of preserving your health and inner sanctuary.",
+    "reading_time_minutes": 4,
+    "is_featured": false,
+    "is_published": true,
+    "published_at": "2026-07-08",
+    "views_count": 0,
+    "created_at": "2026-08-23T11:52:44.969Z",
+    "updated_at": "2026-08-23T11:52:44.969Z"
+  }
+},
+{
+  "model": "core.blogpost",
+  "pk": 5,
+  "fields": {
+    "title": "New Academic Term: Welcoming Over 300 New Students Across 21 Online Classrooms",
+    "slug": "new-academic-term-300-students-21-classrooms",
+    "category": 3,
+    "author_name": "Educación para Ella Secretariat",
+    "author_role": "Academic Operations",
+    "image": "",
+    "image_caption": "",
+    "excerpt": "With expanded classes in English, Spanish, German, Coding, and Vocational Arts, our community marks its largest enrollment to date.",
+    "content": "We are proud to announce the commencement of our new academic term! Thanks to the tireless commitment of our international volunteer educators and regional coordinators, over 300 Afghan women and girls have enrolled across 21 dynamic class programs.\n\n### Key Highlights of the New Term\n- **Expanded Language Tracks:** 8 levels of English (from foundational A0 to advanced B2), 4 cohorts of Spanish, and introductory German.\n- **New Creative & Vocational Offerings:** Practical photography, tailoring & pattern design, and digital web skills.\n- **Enhanced Safe Sisterhood Spaces:** Integrated mental health support circles and peer-led study groups.\n- **100% Free Access Guarantee:** Zero enrollment, book, or certificate fees for any student.\n\nWe extend our deepest gratitude to our global community of supporters and partner organizations who make this safe educational sanctuary possible every single day.",
+    "reading_time_minutes": 3,
+    "is_featured": false,
+    "is_published": true,
+    "published_at": "2026-06-25",
+    "views_count": 0,
+    "created_at": "2026-08-23T11:52:44.970Z",
+    "updated_at": "2026-08-23T11:52:44.970Z"
+  }
+},
+{
+  "model": "accounts.userprofile",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "role": "teacher",
+    "preferred_language": "en",
+    "bio": ""
+  }
+},
+{
+  "model": "accounts.userprofile",
+  "pk": 2,
+  "fields": {
+    "user": 2,
+    "role": "student",
+    "preferred_language": "en",
+    "bio": ""
+  }
+},
+{
+  "model": "accounts.authsetting",
+  "pk": 1,
+  "fields": {
+    "badge_label": "EDUCACIÓN PARA ELLA",
+    "headline": "Empowering Afghan Girls & Students Everywhere",
+    "subheadline": "Join a global, trauma-informed learning community connecting learners with qualified international educators and peer study circles.",
+    "student_quote": "“When learning continues at home, our dreams, voice, and future possibilities remain alive and unstoppable.”",
+    "quote_author": "Educación para Ella Student Sanctuary",
+    "is_active": true,
+    "created_at": "2026-08-19T09:06:50.130Z"
+  }
+},
+{
+  "model": "accounts.authhighlight",
+  "pk": 1,
+  "fields": {
+    "title": "100% Free & Open Access",
+    "description": "All interactive courses, assignments, materials, and certificates are provided completely free of charge.",
+    "icon": "🎓",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2026-08-19T09:06:50.132Z"
+  }
+},
+{
+  "model": "accounts.authhighlight",
+  "pk": 2,
+  "fields": {
+    "title": "100% Confidential & Safe",
+    "description": "Camera-optional virtual classes, anonymous handles, and end-to-end protected study spaces.",
+    "icon": "🛡️",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2026-08-19T09:06:50.134Z"
+  }
+},
+{
+  "model": "accounts.authhighlight",
+  "pk": 3,
+  "fields": {
+    "title": "Global Educators & Mentors",
+    "description": "Learn English, Spanish, German, Coding, and Photography from passionate teachers across 12+ countries.",
+    "icon": "🌍",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2026-08-19T09:06:50.134Z"
+  }
+},
+{
+  "model": "accounts.authhighlight",
+  "pk": 4,
+  "fields": {
+    "title": "Trauma-Informed Well-Being",
+    "description": "Access safe mindfulness circles, stress-relief exercises, and supportive peer community check-ins.",
+    "icon": "🧘‍♀️",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2026-08-19T09:06:50.135Z"
+  }
+}
+]

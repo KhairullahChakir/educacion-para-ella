@@ -10,3 +10,8 @@ python manage.py collectstatic --no-input
 
 # Apply database migrations
 python manage.py migrate
+
+# Load initial data (courses, settings, etc.) if fixture exists
+if [ -f initial_data.json ]; then
+    python manage.py loaddata initial_data.json || true
+fi
