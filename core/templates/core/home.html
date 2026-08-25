@@ -40,15 +40,15 @@
                     <div class="relative w-full max-w-lg lg:max-w-xl">
                         <div class="rounded-3xl overflow-hidden shadow-2xl border border-white/20 bg-white/10 backdrop-blur-xs relative group">
                             {% if news.image %}
-                                <img src="{{ news.image.url }}" alt="{{ news.title }}" class="w-full h-auto object-cover max-h-[380px]">
+                                <img src="{{ news.image.url }}" alt="{{ news.title }}" class="w-full h-80 sm:h-96 lg:h-[400px] object-cover object-center">
                             {% elif forloop.counter == 2 %}
-                                <img src="{% static 'images/hero_coding.png' %}" alt="{{ news.title }}" class="w-full h-auto object-cover max-h-[380px]">
+                                <img src="{% static 'images/hero_coding.png' %}" alt="{{ news.title }}" class="w-full h-80 sm:h-96 lg:h-[400px] object-cover object-center">
                             {% elif forloop.counter == 3 %}
-                                <img src="{% static 'images/hero_community.png' %}" alt="{{ news.title }}" class="w-full h-auto object-cover max-h-[380px]">
+                                <img src="{% static 'images/hero_community.png' %}" alt="{{ news.title }}" class="w-full h-80 sm:h-96 lg:h-[400px] object-cover object-center">
                             {% else %}
-                                <img src="{% static 'images/hero_student.png' %}" alt="{{ news.title }}" class="w-full h-auto object-cover max-h-[380px]">
+                                <img src="{% static 'images/hero_student.png' %}" alt="{{ news.title }}" class="w-full h-80 sm:h-96 lg:h-[400px] object-cover object-center">
                             {% endif %}
-                            <div class="absolute inset-0 bg-gradient-to-t from-teal-950/60 via-transparent to-transparent flex items-end p-6">
+                            <div class="absolute inset-0 bg-gradient-to-t from-teal-950/70 via-teal-950/20 to-transparent flex items-end p-6">
                                 <span class="text-xs font-extrabold uppercase tracking-wider text-[#fbbf24] bg-teal-950/80 px-4 py-2 rounded-xl border border-[#fbbf24]/30">{{ news.badge_text }}</span>
                             </div>
                         </div>
