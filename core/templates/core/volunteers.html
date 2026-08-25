@@ -54,9 +54,9 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {% for role in volunteer_roles %}
             <div class="bg-white rounded-3xl border border-gray-200/80 shadow-xs hover:border-[#167888] hover:shadow-xl transition-all flex flex-col justify-between group overflow-hidden">
-                <!-- Top Artwork Banner -->
+                <!-- Top Artwork Banner (Full 16:9 Visibility) -->
                 {% if role.image %}
-                <div class="relative w-full h-44 overflow-hidden bg-gray-50 border-b border-gray-100">
+                <div class="relative w-full aspect-video overflow-hidden bg-gray-50 border-b border-gray-100">
                     <img src="{{ role.image.url }}" alt="{{ role.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                     <div class="absolute top-3 left-3 w-9 h-9 rounded-xl bg-white/90 backdrop-blur-xs text-lg flex items-center justify-center shadow-xs">
                         {{ role.icon }}
