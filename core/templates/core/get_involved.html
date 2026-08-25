@@ -28,7 +28,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {% for track in involvement_tracks %}
-            <div class="bg-white rounded-3xl border border-gray-200/90 shadow-xs hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 {{ track.style_classes.border_hover }} group flex flex-col justify-between overflow-hidden">
+            <div id="track-{{ track.track_number }}" class="bg-white rounded-3xl border border-gray-200/90 shadow-xs hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 {{ track.style_classes.border_hover }} group flex flex-col justify-between overflow-hidden scroll-mt-32">
                 <div>
                     <!-- Header Artwork Illustration -->
                     {% if track.image %}
